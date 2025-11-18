@@ -1,0 +1,3543 @@
+gismu,position,oblique
+bacru,1,speaker: utter
+bacru,2,utterance: uttered: is voiced
+badna,1,banana
+badna,2,banana species
+badri,1,someone sad
+badri,2,depressing: object of sadness
+bajra,1,runner: run
+bajra,2,running surface: track (for running)
+bajra,3,running limbs
+bajra,4,running gait
+bakfu,1,bundle
+bakfu,2,bundled: packaged: contents (of a bundle)
+bakfu,3,bundle wrapping: packaging
+bakni,1,bovine
+bakni,2,bovine species/breed
+bakri,1,chalk
+bakri,2,chalk source
+bakri,3,chalk form
+baktu,1,bucket
+baktu,2,bucket contents
+baktu,3,bucket material
+balji,1,bulb
+balji,2,plant with bulb
+balni,1,balcony
+balni,2,balconied
+balre,1,blade
+balre,2,bladed
+balvi,1,future
+balvi,2,before: has in its future
+bancu,1,something beyond
+bancu,2,bound beyond which
+bancu,3,reference for beyond: exceeded
+bancu,4,beyondness property: extra: excess
+bandu,1,defender
+bandu,2,protected: defended
+bandu,3,adversary: threat
+banfi,1,amphibian
+banfi,2,amphibian species
+bangu,1,language
+bangu,2,language community: speaker(s): people with language
+banli,1,great
+banli,2,greatness property
+banli,3,greatness standard
+banro,1,grow
+banro,2,grown
+banro,3,grown from
+banxa,1,bank
+banxa,2,banker
+banxa,3,banking functions
+banzu,1,sufficient: suffice
+banzu,2,satisfied [by]: requires: purpose sufficed
+banzu,3,sufficiency condition
+bapli,1,force
+bapli,2,forced
+barda,1,big
+barda,2,bigness dimension
+barda,3,bigness standard
+bargu,1,arch
+bargu,2,arched over
+bargu,3,arch material
+barja,1,bar
+barja,2,fare [of a bar]: served in bar
+barja,3,bar customers: patrons [of a bar]
+barna,1,mark
+barna,2,marked
+barna,3,mark material
+bartu,1,something external: out
+bartu,2,has outside
+basna,1,emphasize: emphasizer
+basna,2,stressed: emphasized
+basna,3,emphasis
+basti,1,substitute: replace
+basti,2,replaced
+basti,3,replacement condition
+batci,1,biter: bite
+batci,2,bitten
+batci,3,bite locus
+batci,4,biting tool
+batke,1,button
+batke,2,has button: knobbed: knobby
+batke,3,button purpose
+batke,4,button material
+bavmi,1,barley
+bavmi,2,barley species
+baxso,1,Malay-Indonesian
+baxso,2,Malay-Ind aspect
+bebna,1,foolish
+bebna,2,foolishness
+bemro,1,North American
+bemro,2,North American aspect
+bende,1,crew
+bende,2,crew members: team members
+bende,3,leader [of a team]: lead crew
+bende,4,crew purpose
+bengo,1,Bengali
+bengo,2,Bengali aspect
+benji,1,transfer
+benji,2,transferred
+benji,3,receiver: receive transfer: recipient
+benji,4,transmitter
+benji,5,medium: carrier: transfer means
+bersa,1,son
+bersa,2,parent [of son]: mother: father
+berti,1,north
+berti,2,has to north
+berti,3,frame for north
+besna,1,brain
+besna,2,brained: has brain
+betfu,1,abdomen
+betfu,2,has abdomen: bellied
+betri,1,tragedy
+betri,2,finds tragic: unfortunate: devastated [by]
+bevri,1,carry
+bevri,2,carrier: cargo: carried
+bevri,3,destination [for cargo]
+bevri,4,source [of cargo]
+bevri,5,carrying path
+bidju,1,bead
+bidju,2,bead material: beaded
+bifce,1,bee
+bifce,2,bee species
+bikla,1,whip
+bilga,1,obliged
+bilga,2,obligation: duty
+bilga,3,obligation standard: code [of conduct]
+bilma,1,ill
+bilma,2,symptoms
+bilma,3,illness: disease
+bilni,1,military
+bilni,2,regimentation: military system
+bilni,3,military purpose
+bindo,1,Indonesian
+bindo,2,Indonesian aspect
+binra,1,insurer: insure
+binra,2,insured
+binra,3,covered condition: insured risk
+binra,4,insured benefit
+binxo,1,become
+binxo,2,changed into
+binxo,3,becoming conditions
+birje,1,beer
+birje,2,beer ingredients
+birka,1,arm
+birka,2,armed: has arm
+birti,1,certain
+birti,2,certainty
+bisli,1,ice
+bisli,2,ice composition
+bitmu,1,wall
+bitmu,2,walled off: fenced
+bitmu,3,walled from: fenced: walled off
+bitmu,4,subdivided: structure with wall
+blabi,1,white
+blaci,1,glass
+blaci,2,glass composition
+blanu,1,blue
+bliku,1,block
+bliku,2,block material
+bliku,3,block surface: face [of a block]
+bloti,1,boat
+bloti,2,carried by boat: shipped
+bloti,3,propel boat: propeller [of boat]
+bolci,1,ball
+bolci,2,ball material
+bongu,1,bone
+bongu,2,bone function
+bongu,3,has bone: bony
+botpi,1,bottle
+botpi,2,contents [of bottle]: bottled
+botpi,3,material [of bottle]
+botpi,4,lid [of bottle]: stopper
+boxfo,1,sheet
+boxfo,2,sheet material
+boxna,1,wave
+boxna,2,wavy: wave medium
+boxna,3,wave-form
+boxna,4,wave-length
+boxna,5,wave frequency
+bradi,1,enemy
+bradi,2,opposes: has enemy
+bradi,3,struggle [with enemy]: contention
+bratu,1,hail
+bratu,2,hail material
+brazo,1,Brazilian
+brazo,2,Brazilian aspect
+bredi,1,ready
+bredi,2,event prepared for
+bridi,1,predicate
+bridi,2,predicate relation
+bridi,3,predicate arguments: are related
+brife,1,breeze
+brife,2,wind direction
+brife,3,wind speed
+briju,1,office
+briju,2,office worker
+briju,3,branch [of an office]: location [of office]
+brito,1,British
+brito,2,British aspect
+broda,1,is it: does it: predicate var 1
+brode,1,is it: does it: predicate var 2
+brodi,1,is it: does it: predicate var 3
+brodo,1,is it: does it: predicate var 4
+brodu,1,is it: does it: predicate var 5
+bruna,1,brother
+bruna,2,has brother
+bruna,3,brotherly bond
+budjo,1,Buddhist
+budjo,2,Buddhist aspect
+bukpu,1,cloth
+bukpu,2,cloth material
+bumru,1,fog
+bumru,2,fog composition: fogs
+bunda,1,pound: weighs
+bunda,2,weight [in local units]: number of pounds
+bunda,3,pound standard
+bunda,4,first subunit of pound
+bunre,1,brown
+burcu,1,brush
+burcu,2,brush purpose
+burcu,3,bristles [of brush]
+burna,1,embarrassed
+burna,2,embarrassing
+cabna,1,now
+cabna,2,co-occurred with
+cabra,1,apparatus
+cabra,2,apparatus function
+cabra,3,apparatus operator: control apparatus
+cacra,1,lasts [in hours]: hour
+cacra,2,duration [in hours]: number of hours
+cacra,3,hour standard
+cadzu,1,walker: walk
+cadzu,2,walked on
+cadzu,3,walking limb
+cafne,1,often
+cafne,2,oftenness standard
+cakla,1,chocolate
+calku,1,shell
+calku,2,has shell: shelled
+calku,3,shell material
+canci,1,vanish
+canci,2,vanished from: can't see
+canci,3,see vanish
+cando,1,idle
+cange,1,farm
+cange,2,farm location
+cange,3,farmer
+cange,4,farm produce
+canja,1,trader: exchange
+canja,2,exchanged: traded: commodity [of trade]
+canja,3,exchanged for: traded: commodity [of trade]
+canja,4,exchanged with: trader
+canko,1,window
+canko,2,has window: windowed
+canlu,1,space
+canlu,2,takes up space: occupy space
+canpa,1,shovel
+canpa,2,dug with shovel
+canre,1,sand
+canre,2,sand source: sandy: gritty
+canre,3,sand composition
+canti,1,gut
+canti,2,has gut
+carce,1,cart
+carce,2,carried on cart: carted
+carce,3,propel cart
+carmi,1,intense
+carmi,2,intense property
+carmi,3,find intense
+carna,1,turn
+carna,2,turn axis
+carna,3,rotational direction: turn direction
+cartu,1,chart
+cartu,2,mapped [as a territory]: chart subject
+cartu,3,shown on chart
+carvi,1,rain
+carvi,2,rained on: rainy
+carvi,3,rained from
+casnu,1,discuss
+casnu,2,discussion subject: discussed
+catke,1,shove
+catke,2,shoved: pushed
+catke,3,shoved at
+catlu,1,looker: examiner
+catlu,2,examined: looked at
+catni,1,authority [person]
+catni,2,underling: sphere of influence
+catni,3,authority basis
+catra,1,kill
+catra,2,murdered: slaughtered: killed
+catra,3,killing method
+caxno,1,shallow
+caxno,2,shallow direction
+caxno,3,shallow reference point
+caxno,4,shallowness standard
+cecla,1,launcher
+cecla,2,projectile: missile: launched
+cecla,3,propellant: launch propulsion
+cecmu,1,community
+cecmu,2,live in community
+cedra,1,era
+cedra,2,characterize era
+cenba,1,variable: vary
+cenba,2,varying property
+cenba,3,variance: varying amount
+cenba,4,variance conditions
+censa,1,holy
+censa,2,hold as holy
+centi,1,0.01
+centi,2,has .01 part
+centi,3,.01's dimension
+cerda,1,heir
+cerda,2,inheritance: estate
+cerda,3,bequeath
+cerda,4,rule of inheritance: will
+cerni,1,morning
+cerni,2,day of morning
+cerni,3,morning location
+certu,1,expert
+certu,2,forte: expertise: do expertly
+certu,3,expertise standard
+cevni,1,god
+cevni,2,hold as god: religious community: religion
+cevni,3,dominion of god
+cfari,1,initiate
+cfika,1,fiction
+cfika,2,plot: genre [of fiction]: fiction subject
+cfika,3,author [of fiction]: write fiction
+cfila,1,flaw
+cfila,2,flawed: defective: dud
+cfila,3,result of flaw: malfunction
+cfine,1,wedge
+cfine,2,wedge material
+cfipu,1,confusing
+cfipu,2,confused
+cfipu,3,confusing property
+ciblu,1,blood
+ciblu,2,has blood
+cicna,1,cyan
+cidja,1,food
+cidja,2,can eat: nourished: feed on
+cidni,1,knee: elbow
+cidni,2,limb with knew: elbowed
+cidni,3,has knee
+cidro,1,hydrogen
+cifnu,1,infant
+cifnu,2,infant species
+cigla,1,gland
+cigla,2,secretion
+cigla,3,has gland
+cikna,1,awake
+cikre,1,repairman: repair
+cikre,2,fixed: repaired
+cikre,3,use for repaired item
+ciksi,1,explain
+ciksi,2,explained
+ciksi,3,get explanation: enlightened
+ciksi,4,explanation
+cilce,1,wild
+cilmo,1,moist
+cilmo,2,moisture: wets
+cilre,1,learn
+cilre,2,learned
+cilre,3,subject learned [about]
+cilre,4,teacher: instructive: learning source
+cilre,5,learning method
+cilta,1,thread
+cilta,2,thread material
+cimde,1,dimension
+cimde,2,has dimension
+cimde,3,dimensional model
+cimni,1,infinite
+cimni,2,infinite property
+cimni,3,infinity degree
+cinba,1,kiss
+cinba,2,kissed
+cinba,3,place kissed
+cindu,1,oak
+cindu,2,oak species
+cinfo,1,lion
+cinfo,2,lion species
+cinje,1,wrinkle
+cinje,2,wrinkled
+cinki,1,insect
+cinki,2,insect species
+cinla,1,thin
+cinla,2,thinness direction: thickness
+cinla,3,thinness standard
+cinmo,1,feels [emotion]
+cinmo,2,emotion felt
+cinmo,3,object of emotion: moving: impacts emotionally
+cinri,1,interesting
+cinri,2,interested
+cinse,1,sexual
+cinse,2,sexual activity: sexual orientation
+cinse,3,sexuality
+cinse,4,sexuality standard
+cinta,1,paint
+cinta,2,paint pigment
+cinta,3,paint base
+cinza,1,tongs
+cinza,2,use tongs: pinches
+cinza,3,grasped with tongs: pinched
+cipni,1,bird
+cipni,2,bird species
+cipra,1,test
+cipra,2,property tested [for]
+cipra,3,tested
+cirko,1,lose
+cirko,2,lost
+cirko,3,loss conditions
+cirla,1,cheese
+cirla,2,cheese source
+ciska,1,writer: write
+ciska,2,written
+ciska,3,written on
+ciska,4,writing implement
+cisma,1,smile
+ciste,1,system
+ciste,2,system structure
+ciste,3,system components
+ciste,4,system properties
+citka,1,eat
+citka,2,eaten: food
+citno,1,young
+citno,2,youth standard
+citri,1,history
+citri,2,has history
+citri,3,historian
+citsi,1,season
+citsi,2,define season
+citsi,3,year of season
+civla,1,louse
+civla,2,louse species
+civla,3,louse host: parasite host
+cizra,1,strange
+cizra,2,find strange
+cizra,3,strangeness property: weirdness
+ckabu,1,rubber
+ckabu,2,rubber source
+ckabu,3,rubber composition
+ckafi,1,coffee
+ckafi,2,coffee bean
+ckaji,1,is characterized
+ckaji,2,quality: property: characteristic
+ckana,1,bed
+ckana,2,bed material
+ckana,3,on bed
+ckape,1,peril
+ckape,2,endangered
+ckape,3,peril conditions
+ckasu,1,ridicule
+ckasu,2,ridiculed
+ckasu,3,ridiculous: ridiculed about
+ckasu,4,ridiculing
+ckeji,1,ashamed
+ckeji,2,humiliating: mortifying: shameful
+ckeji,3,ashamed before
+ckiku,1,key
+ckiku,2,opened by key: lock
+ckiku,3,key property
+ckilu,1,scale
+ckilu,2,measured on scale
+ckini,1,related
+ckini,2,related to
+ckini,3,relationship
+ckire,1,grateful
+ckire,2,thanked
+ckire,3,object of gratitude: blessing: boon
+ckule,1,school
+ckule,2,school location
+ckule,3,curriculum: school subject
+ckule,4,attend school
+ckule,5,operate school
+ckunu,1,conifer
+ckunu,2,conifer species
+ckunu,3,cone of conifer
+cladu,1,loud
+cladu,2,loud at point
+cladu,3,loudness standard
+clani,1,long
+clani,2,length direction
+clani,3,length standard
+claxu,1,alone: without: lacking
+claxu,2,lacked: missing
+clika,1,mossy
+clika,2,moss species
+clika,3,mossy: has moss
+clira,1,early
+clira,2,earliness standard
+clite,1,polite
+clite,2,politeness context
+clite,3,politeness standard
+cliva,1,leave
+cliva,2,left behind
+cliva,3,route of leaving
+clupa,1,loop
+clupa,2,loop material: looped
+cmaci,1,mathematics
+cmaci,2,mathematics type
+cmalu,1,small
+cmalu,2,smallness dimension
+cmalu,3,smallness standard
+cmana,1,mountain
+cmana,2,mountainous: has mountain
+cmavo,1,structure word
+cmavo,2,structure word class
+cmavo,3,structure word meaning
+cmavo,4,structure language word
+cmene,1,name
+cmene,2,named
+cmene,3,namer: calls: names
+cmila,1,laugh
+cmima,1,member
+cmima,2,set of member
+cmoni,1,moans
+cmoni,2,moan: is moaned
+cmoni,3,expressed by moan
+cnano,1,norm
+cnano,2,averaged
+cnano,3,population [for a norm]: set with norm
+cnano,4,norm standard
+cnebo,1,neck
+cnebo,2,has neck: necked
+cnemu,1,reward
+cnemu,2,rewarded
+cnemu,3,reason for reward
+cnemu,4,reward given
+cnici,1,orderly
+cnici,2,orderliness property
+cnino,1,new
+cnino,2,find new
+cnino,3,newness property
+cnino,4,newness standard
+cnisa,1,lead
+cnita,1,beneath
+cnita,2,has underneath: above: over
+cnita,3,reference for beneath
+cokcu,1,soak up
+cokcu,2,soaked up
+cokcu,3,is drained: soaked up from
+cokcu,4,soaked up into
+condi,1,deep
+condi,2,depth direction
+condi,3,depth reference point
+condi,4,depth standard
+cortu,1,pain
+cortu,2,pain locus: hurts: is sore
+cpacu,1,get
+cpacu,2,gotten
+cpacu,3,got from
+cpana,1,upon
+cpana,2,has on top: under (immediately)
+cpana,3,reference for upon
+cpare,1,climb
+cpare,2,surface climbed
+cpare,3,direction climbed
+cpare,4,climbing tool
+cpedu,1,request
+cpedu,2,requested
+cpedu,3,requested from
+cpedu,4,request form
+cpina,1,pungent
+cpina,2,find pungent
+cradi,1,broadcaster [radio]
+cradi,2,radio program: radio transmission: radio broadcast
+cradi,3,radio station: radio frequency
+cradi,4,radio receiver: radio
+crane,1,front
+crane,2,has in front: behind
+crane,3,reference for front
+creka,1,shirt
+creka,2,shirt material
+crepu,1,harvests
+crepu,2,harvested
+crepu,3,harvested from
+cribe,1,bear
+cribe,2,bear species
+crida,1,fairy
+crida,2,fairy mythos
+crino,1,green
+cripu,1,bridge
+cripu,2,bridged over
+cripu,3,1st side of bridge
+cripu,4,2nd side of bridge
+crisa,1,summer
+crisa,2,year of summer
+crisa,3,summer location
+critu,1,autumn
+critu,2,year of autumn
+critu,3,autumn location
+ctaru,1,tide
+ctaru,2,tidal
+ctaru,3,raise tide
+ctebi,1,lip
+ctebi,2,orifice with lip
+ctebi,3,has lip
+cteki,1,tax
+cteki,2,taxed: taxable
+cteki,3,taxed
+cteki,4,levy tax
+ctile,1,petroleum
+ctile,2,petroleum source
+ctino,1,shadow
+ctino,2,has shadow
+ctino,3,light making shadow
+ctuca,1,teacher: teach
+ctuca,2,person taught
+ctuca,3,teaching: taught [methods/facts]
+ctuca,4,subject taught: taught [subject]
+ctuca,5,teaching method
+cukla,1,round
+cukta,1,book
+cukta,2,subject [of book]: theme [of book]
+cukta,3,author [of a book]: write book
+cukta,4,read book
+cukta,5,book medium
+culno,1,full
+culno,2,filling: fills
+cumki,1,possible
+cumki,2,possibility condition: allows
+cumla,1,humble
+cumla,2,object of humility
+cunmi,1,millet
+cunmi,2,millet species
+cunso,1,random
+cunso,2,randomness condition
+cunso,3,probability distribution: random distribution
+cuntu,1,affair
+cuntu,2,involved in affair
+cupra,1,produces
+cupra,2,product: produced
+cupra,3,production
+curmi,1,let
+curmi,2,allowed
+curmi,3,permission condition
+curnu,1,worm
+curnu,2,worm species
+curve,1,pure
+curve,2,purity property
+cusku,1,speaker: say: express
+cusku,2,said: expressed
+cusku,3,addressed: expressed to
+cusku,4,expression medium
+cutci,1,shoe
+cutci,2,shod
+cutci,3,shoe material
+cutne,1,chest
+cutne,2,has chest
+cuxna,1,choose
+cuxna,2,chosen
+cuxna,3,choices: domain [for selection]: available
+dacru,1,drawer
+dacru,2,filing system: drawered
+dacru,3,drawer contents
+dacti,1,object
+dadjo,1,Taoist
+dadjo,2,Taoist aspect
+dakfu,1,knife
+dakfu,2,cut by knife
+dakfu,3,knife material
+dakli,1,sack
+dakli,2,contents [of sack]: bagged
+dakli,3,material [of sack]
+damba,1,fight
+damba,2,opponent [in fight]: rival
+damba,3,in contention: fought over
+damri,1,drum
+damri,2,drumstick
+dandu,1,hang
+dandu,2,hung from
+dandu,3,hung by
+danfu,1,answer
+danfu,2,question answered
+danlu,1,animal
+danlu,2,animal species
+danmo,1,smoke
+danmo,2,smoke source: smokes
+danre,1,pressure
+danre,2,pressed
+dansu,1,dance
+dansu,2,accompaniment [for dance]: music for dancing
+danti,1,projectile
+danti,2,gun: projectile launcher
+daplu,1,island
+daplu,2,island material
+daplu,3,contain island
+dapma,1,bless: curse
+dapma,2,blessed: cursed
+dapma,3,damnation: fate
+dargu,1,road
+dargu,2,road start
+dargu,3,road terminus
+dargu,4,road route
+darlu,1,argue
+darlu,2,argued for
+darlu,3,argued against
+darno,1,far
+darno,2,has afar
+darno,3,distance property
+darsi,1,dare: audacious
+darsi,2,audacious behavior: dared
+darxi,1,hit
+darxi,2,struck: victim [of hitting]: is hit
+darxi,3,hitting tool
+darxi,4,hit locus
+daski,1,pocket
+daski,2,has pocket: pouched
+dasni,1,wear
+dasni,2,worn
+dasni,3,worn as
+daspo,1,destroy
+daspo,2,ruined: destroyed
+dasri,1,ribbon
+dasri,2,ribbon material
+datka,1,duck
+datka,2,duck species
+datni,1,data
+datni,2,data subject
+datni,3,data collection
+decti,1,0.1
+decti,2,has .1 part: is ten [of]
+decti,3,.1's dimension
+degji,1,finger
+degji,2,limb with finger
+degji,3,has finger
+dejni,1,debtor: owe
+dejni,2,debt: owed
+dejni,3,owed: creditor
+dejni,4,reason for debt
+dekpu,1,gallon
+dekpu,2,number of gallons
+dekpu,3,gallon standard
+dekpu,4,1st subunit of gallon
+dekto,1,10
+dekto,2,measured in 10's: a tenth
+dekto,3,10's dimension
+delno,1,candela
+delno,2,number of candelas
+delno,3,candela standard
+dembi,1,bean
+dembi,2,leguminous plant
+denci,1,tooth
+denci,2,has tooth: toothed
+denmi,1,dense
+denmi,2,density property
+denmi,3,density locus
+denpa,1,wait
+denpa,2,awaited: waited for
+denpa,3,waiting state
+denpa,4,paused activity
+dertu,1,dirt
+dertu,2,dirt source
+dertu,3,dirt composition
+derxi,1,heap
+derxi,2,heaped: piled
+derxi,3,heap location
+desku,1,shake
+desku,2,shaker: make to shake
+detri,1,date
+detri,2,dated
+detri,3,date location
+detri,4,calendar
+dicra,1,interrupt
+dicra,2,interrupted
+dicra,3,interruption: disruptive
+dikca,1,electric charge
+dikca,2,charged: electrified
+dikca,3,amount of charge
+diklo,1,local
+diklo,2,locus: domain: area of effect
+diklo,3,local range
+dikni,1,regular
+dikni,2,regularity
+dikni,3,regular period
+dilcu,1,quotient
+dilcu,2,dividend
+dilcu,3,divisor: modulus
+dilcu,4,remainder in division
+dilnu,1,cloud
+dilnu,2,cloud material
+dilnu,3,cloudy
+dilnu,4,cloud base [elevation]
+dimna,1,fate
+dimna,2,destined: fated: blessed: cursed: has fate
+dinju,1,building
+dinju,2,building purpose
+dinko,1,nail
+dinko,2,nail type
+dinko,3,nail material
+dirba,1,dear
+dirba,2,adores: values: holds dear
+dirce,1,radiate
+dirce,2,radiation: radiated
+dirce,3,radiation conditions
+dirgo,1,bubble: drop
+dirgo,2,drop material
+dirgo,3,surround drops
+dizlo,1,low
+dizlo,2,lowness reference
+dizlo,3,lowness standard
+djacu,1,water
+djedi,1,full day
+djedi,2,number of full days
+djedi,3,full day standard
+djica,1,desire
+djica,2,desired: wanted
+djica,3,purpose desired for
+djine,1,ring
+djine,2,ring material
+djine,3,ring inside diameter
+djine,4,ring outside diameter
+djuno,1,know
+djuno,2,known
+djuno,3,subject known
+djuno,4,epistemology
+donri,1,daytime
+donri,2,day with daytime
+donri,3,daytime location
+dotco,1,German
+dotco,2,German aspect
+draci,1,drama
+draci,2,subject [of drama]: plot [of drama]
+draci,3,dramatist
+draci,4,watch drama: audience [of drama]
+draci,5,act in drama: dramatic actor
+drani,1,correct
+drani,2,correctness
+drani,3,correctness situation
+drani,4,correctness standard
+drata,1,other
+drata,2,other than
+drata,3,otherness standard
+drudi,1,roof
+drudi,2,has roof: roofed
+dugri,1,exponent: logarithm
+dugri,2,antilogarithm
+dugri,3,logarithm base
+dukse,1,excess
+dukse,2,in excess
+dukse,3,excess standard
+dukti,1,opposite
+dukti,2,has as opposite
+dukti,3,scale of opposites
+dunda,1,donor: give
+dunda,2,gift: present
+dunda,3,recipient: beneficiary: receive gift
+dunja,1,freeze
+dunja,2,freezing point: freezing temperature
+dunja,3,freezing pressure
+dunku,1,anguished: anguish over
+dunku,2,distressing: cause anguish
+dunli,1,equal
+dunli,2,equalled
+dunli,3,equality property
+dunra,1,winter
+dunra,2,year of winter
+dunra,3,winter location
+dzena,1,elder
+dzena,2,descendent: has ancestor
+dzena,3,ancestral bond
+dzipo,1,Antarctican
+dzipo,2,Antarctican aspect
+facki,1,discover
+facki,2,discovery: discovered
+facki,3,subject discovered
+fadni,1,ordinary
+fadni,2,ordinariness
+fadni,3,set with typical
+fagri,1,fire
+fagri,2,fuel for fire: burning
+fagri,3,air for fire
+falnu,1,sail
+falnu,2,fill sail: propellant [of sailing craft]
+falnu,3,sailing craft
+famti,1,aunt or uncle
+famti,2,niece: nephew: has aunt or uncle
+famti,3,avuncular bond
+fancu,1,function
+fancu,2,function domain
+fancu,3,function range
+fancu,4,function definition: equation
+fange,1,alien
+fange,2,alienness property: unfamiliar with
+fange,3,perceive as alien
+fanmo,1,end
+fanmo,2,ended
+fanri,1,factory
+fanri,2,factory product
+fanri,3,raw material for factory
+fanta,1,prevent
+fanta,2,circumvented: prevented
+fanva,1,translator: translate
+fanva,2,source text: translated
+fanva,3,target language: translated into
+fanva,4,source language: translated out of
+fanva,5,translation
+fanza,1,pest: pester: annoy
+fanza,2,annoyed: bothered
+fapro,1,oppose
+fapro,2,opposed: opponent
+fapro,3,in contention
+farlu,1,fall
+farlu,2,fallen to
+farlu,3,fallen from
+farlu,4,frame for fall
+farna,1,direction
+farna,2,direction to
+farna,3,direction from
+farvi,1,develop
+farvi,2,developed
+farvi,3,developed from
+farvi,4,development stages
+fasnu,1,event
+fatci,1,fact
+fatne,1,reverse
+fatne,2,reversed
+fatri,1,distributed
+fatri,2,receive share
+fatri,3,share: portion: allocation
+febvi,1,boil
+febvi,2,boiling point
+febvi,3,boiling point pressure
+femti,1,1.00E-15
+femti,2,has 1E-15 part
+femti,3,1E-15's dimension
+fendi,1,divide
+fendi,2,partitioned: divided
+fendi,3,division: section
+fendi,4,division method
+fengu,1,angry
+fengu,2,object of anger
+fengu,3,reason for anger: infuriating
+fenki,1,crazy
+fenki,2,craziness standard
+fenra,1,crack
+fenra,2,cracked
+fenso,1,sew
+fenso,2,sewn
+fenso,3,sewing tool
+fenso,4,sewing thread
+fepni,1,cent
+fepni,2,worth [in cents]: number of cents
+fepni,3,money system of cent
+fepri,1,lung
+fepri,2,has lung
+ferti,1,fertile
+ferti,2,fertility product: grows
+festi,1,waste
+festi,2,pollute: leave waste
+fetsi,1,female
+fetsi,2,female species
+fetsi,3,female trait
+figre,1,fig
+figre,2,fig species
+filso,1,Palestinian
+filso,2,Palestinian aspect
+finpe,1,fish
+finpe,2,fish species
+finti,1,inventor: invent
+finti,2,creation: invented
+finti,3,invention purpose
+finti,4,inspiration: basis of invention
+flalu,1,law
+flalu,2,regulated [by law]: specified by law
+flalu,3,community with law
+flalu,4,conditions for law
+flalu,5,legislature: legislate
+flani,1,flute
+flecu,1,flow
+flecu,2,has flow
+flecu,3,flow destination
+flecu,4,flow source
+fliba,1,fail
+fliba,2,failed activity
+flira,1,face
+flira,2,has face
+foldi,1,field
+foldi,2,field material
+fonmo,1,foam
+fonmo,2,foam material
+fonmo,3,material in foam bubble
+fonxa,1,telephone
+fonxa,2,telephone network
+forca,1,fork
+forca,2,fork purpose
+forca,3,fork tine
+forca,4,fork shaft
+fraso,1,French
+fraso,2,French aspect
+frati,1,react
+frati,2,response: reaction: stimulus
+frati,3,stimulus [reacted to]: stimulate: evoke
+frati,4,reaction conditions
+fraxu,1,forgive
+fraxu,2,forgiven
+fraxu,3,matter forgiven
+frica,1,differ
+frica,2,differed from
+frica,3,difference property
+friko,1,African
+friko,2,African aspect
+frili,1,easy
+frili,2,adept: find easy
+frili,3,easiness conditions
+frinu,1,fraction
+frinu,2,numerator
+frinu,3,denominator
+friti,1,offer
+friti,2,offered
+friti,3,receive offer
+friti,4,offer conditions
+frumu,1,frown
+fukpi,1,copy
+fukpi,2,copied
+fukpi,3,copy medium
+fukpi,4,copying method
+fulta,1,buoyant: float
+fulta,2,floated in: buoy
+funca,1,luck
+funca,2,lucky: unlucky: has luck
+fusra,1,rotten: rot
+fusra,2,rotting agent
+fuzme,1,responsible
+fuzme,2,responsibility
+fuzme,3,hold responsible
+gacri,1,cover
+gacri,2,covered
+gadri,1,article
+gadri,2,phrase with article
+gadri,3,article language
+gadri,4,article semantics
+galfi,1,modify
+galfi,2,changed: malleable: modified from
+galfi,3,modified into
+galtu,1,high
+galtu,2,height reference
+galtu,3,height standard
+galxe,1,throat
+galxe,2,has throat
+ganlo,1,closed
+ganlo,2,closed off: not accessible
+ganlo,3,stopped by closure
+ganra,1,broad
+ganra,2,breadth dimension
+ganra,3,breadth standard
+ganse,1,perceive: sense
+ganse,2,sensed
+ganse,3,sense employed
+ganse,4,sensing conditions
+ganti,1,gonad
+ganti,2,has gonad
+ganti,3,gonad gender
+ganxo,1,anus
+ganxo,2,has anus
+ganzu,1,organize
+ganzu,2,not as organized
+ganzu,3,organized
+ganzu,4,organizing principle
+gapci,1,gas
+gapci,2,gas composition
+gapci,3,gas conditions
+gapru,1,above
+gapru,2,below: has above
+gapru,3,reference for above
+garna,1,rail
+garna,2,has rail
+garna,3,rail material
+gasnu,1,do
+gasnu,2,caused: done
+gasta,1,steel
+gasta,2,steel composition
+genja,1,root
+genja,2,has root: rooted
+gento,1,Argentinian
+gento,2,Argentinian aspect
+genxu,1,hook
+genxu,2,hook material
+gerku,1,dog
+gerku,2,dog species
+gerna,1,grammar
+gerna,2,grammar language
+gerna,3,grammatical
+gidva,1,guide
+gidva,2,guided: lead
+gidva,3,guided activity
+gigdo,1,1.00E+09
+gigdo,2,in 1E9's
+gigdo,3,1E9's dimension
+ginka,1,camp
+ginka,2,camper: stay in camp
+ginka,3,campsite: camp location
+girzu,1,group
+girzu,2,group property
+girzu,3,membership: group superset
+girzu,4,roles: group relation
+gismu,1,root word
+gismu,2,root word relation
+gismu,3,root word arguments
+gismu,4,root word affix
+glare,1,hot
+glare,2,hot standard
+gleki,1,happy
+gleki,2,object of happiness: eudemonic
+gletu,1,copulate
+gletu,2,copulated with
+glico,1,English
+glico,2,English aspect
+gluta,1,glove
+gluta,2,glove material
+gocti,1,1.00E-24
+gocti,2,has 1E-24 part
+gocti,3,1E-24's dimension
+gotro,1,1.00E+24
+gotro,2,in 1E24's
+gotro,3,1E24's dimension
+gradu,1,unit
+gradu,2,unit standard: measure
+gradu,3,measured by unit: dimension
+grake,1,gram
+grake,2,number of grams
+grake,3,gram standard
+grana,1,rod
+grana,2,rod material
+grasu,1,grease
+grasu,2,grease source
+greku,1,frame
+greku,2,has frame
+grusi,1,gray
+grute,1,fruit
+grute,2,fruit species: bears fruit: fructiferous
+gubni,1,public
+gubni,2,published among
+gugde,1,country
+gugde,2,countrymen: people of country
+gugde,3,territory of country
+gundi,1,industry
+gundi,2,industry product
+gundi,3,industrial process
+gunka,1,worker: work [v]
+gunka,2,task: work [n]
+gunka,3,work goal
+gunma,1,jointly
+gunma,2,component of mass: teamed
+gunro,1,roll
+gunro,2,surface rolled on
+gunro,3,axle: rolling axis
+gunse,1,goose
+gunse,2,goose species
+gunta,1,attack
+gunta,2,attacked
+gunta,3,attack goal
+gurni,1,grain
+gurni,2,grain species
+guska,1,erosive: scrape
+guska,2,scraped: eroded material
+guska,3,scraped from: eroded
+gusni,1,light: illumine
+gusni,2,lit: illuminated
+gusni,3,light source: shines
+gusta,1,restaurant
+gusta,2,restaurant cuisine: fare
+gusta,3,restaurant customer: diner
+gutci,1,cubit
+gutci,2,length/width/height (in short units): number of cubits
+gutci,3,cubit standard
+gutci,4,sub-unit of cubits
+gutra,1,womb
+gutra,2,has womb
+guzme,1,melon
+guzme,2,melon species
+jabre,1,brake
+jabre,2,braked
+jabre,3,braking device
+jadni,1,adorn
+jadni,2,adorned: wears
+jakne,1,rocket
+jakne,2,expelled by rocket: jet [of a rocket]
+jakne,3,payload [of a rocket]: carried [in rocket]
+jalge,1,result
+jalge,2,have result
+jalna,1,starch
+jalna,2,starch source
+jalna,3,starch composition
+jalra,1,cockroach
+jalra,2,cockroach species
+jamfu,1,foot
+jamfu,2,has foot: footed
+jamna,1,war
+jamna,2,enemy [in war]: opponent [in war]
+jamna,3,in contention: cause of war: causus belli
+janbe,1,ring: bell
+janbe,2,chime: bell sound
+janco,1,shoulder
+janco,2,joined at shoulder
+janco,3,has shoulder
+janli,1,collide
+janli,2,collided with
+jansu,1,diplomat
+jansu,2,represented by diplomat
+jansu,3,diplomat posting
+jansu,4,diplomat function
+janta,1,account
+janta,2,billed for
+janta,3,billed
+janta,4,present bill
+jarbu,1,suburb
+jarbu,2,city of suburb
+jarco,1,show
+jarco,2,shown: displayed
+jarco,3,shown to
+jarki,1,narrow
+jarki,2,narrow dimension: width
+jarki,3,narrowness standard
+jaspu,1,passport
+jaspu,2,has passport
+jaspu,3,issue passport
+jaspu,4,authorized by passport
+jatna,1,captain
+jatna,2,captained
+javni,1,rule
+javni,2,prescribed by rule: required
+javni,3,has rule
+jbama,1,bomb
+jbama,2,bomb explosive
+jbari,1,berry
+jbari,2,berry species
+jbena,1,born
+jbena,2,bear young: birthparent: parent
+jbena,3,birthday: birth time
+jbena,4,birthplace
+jbera,1,borrow
+jbera,2,borrowed: loan
+jbera,3,lender: lend
+jbera,4,term [time of a loan]: loan period
+jbini,1,between
+jbini,2,have in between
+jbini,3,betweenness property
+jdari,1,firm
+jdari,2,meet firmness
+jdari,3,firmness conditions
+jdice,1,decide
+jdice,2,decision
+jdice,3,matter decided
+jdika,1,decrease
+jdika,2,property decreased
+jdika,3,decrease amount
+jdima,1,price
+jdima,2,priced at
+jdima,3,purchaser: buyer: pay price
+jdima,4,set price: vendor
+jdini,1,money
+jdini,2,issue money
+jduli,1,jelly
+jduli,2,jelly composition
+jecta,1,polity
+jecta,2,polity territory
+jeftu,1,lasts [in weeks]: week
+jeftu,2,duration [in weeks]: number of weeks
+jeftu,3,week standard
+jegvo,1,Jehovist
+jegvo,2,Jehovist aspect
+jelca,1,burn
+jelca,2,combustion temperature: kindling temperature
+jelca,3,burning atmosphere
+jemna,1,gem
+jemna,2,jewel type
+jemna,3,jewel source
+jenca,1,shock
+jenca,2,shocked
+jendu,1,axle
+jendu,2,spin on axle: turn: rotate
+jendu,3,axle material
+jenmi,1,army
+jenmi,2,has army
+jenmi,3,army function
+jerna,1,earn
+jerna,2,wages: salary: pay: earned
+jerna,3,paid work
+jersi,1,chase
+jersi,2,pursued: chased
+jerxo,1,Algerian
+jerxo,2,Algerian aspect
+jesni,1,needle
+jesni,2,needle material
+jetce,1,jet
+jetce,2,jet material: spewed
+jetce,3,expel jet
+jetnu,1,TRUE
+jetnu,2,truth standard
+jgalu,1,claw
+jgalu,2,clawed: has claw
+jganu,1,angle
+jganu,2,angle vertex
+jganu,3,subtend angle: side [of an angle]
+jgari,1,grasp
+jgari,2,grasped: held
+jgari,3,grasping appendage
+jgari,4,place grasped
+jgena,1,knot
+jgena,2,knotted: tangled
+jgina,1,gene
+jgina,2,has gene: genetic: hereditary
+jgina,3,genetic trait
+jgira,1,pride
+jgira,2,object of pride
+jgita,1,guitar
+jgita,2,plectrum: bow
+jibni,1,near
+jibni,2,has near
+jibni,3,nearness property
+jibri,1,job
+jibri,2,employed: employee: has job
+jicla,1,mixer: stir
+jicla,2,mixed: stirred
+jicmu,1,basis
+jicmu,2,founded: based: has basis
+jijnu,1,intuit
+jijnu,2,intuition
+jijnu,3,intuition subject
+jikca,1,socialize
+jikca,2,socialized with
+jikru,1,liquor
+jikru,2,liquor source
+jilka,1,alkali
+jilka,2,alkali composition
+jilra,1,jealous
+jilra,2,object of jealousy: enviable
+jilra,3,reason for jealousy
+jimca,1,branch
+jimca,2,branched: has branch
+jimpe,1,understand
+jimpe,2,understood
+jimpe,3,subject understood
+jimte,1,limit
+jimte,2,limited: bounded
+jimte,3,limitation property
+jinci,1,shears
+jinci,2,cut by shears
+jinga,1,win
+jinga,2,prize
+jinga,3,losing competitor: beaten in competition: competitor: loser
+jinga,4,competition won
+jinku,1,vaccine
+jinku,2,vaccinated
+jinku,3,vaccinated against
+jinku,4,vaccination method
+jinme,1,metal
+jinme,2,metal composition
+jinru,1,immerse
+jinru,2,immersed in
+jinsa,1,clean
+jinsa,2,material cleaned away: dirt
+jinsa,3,cleanness standard
+jinto,1,well
+jinto,2,fluid from well
+jinto,3,well location
+jinvi,1,opine
+jinvi,2,opinion
+jinvi,3,opinion subject
+jinvi,4,grounds for opinion
+jinzi,1,innate
+jinzi,2,has innately
+jipci,1,chicken
+jipci,2,chicken species
+jipno,1,tip
+jipno,2,pointed: has tip
+jipno,3,tip locus
+jirna,1,horn
+jirna,2,has horn: horned
+jisra,1,juice
+jisra,2,juice source
+jitfa,1,FALSE
+jitfa,2,falsity standard
+jitro,1,control
+jitro,2,controlled: puppet
+jitro,3,controlled activity
+jivbu,1,weave
+jivbu,2,woven
+jivbu,3,yarn for weaving
+jivna,1,compete
+jivna,2,rival: opponent
+jivna,3,contest: competition
+jivna,4,prize: competition goal
+jmaji,1,gather
+jmaji,2,gathering place
+jmaji,3,gathered from
+jmifa,1,shoal
+jmifa,2,shoal material
+jmifa,3,has shoal
+jmina,1,add
+jmina,2,additive: added
+jmina,3,added to
+jmina,4,addition result
+jmive,1,live
+jmive,2,aliveness standard
+jordo,1,Jordanian
+jordo,2,Jordanian aspect
+jorne,1,joined
+jorne,2,joined to
+jorne,3,joint
+jubme,1,table
+jubme,2,table material
+jubme,3,leg: pedestal: base [of table]
+judri,1,address
+judri,2,addressee: has address
+judri,3,address system
+jufra,1,sentence
+jufra,2,sentence subject
+jufra,3,sentence language
+jukni,1,spider
+jukni,2,spider species
+jukpa,1,cook
+jukpa,2,cooked: prepared food
+jukpa,3,recipe: cooking method
+julne,1,filter: net
+julne,2,pass through net: screened
+julne,3,stopped by net: filtered out
+julne,4,net property
+jundi,1,attentive
+jundi,2,attended to: noted: heeded
+jungo,1,Chinese
+jungo,2,Chinese aspect
+junla,1,clock
+junla,2,measured by clock
+junla,3,precision
+junla,4,clock mechanism
+junri,1,serious
+junri,2,seriousne subject
+junta,1,weight
+junta,2,has weight
+junta,3,gravity causing weight
+jurme,1,germ
+jurme,2,germ species
+jursa,1,severe
+jursa,2,find severe
+jutsi,1,species
+jutsi,2,genus of species
+jutsi,3,family of species
+juxre,1,clumsy
+juxre,2,clumsiness standard
+jvinu,1,view
+jvinu,2,viewed
+jvinu,3,vantage point: point-of-view
+ka1: ,t,
+kabri,1,cup
+kabri,2,cup contents
+kabri,3,cup material
+kacma,1,camera
+kacma,2,photographic illumination
+kacma,3,photographic medium
+kadno,1,Canadian
+kadno,2,Canadian aspect
+kafke,1,cough
+kafke,2,coughed up
+kafke,3,orifice coughed from
+kagni,1,company
+kagni,2,authorize company
+kagni,3,company purpose
+kajde,1,warn
+kajde,2,warned
+kajde,3,danger [warned of]
+kajna,1,shelf
+kajna,2,support shelf
+kajna,3,shelf purpose
+kakne,1,able
+kakne,2,ability: possible: achievable
+kakne,3,ability conditions: requirement
+kakpa,1,dig
+kakpa,2,dug out
+kakpa,3,dug from
+kakpa,4,digging tool
+kalci,1,feces
+kalci,2,defecate
+kalri,1,open
+kalri,2,accessible
+kalri,3,has access
+kalsa,1,chaotic
+kalsa,2,chaotic property
+kalte,1,hunt
+kalte,2,prey: quarry: hunted
+kalte,3,hunt purpose
+kamju,1,column
+kamju,2,column material
+kamni,1,committee
+kamni,2,charter [of a committee]: committee purpose
+kamni,3,has committee
+kampu,1,common
+kampu,2,set with common property
+kanba,1,goat
+kanba,2,goat species
+kancu,1,counter: count
+kancu,2,set counted
+kancu,3,number counted: count
+kancu,4,counting units
+kandi,1,dim
+kandi,2,dimness property
+kandi,3,find dim
+kanji,1,calculate
+kanji,2,calculated: derived
+kanji,3,source data: calculated from
+kanji,4,calculation
+kanla,1,eye
+kanla,2,has eye
+kanro,1,healthy
+kanro,2,health standard
+kansa,1,with
+kansa,2,accompanied
+kansa,3,accompanied in
+kantu,1,quantum
+kantu,2,quantized
+kanxe,1,conjunction
+kanxe,2,1st conjunct
+kanxe,3,2nd conjunct
+karbi,1,compare
+karbi,2,compared
+karbi,3,compared with
+karbi,4,property compared
+karbi,5,comparison
+karce,1,car
+karce,2,ride in car
+karce,3,propel car
+karda,1,card
+karda,2,card material
+kargu,1,costly
+kargu,2,find costly
+kargu,3,costliness standard
+karli,1,collar
+karli,2,collared: ringed: belted: has collar
+karli,3,collar material
+karni,1,journal
+karni,2,genre [of a journal]: journal subject
+karni,3,publisher [of a journal]
+karni,4,receive journal
+katna,1,cutter: cut
+katna,2,be cut
+katna,3,piece cut
+kavbu,1,capture: catch
+kavbu,2,captured: caught
+kavbu,3,trap
+kecti,1,pity
+kecti,2,pitiable: object of pity: poor
+kecti,3,reason for pity: pitiful
+kelci,1,play
+kelci,2,plaything: toy
+kelvo,1,kelvin
+kelvo,2,temperature [in Kelvin]: number of kelvins
+kelvo,3,kelvin standard
+kenra,1,cancer
+kenra,2,cancerous
+kensa,1,outer space
+kensa,2,outer space region: celestial body
+kerfa,1,hair
+kerfa,2,hairy: haired: has hair
+kerfa,3,hair location
+kerlo,1,ear
+kerlo,2,eared: has ear
+ketco,1,South American
+ketco,2,South American aspect
+kevna,1,cavity
+kevna,2,has cavity
+kicne,1,cushion
+kicne,2,padded: cushioned
+kicne,3,cushion material
+kijno,1,oxygen
+kilto,1,1000
+kilto,2,in 1000's
+kilto,3,1000's dimension
+kinli,1,sharp
+kinli,2,sharpness locus
+kisto,1,Pakistani
+kisto,2,Pakistani aspect
+klaji,1,street
+klaji,2,street location
+klaji,3,accessed from street: along [a street]
+klaku,1,weep
+klaku,2,tears wept
+klaku,3,reason for weeping
+klama,1,come
+klama,2,destination
+klama,3,starting point: going origin
+klama,4,route of going
+klama,5,transportation means
+klani,1,quantity
+klani,2,quantifier: measure
+klani,3,scale of quantity
+klesi,1,class
+klesi,2,superset: contain class
+klesi,3,define class
+klina,1,clear
+klina,2,unobstructed: transmitted clearly
+kliru,1,halogen: chlorine
+kliru,2,halogen type
+kliti,1,clay
+kliti,2,clay composition
+klupe,1,screw
+klupe,2,use for screw
+klupe,3,screw thread
+klupe,4,screw body
+kluza,1,loose
+kluza,2,has loose covering
+kluza,3,looseness locus
+kobli,1,cabbage
+kobli,2,cabbage species
+kojna,1,corner
+kojna,2,has corner
+kojna,3,corner material
+kolme,1,coal
+kolme,2,coal source
+komcu,1,comb
+komcu,2,comb material
+komcu,3,comb tooth
+konju,1,cone
+konju,2,cone material
+konju,3,cone vertex
+korbi,1,edge
+korbi,2,edged
+korbi,3,bordering: adjacent: next door
+korcu,1,bent
+korka,1,cork
+korka,2,cork source
+kosta,1,coat
+kosta,2,coat material
+kramu,1,acre
+kramu,2,size [in acres]: number of acres
+kramu,3,acre standard
+kramu,4,sub-unit of acre
+krasi,1,source
+krasi,2,has source
+krati,1,represent
+krati,2,represented
+krati,3,matter represented in
+krefu,1,recurrence: recur
+krefu,2,recurrent: recur
+krefu,3,number of recurrence
+krici,1,believe
+krici,2,belief
+krici,3,belief subject
+krili,1,crystal
+krili,2,crystal composition
+krili,3,crystal structure
+krinu,1,reason
+krinu,2,justified: explained: consequence: for a reason
+krixa,1,cry out
+krixa,2,yell: howl: cry: cried out
+kruca,1,intersect
+kruca,2,intersected: crossed
+kruca,3,intersection locus: intersection
+kruji,1,cream
+kruji,2,cream composition
+kruvi,1,curve
+kruvi,2,curved
+kruvi,3,curve locus
+kruvi,4,define curve
+kubli,1,polyhedron
+kubli,2,polyhedron cube dimensionality
+kubli,3,face: surface: side [of cube]
+kucli,1,curious
+kucli,2,object of curiosity: interesting
+kufra,1,comfortable: comfort
+kufra,2,make comfortable: comfort
+kukte,1,delicious
+kukte,2,find delicious: appreciate
+kulnu,1,culture
+kulnu,2,has culture
+kumfa,1,room
+kumfa,2,structure with room
+kumfa,3,room boundary
+kumte,1,camel
+kumte,2,camel species
+kunra,1,mineral
+kunra,2,mineral type
+kunra,3,lode: mineral source
+kunti,1,empty
+kunti,2,material emptied
+kurfa,1,square: right-angled
+kurfa,2,square vertices: corner
+kurfa,3,right-angle dimensionality
+kurji,1,take care of
+kurji,2,taken care of: ward
+kurki,1,bitter
+kurki,2,find bitter
+kuspe,1,range
+kuspe,2,ranged over: spanned
+kusru,1,cruel
+kusru,2,object of cruelty
+labno,1,wolf
+labno,2,wolf species
+lacpu,1,pull
+lacpu,2,pulled
+lacpu,3,pulling locus: handle
+lacri,1,rely
+lacri,2,trusted: trustee: relied on
+lacri,3,matter of reliance: trust
+ladru,1,milk
+ladru,2,milk source
+lafti,1,lift
+lafti,2,lifted
+lafti,3,lifting locus
+lafti,4,gravity lifted in
+lakne,1,probable
+lakne,2,likelihood condition
+lakse,1,wax
+lakse,2,wax source
+lalxu,1,lake
+lalxu,2,has lake
+lamji,1,adjacent
+lamji,2,has adjacent: neighbored
+lamji,3,adjacency property: sequence
+lamji,4,adjacency direction
+lanbi,1,protein
+lanbi,2,protein type
+lanci,1,flag
+lanci,2,has flag
+lanci,3,flag design
+lanci,4,flag material
+lanka,1,basket
+lanka,2,basket contents
+lanka,3,basket material
+lanli,1,analyze
+lanli,2,analyzed: subject [of analysis]
+lanli,3,analysis method: test
+lanme,1,sheep
+lanme,2,sheep species
+lanme,3,flock of sheep
+lante,1,can
+lante,2,can contents: canned
+lante,3,can material
+lanxe,1,balance
+lanxe,2,balancing forces
+lanzu,1,family
+lanzu,2,family member: relative
+lanzu,3,family standard
+larcu,1,art
+larcu,2,craft: skill: artistic activity
+lasna,1,fasten
+lasna,2,fastened: anchored
+lasna,3,fastened to
+lasna,4,fastener
+lastu,1,brass
+lastu,2,brass composition
+latmo,1,Latin
+latmo,2,Latin aspect
+latna,1,lotus
+latna,2,lotus species
+latna,3,lotus significance
+latna,4,culture with lotus
+lazni,1,lazy
+lazni,2,activity avoided
+lebna,1,take
+lebna,2,aquisition: loot: takings: taken
+lebna,3,taken from: previous owner
+lenjo,1,lens
+lenjo,2,image [focussed by lens]
+lenjo,3,focus [of lens]
+lenjo,4,refractor: lens material
+lenku,1,cold
+lenku,2,coldness standard
+lerci,1,late
+lerci,2,lateness standard
+lerfu,1,letteral
+lerfu,2,character set: alphabet
+lerfu,3,signified by letteral
+libjo,1,Libyan
+libjo,2,Libyan aspect
+lidne,1,precede
+lidne,2,preceded: follow: behind
+lidne,3,sequence preceded in
+lifri,1,experience
+lifri,2,"happening: event, experienced"
+lijda,1,religion
+lijda,2,adherents: congregation
+lijda,3,creed: religious belief
+limna,1,swim
+limna,2,swum in
+lindi,1,lightning
+lindi,2,struck [by lightning]
+lindi,3,lightning origin
+linji,1,line
+linji,2,points on line
+linsi,1,chain
+linsi,2,chain material
+linsi,3,chain property
+linto,1,lightweight
+linto,2,lightweight standard
+lisri,1,story
+lisri,2,story subject: plot [of a story]
+lisri,3,storyteller: tell story
+lisri,4,hear story
+liste,1,list
+liste,2,set listed: cataloged
+liste,3,order [of a list]
+liste,4,list medium
+litce,1,liter
+litce,2,volume [in liters]: number of liters
+litce,3,liter standard
+litki,1,liquid
+litki,2,liquid composition
+litki,3,liquidity conditions
+litru,1,travel
+litru,2,route traveled
+litru,3,travel means
+livga,1,liver
+livga,2,has liver
+livla,1,fuel
+livla,2,powered by fuel
+logji,1,logic
+logji,2,conclusion: deduction: inference: logical
+lojbo,1,Lojbanic
+lojbo,2,Lojbanic aspect
+loldi,1,floor
+loldi,2,has floor
+lorxu,1,fox
+lorxu,2,fox species
+lubno,1,Lebanese
+lubno,2,Lebanese aspect
+lujvo,1,affix compound: compound predicate
+lujvo,2,meaning [of affix compound]
+lujvo,3,argument [of affix compound]
+lujvo,4,metaphor [of affix compound]
+lumci,1,wash
+lumci,2,washed
+lumci,3,removed by washing: dirt
+lumci,4,cleanser: cleaning material: washing material
+lunbe,1,bare
+lunra,1,lunar
+lunra,2,moon primary
+lunsa,1,condense: condensate
+lunsa,2,bedewed: fogged: condensation site
+lunsa,3,condensation point
+lunsa,4,condensation pressure
+mabla,1,derogative
+mabla,2,derogated: disparaged
+mabla,3,derogator: derogate: disparage
+mabru,1,mammal
+mabru,2,mammal species
+macnu,1,manual
+macnu,2,manual function
+macnu,3,manual conditions
+makcu,1,mature
+makcu,2,mature trait
+makfa,1,magic
+makfa,2,hold as magical
+makfa,3,magician: do magic: sorceror: witch: wizard: miracle-worker
+maksi,1,magnet
+maksi,2,magnetic field
+malsi,1,temple
+malsi,2,temple religion
+malsi,3,temple location: parish
+mamta,1,mother
+mamta,2,mothered: son: daughter
+manci,1,wonder
+manci,2,object of wonder: wondrous: awesome
+manfo,1,uniform
+manfo,2,uniform property: evenly spread
+manku,1,dark
+manri,1,reference
+manri,2,use reference: relative [to a frame of reference]
+manri,3,rule for reference
+mansa,1,satisfy
+mansa,2,satisfied
+mansa,3,satisfaction
+manti,1,ant
+manti,2,ant species
+mapku,1,cap
+mapku,2,cap material
+mapni,1,cotton
+mapti,1,fit
+mapti,2,matched: complemented
+mapti,3,matched property
+marbi,1,shelter
+marbi,2,sheltered
+marbi,3,threat sheltered from
+marce,1,vehicle
+marce,2,cargo: transported
+marce,3,medium for vehicle
+marce,4,vehicle propulsion: propulsion means
+marde,1,morals
+marde,2,has morals
+marde,3,morality conditions
+margu,1,mercury
+marji,1,material
+marji,2,composition: material type
+marji,3,physical form: material form
+marna,1,hemp
+marna,2,hemp species
+marxa,1,mash
+marxa,2,mashed: smashed: crushed
+marxa,3,pulp: mash
+masno,1,slow
+masno,2,done slowly: take a while
+masti,1,month: lasts [in months]
+masti,2,duration [in months]: number of months
+masti,3,month standard
+matci,1,mat
+matci,2,mat material
+matli,1,linen
+matne,1,butter
+matne,2,butter source
+matra,1,motor
+matra,2,motorized
+mavji,1,oats
+mavji,2,oats species
+maxri,1,wheat
+maxri,2,wheat species
+mebri,1,brow
+mebri,2,has brow
+megdo,1,1.00E+06
+megdo,2,quantity in 1E6's
+megdo,3,1E6's dimension
+mei1:,*,
+mei2:,y,
+mei3:,d,
+mekso,1,MEX
+mekso,2,rules for MEX
+melbi,1,beautiful
+melbi,2,find beautiful
+melbi,3,beauty property
+melbi,4,beauty standard
+meljo,1,Malaysian
+meljo,2,Malaysian aspect
+menli,1,mind
+menli,2,has mind: intelligent
+mensi,1,sister
+mensi,2,has sister: sibling [of sister]
+mensi,3,sisterly bond
+mentu,1,minute: lasts [in minutes]
+mentu,2,duration [in minutes]: number of minutes
+mentu,3,minute standard
+merko,1,American
+merko,2,American aspect
+merli,1,measure
+merli,2,measured
+merli,3,measurement: size
+merli,4,measuring scale
+merli,5,measurement accuracy
+mexno,1,Mexican
+mexno,2,Mexican aspect
+midju,1,middle
+midju,2,has at middle
+mifra,1,in code: encoded: code
+mifra,2,plaintext encoded
+mifra,3,code system: cipher: code
+mikce,1,doctor: treat
+mikce,2,patient: doctored: treated
+mikce,3,ailment treated: diagnosis
+mikce,4,medical treatment: cure
+mikri,1,1.00E-06
+mikri,2,has 1E-6 part: quantity in 1E-6's
+mikri,3,1E-6's dimension
+milti,1,0.001
+milti,2,measured in .001's
+milti,3,.001's dimension
+milxe,1,mild
+milxe,2,mildness property
+minde,1,command
+minde,2,commanded
+minde,3,result commanded
+minji,1,machine
+minji,2,machine function
+minli,1,mile
+minli,2,size [in miles]: number of miles
+minli,3,subunits of miles
+minli,4,mile standard
+minra,1,reflect
+minra,2,reflected: echoed: bounce
+minra,3,see reflection
+minra,4,reflection: echo
+mintu,1,same
+mintu,2,has as same
+mintu,3,sameness standard
+mipri,1,secret: hide
+mipri,2,kept secret
+mipri,3,kept secret from: unenlightened: uninformed
+mipri,4,secrecy method
+mirli,1,deer
+mirli,2,deer species
+misno,1,famous
+misno,2,hold as famous
+misro,1,Egyptian
+misro,2,Egyptian aspect
+mitre,1,meter
+mitre,2,size [in meters]: number of meters
+mitre,3,meters direction
+mitre,4,meter standard
+mixre,1,mixture
+mixre,2,ingredient: mixed in
+mlana,1,side
+mlana,2,has to the side
+mlana,3,faced for sideways
+mlana,4,frame for sideways
+mlatu,1,cat
+mlatu,2,cat species
+mleca,1,less
+mleca,2,undercut: exceeds: has as less
+mleca,3,lessness property
+mleca,4,lessness margin: difference
+mledi,1,mold
+mledi,2,mold species
+mledi,3,moldy: mold on
+mluni,1,satellite
+mluni,2,satellite primary
+mluni,3,satellite property
+mluni,4,satellite orbit
+moi2:,l,
+moi3:,l,
+mokca,1,point
+mokca,2,point location
+moklu,1,mouth
+moklu,2,has mouth
+molki,1,mill
+molki,2,mill process
+molki,4,mill location
+molro,1,mole
+molro,2,quantity in moles: number of moles
+molro,3,mole standard
+morji,1,remember
+morji,2,remembered: memory
+morji,3,memory subject
+morko,1,Moroccan
+morko,2,Moroccan aspect
+morna,1,pattern
+morna,2,patterned
+morna,3,arrangement
+morsi,1,dead
+mosra,1,friction
+mosra,2,rubbed
+mosra,3,rubbed against
+mraji,1,rye
+mraji,2,rye species
+mrilu,1,post: mail
+mrilu,2,mailed: mail
+mrilu,3,receive mail: addressee
+mrilu,4,transmit mail: mail origin
+mrilu,5,mail carrier
+mruli,1,hammer
+mruli,2,hammered
+mruli,3,hammerhead
+mruli,4,propel hammer
+mucti,1,immaterial
+mudri,1,wood
+mudri,2,wood species
+mukti,1,motive
+mukti,2,motivated: means
+mukti,3,has motive
+mulno,1,complete
+mulno,2,completion property
+mulno,3,completion standard
+munje,1,universe
+munje,2,universe domain
+munje,3,universe rule
+mupli,1,example
+mupli,2,property exemplified
+mupli,3,set exemplified
+murse,1,twilight: glimmering
+murse,2,day with twilight
+murse,3,twilight location
+murta,1,curtain
+murta,2,curtained aperture
+murta,3,curtain material
+muslo,1,Islamic
+muslo,2,Islamic aspect
+mutce,1,much
+mutce,2,muchness property
+mutce,3,muchness direction
+muvdu,1,moving
+muvdu,2,move destination
+muvdu,3,move origin
+muvdu,4,move path
+muzga,1,museum
+muzga,2,exhibited: preserved
+muzga,3,museum location
+nabmi,1,problem
+nabmi,2,has problem: troubled: concerned
+nabmi,3,problem conditions
+nakni,1,male
+nakni,2,species with male
+nakni,3,male trait
+nalci,1,wing
+nalci,2,winged: alate
+namcu,1,number
+nanba,1,bread
+nanba,2,grain in bread
+nanca,1,lasts [in years]
+nanca,2,duration [in years]: number of years
+nanca,3,year standard
+nandu,1,difficult
+nandu,2,find difficult: has trouble
+nandu,3,difficulty condition
+nanla,1,boy
+nanla,2,boy's age
+nanla,3,boyhood standard
+nanmu,1,man
+nanvi,1,1.00E-09
+nanvi,2,has 1E-9 part: quantity in 1E-9's
+nanvi,3,1E-9's dimension
+narge,1,nut
+narge,2,plant with nut
+narge,3,nut shell
+narge,4,nut kernel
+narju,1,orange
+natfe,1,deny
+natfe,2,denied: contradicted
+natfe,3,logic for denial
+natmi,1,nation
+natmi,2,people of nation
+navni,1,neon
+naxle,1,canal
+naxle,2,canal destination
+naxle,3,canal origin
+naxle,4,canal route
+nazbi,1,nose
+nazbi,2,has nose
+nazbi,3,nostril
+nejni,1,energy
+nejni,2,energy type
+nejni,3,energy form
+nelci,1,fond
+nelci,2,liked: like
+nenri,1,in
+nenri,2,has inside: contain: surround: enclose
+ni1: ,t,
+ni2: ,t,
+nibli,1,necessitate
+nibli,2,necessitated: entailed
+nibli,3,logic system necessitating
+nicte,1,night
+nicte,2,day with night
+nicte,3,night location
+nikle,1,nickel
+nilce,1,furniture
+nilce,2,furnished
+nilce,3,furniture purpose
+nimre,1,citrus
+nimre,2,citrus species
+ninmu,1,woman
+nirna,1,nerve
+nirna,2,has nerve
+nitcu,1,need
+nitcu,2,needed: necessary: requirement: prerequisite
+nitcu,3,purpose needed for: conditional
+nivji,1,knit
+nivji,2,knitted
+nivji,3,knitting yarn
+nixli,1,girl
+nixli,2,girl's age
+nixli,3,girlhood standard
+nobli,1,noble
+nobli,2,nobility standard: culture with nobles
+notci,1,message
+notci,2,message subject
+notci,3,send message
+notci,4,receive message
+nu1: ,t,
+nukni,1,magenta
+nupre,1,promise
+nupre,2,promised: threat
+nupre,3,promisee: threatened
+nurma,1,rural
+nurma,2,rural of
+nutli,1,neutral
+nutli,2,scale with neutral
+nuzba,1,news
+nuzba,2,news subject
+nuzba,3,news source
+nuzba,4,receive news
+pacna,1,"hoper, hope: wish"
+pacna,2,hoped for: hope
+pacna,3,likeliness of hope
+pagbu,1,part
+pagbu,2,part of
+pagre,1,pass through
+pagre,2,passed through: gateway: barrier: portal
+pagre,3,passed to
+pagre,4,passed from
+pajni,1,judge
+pajni,2,judgement subject
+palci,1,evil
+palci,2,evil standard: morals: ethics
+palku,1,pants
+palku,2,pants material
+palne,1,tray
+palne,2,tray contents
+palne,3,tray material
+palta,1,plate
+palta,2,plate material
+pambe,1,inject: pump
+pambe,2,pumped: injected
+pambe,3,pumped into
+pambe,4,pumped from
+pambe,5,pumping means: pump propellant
+panci,1,odor
+panci,2,odorous: smelly: fragrant: perfumed: rank
+panci,3,smell odor
+pandi,1,punctuate
+pandi,2,punctuated
+pandi,3,punctuation
+pandi,4,punctuation effect
+panje,1,sponge
+panka,1,park
+panka,2,maintain park
+panka,3,park purpose
+panlo,1,slice
+panlo,2,sliced
+panpi,1,peace
+panpi,2,at peace with
+panra,1,parallel
+panra,2,paralleled
+panra,3,parallelism property
+panra,4,parallelism standard
+pante,1,protest: complain
+pante,2,object of protest
+pante,3,receive protest: protested to
+pante,4,complaint: protestation: protest: protest activity
+panzi,1,offspring
+panzi,2,offspring parent
+papri,1,page
+papri,2,bound pages: has page: tablet: book
+parbi,1,ratio
+parbi,2,in ratio
+parbi,3,ratio reference
+pastu,1,robe
+pastu,2,robe material
+patfu,1,father
+patfu,2,fathered: offsprint: child: son: daughter
+patlu,1,potato
+patlu,2,potato species
+patxu,1,pot
+patxu,2,pot contents
+patxu,3,pot material
+pelji,1,paper
+pelji,2,paper source
+pelxu,1,yellow
+pemci,1,poem
+pemci,2,poem subject: poetic theme
+pemci,3,poet
+pemci,4,read poem
+penbi,1,pen
+penbi,2,ink for pen
+penbi,3,process using pen
+pencu,1,touch
+pencu,2,touched
+pencu,3,touched with
+pencu,4,touched at
+pendo,1,friend
+pendo,2,befriended
+penmi,1,encounter: meet
+penmi,2,encountered: met
+penmi,3,meeting place
+pensi,1,ponder: think
+pensi,2,object of thought: considered: pondered
+perli,1,pear
+perli,2,pear species
+pesxu,1,paste
+pesxu,2,paste composition
+petso,1,1.00E+15
+petso,2,quantity in 1E15's
+petso,3,1E15's dimension
+pezli,1,leaf
+pezli,2,leafy: leaved
+picti,1,1.00E-12
+picti,2,quantity in 1E-12's
+picti,3,1E-12's dimension
+pijne,1,pin
+pijne,2,pinned
+pijne,3,pin material
+pikci,1,beg
+pikci,2,begged
+pikci,3,begged for
+pikta,1,ticket
+pikta,2,has ticket
+pikta,3,ticket benefit
+pikta,4,ticket conditions
+pilji,1,product: multiple
+pilji,2,multiplicand: factor: multiplier
+pilji,3,multiplier: factor: multiplicand
+pilka,1,crust
+pilka,2,has crust
+pilno,1,use
+pilno,2,used: utile: tool
+pilno,3,use purpose
+pimlu,1,feather
+pimlu,2,feathered
+pinca,1,urine
+pinca,2,urinate
+pindi,1,poor
+pindi,2,deficiency: poverty subject
+pinfu,1,prisoner
+pinfu,2,captor: imprison
+pinfu,3,imprisonment means: restraint
+pinji,1,penis
+pinji,2,has penis
+pinka,1,commentary: comment
+pinka,2,comment subject: commented on: mentioned
+pinka,3,make comment: comment
+pinka,4,commented to
+pinsi,1,pencil
+pinsi,2,pencil lead
+pinsi,3,pencil covering
+pinta,1,level
+pinta,2,frame for levelness
+pinxe,1,drink
+pinxe,2,beverage: drunk
+pinxe,3,drinking vessel
+pipno,1,piano
+pixra,1,picture
+pixra,2,depicted: illustrated: model
+pixra,3,draw picture: artist
+pixra,4,picture medium
+plana,1,plump
+plana,2,plumpness standard
+platu,1,planner: plan
+platu,2,plan made: plan [n]
+platu,3,planned out: planned for
+pleji,1,payor: pay
+pleji,2,payment: fee
+pleji,3,payee: paid
+pleji,4,paid for: goods/services: charged for
+plibu,1,pubic
+plibu,2,has pubes: sexed
+plini,1,planet
+plini,2,planet primary
+plini,3,planetary property: orbital parameters
+plini,4,planet orbit
+plipe,1,leap
+plipe,2,leaped to: destination [of a leap]
+plipe,3,leaped from: starting point [of a leap]
+plipe,4,leap height
+plipe,5,propulsion for leap
+plise,1,apple
+plise,2,apple species
+plita,1,plane
+plita,2,point in plane
+plixa,1,plow: till
+plixa,2,plowed
+plixa,3,plowing tool: plow: hoe
+plixa,4,pull plow
+pluja,1,complicated
+pluja,2,complexity property
+pluja,3,complexity standard
+pluka,1,pleasant
+pluka,2,pleased
+pluka,3,pleasing conditions
+pluta,1,route
+pluta,2,route to: destination
+pluta,3,route from: starting point
+pluta,4,point on route
+polje,1,fold
+polje,2,folded: creased
+polje,3,folding crease: fold [n]: crease [n]
+polno,1,Polynesian
+polno,2,Polynesian aspect
+ponjo,1,Japanese
+ponjo,2,Japanese aspect
+ponse,1,possess
+ponse,2,possessed: owned: chattel
+ponse,3,possession right
+porpi,1,break
+porpi,2,broken piece: splinter: shard
+porsi,1,sequence: is in order: sequenced
+porsi,2,ordering rule: sequence: sort order: arrangement
+porsi,3,sequence base set
+porto,1,Portuguese
+porto,2,Portuguese aspect
+prali,1,accrues [to]: profit: accrual
+prali,2,profits: gains: benefits [from]
+prali,3,profitable: beneficent
+prami,1,love
+prami,2,loved: beloved: inamorata: beau
+prane,1,perfect
+prane,2,perfection property
+preja,1,spread
+preja,2,is spread to: overrun
+preja,3,is spread from
+prenu,1,person
+preti,1,question
+preti,2,question subject
+preti,3,questioner: ask
+preti,4,questioned: asked: questioned
+prije,1,wise
+prije,2,object of wisdom
+prije,3,views as wise
+prina,1,print
+prina,2,printing surface: imprinted
+prina,3,printing tool: stamp: printing press
+pritu,1,right
+pritu,2,has to the right: left
+pritu,3,frame for right
+prosa,1,prose
+prosa,2,prose subject: topic
+prosa,3,write prose: author
+prosa,4,read prose
+pruce,1,process
+pruce,2,input to process
+pruce,3,process result
+pruce,4,process stage: step
+pruni,1,elastic
+pruxi,1,spirit
+pulce,1,dust
+pulce,2,dust source
+pulce,3,dusty
+pulji,1,police
+pulji,2,law: enforced by police
+pulni,1,pulley
+pulni,2,pulley function
+pulni,3,pulley axle
+punji,1,put: set
+punji,2,placed: is put
+punji,3,placed at
+punli,1,swelling
+punli,2,swollen
+punli,3,swelling material
+purci,1,past
+purci,2,has in its past: after: preceded by
+purdi,1,garden
+purdi,2,has garden
+purdi,3,grown in garden: crop
+purmo,1,powder
+purmo,2,powdered
+racli,1,sane
+racli,2,sanity standard
+ractu,1,rabbit
+ractu,2,rabbit species
+radno,1,radian
+radno,2,quantity in radians
+radno,3,radian standard
+rafsi,1,affix
+rafsi,2,has affix
+rafsi,3,affix form
+rafsi,4,affix language
+ragve,1,across
+ragve,2,gap: boundary: separates: crossed
+ragve,3,across from: beyond
+rakso,1,Iraqi
+rakso,2,Iraqi aspect
+raktu,1,trouble
+raktu,2,troubled
+raktu,3,troubling result: trouble [n]
+ralci,1,delicate
+ralci,2,delicacy property
+ralju,1,principal
+ralju,2,has as principal: headed [by]: lead [by]
+ralju,3,primacy property
+ralte,1,retain
+ralte,2,retained: kept
+randa,1,yield
+randa,2,yielded to
+randa,3,yield conditions
+rango,1,organ
+rango,2,has organ
+rango,3,organ function
+ranji,1,continue
+ranji,2,continuity interval: duration: scope
+ranmi,1,myth
+ranmi,2,myth subject: mythical
+ranmi,3,mythos: mythology
+ranmi,4,culture with myth
+ransu,1,bronze
+ransu,2,bronze composition
+ranti,1,soft
+ranti,2,molding force: molds: distorts: dents
+ranti,3,softness conditions
+ranxi,1,irony
+ranxi,2,not expecting
+ranxi,3,irony property
+rapli,1,repeat
+rapli,2,repeat count
+rarna,1,natural
+ratcu,1,rat
+ratcu,2,rat species
+ratni,1,atom
+ratni,2,chemical element
+ratni,3,isotope
+rebla,1,tail
+rebla,2,tailed
+rectu,1,meat
+rectu,2,meat source
+remna,1,human
+renro,1,throw
+renro,2,thrown: projectile
+renro,3,throwing direction
+renvi,1,survivor: survive
+renvi,2,endured: borne: ordeal: survived
+renvi,3,survival time
+respa,1,reptile
+respa,2,reptile species
+ricfu,1,rich
+ricfu,2,riches
+rigni,1,disgusting
+rigni,2,disgusted: repulsed
+rigni,3,disgust conditions
+rijno,1,silver
+rilti,1,rhythm
+rilti,2,rhythmic
+rimni,1,rhyme
+rimni,2,rhymed with
+rimni,3,rhyme language
+rimni,4,rhyme scheme
+rinci,1,material drained
+rinci,2,drained liquid: drained from
+rinci,3,strainer: drain
+rinci,4,draining force
+rinju,1,restrained
+rinju,2,restraint: restrain
+rinju,3,restrained against
+rinka,1,cause
+rinka,2,effect: result caused
+rinka,3,causation conditions
+rinsa,1,greet
+rinsa,2,greeted
+rinsa,3,greeting
+rirci,1,rare
+rirci,2,rarity property
+rirci,3,rarity population
+rirni,1,parent
+rirni,2,raised: reared: ward
+rirxe,1,river
+rirxe,2,landmass with river
+rirxe,3,watershed
+rirxe,4,mouth [of a river]: fed by river
+rismi,1,rice
+rismi,2,rice species
+risna,1,heart
+risna,2,has heart
+ritli,1,rite
+ritli,2,rite purpose: governed by ritual: ceremonialized: ritualized
+ritli,3,community with rite
+ritli,4,ritual form
+rivbi,1,avoid
+rivbi,2,avoided
+rivbi,3,avoidance
+rokci,1,rock
+rokci,2,rock type
+rokci,3,rock location
+romge,1,chrome
+romge,2,chrome metal
+ropno,1,European
+ropno,2,European aspect
+rorci,1,procreate: birthparent
+rorci,2,engendered: offspring
+rorci,3,coparent: mate
+rotsu,1,thick
+rotsu,2,thickness dimension
+rotsu,3,thickness standard
+rozgu,1,rose
+rozgu,2,rose species
+ruble,1,weak
+ruble,2,weak point: weakness property
+ruble,3,weakness standard
+rufsu,1,rough
+runme,1,melt
+runme,2,melting point
+runme,3,melting pressure
+runta,1,dissolve
+runta,2,solvent
+runta,3,solution formed
+runta,4,solution conditions
+rupnu,1,dollar
+rupnu,2,worth [in dollars]
+rupnu,3,money system
+rusko,1,Russian
+rusko,2,Russian aspect
+rutni,1,artifact
+rutni,2,make artifact
+sabji,1,provide: provider
+sabji,2,provisions: supplied: supplies: provided
+sabji,3,provided with: customer: user: supplied
+sabnu,1,cabin
+sabnu,2,vehicle with cabin
+sacki,1,match
+sacki,2,material [of match]
+saclu,1,decimal: rational number
+saclu,2,decimal fraction
+saclu,3,decimal base
+sadjo,1,Saudi
+sadjo,2,Saudi aspect
+sakci,1,suck: rarified
+sakci,2,sucked to
+sakci,3,sucked from
+sakli,1,slide
+sakli,2,slid on: slippery
+sakta,1,sugar
+sakta,2,sugar source
+sakta,3,sugar composition
+salci,1,celebrate
+salci,2,celebrated
+salci,3,celebration: party
+salpo,1,sloped: slope
+salpo,2,slope angle: slope
+salpo,3,slope horizon
+salta,1,salad
+salta,2,salad ingredients
+samcu,1,cassava
+samcu,2,cassava species
+sampu,1,simple
+sampu,2,simplicity property
+sance,1,sound
+sance,2,emit sound: sounds: makes noise
+sanga,1,singer: sing
+sanga,2,song: sung
+sanga,3,hear song
+sanji,1,conscious
+sanji,2,noticed: object of consciousness
+sanli,1,stand
+sanli,2,surface stood on
+sanli,3,limb stood with
+sanmi,1,meal
+sanmi,2,meal dish
+sanso,1,sauce
+sanso,2,with sauce
+sanso,3,sauce ingredient
+santa,1,umbrella
+santa,2,shaded by umbrella: shielded
+santa,3,shaded from
+santa,4,umbrella material
+santa,5,support umbrella
+sarcu,1,necessary: requirement
+sarcu,2,requires: contingent: depend: necessitating
+sarcu,3,necessity conditions
+sarji,1,support
+sarji,2,supported
+sarji,3,supported against
+sarji,4,support means
+sarlu,1,helix: spiral
+sarlu,2,spiral limits
+sarlu,3,spiral dimension
+sarxe,1,harmonious: complement
+sarxe,2,harmonized with: complemented
+sarxe,3,harmony property
+saske,1,science
+saske,2,science subject
+saske,3,science methodology
+satci,1,exact
+satci,2,precision
+satci,3,exactness property
+satre,1,stroke: rub
+satre,2,stroked: rubbed
+satre,3,stroked with
+savru,1,noise
+savru,2,receive noise
+savru,3,noise channel
+sazri,1,operate
+sazri,2,operated
+sazri,3,operating goal: machine
+sefta,1,surface
+sefta,2,has surface
+sefta,3,surface side
+sefta,4,surface bounds
+selci,1,cell
+selci,2,has cell
+selfu,1,serve
+selfu,2,served
+selfu,3,service
+semto,1,Semitic
+semto,2,Semitic aspect
+senci,1,sneeze
+senpi,1,doubt
+senpi,2,doubted
+senta,1,layer
+senta,2,layered material
+senta,3,layered structure
+senva,1,dreamer: dream
+senva,2,dream subject: dreamt: dream [n]
+sepli,1,apart
+sepli,2,separated from
+sepli,3,separator: separate [v]: between
+serti,1,stairs
+serti,2,with stairs
+serti,3,stair steps: steps
+setca,1,insert
+setca,2,inserted
+setca,3,inserted into
+sevzi,1,self
+sevzi,2,self of
+sfani,1,fly
+sfani,2,fly species
+sfasa,1,punish
+sfasa,2,punished
+sfasa,3,punished for: punishable offense
+sfasa,4,punishment
+sfofa,1,sofa
+sfubu,1,dive
+sfubu,2,dived to
+sfubu,3,dived from
+siclu,1,whistle [v]
+siclu,2,whistling sound: whistle [n]
+sicni,1,coin
+sicni,2,issue coin
+sicni,3,coin value
+sidbo,1,idea
+sidbo,2,idea subject
+sidbo,3,has idea: think: thinker
+sidju,1,help: helper: aide
+sidju,2,helped
+sidju,3,helped to do
+sigja,1,cigar
+sigja,2,cigar material
+sigja,3,cigar maker
+silka,1,silk
+silka,2,silk source
+silna,1,salt
+silna,2,salt source
+silna,3,salt composition
+simlu,1,seem
+simlu,2,apparent property: appearance
+simlu,3,apparently observe
+simlu,4,seeming conditions
+simsa,1,similar
+simsa,2,resembled by
+simsa,3,similarity property
+simxu,1,mutual: reciprocate
+simxu,2,done mutually: reciprocal
+since,1,snake
+since,2,snake species
+sinma,1,esteem
+sinma,2,esteemed: respected: venerated
+sinso,1,sine
+sinso,2,arcsine: angle
+sinxa,1,sign
+sinxa,2,symbolized: represented: referent: signified
+sinxa,3,observe sign
+sipna,1,sleep
+sirji,1,straight
+sirji,2,straight start
+sirji,3,end of straight
+sirxo,1,Syrian
+sirxo,2,Syrian aspect
+sisku,1,seek
+sisku,2,property sought
+sisku,3,set sought in
+sisti,1,cease: stop
+sisti,2,stopped
+sitna,1,cite: quote
+sitna,2,cited: quoted: source
+sitna,3,cited information
+sivni,1,private
+sivni,2,keep private: in on: confidant
+skaci,1,skirt
+skaci,2,skirt material
+skami,1,computer
+skami,2,computer purpose
+skapi,1,pelt
+skapi,2,has pelt
+skari,1,colored
+skari,2,color of: hue
+skari,3,perceive color
+skari,4,color conditions
+skicu,1,describe
+skicu,2,described
+skicu,3,described to: audience
+skicu,4,description
+skiji,1,ski
+skiji,2,skiing surface
+skiji,3,skier: skater
+skina,1,cinema
+skina,2,film subject: genre: plot [of film]
+skina,3,filmmaker: film [v]
+skina,4,cinema audience
+skori,1,cord
+skori,2,cord material
+skoto,1,Scottish
+skoto,2,Scottish aspect
+skuro,1,groove
+skuro,2,grooved
+slabu,1,familiar: aquaintance
+slabu,2,finds familiar: know: familiar with: aquainted with
+slabu,3,familiar feature
+slabu,4,familiarity standard
+slaka,1,syllable
+slaka,2,syllable language
+slami,1,acid
+slami,2,acid composition
+slanu,1,cylinder
+slanu,2,cylinder material
+slari,1,sour
+slari,2,find sour
+slasi,1,plastic
+slasi,2,plastic monomer
+sligu,1,solid
+sligu,2,solid composition
+sligu,3,solidity conditions
+slilu,1,oscillate
+slilu,2,oscillation frequency
+slilu,3,oscillation state
+sliri,1,sulfur
+slovo,1,Slavic
+slovo,2,Slavic aspect
+sluji,1,muscle
+sluji,2,controled by muscle
+sluji,3,muscular
+sluni,1,onion
+sluni,2,onion species
+smacu,1,mouse
+smacu,2,mouse species
+smadi,1,guess
+smadi,2,guessed: guess [n]
+smadi,3,guess subject
+smaji,1,quiet
+smaji,2,find quiet
+smaji,3,quietness standard
+smani,1,monkey
+smani,2,monkey species
+smoka,1,sock
+smoka,2,sock material
+smuci,1,spoon
+smuci,2,done with spoon
+smuci,3,spoon material
+smuni,1,meaning
+smuni,2,has meaning: means: implies
+smuni,3,perceive meaning: infers
+snada,1,succeed
+snada,2,achievement: success
+snada,3,means to success: tried
+snanu,1,south
+snanu,2,has to the south: north
+snanu,3,frame for south
+snidu,1,second
+snidu,2,duration [in seconds]: quantity in seconds
+snidu,3,second standard
+snime,1,snow
+snipa,1,sticky
+snipa,2,stuck
+snuji,1,sandwich
+snuji,2,sandwiched: sandwich filling
+snuji,3,sandwich outside
+snura,1,secure
+snura,2,secured against
+snuti,1,accidental
+snuti,2,"not intend: slips up: ""oops""-es"
+sobde,1,soya
+sobde,2,soya species
+sodna,1,sodium
+sodna,2,alkali type metal
+sodva,1,soda
+sodva,2,soda flavor
+softo,1,Soviet
+softo,2,Soviet aspect
+solji,1,gold
+solri,1,solar
+solri,2,planet with sun
+solri,3,inhabitant under sun
+sombo,1,sow
+sombo,2,sown: planted
+sombo,3,sown in
+sonci,1,soldier
+sonci,2,soldier's army
+sorcu,1,store: hoard
+sorcu,2,stored
+sorcu,3,storehouse: container for stores
+sorcu,4,store location
+sorgu,1,sorghum
+sorgu,2,sorghum species
+sovda,1,egg
+sovda,2,ovulate
+spaji,1,surprise
+spaji,2,surprised: startled
+spali,1,polish
+spali,2,polished surface
+spali,3,polishing material
+spali,4,polishing tool
+spano,1,Spanish
+spano,2,Spanish aspect
+spati,1,plant
+spati,2,plant species
+speni,1,married
+speni,2,married to: bespoused
+spisa,1,piece
+spisa,2,has piece
+spita,1,hospital
+spita,2,hospital patient
+spita,3,medical condition: hospital specialty
+spofu,1,broken
+spofu,2,inoperative function
+spoja,1,explode
+spoja,2,explosion result
+spuda,1,respond: reply
+spuda,2,stimulus: replied to
+spuda,3,response
+sputu,1,spit
+sputu,2,spat out: spit [n]
+sputu,3,spat from
+sputu,4,spat to
+sraji,1,vertical
+sraji,2,frame for verticality
+sraku,1,scratch
+sraku,2,scratched
+sralo,1,Australian
+sralo,2,Australian aspect
+srana,1,pertain
+srana,2,pertained to
+srasu,1,grass
+srasu,2,grass species
+srera,1,err
+srera,2,mistake
+srera,3,error conditions
+srera,4,error standard
+srito,1,Sanskrit
+srito,2,Sanskrit aspect
+sruma,1,assume
+sruma,2,assumed: assumption: theoretical
+sruma,3,assumption subject
+sruri,1,surround
+sruri,2,surrounded: enclosed
+sruri,3,direction surrounded
+stace,1,honest
+stace,2,receive honesty
+stace,3,honesty subject
+stagi,1,vegetable
+stagi,2,plant edible part
+stagi,3,edible plant
+staku,1,ceramic
+staku,2,make ceramic
+staku,3,ceramic composition
+staku,4,ceramic form
+stali,1,remain
+stali,2,remained at: retain
+stani,1,stalk
+stani,2,has stalk
+stapa,1,step
+stapa,2,surface stepped on: tread: pedal
+stapa,3,stepping limb
+stasu,1,soup
+stasu,2,soup ingredient
+stati,1,talented: talent
+stati,2,done with talent: talent: skill
+steba,1,frustration
+steba,2,object of frustration: frustrating: frustrate
+steci,1,specific
+steci,2,special subset: specified
+steci,3,set with specific: non-specific many
+stedu,1,head
+stedu,2,has head
+stela,1,lock
+stela,2,locked
+stela,3,lock mechanism
+stero,1,steradian
+stero,2,quantity in steradians
+stero,3,steradian standard
+stici,1,west
+stici,2,has to the west: east
+stici,3,frame for west
+stidi,1,suggest
+stidi,2,suggestion: proposal: suggested
+stidi,3,receive suggestion: suggested to
+stika,1,adjust
+stika,2,adjusted: tuned
+stika,3,adjustment amount
+stizu,1,chair
+stodi,1,constant [adj]: stable
+stodi,2,constant property
+stodi,3,constancy conditions
+stuna,1,east
+stuna,2,has to the east: west
+stuna,3,frame for east
+stura,1,structure
+stura,2,structured: organized
+stuzi,1,site
+stuzi,2,sited: located: situated
+sucta,1,abstract
+sucta,2,abstract source
+sucta,3,abstraction rules
+sudga,1,dry
+sudga,2,liquid dried
+sufti,1,hoof
+sufti,2,hoofed
+suksa,1,sudden
+suksa,2,sudden change locus: discontinuity: turning point
+suksa,3,with sudden change
+sumji,1,sum
+sumji,2,1st summand: addend: added
+sumji,3,2nd summand: addend: added
+sumne,1,smell
+sumne,2,smelly: odor: smell [n]: smelled
+sumti,1,argument
+sumti,2,predicate with argument
+sumti,3,argument place: role: argument relation
+sunga,1,garlic
+sunga,2,garlic species
+sunla,1,wool
+sunla,2,woolly animal
+surla,1,relax
+surla,2,recreation: relaxing activity
+sutra,1,fast
+sutra,2,done fast: quickly done
+tabno,1,carbon
+tabra,1,trumpet
+tadji,1,method
+tadji,2,done by method: planned: algorithmic
+tadji,3,method conditions
+tadni,1,study
+tadni,2,studied: subject [of study]
+tagji,1,snug
+tagji,2,has snugly: pinched: hugged
+tagji,3,snugness dimension
+tagji,4,snugness locus
+talsa,1,challenge
+talsa,2,challenged
+talsa,3,challenge property
+tamca,1,tomato
+tamca,2,tomato species
+tamji,1,thumb
+tamji,2,limb with thumb
+tamji,3,has thumb
+tamne,1,cousin: kin
+tamne,2,has cousin: cousin: kin
+tamne,3,cousin bond
+tanbo,1,board
+tanbo,2,board material
+tance,1,tongue
+tance,2,has tongue: tongued
+tanjo,1,tangent
+tanjo,2,arctangent: angle
+tanko,1,tobacco
+tanko,2,tobacco species
+tanru,1,phrase compound
+tanru,2,phrase modifier: modifier
+tanru,3,phrase modificand: modified
+tanru,4,phrase meaning: tanru meaning
+tanru,5,phrase language
+tansi,1,pan
+tansi,2,pan contents
+tansi,3,pan material
+tanxe,1,box
+tanxe,2,box contents: boxed: crated
+tanxe,3,box material
+tapla,1,tile
+tapla,2,tile material
+tarbi,1,embryo
+tarbi,2,embryo mother: mother: pregnant: birthmother
+tarbi,3,embryo father
+tarci,1,star
+tarci,2,star properties: stellar property
+tarla,1,tar
+tarla,2,tar source
+tarmi,1,shape
+tarmi,2,shaped
+tarti,1,behave
+tarti,2,behavior
+tarti,3,behavior conditions
+taske,1,thirst
+taske,2,object of thirst: thirsted for
+tatpi,1,tired
+tatpi,2,tiring: fatiguing
+tatru,1,breast
+tatru,2,has breast
+tavla,1,talk
+tavla,2,talked to: addressed
+tavla,3,talk subject: subject [of talk]
+tavla,4,talk language: spoken language
+taxfu,1,garment
+taxfu,2,wears garment: wear
+taxfu,3,garment purpose
+tcaci,1,custom
+tcaci,2,acccustomed
+tcaci,3,custom conditions
+tcadu,1,city
+tcadu,2,city extent
+tcadu,3,polity with city
+tcadu,4,city hinterland
+tcana,1,station
+tcana,2,system with station
+tcati,1,tea
+tcati,2,tea leaves
+tcena,1,stretch
+tcena,2,extent: reach: stretched range
+tcena,3,stretch dimension
+tcena,4,unstretched range
+tcica,1,deceive
+tcica,2,deceived: fooled: gullible: dupe
+tcica,3,deception subject
+tcica,4,deception
+tcidu,1,read
+tcidu,2,readable: text
+tcidu,3,read from: document
+tcika,1,time of day
+tcika,2,timed at
+tcika,3,day of time
+tcika,4,time location
+tcila,1,detail
+tcila,2,detailed: big picture
+tcima,1,weather
+tcima,2,weather location
+tcini,1,situation
+tcini,2,in situation
+tcita,1,label
+tcita,2,labeled
+tcita,3,label information: legend: inscription
+temci,1,time interval: time: duration
+temci,2,start time
+temci,3,end time
+tenfa,1,exponential
+tenfa,2,exponential base
+tenfa,3,exponent: power: logarithm
+tengu,1,texture
+tengu,2,textured
+terdi,1,earth
+terdi,2,planet inhabitant: terrestrial
+terpa,1,fear
+terpa,2,feared: phobia
+terto,1,1.00E+12
+terto,2,quantity in 1E12's
+terto,3,1E12's dimension
+tigni,1,perform
+tigni,2,performance: exhibition: performed
+tigni,3,performance audience
+tikpa,1,kick
+tikpa,2,kicked
+tikpa,3,kicked locus: kicked
+tilju,1,heavy
+tilju,2,heaviness standard
+tinbe,1,obey
+tinbe,2,obeyed: observed
+tinbe,3,commander obeyed
+tinci,1,tin
+tinsa,1,stiff
+tinsa,2,stiffness direction
+tinsa,3,meeting stiffness: resisted
+tinsa,4,stiffness conditions
+tirna,1,hear
+tirna,2,heard: noise: sound
+tirna,3,ambient background: noise heard against: background noise
+tirse,1,iron
+tirxu,1,tiger
+tirxu,2,tiger species
+tirxu,3,tiger markings
+tisna,1,fill: stuffed
+tisna,2,filled: stuffing
+tisna,3,filling material
+titla,1,sweet
+titla,2,find sweet
+tivni,1,television
+tivni,2,television program
+tivni,3,television channel
+tivni,4,television receiver
+tixnu,1,daughter
+tixnu,2,daughter's parent: mother: father
+toknu,1,oven
+toknu,2,cooked in oven: baked: baked goods
+toldi,1,butterfly
+toldi,2,butterfly species
+tonga,1,tone
+tonga,2,pitch: tone frequency
+tonga,3,tone source: sound [v]
+tordu,1,short
+tordu,2,shortness dimension: length
+tordu,3,shortness standard
+torni,1,twist
+torni,2,"torque, twisting force"
+traji,1,superlative
+traji,2,superlative property
+traji,3,which extreme: extreme [n]
+traji,4,range limited by extreme: universe
+trano,1,nitrogen
+trati,1,taut
+trati,2,tautness direction
+trene,1,train
+trene,2,train car
+trene,3,train system: railroad
+tricu,1,tree
+tricu,2,tree species
+trina,1,attract
+trina,2,attracted: lured
+trina,3,attracting property: alluring: attractive
+trixe,1,behind
+trixe,2,in front: precede: trailed: has behind
+trixe,3,frame for behind
+troci,1,try
+troci,2,attempted: tried
+troci,3,trying method
+tsali,1,strong
+tsali,2,strength property: forte
+tsali,3,strength standard
+tsani,1,sky
+tsani,2,with sky
+tsapi,1,seasoning
+tsapi,2,seasoning effect: flavor
+tsiju,1,seed
+tsiju,2,organism with seed: seed-bearing
+tsiju,3,seed offspring
+tsina,1,stage
+tsina,2,has stage
+tsina,3,on stage
+tsina,4,stage material
+tubnu,1,tube
+tubnu,2,tube material
+tubnu,3,tube filling
+tugni,1,agree
+tugni,2,agreed with
+tugni,3,agreement: agreed upon: agreed that
+tugni,4,agreed about
+tujli,1,tulip
+tujli,2,tulip species
+tumla,1,land
+tumla,2,land location
+tunba,1,sibling
+tunba,2,has sibling: sibling
+tunba,3,sibling bond
+tunka,1,copper
+tunlo,1,swallow
+tunlo,2,swallowed
+tunta,1,poke
+tunta,2,poked: prodded
+tunta,3,poked with
+tuple,1,leg
+tuple,2,"has leg: legged, belegged"
+turni,1,govern
+turni,2,governed
+tutci,1,tool
+tutci,2,done with tool
+tutra,1,territory
+tutra,2,controls territory: landlord: land owner
+vacri,1,air
+vacri,2,planet with air
+vacri,3,air composition
+vajni,1,important
+vajni,2,finds important: impacted
+vajni,3,reason for importance
+valsi,1,word
+valsi,2,word meaning
+valsi,3,word language
+vamji,1,value
+vamji,2,valued
+vamji,3,valued by: appraise
+vamji,4,valued for
+vamtu,1,vomit
+vamtu,2,vomited: vomit [n]
+vanbi,1,environment
+vanbi,2,has environment
+vanci,1,evening
+vanci,2,day of evening
+vanci,3,evening location
+vanju,1,wine
+vanju,2,wine fruit: wine grapes
+vasru,1,contain
+vasru,2,contents: contained
+vasxu,1,breathe
+vasxu,2,breathed
+vecnu,1,sell: seller
+vecnu,2,goods: sold
+vecnu,3,buyer: sold to
+vecnu,4,sale cost: price
+venfu,1,revenge
+venfu,2,revenged against
+venfu,3,revenged for: avenged
+venfu,4,revenged by: vengeance
+vensa,1,spring
+vensa,2,year of spring
+vensa,3,spring location
+verba,1,child
+verba,2,child's age
+verba,3,child standard
+vibna,1,vagina
+vibna,2,has vagina
+vidni,1,video
+vidni,2,video function
+vidru,1,virus
+vidru,2,virus property
+vidru,3,virus locus
+vifne,1,fresh
+vikmi,1,excrete
+vikmi,2,excreted: excretion
+vikmi,3,excreted from
+vikmi,4,excretion means: excretory system
+viknu,1,viscous
+viknu,2,viscosity conditions
+vimcu,1,remove
+vimcu,2,removed: deduction: subtrahend
+vimcu,3,removed from: minuend
+vimcu,4,remainder: difference
+vindu,1,poison
+vindu,2,finds poisonous
+vinji,1,airplane
+vinji,2,plane cargo: flies by airplane: flown
+vinji,3,plane propelling method
+vipsi,1,deputy
+vipsi,2,matter deputed: hierarchy: hierarchic
+vipsi,3,boss: superior: supervisor: has deputy
+virnu,1,brave
+virnu,2,brave activity: braved
+virnu,3,brave standard
+viska,1,see
+viska,2,seen: visible
+viska,3,seeing conditions
+vitci,1,irregular
+vitci,2,irregularity
+vitke,1,guest: visit: visitor
+vitke,2,has guest: host: visited
+vitke,3,guest place: visited
+vitno,1,permanent
+vitno,2,permanence property
+vitno,3,permanence standard
+vlagi,1,vulva
+vlagi,2,has vulva
+vlile,1,violent
+vlina,1,alternation: disjunction
+vlina,2,1st alternative
+vlina,3,2nd alternative
+vlipa,1,powerful
+vlipa,2,within the power of
+vlipa,3,power conditions
+vofli,1,flight
+vofli,2,flight means
+voksa,1,voice
+voksa,2,has voice
+vorme,1,door
+vorme,2,accessible: open [onto]: 1st space with door
+vorme,3,accessible: open [onto]: 2nd space with door
+vorme,4,structure with door
+vraga,1,lever
+vraga,2,function with lever
+vraga,3,lever fulcrum
+vraga,4,lever arm
+vreji,1,record
+vreji,2,recorded
+vreji,3,recording medium
+vreta,1,reclining
+vreta,2,reclined on
+vrici,1,miscellaneous
+vrici,2,varied property
+vrude,1,virtue
+vrude,2,virtue standard
+vrusi,1,taste
+vrusi,2,flavored
+vukro,1,Ukrainian
+vukro,2,Ukrainian aspect
+xabju,1,dwell
+xabju,2,habitat: dwelling
+xadba,1,half
+xadba,2,halved
+xadba,3,halfness standard
+xadni,1,body
+xadni,2,has body: embodied
+xagji,1,hunger
+xagji,2,object of hunger
+xagri,1,reed instrument
+xagri,2,reed
+xajmi,1,funny
+xajmi,2,finds funny: amused: tickled
+xajmi,3,funniness property
+xaksu,1,use up
+xaksu,2,used up: consumed
+xalbo,1,levity
+xalbo,2,object of levity: treated lightly
+xalka,1,alcohol
+xalka,2,alcohol type
+xalka,3,alcohol source
+xalni,1,panic
+xalni,2,object of panic
+xamgu,1,good
+xamgu,2,find good: beneficiary
+xamgu,3,goodness standard
+xampo,1,ampere
+xampo,2,current in amperes: amount in amperes
+xampo,3,ampere standard
+xamsi,1,sea
+xamsi,2,planet with sea
+xamsi,3,sea fluid
+xance,1,hand
+xance,2,has hand
+xanka,1,nervous
+xanka,2,object of nervousness: unnerving
+xanka,3,nervousness condition
+xanri,1,imaginary
+xanri,2,imagine
+xanto,1,elephant
+xanto,2,elephant species
+xarci,1,weapon
+xarci,2,threatened by weapon: attacked [with weapon]
+xarci,3,use weapon: armed
+xarju,1,pig
+xarju,2,pig species
+xarnu,1,stubborn
+xarnu,2,object of stubbornness: non-negotiable: resisted
+xasli,1,donkey
+xasli,2,donkey species
+xasne,1,sweat
+xasne,2,body sweating: sweat [v]
+xasne,3,sweat gland
+xatra,1,letter
+xatra,2,letter addressee
+xatra,3,letter author: letter-writer
+xatra,4,letter content
+xatsi,1,1.00E-18
+xatsi,2,quantity in 1E-18's
+xatsi,3,1E-18's dimension
+xazdo,1,Asiatic
+xazdo,2,Asiatic aspect
+xebni,1,hate
+xebni,2,hated: hateful
+xebro,1,Hebrew
+xebro,2,Hebrew aspect
+xecto,1,100
+xecto,2,quantity in 100's
+xecto,3,100's dimension
+xedja,1,jaw
+xedja,2,has jaw
+xekri,1,black
+xelso,1,Greek
+xelso,2,Greek aspect
+xendo,1,kind
+xendo,2,object of kindness
+xendo,3,kind behavior
+xenru,1,regret
+xenru,2,regrettable: regretful: a shame
+xexso,1,1.00E+18
+xexso,2,quantity in 1E18's
+xexso,3,1E18's dimension
+xindo,1,Hindi
+xindo,2,Hindi aspect
+xinmo,1,ink
+xinmo,2,ink color
+xinmo,3,pen using ink
+xirma,1,horse
+xirma,2,horse species
+xislu,1,wheel
+xislu,2,wheeled vehicle
+xislu,3,wheel properties: wheeel material
+xispo,1,Hispanic
+xispo,2,Hispanic aspect
+xlali,1,bad
+xlali,2,find bad: harmed
+xlali,3,badness standard
+xlura,1,influence
+xlura,2,influenced: gullible: enticed
+xlura,3,influenced action
+xlura,4,influence: threat: lure: influencing action
+xotli,1,hotel
+xotli,2,hotel location
+xotli,3,innkeeper: hosteler: operate hotel
+xrabo,1,Arabic
+xrabo,2,Arabic aspect
+xrani,1,injure
+xrani,2,injured: damaged
+xrani,3,injury property
+xrani,4,injury: damage
+xriso,1,Christian
+xriso,2,Christian aspect
+xruba,1,buckwheat
+xruba,2,buckwheat species
+xruki,1,turkey
+xruki,2,turkey species
+xrula,1,flower
+xrula,2,flowering plant: flower [v]
+xruti,1,return
+xruti,2,returned
+xruti,3,state returned to
+xruti,4,state returned from
+xukmi,1,chemical
+xukmi,2,kind of chemical
+xukmi,3,chemical purity
+xunre,1,red
+xurdo,1,Urdi
+xurdo,2,Urdi aspect
+xusra,1,assert
+xusra,2,asserted: assertion
+xutla,1,smooth
+zabna,1,favorable
+zabna,2,favored: commended: eulogized
+zabna,3,favor: eulogize
+zajba,1,gymnast
+zajba,2,gymnastic feat
+zalvi,1,grind
+zalvi,2,pulverized: crushed: ground: powdered
+zalvi,3,ground powder: grounds: powder
+zanru,1,approve
+zanru,2,approved
+zarci,1,market
+zarci,2,wares: sold at market
+zarci,3,marketeer
+zargu,1,buttock
+zargu,2,has buttock
+zasni,1,temporary
+zasni,2,transience property: transient
+zasni,3,transience standard
+zasti,1,exist
+zasti,2,hold as existent
+zasti,3,existence epistemology
+zbabu,1,soap
+zbabu,2,soap source
+zbabu,3,soap composition
+zbani,1,bay
+zbani,2,coast with bay
+zbasu,1,make
+zbasu,2,made: created: product: creation
+zbasu,3,made from: raw material
+zbepi,1,pedestal
+zbepi,2,has pedestal
+zbepi,3,pedestal material
+zdani,1,nest
+zdani,2,inhabit: inhabitant: dweller: dwell
+zdile,1,amusing
+zdile,2,amused
+zdile,3,amusing property
+zekri,1,crime
+zekri,2,hold as crime
+zenba,1,increase
+zenba,2,increase property
+zenba,3,increase amount: increase [n]
+zepti,1,1.00E-21
+zepti,2,quantity in 1E-21's
+zepti,3,1E-21's dimension
+zetro,1,1.00E+21
+zetro,2,quantity in 1E21's
+zetro,3,1E21's dimension
+zgana,1,observe
+zgana,2,observed: noted: detected
+zgana,3,observing sense
+zgana,4,observing conditions
+zgike,1,music
+zgike,2,produce music: perform music
+zifre,1,free
+zifre,2,freedom: unproscribed: freely done
+zifre,3,freedom conditions
+zinki,1,zinc
+zirpu,1,purple
+zivle,1,investor: invest
+zivle,2,resources invested: capital
+zivle,3,investment
+zivle,4,investment return: profit
+zmadu,1,more
+zmadu,2,exceeded: undercut [v]: less
+zmadu,3,moreness property
+zmadu,4,moreness margin: difference
+zmiku,1,automatic
+zmiku,2,automatic function
+zmiku,3,automaticity condition
+zukte,1,act
+zukte,2,action: means
+zukte,3,action goal
+zumri,1,maize
+zumri,2,maize species
+zungi,1,guilt
+zungi,2,object of guilt: cause remorse: guilt-inducing
+zunle,1,left
+zunle,2,has to the left: right
+zunle,3,frame for left
+zunti,1,interfere: hindrance
+zunti,2,hindered: interfered with
+zunti,3,interfering quality
+zutse,1,sit
+zutse,2,sat on
+zvati,1,at
+zvati,2,location attended
