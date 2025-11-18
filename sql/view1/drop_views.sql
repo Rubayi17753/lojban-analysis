@@ -1,3 +1,3 @@
-DROP VIEW positional_percentages;
-DROP VIEW gismu_freqs;
-DROP VIEW lojban1999_aggregate;
+DROP VIEW IF EXISTS positional_percentages;
+DROP VIEW IF EXISTS gismu_freqs;
+DROP VIEW IF EXISTS lojban1999_aggregate;

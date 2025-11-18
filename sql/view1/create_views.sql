@@ -2,18 +2,21 @@ CREATE VIEW IF NOT EXISTS positional_percentages AS
 SELECT
     rafsi_or_cmavo,
     word_shape(rafsi_or_cmavo) AS rafsi_or_cmavo_shape,
+    LENGTH(REPLACE(rafsi_or_cmavo, "'", '')) AS rafsi_or_cmavo_len,
     gismu,
     word_shape(gismu) AS gismu_shape,
-    substring_positions(rafsi_or_cmavo, gismu, 'string') AS gismu_pos,
+    substring_positions(gismu, REPLACE(rafsi_or_cmavo, "'", ''), 'string') AS gismu_pos,
     as_rafsi_ini,
     as_rafsi_med,
     as_rafsi_fin,
     as_rafsi_ini + as_rafsi_med + as_rafsi_fin AS as_rafsi,
-    as_rafsi_ini / (as_rafsi_ini + as_rafsi_med + as_rafsi_fin) AS percentage_ini,
-    as_rafsi_med / (as_rafsi_ini + as_rafsi_med + as_rafsi_fin) AS percentage_med,
-    as_rafsi_fin / (as_rafsi_ini + as_rafsi_med + as_rafsi_fin) AS percentage_fin,
+    as_rafsi_ini / (as_rafsi_ini + as_rafsi_med + as_rafsi_fin) * 100 AS percentage_ini,
+    as_rafsi_med / (as_rafsi_ini + as_rafsi_med + as_rafsi_fin) * 100 AS percentage_med,
+    as_rafsi_fin / (as_rafsi_ini + as_rafsi_med + as_rafsi_fin) * 100 AS percentage_fin,
     as_gismu,
-    as_cmavo
+    CASE 
+        WHEN as_cmavo = '' THEN 0
+        ELSE as_cmavo END AS as_cmavo
 FROM rafsi_freqs
 ;
 

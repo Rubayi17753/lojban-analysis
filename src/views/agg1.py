@@ -44,6 +44,8 @@ def query(conn, cur, mode='pandas'):
       
         with open(query_path, 'r', encoding='utf-8') as f:
             
+            filename = os.path.splitext(os.path.basename(query_path))[0]
+
             if mode == 'rows':
                 result = cur.executescript(f.read())
                 for row in result:
@@ -60,8 +62,9 @@ def query(conn, cur, mode='pandas'):
                 headers = [desc[0] for desc in cur.description]
                 print(tabulate(rows, headers, tablefmt="grid"))
 
-            elif mode == 'csv':
-                ...
+            elif mode == 'tsv':
+                df = pd.read_sql_query(f.read(), conn)
+                df.to_csv(f'results/{filename}_result.tsv', sep='\t', index=False)
 
     conn.commit()
 
