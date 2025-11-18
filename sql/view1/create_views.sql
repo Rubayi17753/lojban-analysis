@@ -5,7 +5,6 @@ SELECT
     LENGTH(REPLACE(rafsi_or_cmavo, "'", '')) AS rafsi_or_cmavo_len,
     gismu,
     word_shape(gismu) AS gismu_shape,
-    substring_positions(gismu, REPLACE(rafsi_or_cmavo, "'", ''), 'string') AS gismu_pos,
     as_rafsi_ini,
     as_rafsi_med,
     as_rafsi_fin,
@@ -15,7 +14,7 @@ SELECT
     CASE 
         WHEN as_cmavo = '' THEN 0
         ELSE as_cmavo END 
-            AS as_cmavo
+    AS as_cmavo
 
 FROM rafsi_freqs
 ;
@@ -30,6 +29,13 @@ CREATE VIEW IF NOT EXISTS form_types AS
 SELECT
     rafsi_or_cmavo,
     gismu,
+
+    CASE
+        WHEN rafsi_or_cmavo_len = 3 
+            THEN substring_positions(gismu, REPLACE(rafsi_or_cmavo, "'", ''), 'string') 
+        ELSE '' END 
+    AS gismu_pos,
+
     CASE
         WHEN 
             (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
@@ -41,11 +47,13 @@ SELECT
         WHEN
             rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
             THEN 'cmavo'
+        /*
         WHEN
             rafsi_or_cmavo_len IN (4, 5)
             THEN 'rafsi5'
+        */
         ELSE '?' END 
-            AS form_type
+    AS form_type
 FROM positional_percentages
 ;
 
@@ -94,7 +102,8 @@ FROM positional_percentages
         ON positional_percentages.rafsi_or_cmavo = form_freqs2.rafsi_or_cmavo
         AND positional_percentages.gismu = form_freqs2.gismu
     JOIN form_types
-        ON positional_percentages.gismu = form_types.gismu
+        ON positional_percentages.rafsi_or_cmavo = form_types.rafsi_or_cmavo
+        AND positional_percentages.gismu = form_types.gismu
     JOIN gismu_defs
         ON positional_percentages.gismu = gismu_defs.gismu
 ;
