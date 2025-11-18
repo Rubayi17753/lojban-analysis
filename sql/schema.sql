@@ -40,3 +40,8 @@ CREATE TABLE IF NOT EXISTS obliques (
 	position INTEGER,
 	oblique TEXT
 );
+
+CREATE TABLE IF NOT EXISTS pos_substitutions (
+	old_pos TEXT,
+	new_pos TEXT
+);

@@ -15,7 +15,6 @@ SELECT
         WHEN as_cmavo = '' THEN 0
         ELSE as_cmavo END 
     AS as_cmavo
-
 FROM rafsi_freqs
 ;
 
@@ -24,38 +23,6 @@ FROM rafsi_freqs
 -- CREATE VIEW IF NOT EXISTS gismu_new_positions
 -- ...
 -- FROM positional_percentages
-
-CREATE VIEW IF NOT EXISTS form_types AS
-SELECT
-    rafsi_or_cmavo,
-    gismu,
-
-    CASE
-        WHEN rafsi_or_cmavo_len = 3 
-            THEN substring_positions(gismu, REPLACE(rafsi_or_cmavo, "'", ''), 'string') 
-        ELSE '' END 
-    AS gismu_pos,
-
-    CASE
-        WHEN 
-            (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
-            AND rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
-            THEN 'rafsi/cmavo'
-        WHEN 
-            (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
-            THEN 'rafsi'
-        WHEN
-            rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
-            THEN 'cmavo'
-        /*
-        WHEN
-            rafsi_or_cmavo_len IN (4, 5)
-            THEN 'rafsi5'
-        */
-        ELSE '?' END 
-    AS form_type
-FROM positional_percentages
-;
 
 CREATE VIEW IF NOT EXISTS gismu_freqs AS
 SELECT
@@ -91,6 +58,38 @@ SELECT
     form_total_freq,
     ROUND(form_total_freq * 1.0 / (gismu_total_freq * 1.0) * 100, 1) AS percentage_form
 FROM form_freqs
+;
+
+CREATE VIEW IF NOT EXISTS form_types AS
+SELECT
+    rafsi_or_cmavo,
+    gismu,
+
+    CASE
+        WHEN rafsi_or_cmavo_len = 3 
+            THEN substring_positions(gismu, REPLACE(rafsi_or_cmavo, "'", ''), 'string', ' ') 
+        ELSE '' END 
+    AS gismu_pos,   -- identified misnomer
+
+    CASE
+        WHEN 
+            (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
+            AND rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
+            THEN 'rafsi/cmavo'
+        WHEN 
+            (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
+            THEN 'rafsi'
+        WHEN
+            rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
+            THEN 'cmavo'
+        /*
+        WHEN
+            rafsi_or_cmavo_len IN (4, 5)
+            THEN 'rafsi5'
+        */
+        ELSE '?' END 
+    AS form_type
+FROM positional_percentages
 ;
 
 CREATE VIEW IF NOT EXISTS lojban1999_aggregate AS

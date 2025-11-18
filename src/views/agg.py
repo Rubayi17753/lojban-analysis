@@ -6,16 +6,19 @@ from tabulate import tabulate
 from src.word_shape import word_shape
 from src.substring_positions import substring_positions
 
+# Connect
+conn = sqlite3.connect('data/lojban1999.db')
+cur = conn.cursor()
+
+# Register SQL function backed by Python module
+def register_functions():
+    conn.create_function('word_shape', narg=1, func=word_shape)
+    conn.create_function('substring_positions', narg=4, func=substring_positions)
+
 def agg1(run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):
-    
-    # Connect
-    conn = sqlite3.connect('data/lojban1999.db')
-    cur = conn.cursor()
 
-    # Register SQL function backed by Python module
-    conn.create_function('word_shape', narg=1, func=word_shape)
-    conn.create_function('substring_positions', narg=3, func=substring_positions)
+    register_functions()
 
     if run_schema:
         with open('sql/schema.sql', 'r', encoding='utf-8') as f:
@@ -30,6 +33,17 @@ def agg1(run_schema=0, mode='pandas',
     query(conn, cur, mode)
     conn.close()
 
+def agg2(run_schema=0, mode='pandas', 
+        drop_views=1, create_views=1,):
+
+    register_functions()
+    
+    if create_views:
+        execute_sql('create_views2', conn, cur)    
+
+    query(conn, cur, mode)
+    conn.close()
+
 def execute_sql(sql_filename, conn, cur):
     with open(f'sql/view1/{sql_filename}.sql', 'r', encoding='utf-8') as f:
         cur.executescript(f.read())
@@ -37,14 +51,19 @@ def execute_sql(sql_filename, conn, cur):
 
 def query(conn, cur, mode='pandas'):
 
-    query_paths = [entry.path for entry in os.scandir('sql/view1/queries') 
+    query_paths = [entry.path 
+                for entry in os.scandir('sql/view1/queries') 
                 if entry.is_file()]
-    
-    for query_path in query_paths:
+    filenames = [os.path.splitext(os.path.basename(query_path))[0]
+                for query_path in query_paths]
+    query_paths_filenames = [(query_path, filename)
+                for query_path, filename
+                in zip(query_paths, filenames)
+                if not filename.startswith('u_')]
+
+    for query_path, filename in query_paths_filenames:
       
         with open(query_path, 'r', encoding='utf-8') as f:
-            
-            filename = os.path.splitext(os.path.basename(query_path))[0]
 
             if mode == 'rows':
                 result = cur.executescript(f.read())
@@ -65,6 +84,7 @@ def query(conn, cur, mode='pandas'):
             elif mode == 'tsv':
                 df = pd.read_sql_query(f.read(), conn)
                 df.to_csv(f'results/{filename}_result.tsv', sep='\t', index=False)
+                print(f'Results written to {filename}_result.tsv')
 
     conn.commit()
 
