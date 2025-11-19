@@ -1,4 +1,4 @@
-from src.views.agg import agg1, agg2
+from src.agg import agg1, agg2
 
 def main():
     agg2(run_schema=1, mode='tsv',) 

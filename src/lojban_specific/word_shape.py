@@ -1,4 +1,4 @@
-import src.phonological_inventory as inv
+import src.lojban_specific.phonological_inventory as inv
 
 def word_shape(word):
 

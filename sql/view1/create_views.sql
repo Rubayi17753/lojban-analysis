@@ -33,9 +33,9 @@ SELECT
         + SUM(as_cmavo)
     ) AS gismu_total_freq,
 
-    ROUND(as_rafsi_ini * 1.0 / (as_rafsi * 1.0) * 100, 1) AS percentage_ini,
-    ROUND(as_rafsi_med * 1.0 / (as_rafsi * 1.0) * 100, 1) AS percentage_med,
-    ROUND(as_rafsi_fin * 1.0 / (as_rafsi * 1.0) * 100, 1) AS percentage_fin
+    ROUND(as_rafsi_ini * 1.000 / (as_rafsi * 1.000) * 100, 1) AS percentage_ini,
+    ROUND(as_rafsi_med * 1.000 / (as_rafsi * 1.000) * 100, 1) AS percentage_med,
+    ROUND(as_rafsi_fin * 1.000 / (as_rafsi * 1.000) * 100, 1) AS percentage_fin
 FROM positional_percentages
 GROUP BY gismu
 ;

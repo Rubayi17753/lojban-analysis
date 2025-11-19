@@ -3,7 +3,7 @@ import sqlite3
 import pandas as pd
 import csv
 from tabulate import tabulate
-from src.word_shape import word_shape
+from src.lojban_specific.word_shape import word_shape
 from src.substring_positions import substring_positions
 
 # Connect
