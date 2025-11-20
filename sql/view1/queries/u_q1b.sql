@@ -2,7 +2,11 @@ SELECT
     rafsi_or_cmavo,
     gismu,
     percentage_form,
-    gismu_total_freq
+    gismu_total_freq,
+
+    percentage_ini,
+    percentage_med,
+    percentage_fin
 
 FROM lojban1999_aggregate
 

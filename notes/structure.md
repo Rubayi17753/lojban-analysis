@@ -4,7 +4,17 @@ Raw tables:
 - gismu_themes
 - obliques
 - rafsi_defs
-- rafsi_freqs
+- rafsi_freqs:
+    - rafsi_or_cmavo
+    - gismu
+    - as_rafsi_ini
+    - as_rafsi_mid
+    - as_rafsi_fin
+    - as_gismu
+    - as_cmavo
+
+Stage 2:
+
 
 Intermediate tables
 - pos_substitutions <-- q2
