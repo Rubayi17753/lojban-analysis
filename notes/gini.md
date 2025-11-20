@@ -1,4 +1,4 @@
-# Gini coefficient of three percentages
+# Normalised Gini coefficient of three percentages
 
 Given
     `x1 + x2 + x3 = 1`
@@ -12,6 +12,9 @@ and knowing that
     G_normalised = (abs(x1 - x2) + abs(x2 - x3) + abs(x3 - x1)) / 3 / (2/3)
         = (abs(x1 - x2) + abs(x2 - x3) + abs(x3 - x1)) / 2
 ```
+
+# Normalised Gini coefficient of n percentages
+`G_normalised = sum_of_differences / (n - 1)`
 
 # Max gini
 G = abs(x - 0) / 2 * x = 1/2
