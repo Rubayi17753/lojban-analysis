@@ -75,13 +75,13 @@ SELECT
         WHEN 
             (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
             AND rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
-            THEN 'rafsi/cmavo'
+            THEN 'r/c'
         WHEN 
             (rafsi_or_cmavo, gismu) IN (SELECT rafsi, gismu FROM rafsi_defs) 
-            THEN 'rafsi'
+            THEN 'r'
         WHEN
             rafsi_or_cmavo IN (SELECT cmavo FROM cmavo_defs)
-            THEN 'cmavo'
+            THEN 'c'
         /*
         WHEN
             rafsi_or_cmavo_len IN (4, 5)

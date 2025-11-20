@@ -20,11 +20,11 @@ CREATE TABLE IF NOT EXISTS rafsi_freqs (
 	-- Provisional table, later to be generated from another
 	rafsi_or_cmavo TEXT,
 	gismu TEXT,
-	as_rafsi_ini NUMERIC,
-	as_rafsi_med NUMERIC,
-	as_rafsi_fin NUMERIC,
-	as_gismu NUMERIC,
-	as_cmavo NUMERIC
+	as_rafsi_ini NUMERIC NOT NULL DEFAULT 0,
+	as_rafsi_med NUMERIC NOT NULL DEFAULT 0,
+	as_rafsi_fin NUMERIC NOT NULL DEFAULT 0,
+	as_gismu NUMERIC NOT NULL DEFAULT 0,
+	as_cmavo NUMERIC NOT NULL DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS cmavo_defs (
