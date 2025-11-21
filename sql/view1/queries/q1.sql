@@ -35,9 +35,9 @@ WHERE theme_code NOT IN (
     AND gismu NOT LIKE 'brod_'
 
 ORDER BY
-    percentage_form DESC,
+    gismu_total_freq DESC,
     gismu ASC,
+    percentage_form DESC,
     rafsi_or_cmavo_shape ASC,
-    rafsi_or_cmavo_pos ASC,  -- requires agg2
-    gismu_total_freq DESC
+    rafsi_or_cmavo_pos ASC  -- requires agg2
 ;

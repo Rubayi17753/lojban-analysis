@@ -13,8 +13,8 @@ SELECT
 
     CASE 
         WHEN as_cmavo = '' THEN 0
-        ELSE as_cmavo END 
-    AS as_cmavo
+        ELSE as_cmavo
+    END AS as_cmavo
 FROM rafsi_freqs
 ;
 
@@ -68,8 +68,8 @@ SELECT
     CASE
         WHEN rafsi_or_cmavo_len = 3 
             THEN substring_positions(gismu, REPLACE(rafsi_or_cmavo, "'", ''), 'string', ' ') 
-        ELSE '' END 
-    AS gismu_pos,   -- identified misnomer
+        ELSE ''
+    END AS gismu_pos,   -- identified misnomer
 
     CASE
         WHEN 
@@ -87,8 +87,8 @@ SELECT
             rafsi_or_cmavo_len IN (4, 5)
             THEN 'rafsi5'
         */
-        ELSE '?' END 
-    AS form_type
+        ELSE '?'
+    END AS form_type
 FROM positional_percentages
 ;
 
