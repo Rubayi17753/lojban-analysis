@@ -31,3 +31,14 @@ x+x+x+x!
 x+x+x+x+x!
 x+x+x+[x]!
 x+[x]+[x]!
+
+# Course of action
+
+```
+IF adapted_lujvo = actual
+    x[x] > 0
+    +[x] > + x
+
+ELIF adapted_lujvo = new
+
+```

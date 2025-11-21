@@ -1,4 +1,4 @@
--- Deals with lujvo1999_freqs
+-- Concordance
 
 WITH lujvo_freqs AS (
     SELECT
@@ -7,15 +7,13 @@ WITH lujvo_freqs AS (
             WHEN canon_meaning != '' THEN actual
             WHEN new != '' THEN new
             ELSE actual
-        END AS lujvo,
-        somedamnedfunction(freq_raw) AS freq
+        END AS lujvo
     FROM
         lujvo1999
 )
-
-SELECT 
-    lujvo_parse_as_string(lujvo),
-    freq
+SELECT
+    lujvo,
+    lujvo_parse_as_string(lujvo)
 FROM
     lujvo_freqs
 WHERE

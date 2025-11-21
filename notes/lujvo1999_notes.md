@@ -1,5 +1,29 @@
+- `canonical form=` **in Section 11** highly unreliable; either identical to 'actual' (leftmost valsi entries) or mismatches them in corresponding constituent rafsis (i.e. entirely different in meaning!). Employ with extreme reserve.
+	- On further inspection, there are only 16 of them in the section, probably intended for entry elsewhere.
+
+```
+6595	kalfoi	kalfoi
+6702	kamtolba'i	kamtolba'i
+8662	nuntolpa'a	nuntolpa'a
+9323	refpau	refpau
+11491	toirca'a	toirca'a
+11492	toirze'a	toirze'a
+11500	tolbigri'a	tolbigri'a
+11514	tolci'i	tolci'i
+11526	tolcre	tolcre
+11559	toljmi	tolgu'a
+11560	tolju'i	toljmi
+11564	toljuxre	tolju'i
+11598	tolpa'e	tolpa'e
+11599	tolpajvu'e	tolpajvu'e
+11610	tolsa'u	tolsa'u
+11617	tolselsmu	tolselsmu
+11621	tolsma	tolsma
+```
+
+# Actual indexes
  For lujvo, I have presented the form in which the word appeared in text,  as well as the canonical form determined by the lujvo-making algorithm  scoring system.  In addition, for words that were first used before  November 1994, I have allowed for the possibility that the obsolete  rafsi list (changed in June 1993) was used, and presented the changed  form and canonical form for those words as if the form appearing in text  had been made from the obsolete rafsi set.  Words that were used after  the beginning of 1994 are almost all made from the final (baselined)  rafsi set, but there are a couple of exceptions (e.g. kazy...).  Words  used during the year 1994 are marked with an "!" in column 6.  
-# Long words (do not fit column format)  
+## Long words (do not fit column format)  
 2. Error words - If no gloss is shown, the glosser thought these were fu'ivla because of ill-formedness (but fuivla may not have 'y'); they were recognizable to human eye as likely malformed lujvo.  Other reasons for marking these include missing apostrophe in a vowel cluster (the word might be a TLI Loglan word in such case) and "unknown" in the gloss. 
 3. The following appear to be based on an unofficial gismu. 
 4. The following were of proper lujvo form, but are not made up of valid rafsi.  In some cases, they may be typos, but I looked for obvious ones. Some may be valid TLI Loglan words, which I checked for explicitly, but probably missed a lot because the check was manual. 

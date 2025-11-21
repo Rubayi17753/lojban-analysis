@@ -14,10 +14,11 @@ Raw tables:
     - as_cmavo
 
 Stage 2:
-
-
 Intermediate tables
 - pos_substitutions <-- q2
+
+Stage 3:
+- (new) rafsi_freqs <-- lujvo1999_freqs
 
 Views:
 - positional_percentages <-- rafsi_freqs

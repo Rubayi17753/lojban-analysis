@@ -29,17 +29,17 @@ def lujvo_parser(s):
 
         # CACy-C 
         elif s[3] == 'y' and s[4] in inv.C:
-            out.append(s[:4])
+            out.append(s[:3])   # exclude rafsi-final -y
             s = s[4:]
 
         # CACCy-C, CCACy-C
         elif s[4] == 'y' and s[5] in inv.C:
-            out.append(s[:5])
+            out.append(s[:4])   # exclude rafsi-final -y
             s = s[5:]
 
         # CAA(l/n/r)-C
         elif s[3] in ('l', 'n', 'r') and s[4] in inv.C:
-            out.append(s[:4])
+            out.append(s[:3])   # exclude rafsi-final hyphen
             s = s[4:]           
         
         # CAA, CAC, CCA - C
@@ -53,6 +53,9 @@ def lujvo_parser(s):
             s = ''
 
     return out
+
+def lujvo_parse_as_string(s):
+    return '-'.join(lujvo_parser(s))
 
 def fuivla_parser(s):
     # In English: loanwords

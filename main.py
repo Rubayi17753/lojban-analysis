@@ -7,7 +7,7 @@ def main():
     table_path = 'data/lojban1999.db'
     table_name = 'lujvo1999'
 
-    # csv_to_table(csv_path, table_path, table_name)
+    csv_to_table(csv_path, table_path, table_name)
     agg2(run_schema=1, mode='tsv',) 
 
 if __name__ == '__main__':

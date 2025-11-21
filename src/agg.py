@@ -4,6 +4,7 @@ import pandas as pd
 import csv
 from tabulate import tabulate
 from src.lojban_specific.word_shape import word_shape
+from src.lojban_specific.parser import lujvo_parse_as_string
 from src.substring_positions import substring_positions
 
 # Connect
@@ -14,6 +15,7 @@ cur = conn.cursor()
 def register_functions():
     conn.create_function('word_shape', narg=1, func=word_shape)
     conn.create_function('substring_positions', narg=4, func=substring_positions)
+    conn.create_function('lujvo_parse_as_string', narg=4, func=lujvo_parse_as_string)
 
 def agg1(run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):
@@ -40,6 +42,17 @@ def agg2(run_schema=0, mode='pandas',
     
     if create_views:
         execute_sql('create_views2', conn, cur)    
+
+    query(conn, cur, mode)
+    conn.close()
+
+def agg3(run_schema=0, mode='pandas', 
+        drop_views=1, create_views=1,):
+
+    register_functions()
+    
+    if create_views:
+        execute_sql('create_views3', conn, cur)    
 
     query(conn, cur, mode)
     conn.close()
