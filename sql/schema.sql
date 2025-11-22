@@ -59,3 +59,14 @@ CREATE TABLE IF NOT EXISTS lujvo_freqs_1999 (
 	new TEXT,
 	new_breakdown TEXT
 );
+
+-- Created after running views.create_concordance (formerly q5)
+CREATE TABLE IF NOT EXISTS lujvo_1999_concordance (
+	rowid INTEGER,
+	lujvo TEXT,
+	lujvo_parsed TEXT,
+	lujvo_for_split TEXT,
+	lujvo_sequence INTEGER,
+	lujvo_len INTEGER,
+	PRIMARY KEY (rowid)
+);

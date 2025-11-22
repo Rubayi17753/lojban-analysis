@@ -8,11 +8,17 @@ def determine_wordclass(s):
     if s[-1] in inv.C:
         wordclass = 'cmene'
     elif s[-1] in inv.A:
-        if shape(s[5]) in ('CCAAC', "CCA'A", 'CACCA', 'CAACC'):
-            if len(s) == 5:
-                wordclass = 'gismu'
-            elif len(s) > 5:
-                wordclass = 'lujvo'
+
+        if 'CC' in shape(s[5]):
+
+            if 'CC' in shape(s[-5:]):
+                if len(s) == 5:
+                    wordclass = 'gismu'
+                elif len(s) > 5:
+                    wordclass = 'lujvo'
+            else:
+                wordclass = 'fu_ivla'
+
         else:
             if len(s) < 3 or (len(s) == 4 and "'" in s):
                 wordclass = 'cmavo'
@@ -72,13 +78,6 @@ def lujvo_parser(s):
             s = ''
 
     return out
-
-def lujvo_parse_as_string(s):
-
-    try:
-        return '-'.join(lujvo_parser(s))
-    except:
-        return f'{s} !!'
 
 def fuivla_parser(s):
     # In English: loanwords

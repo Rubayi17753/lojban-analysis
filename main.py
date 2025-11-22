@@ -1,5 +1,6 @@
-from src.agg import agg1, agg2, agg3
+from src.agg import agg1, agg2, agg_concordance
 from src.csv_to_table import csv_to_table
+
 
 def main():
 
@@ -8,7 +9,7 @@ def main():
     table_name = 'lujvo_freqs_1999'
 
     # csv_to_table(csv_path, table_path, table_name)
-    agg2(run_schema=1, mode='tsv',) 
+    agg2(run_schema=1, mode='tsv',)
 
 if __name__ == '__main__':
     main()

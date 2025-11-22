@@ -3,9 +3,6 @@ import sqlite3
 import pandas as pd
 import csv
 from tabulate import tabulate
-from src.lojban_specific.word_shape import word_shape
-from src.lojban_specific.parser import lujvo_parse_as_string
-from src.substring_positions import substring_positions
 
 # Connect
 conn = sqlite3.connect('data/lojban1999.db')
@@ -13,9 +10,17 @@ cur = conn.cursor()
 
 # Register SQL function backed by Python module
 def register_functions():
+
+    from src.lojban_specific.word_shape import word_shape
+    from src.query_aux.parser_aux import lujvo_parse_as_string, lujvo_length
+    from src.substring_positions import substring_positions
+    from sql.query_aux.q5 import integer_to_series
+
     conn.create_function('word_shape', narg=1, func=word_shape)
     conn.create_function('substring_positions', narg=4, func=substring_positions)
     conn.create_function('lujvo_parse_as_string', narg=1, func=lujvo_parse_as_string)
+    conn.create_function('lujvo_length', narg=1, func=lujvo_length)
+    conn.create_function('integer_to_series', narg=2, func=integer_to_series)
 
 def agg1(run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):
@@ -46,19 +51,22 @@ def agg2(run_schema=0, mode='pandas',
     query(conn, cur, mode)
     conn.close()
 
-def agg3(run_schema=0, mode='pandas', 
+def agg_concordance(run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):
+
+    from sql.query_aux.q5 import main as q5
 
     register_functions()
     
     if create_views:
-        execute_sql('create_views3', conn, cur)    
-
+        execute_sql('create_concordance', conn, cur)    
     query(conn, cur, mode)
+    q5()
+
     conn.close()
 
 def execute_sql(sql_filename, conn, cur):
-    with open(f'sql/view1/{sql_filename}.sql', 'r', encoding='utf-8') as f:
+    with open(f'sql/views/{sql_filename}.sql', 'r', encoding='utf-8') as f:
         cur.executescript(f.read())
     conn.commit()
 
@@ -77,6 +85,10 @@ def query(conn, cur, mode='pandas'):
     for query_path, filename in query_paths_filenames:
       
         with open(query_path, 'r', encoding='utf-8') as f:
+
+            # Check if module sql.queries.[query_path] exists
+            # Import as [query_path]
+            # Run [query_path]()
 
             if mode == 'rows':
                 result = cur.executescript(f.read())
