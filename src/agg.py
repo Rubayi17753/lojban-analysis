@@ -15,7 +15,7 @@ cur = conn.cursor()
 def register_functions():
     conn.create_function('word_shape', narg=1, func=word_shape)
     conn.create_function('substring_positions', narg=4, func=substring_positions)
-    conn.create_function('lujvo_parse_as_string', narg=4, func=lujvo_parse_as_string)
+    conn.create_function('lujvo_parse_as_string', narg=1, func=lujvo_parse_as_string)
 
 def agg1(run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):
@@ -65,7 +65,7 @@ def execute_sql(sql_filename, conn, cur):
 def query(conn, cur, mode='pandas'):
 
     query_paths = [entry.path 
-                for entry in os.scandir('sql/view1/queries') 
+                for entry in os.scandir('sql/queries') 
                 if entry.is_file()]
     filenames = [os.path.splitext(os.path.basename(query_path))[0]
                 for query_path in query_paths]

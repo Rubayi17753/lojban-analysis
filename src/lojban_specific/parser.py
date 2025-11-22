@@ -1,13 +1,25 @@
 import src.lojban_specific.phonological_inventory as inv 
+import src.lojban_specific.word_shape as shape
 
 def determine_wordclass(s):
-    if s[-1] in C:
-        return 'cmene'
-    elif s[-1] in A:
-        if len == 5:
-            return 'lujvo'                                
-    else:
-        return '???'
+
+    wordclass = 'undetermined'
+
+    if s[-1] in inv.C:
+        wordclass = 'cmene'
+    elif s[-1] in inv.A:
+        if shape(s[5]) in ('CCAAC', "CCA'A", 'CACCA', 'CAACC'):
+            if len(s) == 5:
+                wordclass = 'gismu'
+            elif len(s) > 5:
+                wordclass = 'lujvo'
+        else:
+            if len(s) < 3 or (len(s) == 4 and "'" in s):
+                wordclass = 'cmavo'
+            else:
+                wordclass = 'cmavo_sequence'                          
+
+    return wordclass
 
 def lujvo_parser(s):
 
@@ -22,11 +34,6 @@ def lujvo_parser(s):
             out.append(s)
             s = '' 
 
-        # CA'A-C
-        elif s[2] == "'" and s[4] in inv.C:
-            out.append(s[:4])
-            s = s[4:]
-
         # CACy-C 
         elif s[3] == 'y' and s[4] in inv.C:
             out.append(s[:3])   # exclude rafsi-final -y
@@ -37,11 +44,23 @@ def lujvo_parser(s):
             out.append(s[:4])   # exclude rafsi-final -y
             s = s[5:]
 
+        elif s[2] == "'":
+
+            # CA'A(l/n/r)-C
+            if s[4] in ('l', 'n', 'r') and s[5] in inv.C:
+                out.append(s[:4])   # exclude rafsi-final hyphen
+                s = s[5:]
+            
+            # CA'A-C
+            elif s[2] == "'" and s[4] in inv.C:
+                out.append(s[:4])
+                s = s[4:]
+
         # CAA(l/n/r)-C
         elif s[3] in ('l', 'n', 'r') and s[4] in inv.C:
             out.append(s[:3])   # exclude rafsi-final hyphen
             s = s[4:]           
-        
+
         # CAA, CAC, CCA - C
         elif s[3] in inv.C:
             out.append(s[:3])
@@ -55,7 +74,11 @@ def lujvo_parser(s):
     return out
 
 def lujvo_parse_as_string(s):
-    return '-'.join(lujvo_parser(s))
+
+    try:
+        return '-'.join(lujvo_parser(s))
+    except:
+        return f'{s} !!'
 
 def fuivla_parser(s):
     # In English: loanwords

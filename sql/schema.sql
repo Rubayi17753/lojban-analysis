@@ -46,8 +46,8 @@ CREATE TABLE IF NOT EXISTS pos_substitutions (
 	new_pos TEXT
 );
 
-CREATE TABLE IF NOT EXISTS lujvo1999 (
-	section_id INTEGER,	-- corresponds to notes/lujvo1999notes.md
+CREATE TABLE IF NOT EXISTS lujvo_freqs_1999 (
+	section_id INTEGER,	-- corresponds to notes/lujvo_freqs_1999notes.md
 	freq_raw TEXT,	-- to be converted to actual frequencies through a function/algorithm
 	sign TEXT,
 	actual TEXT,

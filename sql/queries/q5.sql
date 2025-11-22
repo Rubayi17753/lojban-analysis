@@ -2,6 +2,8 @@
 
 WITH lujvo_freqs AS (
     SELECT
+        section_id,
+        sign,
         -- in order of priority: use actual if meaning given, new replaces actual
         CASE
             WHEN canon_meaning != '' THEN actual
@@ -9,7 +11,7 @@ WITH lujvo_freqs AS (
             ELSE actual
         END AS lujvo
     FROM
-        lujvo1999
+        lujvo_freqs_1999
 )
 SELECT
     lujvo,
@@ -17,5 +19,6 @@ SELECT
 FROM
     lujvo_freqs
 WHERE
-    section_id = 11
+    section_id = 11 
+    AND sign != '%'
 ;
