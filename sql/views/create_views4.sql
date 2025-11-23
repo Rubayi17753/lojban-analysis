@@ -1,7 +1,5 @@
 -- Requires concordance
 
-
-
 CREATE VIEW IF NOT EXISTS lujvo_component_meanings AS
 
     WITH lujvo_1999_concordance_distinct AS (
@@ -26,3 +24,4 @@ CREATE VIEW IF NOT EXISTS lujvo_component_meanings AS
         LEFT JOIN lujvo_freqs_1999
             ON lujvo_1999_concordance_distinct.lujvo = lujvo_freqs_1999.actual
     GROUP BY lujvo
+;

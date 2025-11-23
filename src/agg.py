@@ -23,7 +23,7 @@ def register_functions():
     conn.create_function('integer_to_series', narg=2, func=integer_to_series)
 
 def agg(view_num, run_schema=0, mode='pandas', 
-        drop_views=1, create_views=1,):
+        drop_views=1, create_views=1, run_queries=1, close=1,):
 
     register_functions()
 
@@ -37,8 +37,11 @@ def agg(view_num, run_schema=0, mode='pandas',
     if create_views:
         execute_sql(f'create_views{view_num}', conn, cur)
 
-    query(conn, cur, mode)
-    conn.close()
+    if run_queries:
+        query(conn, cur, mode)
+
+    if close:
+        conn.close()
 
 def agg_concordance(run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):

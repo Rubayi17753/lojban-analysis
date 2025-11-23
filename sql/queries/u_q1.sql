@@ -30,7 +30,7 @@ SELECT
 FROM lojban1999_aggregate
 
 WHERE theme_code NOT IN (
-    '12.3', '12.4', '12.5.1' -- excludes religio-cultural-gismu
+    '12.3', '12.4', '12.5.1', '7.4.3' -- excludes religio-cultural-gismu and SI prefixes
     )
     AND gismu NOT LIKE 'brod_'
 
