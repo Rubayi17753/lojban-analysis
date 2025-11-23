@@ -1,0 +1,595 @@
+ 9999  a                       and/or                      4A
+  123  a'a                     (I'm attentive!)            4UI
+   53  a'e                     (I'm alert!)                 UI
+   78  a'i                     (oof!)                      4UI
+  642  a'o                     (I hope!)                   4UI
+  132  a'u                     (interest!)                 4UI
+ 2743  ai                      (I will!)                    UI
+ 3057  au                      (I want!)                    UI
+ 3112  ba                      after                        PU
+  161  ba'a                    (Anticipation!)              UI
+  848  ba'e                    ====>                       4BAhE
+   88  ba'i                    replaced by                 4BAI
+ 1188  ba'o                    having completed            4ZAhO
+   59  ba'u                    (Really! :-)                4UI
+ 1420  bai                     compelled by                4BAI
+ 1158  bau                     in language                 4BAI
+ 9999  be                      of                          4BE
+   75  be'a                    north (of)                   FAhA
+   14  be'e                    Ready to listen?             COI
+  105  be'i                    sent by                     4BAI
+  869  be'o                    ,                           4BEhO
+   16  be'u                    (Need!)                      UI
+ 1124  bei                     of                          4BEI
+  729  bi                      8                           4PA
+  114  bi'i                    unordered interval          4BIhI
+   34  bi'o                    ordered interval             BIhI
+    7  bi'u                    (old information)           4UI
+ 1503  bo                      -                            BO
+  328  boi                                                 4BOI
+  643  bu                      as a letter                  BU
+  459  bu'a                    some relation #1            4GOhA
+   24  bu'e                    some relation #2             GOhA
+   28  bu'i                    some relation #3            4GOhA
+    2  bu'o                    (start emotion)             4UI
+  161  bu'u                    coincident (with)            FAhA
+ 9999  by                      b                           4BY
+ 6219  ca                      at the time (of)            4PU
+  681  ca'a                    actually is                 4CAhA
+  116  ca'e                    (I define!)                 4UI
+   74  ca'i                    by authority of             4BAI
+  948  ca'o                    all during                  4ZAhO
+   47  ca'u                    in front (of)                FAhA
+  326  cai                     (-intense emotion!)          CAI
+   39  cau                     lacked by                   4BAI
+ 1716  ce                      and (set)                    JOI
+    9  ce'a                    script:                      BY
+    9  ce'i                    %                            PA
+  426  ce'o                    and then                    4JOI
+  309  cei                     alias                        CEI
+ 5174  ci                      3                           4PA
+   93  ci'e                    in system                   4BAI
+   32  ci'i                    infinity                     PA
+   41  ci'o                    emoted by                   4BAI
+   38  ci'u                    on the scale                4BAI
+ 7241  co                      of type                      CO
+ 1628  co'a                    on starting                  ZAhO
+  390  co'e                    whatzit-ing                  GOhA
+  197  co'i                    on the event (of)            ZAhO
+ 4978  co'o                    goodbye                     4COI
+  374  co'u                    on ceasing                  4ZAhO
+ 2167  coi                     hello                        COI
+ 9999  cu                      (is/does)                   4CU
+    3  cu'a                    absolute value (of)          VUhU
+   39  cu'e                    how related (to)?           4CUhE
+   52  cu'i                    (Not particularly!)          CAI
+   27  cu'o                    probability                 4MOI
+  512  cu'u                    (as) said by                4BAI
+  452  cy                      c                            BY
+ 9999  da                      something #1                4KOhA
+  135  da'a                    all but                      PA
+   16  da'e                    what I'll say later          KOhA
+  887  da'i                    supposing                   4UI
+   24  da'o                    [cancel anaphora]            DAhO
+   57  da'u                    what I said earlier         4KOhA
+  133  dai                     what I say                   KOhA
+   41  dau                     A                           4PA
+ 9999  de                      something #2                4KOhA
+  149  de'a                    while pausing (from)        4ZAhO
+   77  de'e                    what I'll say soon          4KOhA
+  103  de'i                    dated                       4BAI
+    5  de'o                    logarithm (of)              4VUhU
+  207  de'u                    what I said recently         KOhA
+  607  dei                     what I'm saying now         4KOhA
+ 1552  di                      something #3                4KOhA
+  180  di'a                    upon resuming                ZAhO
+ 4824  di'e                    what I say next              KOhA
+  119  di'i                    regularly                    TAhE
+  113  di'o                    at the locus of             4BAI
+ 1138  di'u                    what I just said            4KOhA
+ 9999  do                      you                         4KOhA
+   49  do'a                    (Generously!)                UI
+  103  do'e                    of/by                       4BAI
+    7  do'i                    nonspecific utterance       4KOhA
+  155  do'o                    you and others               KOhA
+  188  do'u                    ,                           4DOhU
+ 2446  doi                     O                            DOI
+ 2745  du                      =                            GOhA
+   12  du'a                    east (of)                   4FAhA
+   63  du'e                    too many                    4PA
+   73  du'i                    as much as                  4BAI
+   94  du'o                    according to                4BAI
+ 4316  du'u                    fact that                    NU
+  869  dy                      d                           4BY
+ 3852  e                       and                         4A
+  157  e'a                     (OK by me!)                  UI
+  106  e'e                     (Can do!)                   4UI
+   98  e'i                     (No choice!)                4UI
+  671  e'o                     (Please!)                   4UI
+  946  e'u                     (Suggestion!)               4UI
+ 1132  ei                      (Must!)                     4UI
+ 3282  fa                      x1=                          FA
+  345  fa'a                    towards                      FAhA
+   26  fa'e                    reverse of                  4BAI
+    8  fa'i                    reciprocal of                VUhU
+  132  fa'o                    THE END                     4FAhO
+  289  fa'u                    respectively                 JOI
+  232  fai                     of/by                        FA
+  408  fau                     in the event of              BAI
+ 1659  fe                      x2=                          FA
+    8  fe'a                    nth root of                 4VUhU
+   49  fe'e                    space:                       FEhE
+   18  fe'i                    divided by                   VUhU
+   50  fe'o                    over and out                4COI
+   79  fe'u                    ,                           4FEhU
+   98  fei                     B                           4PA
+ 7363  fi                      x3=                         4FA
+   29  fi'a                    x?=                         4FA
+   46  fi'e                    created by                   BAI
+  124  fi'i                    welcome                     4COI
+  519  fi'o                    [modal based on]            4FIhO
+   92  fi'u                    /                           4PA
+ 1935  fo                      x4=                          FA
+  675  fo'a                    it-6                         KOhA
+  117  fo'e                    it-7                         KOhA
+   64  fo'i                    it-8                         KOhA
+   11  fo'o                    it-9                         KOhA
+  113  fo'u                    it-10                       4KOhA
+   42  foi                     }                            FOI
+  808  fu                      x5=                          FA
+    5  fu'a                    reverse Polish               FUhA
+   93  fu'e                    [indicator scope:]          4FUhE
+   25  fu'i                    (Easy!)                      UI
+  158  fu'o                    [end indicator]             4FUhO
+   15  fu'u                    some math operator           VUhU
+  148  fy                      f                            BY
+ 1433  ga                      either                       GA
+   55  ga'a                    to observer                  BAI
+   30  ga'e                    upper-case:                 4BY
+  199  ga'i                    (Humph!)                     UI
+   13  ga'o                    closed interval              GAhO
+   74  ga'u                    above                        FAhA
+   85  gai                     C                           4PA
+  289  gau                     done by                      BAI
+ 1302  ge                      both                         GA
+   14  ge'a                    no-op                       4VUhU
+   37  ge'e                    (!)                         4UI
+   19  ge'i                    either or both?              GA
+   30  ge'o                    Greek:                       BY
+  371  ge'u                    ,                           4GEhU
+   35  gei                     exp                         4VUhU
+ 1795  gi                      or/and/then/whether          GI
+  180  gi'a                    and/or                       GIhA
+ 3674  gi'e                    and                          GIhA
+   98  gi'i                    and?/or?                    4GIhA
+   67  gi'o                    if and only if              4GIhA
+   33  gi'u                    whether or not              4GIhA
+ 9999  go                      if and only if              4GA
+  174  go'a                    what I said recently         GOhA
+  128  go'e                    , the former                4GOhA
+ 3477  go'i                    , the same                  4GOhA
+   15  go'o                    the following               4GOhA
+   21  go'u                    what I said earlier          GOhA
+ 2381  goi                     alias                        GOI
+  334  gu                      anyway,                     4GA
+   31  gu'a                    either                      4GUhA
+   76  gu'e                    both                        4GUhA
+   20  gu'i                    either or both?             4GUhA
+    5  gu'o                    if and only if               GUhA
+    6  gu'u                    anyway                       GUhA
+ 2837  gy                      g                            BY
+ 9999  i                       .                           4I
+  205  i'a                     (I guess so!)                UI
+  169  i'e                     (Good!)                     4UI
+   39  i'i                     (Togetherness!)             4UI
+  120  i'o                     (Thanks!)                   4UI
+   48  i'u                     (Familiar!)                  UI
+ 1033  ia                      (I believe!)                4UI
+ 3005  ie                      (Agreed!)                   4UI
+   34  ii                      (Fear!)                     4UI
+ 1394  io                      (Respect!)                   UI
+  271  iu                      (Love!)                      UI
+ 1332  ja                      and/or                      4JA
+  441  ja'a                    it's true (that)             NA
+  256  ja'e                    therefore                    BAI
+   66  ja'i                    by rule                      BAI
+  120  ja'o                    (I conclude!)               4UI
+ 1187  jai                     of:                          JAI
+   27  jau                     D                            PA
+ 3491  je                      and                          JA
+  361  je'a                    indeed                      4NAhE
+  119  je'e                    roger                       4COI
+   70  je'i                    and?/or?                    4JA
+   20  je'o                    Hebrew:                      BY
+  163  je'u                    ('tis true!)                 UI
+ 1157  jei                     truth of                     NU
+  636  ji                      and?/or?                    4A
+ 1087  ji'a                    in addition,                4UI
+   57  ji'e                    up to limit                  BAI
+  209  ji'i                    approximately               4PA
+   19  ji'o                    under direction of           BAI
+  107  ji'u                    based on                     BAI
+  298  jo                      if and only if               JA
+   64  jo'a                    [OK]                        4UI
+   30  jo'e                    union with                   JOI
+   11  jo'i                    array:                       JOhI
+   11  jo'o                    Arabic:                     4BY
+  393  jo'u                    in common with               JOI
+ 2532  joi                     together with                JOI
+  414  ju                      whether or not              4JA
+   72  ju'a                    (I state!)                   UI
+   15  ju'e                    vague connective            4JOI
+  368  ju'i                    Hey                         4COI
+  366  ju'o                    (indeed!)                    UI
+   11  ju'u                    in base                      VUhU
+  143  jy                      j                            BY
+ 6033  ka                      quality of                   NU
+   50  ka'a                    destination of               BAI
+ 1836  ka'e                    innately capable of          CAhA
+   54  ka'i                    represented by              4BAI
+   65  ka'o                    i                           4PA
+  129  ka'u                    (I know culturally!)        4UI
+  246  kai                     characterizing               BAI
+ 1326  kau                     [indirect knowledge]         UI
+ 3219  ke                      type of                      KE
+ 2716  ke'a                    he/she/it                    KOhA
+  314  ke'e                    ,                            KEhE
+    6  ke'i                    open interval               4GAhO
+   43  ke'o                    what was that?               COI
+  114  ke'u                    repeating,                  4UI
+ 3637  kei                     ,                           4KEI
+  673  ki                      :                            KI
+  640  ki'a                    (Huh?)                      4UI
+  465  ki'e                    thanks                       COI
+   26  ki'i                    as a relation of             BAI
+  100  ki'o                    ,                           4PA
+  959  ki'u                    because                     4BAI
+ 6638  ko                      YOU!                        4KOhA
+ 8179  ko'a                    it-1                        4KOhA
+ 1947  ko'e                    it-2                         KOhA
+  481  ko'i                    it-3                         KOhA
+  138  ko'o                    it-4                         KOhA
+  421  ko'u                    it-5                        4KOhA
+  123  koi                     bounded by                   BAI
+ 5380  ku                                                  4KU
+   40  ku'a                    intersection with           4JOI
+   14  ku'e                                                 KUhE
+ 2003  ku'i                    however,                     UI
+  928  ku'o                    ,                           4KUhO
+   95  ku'u                    in culture                  4BAI
+  415  ky                      k                           4BY
+ 9999  la                                                  4LA
+  231  la'a                    (it's likely!)               UI
+ 1443  la'e                    that referred to by          LAhE
+   68  la'i                    the set of                  4LA
+  548  la'o                    [name:]                     4ZOI
+  126  la'u                    in quantity                 4BAI
+  249  lai                     the mass of                  LA
+  112  lau                     [punctuation:]               LAU
+ 9999  le                      the                         4LE
+   42  le'a                    in category                  BAI
+  504  le'e                    the stereotypical            LE
+  612  le'i                    the set                     4LE
+   59  le'o                    (Get 'em!)                   UI
+  300  le'u                    ''                          4LEhU
+ 7420  lei                     the mass of                 4LE
+ 5198  li                      the number                   LI
+  260  li'a                    clearly,                     UI
+   48  li'e                    led by                      4BAI
+  445  li'i                    experience of                NU
+  308  li'o                    ...                         4UI
+ 7265  li'u                    ''                          4LIhU
+ 9999  lo                      some                        4LE
+   15  lo'a                    default alphabet:           4BY
+ 2997  lo'e                    the typical                  LE
+ 1021  lo'i                    the set of all              4LE
+   42  lo'o                                                 LOhO
+  325  lo'u                    ``                          4LOhU
+ 7379  loi                     the mass of all             4LE
+ 7648  lu                      ``                          4LU
+ 1028  lu'a                    the individuals of          4LUhI
+  102  lu'e                    the symbol for              4LAhE
+  361  lu'i                    the set composed of          LUhI
+  318  lu'o                    the mass composed of        4LUhI
+  159  lu'u                    ,                            LUhU
+ 1011  ly                      l                           4BY
+ 5456  ma                      who?/what?                   KOhA
+  534  ma'a                    we with you                  KOhA
+   13  ma'e                    of material                 4BAI
+   87  ma'i                    in reference frame           BAI
+   61  ma'o                    operator:                    MAhO
+   34  ma'u                    +                            PA
+  138  mai                     -thly                        MAI
+  118  mau                     exceeded by                 4BAI
+ 9999  me                      pertaining to               4ME
+   33  me'a                    undercut by                  BAI
+  112  me'e                    with name                   4BAI
+   69  me'i                    <                            PA
+  103  me'o                    the expression              4LI
+   68  me'u                    ,                           4MEhU
+  497  mei                     -some                       4MOI
+ 9999  mi                      me                          4KOhA
+  669  mi'a                    we, not you,                4KOhA
+ 5570  mi'e                    and I'm                      COI
+  983  mi'o                    me and you                  4KOhA
+   17  mi'u                    ditto,                       UI
+  933  mo                      what?                       4GOhA
+   28  mo'a                    too few                     4PA
+  302  mo'e                    [number:]                    MOhE
+  189  mo'i                    moving                      4MOhI
+   60  mo'o                    -th section                  MAI
+  325  mo'u                    on completing                ZAhO
+  452  moi                     -th                          MOI
+ 2241  mu                      5                            PA
+  301  mu'a                    for example,                4UI
+  172  mu'e                    achievement of               NU
+  913  mu'i                    because                      BAI
+  397  mu'o                    Over,                        COI
+  117  mu'u                    exemplified by               BAI
+ 9999  my                      m                           4BY
+ 9999  na                      not true                    4NA
+ 2543  na'e                    other-than-                  NAhE
+  117  na'i                    [no]                        4UI
+  294  na'o                    typically                   4TAhE
+  113  na'u                    [operator:]                  NAhU
+  767  nai                     -not                        4NAI
+  100  nau                     [no shifts:]                4BY
+ 3937  ne                      , of                         GOI
+  124  ne'a                    next to                      FAhA
+  675  ne'i                    within                       FAhA
+   24  ne'o                    factorial                   4VUhU
+   14  ne'u                    south (of)                   FAhA
+  260  nei                     this                        4GOhA
+ 3004  ni                      degree of                   4NU
+   83  ni'a                    below                        FAhA
+   24  ni'e                    [number:]                    NIhE
+  149  ni'i                    because                     4BAI
+ 2056  ni'o                                                4NIhO
+   29  ni'u                    -                            PA
+ 9999  no                      0                           4PA
+  158  no'a                    that                         GOhA
+  279  no'e                    not-particularly-           4NAhE
+  292  no'i                                                4NIhO
+   29  no'o                    typical value               4PA
+  453  no'u                    , which is                  4GOI
+ 3254  noi                     , which                      NOI
+ 9999  nu                      event of                    4NU
+   27  nu'a                    [relation:]                  NUhA
+   19  nu'e                    I promise,                   COI
+  127  nu'i                                                4NUhI
+  293  nu'o                    can but hasn't               CAhA
+  117  nu'u                    ,                           4NUhU
+ 1081  ny                      n                           4BY
+  596  o                       if and only if              4A
+  130  o'a                     (Pride!)                    4UI
+   42  o'e                     (Closeness!)                4UI
+   49  o'i                     (Careful!)                   UI
+   58  o'o                     (Patience!)                  UI
+   65  o'u                     (Ahh! Relaxing!)            4UI
+  979  oi                      (Oy!)                       4UI
+ 4589  pa                      1                            PA
+  142  pa'a                    in addition to               BAI
+   23  pa'e                    (justice!)                   UI
+   50  pa'i                    :                            VUhU
+  101  pa'o                    transfixing                  FAhA
+   15  pa'u                    having component             BAI
+   51  pai                     pi                          4PA
+  245  pau                     [question:]                  UI
+ 3368  pe                      of                           GOI
+  451  pe'a                    [figurative:]                PEhA
+   25  pe'e                    printed:                    4BY
+ 2016  pe'i                    (I think)                    UI
+    8  pe'o                    [mex operator:]             4PEhO
+  216  pe'u                    please,                      COI
+  365  pei                     (what do you think?)         CAI
+ 1245  pi                      .                            PA
+    6  pi'a                    matrix row:                  VUhU
+  160  pi'e                    ;                           4PA
+   42  pi'i                    x                           4VUhU
+   83  pi'o                    used by                      BAI
+   27  pi'u                    ,each-with-each with         JOI
+ 1359  po                      belonging to                 GOI
+  101  po'a                    [end figurative]            4POhA
+  194  po'e                    belonging to                 GOI
+   34  po'i                    in the sequence             4BAI
+  382  po'o                    ...                          POhO
+  924  po'u                    which is                    4GOI
+ 7550  poi                     that                        4NOI
+ 4350  pu                      before                      4PU
+   16  pu'a                    pleased by                   BAI
+   53  pu'e                    by process                   BAI
+  259  pu'i                    can and has                 4CAhA
+  689  pu'o                    being about to              4ZAhO
+  165  pu'u                    process of                   NU
+  330  py                      p                            BY
+ 1868  ra                      it                           KOhA
+   59  ra'a                    pertained to by             4BAI
+   14  ra'e                    ...                          PA
+  134  ra'i                    from source                  BAI
+   47  ra'o                    for me too                   RAhO
+   36  ra'u                    primarily,                   UI
+   69  rai                     with superlative            4BAI
+   88  rau                     enough                       PA
+ 9999  re                      2                           4PA
+   20  re'a                    transpose                    VUhU
+   10  re'e                    (-spiritual)                4UI
+   12  re'i                    go ahead,                    COI
+   48  re'o                    adjacent (to)                FAhA
+    8  re'u                    ordinal tense               4ROI
+   48  rei                     E                            PA
+ 4030  ri                      it                          4KOhA
+  301  ri'a                    because                      BAI
+   15  ri'e                    (sigh!)                      UI
+   49  ri'i                    experienced by              4BAI
+   19  ri'o                    integral                    4VUhU
+   24  ri'u                    on the right (of)            FAhA
+ 8128  ro                      every                        PA
+   26  ro'a                    (-social)                    UI
+   28  ro'e                    (-mental)                    UI
+   22  ro'i                    (-emotional)                4UI
+   18  ro'o                    (-physical)                 4UI
+   35  ro'u                    (-sexual)                   4UI
+  212  roi                     time                         ROI
+  962  ru                      it                           KOhA
+  124  ru'a                    (I postulate)               4UI
+   44  ru'e                    (-weak)                      CAI
+   88  ru'i                    continuously                 TAhE
+   11  ru'o                    Cyrillic:                    BY
+  144  ru'u                    surrounding                  FAhA
+  443  ry                      r                           4BY
+  833  sa                      <---[erase sentence]        4SA
+   87  sa'a                    ]                            UI
+  125  sa'e                    speaking precisely,         4UI
+   12  sa'i                    matrix columns:              VUhU
+    9  sa'o                    derivative of                VUhU
+   31  sa'u                    simply speaking,             UI
+  261  sai                     (-strong emotion!)           CAI
+  537  sau                     requiring                    BAI
+ 9999  se                      2nd place of                4SE
+   28  se'a                    (on my own!)                 UI
+   10  se'e                    IPA:                        4BY
+   68  se'i                    (-self-oriented)            4UI
+  112  se'o                    (I just FEEL it!)            UI
+  268  se'u                    ]                            SEhU
+ 1068  sei                     [                           4SEI
+ 1525  si                      <---[erase word]             SI
+   92  si'a                    similarly,                  4UI
+   20  si'e                    -portion (of)                MOI
+   12  si'i                    sigma summation              VUhU
+  475  si'o                    idea of                     4NU
+   49  si'u                    aided by                     BAI
+ 9999  so                      9                           4PA
+  206  so'a                    almost every                 PA
+  271  so'e                    an awful lot (of)            PA
+  967  so'i                    many (of)                   4PA
+  353  so'o                    several (of)                4PA
+  228  so'u                    a few (of)                   PA
+  142  soi                     and vice versa with          SOI
+  974  su                      [let's forget it]           4SU
+   82  su'a                    in general,                 4UI
+   54  su'e                    at most                     4PA
+   80  su'i                    +                           4VUhU
+ 1678  su'o                    at least (some)             4PA
+  254  su'u                    how (of)                     NU
+  948  sy                      s                           4BY
+ 2982  ta                      that-there                  4KOhA
+   59  ta'a                    excuse me,                  4COI
+  289  ta'e                    habitually                   TAhE
+  266  ta'i                    in form                      BAI
+  286  ta'o                    by the way                   UI
+   57  ta'u                    alias                        UI
+  823  tai                     by method                   4BAI
+   89  tau                     [shift:]                    4LAU
+ 4726  te                      3rd place of                4SE
+   19  te'a                    to the power                 VUhU
+   17  te'e                    bordering                    FAhA
+    8  te'o                    e                            PA
+   20  te'u                                                 TEhU
+   95  tei                     {                           4TEI
+ 3318  ti                      this-here                    KOhA
+   18  ti'a                    behind                       FAhA
+  164  ti'e                    I hear                      4UI
+   35  ti'i                    suggested by                 BAI
+   12  ti'o                    [math precedence]            SEI
+   75  ti'u                    time-stamped                4BAI
+ 9999  to                      (                           4TO
+   18  to'a                    lower-case:                 4BY
+  772  to'e                    opposite-of-                 NAhE
+  489  to'i                    [                            TO
+  164  to'o                    away from                    FAhA
+   46  to'u                    in brief,                    UI
+ 1814  toi                     )                            TOI
+ 1962  tu                      that-yonder                  KOhA
+ 2377  tu'a                                                 LAhE
+  381  tu'e                                                4TUhE
+  156  tu'i                    location:                   4BAI
+   85  tu'o                    null operand                4PA
+  391  tu'u                                                4TUhU
+  431  ty                      t                            BY
+  277  u                       whether or not             11A
+   63  u'a                     (Gain!)                      UI
+  122  u'e                     (WOW!)                      4UI
+  518  u'i                     (Amusing!)                  4UI
+   19  u'o                     (Courage!)                  4UI
+  282  u'u                     (I'm sorry!)                 UI
+  627  ua                      (Eureka!)                   4UI
+  821  ue                      (What!)                     4UI
+ 1706  ui                      (Wheee!)                     UI
+  251  uo                      (Done!)                      UI
+  975  uu                      (What a pity!)              4UI
+ 3635  va                      there (at)                  4VA
+   16  va'a                    -                           4VUhU
+  121  va'i                    in other words,              UI
+  494  va'o                    under conditions            4BAI
+    5  va'u                    benefiting from             4BAI
+   33  vai                     F                           4PA
+ 1634  vau                                                  VAU
+ 1343  ve                      4th place of                4SE
+   68  ve'a                    over an area (of)           4VEhA
+   14  ve'e                    in an area (of)              VEhA
+   22  ve'i                    in a small part (of)         VEhA
+   56  ve'o                    ]                            VEhO
+   12  ve'u                    over a region (of)          4VEhA
+  234  vei                     left bracket                4VEI
+ 3098  vi                      here (at)                    VA
+   25  vi'a                    on-a-surface                 VIhA
+   37  vi'e                    in-space-time               4VIhA
+    5  vi'i                    on a line                   4VIhA
+   34  vi'o                    wilco                        COI
+   14  vi'u                    in a volume                  VIhA
+  701  vo                      4                           4PA
+  551  vo'a                    x1, it/they,                4KOhA
+  110  vo'e                    x2, it/they,                4KOhA
+   35  vo'i                    x3, it/they,                4KOhA
+   24  vo'o                    x4, it/they,                 KOhA
+   19  vo'u                    x5, it/they,                 KOhA
+  587  voi                     that                         NOI
+  438  vu                      yonder (at)                  VA
+   17  vu'a                    west (of)                    FAhA
+   14  vu'e                    (I'm being good!)            UI
+   64  vu'i                    the sequence:               4LUhI
+   21  vu'u                    -                            VUhU
+  207  vy                      v                            BY
+  342  xa                      6                           4PA
+  461  xe                      5th place of                 SE
+  705  xi                      -sub-                       4XI
+  268  xo                      how many (of)?               PA
+ 3502  xu                      is it true?                  UI
+  493  xy                      x                           4BY
+  288  y                       (um)                       11Y
+    8  y'y                     '                           4BY
+  735  za                      , a while                   4ZI
+  271  za'a                    (I observe)                  UI
+  200  za'e                                                4BAhE
+  288  za'i                    state of                     NU
+  690  za'o                    continuing too long         4ZAhO
+   49  za'u                    >                           4PA
+   50  zai                     [alphabet:]                  LAU
+   27  zau                     approved by                 4BAI
+  478  ze                      7                           4PA
+  352  ze'a                    for a while (during)        4ZEhA
+   76  ze'e                    for a bit (during)          4ZEhA
+   78  ze'i                    in a moment (during)        4ZEhA
+  119  ze'o                    outward                     4FAhA
+  175  ze'u                    for an eon (during)          ZEhA
+  568  zei                     -                           4ZEI
+  672  zi                      , a short time              4ZI
+   19  zi'a                    and/or                      4ZIhA
+  366  zi'e                    and                         4ZIhA
+    5  zi'i                    and?/or?                     ZIhA
+  422  zi'o                    if and only if               ZIhA
+   11  zi'u                    whether or not               ZIhA
+ 6450  zo                      quote-unquote:              4ZO
+   53  zo'a                    tangential (to)              FAhA
+ 1699  zo'e                    something                    KOhA
+  104  zo'i                    inward                      4FAhA
+ 1285  zo'o                    (tee-hee :-)                4UI
+ 1645  zo'u                    such that:                   ZOhU
+ 1596  zoi                     "                            ZOI
+  465  zu                      , a long time               4ZI
+   86  zu'a                    on the left (of)            4FAhA
+   24  zu'e                    with actor                   BAI
+  151  zu'i                    the usual                   4KOhA
+  185  zu'o                    activity of                  NU
+   58  zu'u                    on the one hand,            4UI
+  187  zy                      z                            BY
