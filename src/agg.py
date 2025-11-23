@@ -23,7 +23,7 @@ def register_functions():
     conn.create_function('integer_to_series', narg=2, func=integer_to_series)
 
 def agg(view_num, run_schema=0, mode='pandas', 
-        drop_views=1, create_views=1, run_queries=1, close=1,):
+        refresh_views=1, create_views=1, run_queries=1, close=1,):
 
     register_functions()
 
@@ -31,8 +31,8 @@ def agg(view_num, run_schema=0, mode='pandas',
         with open('sql/schema.sql', 'r', encoding='utf-8') as f:
             cur.executescript(f.read())
 
-    if drop_views:
-        execute_sql('drop_views', conn, cur)
+    if refresh_views:
+        execute_sql(f'drop_views{view_num}', conn, cur)
 
     if create_views:
         execute_sql(f'create_views{view_num}', conn, cur)
@@ -44,7 +44,7 @@ def agg(view_num, run_schema=0, mode='pandas',
         conn.close()
 
 def agg_concordance(run_schema=0, mode='pandas', 
-        drop_views=1, create_views=1,):
+        refresh_views=1, create_views=1,):
 
     from sql.query_aux.q5 import main as q5
 

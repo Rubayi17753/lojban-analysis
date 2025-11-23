@@ -1,0 +1,1 @@
+DROP VIEW IF EXISTS lujvo_component_meanings;
