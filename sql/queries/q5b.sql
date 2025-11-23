@@ -4,6 +4,13 @@ SELECT
     lujvo_1999_concordance.lujvo_parsed AS lujvo_parsed,
     lujvo_for_split AS rafsi,
     rafsi_defs.gismu,
+
+    CASE
+        WHEN LENGTH(rafsi_defs.gismu) < 5 THEN 'c'
+        WHEN LENGTH(rafsi_defs.gismu) = 5 THEN 'g'
+        ELSE '_'
+    END AS gismu_or_cmavo,
+
     rafsi_defs.meaning,
     lujvo_component_meanings.component_meaning AS component_meaning,
     lujvo_component_meanings.assigned_meaning AS meaning_lujv1999,
