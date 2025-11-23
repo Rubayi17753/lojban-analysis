@@ -20,6 +20,11 @@ Intermediate tables
 Stage 3:
 - (new) rafsi_freqs <-- lujvo_freqs_1999_freqs
 
+Stage 4:
+- ... --> q5_concordances_unpacked.csv --> lujvo_1999_concordance (intermediate table)
+- lujvo_1999_concordance + lujvo_freqs_1999 (secondary) --view4--> lujvo_component_meanings
+- lujvo_component_meanings --> q5b
+
 Views:
 - positional_percentages <-- rafsi_freqs
 - gismu_freqs <-- positional_percentages

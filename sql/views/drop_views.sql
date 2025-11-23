@@ -4,3 +4,4 @@ DROP VIEW IF EXISTS gismu_freqs;
 DROP VIEW IF EXISTS form_freqs;
 DROP VIEW IF EXISTS form_freqs2;
 DROP VIEW IF EXISTS lojban1999_aggregate;
+DROP VIEW IF EXISTS lujvo_component_meanings;

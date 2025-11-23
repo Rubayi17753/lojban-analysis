@@ -70,3 +70,8 @@ CREATE TABLE IF NOT EXISTS lujvo_1999_concordance (
 	lujvo_len INTEGER,
 	PRIMARY KEY (rowid)
 );
+
+CREATE TABLE IF NOT EXISTS noralujv (
+	lujvo TEXT,
+	meaning TEXT
+);

@@ -22,7 +22,7 @@ def register_functions():
     conn.create_function('lujvo_length', narg=1, func=lujvo_length)
     conn.create_function('integer_to_series', narg=2, func=integer_to_series)
 
-def agg1(run_schema=0, mode='pandas', 
+def agg(view_num, run_schema=0, mode='pandas', 
         drop_views=1, create_views=1,):
 
     register_functions()
@@ -35,18 +35,7 @@ def agg1(run_schema=0, mode='pandas',
         execute_sql('drop_views', conn, cur)
 
     if create_views:
-        execute_sql('create_views', conn, cur)
-
-    query(conn, cur, mode)
-    conn.close()
-
-def agg2(run_schema=0, mode='pandas', 
-        drop_views=1, create_views=1,):
-
-    register_functions()
-    
-    if create_views:
-        execute_sql('create_views2', conn, cur)    
+        execute_sql(f'create_views{view_num}', conn, cur)
 
     query(conn, cur, mode)
     conn.close()
