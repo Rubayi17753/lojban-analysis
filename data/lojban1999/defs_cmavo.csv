@@ -156,7 +156,7 @@ ci'u,ckilu,BAI,on the scale,"ckilu modal, 1st place on the scale ..."
 cu'u,cusku,BAI,as said by,"cusku modal, 1st place (attribution/quotation) as said by source ...; used for quotation"
 de'i,detri,BAI,dated,"detri modal, 1st place (for letters) dated ... ; attaches date stamp"
 di'o,diklo,BAI,at the locus of,"diklo modal, 1st place at the locus of ..."
-do'e,-----,BAI,unspecif modal,elliptical/unspecified modal
+do'e,.,BAI,unspecif modal,elliptical/unspecified modal
 du'i,dunli,BAI,as much as,"dunli modal, 1st place (equalled by) equally; as much as ..."
 du'o,djuno,BAI,according to,"djuno modal, 1st place (info source) authoritatively; according to ...; known by ..."
 fa'e,fatne,BAI,reverse of,"fatne modal, 1st place backwards; reverse of ..."
@@ -278,7 +278,7 @@ nu'o,,CAhA,can but has not,modal aspect: can but has not; unrealized potential
 pu'i,,CAhA,can and has,modal aspect: can and has; demonstrated potential
 cu'e,,CUhE,modal ?,tense/modal question
 nau,,CUhE,reference point,tense: refers to current space/time reference absolutely
-du'u,du*,NU,bridi abstract,abstractor: predication/bridi abstractor; x1 is predication [bridi] expressed in sentence x2
+du'u,dunli,NU,bridi abstract,abstractor: predication/bridi abstractor; x1 is predication [bridi] expressed in sentence x2
 jei,jetnu,NU,truth abstract,abstractor: truth-value abstractor; x1 is truth value of [bridi] under epistemology x2
 ka,ckaji,NU,property abstract,abstractor: property/quality abstractor (-ness); x1 is quality/property exhibited by [bridi]
 kei,,KEI,end abstraction,elidable terminator: end abstraction bridi (often elidable)
