@@ -1,2 +1,2 @@
 C = 'bcdfgjklmnprstvwxz'
-A = 'aeiou'
+A = 'aeiouy'

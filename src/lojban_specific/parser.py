@@ -30,7 +30,6 @@ def determine_wordclass(s):
 def lujvo_parser(s):
 
     # In English: compound nouns
-    # Assuming we know that the word is a lujvo
 
     out = list()
     while s != '':
@@ -78,6 +77,21 @@ def lujvo_parser(s):
             s = ''
 
     return out
+
+def compound_cmavo_parser(s, delim=None):
+
+    # if delim=None, return list
+    out = list()
+    len_str = len(s)
+
+    for char1, char2 in zip(s[0 : len_str-1], s[1 : len_str]):
+        if char1 in inv.A and char2 in inv.C:
+            s = s.replace(f'{char1}{char2}', f'{char1}_{char2}')
+
+    if delim == None:   
+        return s.split('_')
+    else:
+        return s.replace('_', delim)
 
 def fuivla_parser(s):
     # In English: loanwords
