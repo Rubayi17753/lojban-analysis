@@ -21,9 +21,8 @@ def process_freqs_cmavo2():
 		composites=('cmavo_composite', ' '.join)
 		).reset_index()
 
-	df3 = df.groupby('cmavo')['cmavo_composite'].agg(' '.join)
-
-	print(df2)
+	print('freqs_cmavo2 processed')
+	return df2
 
 def create_grand_table():
 	df1 = (Table('defs_cmavo')
@@ -43,7 +42,19 @@ def create_grand_table():
 			right_on=['cmavo_rafsi', 'gismu'], 
 			how='outer'))
 
-	return df3
+	# Enter frequency data
+	df_cmavo1 = Table('freqs_cmavo1').dff[['cmavo', 'freq']]
+	df_cmavo2 = process_freqs_cmavo2()
+	df_gismu = Table('freqs_gismu').dff[['gismu', 'freq']]
+
+	df3_cmavo = (df3[df3['class'].notna()]
+			.merge(df_cmavo1[['cmavo', 'freq']], 
+			left_on='cmavo_rafsi', 
+			right_on='cmavo', 
+			how='outer')
+			)
+
+	return df3_cmavo
 
 def main():
 	create_grand_table().to_csv('results/q1.tsv', sep="\t", index=False)
