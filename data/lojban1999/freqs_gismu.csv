@@ -339,7 +339,7 @@ fatci,666,,fact
 fatne,14,,reverse
 fatri,121,,distribute
 febvi,42,,boil
-femti,5,,1,00E-15
+femti,5,,10exp-15
 fendi,72,,divide
 fengu,163,,angry
 fenki,109,,crazy
@@ -399,7 +399,7 @@ genxu,9,,hook
 gerku,2764,,dog
 gerna,426,,grammar
 gidva,45,,guide
-gigdo,6,(x),1,00E+09
+gigdo,6,(x),10exp+09
 ginka,62,,camp
 girzu,355,,group
 gismu,6524,,root word
@@ -408,7 +408,7 @@ gleki,702,,happy
 gletu,200,,copulate
 glico,401,,English
 gluta,15,,glove
-gotro,6,,1,00E+24
+gotro,6,,10exp+24
 gradu,128,,unit
 grake,132,,gram
 grana,116,,rod
@@ -705,7 +705,7 @@ matra,27,,motor
 mavji,39,,oats
 maxri,13,,wheat
 mebri,76,,brow
-megdo,6,(x),1,00E+06
+megdo,6,(x),10exp+06
 mekso,90,,MEX
 melbi,997,,beautiful
 meljo,2,,Malaysian
@@ -718,7 +718,7 @@ mexno,18,,Mexican
 midju,87,(x),middle
 mifra,22,,code
 mikce,171,,doctor
-mikri,4,,1,00E-06
+mikri,4,,10exp-06
 milti,7,(x),.001
 milxe,461,,mild
 minde,260,,command
@@ -769,7 +769,7 @@ nanca,682,,year
 nandu,516,,difficult
 nanla,216,,boy
 nanmu,3587,,man
-nanvi,5,,1,00E-09
+nanvi,5,,10exp-09
 narge,71,,nut
 narju,92,,orange
 natfe,68,,deny
@@ -1150,7 +1150,7 @@ tenfa,18,,exponential
 tengu,21,,texture
 terdi,404,,earth
 terpa,273,,fear
-terto,1,,1,00E+12
+terto,1,,10exp+12
 tigni,63,,perform
 tikpa,117,,kick
 tilju,59,,heavy
@@ -1269,7 +1269,7 @@ xekri,380,,black
 xelso,68,,Greek
 xendo,48,,kind
 xenru,111,,regret
-xexso,1,,1,00E+18
+xexso,1,,10exp+18
 xindo,21,,Hindi
 xinmo,4,,ink
 xirma,258,,horse
@@ -1306,7 +1306,7 @@ zdani,1178,,nest
 zdile,319,,amusing
 zekri,184,,crime
 zenba,189,,increase
-zetro,3,,1,00E+21
+zetro,3,,10exp+21
 zgana,682,,observe
 zgike,171,,music
 zifre,352,,free
@@ -1329,8 +1329,8 @@ filso,1,,Palestinian
 jordo,1,v,Jordanian
 sabnu,1,,cabin
 sirxo,1,,Syrian
-terto,1,,1,00E+12
-xexso,1,,1,00E+18
+terto,1,,10exp+12
+xexso,1,,10exp+18
 fanri,2,,factory
 meljo,2,,Malaysian
 panje,2,,sponge
@@ -1347,11 +1347,11 @@ radno,3,,radian
 sirxo,3,,Syrian
 sombo,3,,sow
 xurdo,3,,Urdu
-zetro,3,,1,00E+21
+zetro,3,,10exp+21
 fonmo,4,,foam
 jikru,4,,liquor
 kenra,4,,cancer
-mikri,4,,1,00E-06
+mikri,4,,10exp-06
 ransu,4,,bronze
 romge,4,,chrome
 tabno,4,,carbon
@@ -1359,13 +1359,13 @@ xampo,4,,ampere
 xinmo,4,,ink
 zalvi,4,,grind
 dzipo,5,,Antarctican
-femti,5,,1,00E-15
+femti,5,,10exp-15
 jabre,5,,brake
 jalna,5,,starch
 karli,5,,collar
 kijno,5,,oxygen
 lunsa,5,,condense
-nanvi,5,,1,00E-09
+nanvi,5,,10exp-09
 nikle,5,,nickel
 pesxu,5,,paste
 pruni,5,,elastic
@@ -1374,13 +1374,13 @@ sufti,5,,hoof
 xagri,5,,reed
 zivle,5,,invest
 decti,6,(x),.1
-gigdo,6,(x),1,00E+09
-gotro,6,,1,00E+24
+gigdo,6,(x),10exp+09
+gotro,6,,10exp+24
 gundi,6,,industry
 jansu,6,,diplomat
 jduli,6,,jelly
 livga,6,,liver
-megdo,6,(x),1,00E+06
+megdo,6,(x),10exp+06
 rakso,6,,Iraqi
 rinci,6,,drain
 sacki,6,,match
