@@ -1,5 +1,4 @@
-from src.process import main
-from src.csv_to_table import csv_to_table
+from src.grand_df2 import main
 
 if __name__ == '__main__':
     main()

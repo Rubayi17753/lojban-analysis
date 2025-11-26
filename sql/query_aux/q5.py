@@ -1,4 +1,4 @@
-from src.uncouple_csv import uncouple_csv
+from src.legacy_csv.uncouple_csv import uncouple_csv
 
 def main():
 

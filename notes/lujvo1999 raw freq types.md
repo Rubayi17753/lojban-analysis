@@ -32,6 +32,11 @@ x+x+x+x+x!
 x+x+x+[x]!
 x+[x]+[x]!
 
+# Anomalous x[x] (both integers don't match):
+8424    11,0[1],,nungumsladansu,event-of+jointly+celebrate+dance,,,,,,
+10910   11,0[14],,tadysmadycfi,study+guess+flaw,,,,,,
+Suspected mistypes for 0+[1] and 0[14] judging by immediately following lines, and 'corrected' as such.
+
 # Course of action
 
 ```
