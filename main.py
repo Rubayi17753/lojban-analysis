@@ -1,4 +1,4 @@
-from src.grand_df2 import main
+from src.df_rafsi import main
 
 if __name__ == '__main__':
     main()

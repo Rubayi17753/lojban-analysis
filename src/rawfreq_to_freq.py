@@ -1,7 +1,8 @@
 import re
 
 # x[x]
-pattern = re.compile(r'^\d+\[\d+\]$')
+pattern1 = re.compile(r'^\[\d+\]$')
+pattern2 = re.compile(r'^\d+\[\d+\]$')
 
 def rawfreq_to_freq(s):
 
@@ -17,12 +18,15 @@ def rawfreq_to_freq(s):
 				if sub.isnumeric():
 					freq += int(sub)
 
-				elif pattern.fullmatch(s):
-					x, y = sub.strip(']').split('[')
+				elif pattern1.fullmatch(sub):
+					freq += int(sub[1:-1])
+
+				elif pattern2.fullmatch(sub):
+					x, y = sub.rstrip(']').split('[')
 
 					if x != y:
-						print(sub)
+						print(s)
 			except:
-				print(sub)
+				print(s)
 
 	return freq

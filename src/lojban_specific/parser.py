@@ -34,47 +34,59 @@ def lujvo_parser(s):
     out = list()
     while s != '':
 
-        # finals
-        if len(s) in (3, 4, 5):
-            out.append(s)
-            s = '' 
+        try:
 
-        # CACy-C 
-        elif s[3] == 'y' and s[4] in inv.C:
-            out.append(s[:3])   # exclude rafsi-final -y
-            s = s[4:]
+            # finals
+            if len(s) in (3, 4, 5):
+                out.append(s)
+                s = '' 
 
-        # CACCy-C, CCACy-C
-        elif s[4] == 'y' and s[5] in inv.C:
-            out.append(s[:4])   # exclude rafsi-final -y
-            s = s[5:]
-
-        elif s[2] == "'":
-
-            # CA'A(l/n/r)-C
-            if s[4] in ('l', 'n', 'r') and s[5] in inv.C:
-                out.append(s[:4])   # exclude rafsi-final hyphen
-                s = s[5:]
-            
-            # CA'A-C
-            elif s[2] == "'" and s[4] in inv.C:
-                out.append(s[:4])
+            # CACy-C 
+            elif s[3] == 'y' and s[4] in inv.C:
+                out.append(s[:3])   # exclude rafsi-final -y
                 s = s[4:]
 
-        # CAA(l/n/r)-C
-        elif s[3] in ('l', 'n', 'r') and s[4] in inv.C:
-            out.append(s[:3])   # exclude rafsi-final hyphen
-            s = s[4:]           
+            # CACCy-C, CCACy-C
+            elif s[4] == 'y' and s[5] in inv.C:
+                out.append(s[:4])   # exclude rafsi-final -y
+                s = s[5:]
 
-        # CAA, CAC, CCA - C
-        elif s[3] in inv.C:
-            out.append(s[:3])
-            s = s[3:]
+            elif s[2] == "'":
 
-        else:
-            out.append(s)
-            out.append('CHECK IF LUJVO!')
-            s = ''
+                # CA'A(l/n/r)-C
+                if s[4] in ('l', 'n', 'r') and s[5] in inv.C:
+                    out.append(s[:4])   # exclude rafsi-final hyphen
+                    s = s[5:]
+                
+                # CA'A-C
+                elif s[2] == "'" and s[4] in inv.C:
+                    out.append(s[:4])
+                    s = s[4:]
+
+                else:
+                    print(s)
+                    out.append(s)
+                    out.append('CHECK IF LUJVO!')
+                    s = ''                   
+
+            # CAA(l/n/r)-C
+            elif s[3] in ('l', 'n', 'r') and s[4] in inv.C:
+                out.append(s[:3])   # exclude rafsi-final hyphen
+                s = s[4:]           
+
+            # CAA, CAC, CCA - C
+            elif s[3] in inv.C:
+                out.append(s[:3])
+                s = s[3:]
+
+            else:
+                print(s)
+                out.append(s)
+                out.append('CHECK IF LUJVO!')
+                s = ''
+        
+        except:
+            print(f'Check if lujvo: {s}')
 
     return out
 
