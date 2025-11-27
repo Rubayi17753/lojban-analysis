@@ -23,33 +23,30 @@ def process_freqs_cmavo2():
 
 def create_grand_table():
 
-	from src.df_grand2 import get_df_rafsi_freqs
-
 	df1 = (Table('defs_cmavo')
 			.dff[['cmavo', 'gismu', 'class']])
 	df1 = df1[df1['gismu'].notna() & (df1['gismu'] != '.')]
 
 	df2 = Table('defs_rafsi').dff[['rafsi', 'gismu']]
 
+	from src.df_grand2 import get_df_rafsi_freqs
+	df_rafsi_freqs = get_df_rafsi_freqs()
+
 	# Rename & merge
 	df1.columns = ['cmavo_rafsi', 'gismu', 'class']
 	df2.columns = ['cmavo_rafsi', 'gismu']
-	df_rafsi_freqs = get_df_rafsi_freqs()
+	
 	df_rafsi_freqs = df_rafsi_freqs[['rafsi', 'ini', 'med', 'fin', 'conversion']]
-	df_rafsi_freqs.columns = ['rafsi', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 'as_rafsi_conv']
+	df_rafsi_freqs.columns = ['cmavo_rafsi', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 'as_rafsi_conv']
 
-	df3 = (pd.concat([df1[['cmavo_rafsi', 'gismu']], df2], ignore_index=True)
+	df3 = (pd.concat([df1[['cmavo_rafsi', 'gismu']], df2, df_rafsi_freqs], ignore_index=True)
 			.drop_duplicates()
 
 			.merge(df1[['cmavo_rafsi', 'gismu', 'class']], 
 			left_on=['cmavo_rafsi', 'gismu'], 
 			right_on=['cmavo_rafsi', 'gismu'], 
 			how='outer')
-
-			.merge(df_rafsi_freqs, 
-			left_on='cmavo_rafsi', 
-			right_on='rafsi', 
-			how='outer')			
+		
 			)
 
 	def merge_freqs(df3):

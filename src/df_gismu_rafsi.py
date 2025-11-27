@@ -4,7 +4,7 @@ import pandas as pd
 from tqdm import tqdm
 from src.tools.class_table import Table
 
-def df_gismu_rafsi():
+def get_df_gismu_rafsi():
 	df = Table('defs_rafsi').dff
 
 	df5 = (df[['gismu', 'gismu']])

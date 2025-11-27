@@ -57,6 +57,8 @@ def get_df_rafsi_freqs():
 
 	def obtain_rafsifreqs(df):
 
+
+
 		# data regrouped by rafsi
 		df = df.groupby(['rafsi', 'rafsi_pos'], as_index=False)['freq'].sum()
 		
@@ -72,11 +74,23 @@ def get_df_rafsi_freqs():
 					'canon_meaning']]
 		return df
 
+	def merge_with_gismu(df):
+		from src.df_gismu_rafsi import get_df_gismu_rafsi
+		df_gismu_rafsi = get_df_gismu_rafsi()
+
+		df = df.merge(df_gismu_rafsi, 
+				left_on='rafsi', 
+				right_on='rafsi', 
+				how='outer')
+
+		return df
+
 	df = obtain_lujvofreqs(df)
 	df = obtain_rafsifreqs(df)
+	df = merge_with_gismu(df)
 	# df = clean1(df)	# only applicable for obtain_lujvofreqs
 
 	return df
 
 def main():
-	df_rafsi_freqs().to_csv('results/q2.tsv', sep="\t", index=False)
+	get_df_rafsi_freqs().to_csv('results/q2.tsv', sep="\t", index=False)
