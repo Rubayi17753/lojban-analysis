@@ -22,11 +22,16 @@ def process_freqs_cmavo2():
 	return df2
 
 def create_grand_table():
+
+	from df_grand2 import df_rafsi_freqs
+
 	df1 = (Table('defs_cmavo')
 			.dff[['cmavo', 'gismu', 'class']])
 	df1 = df1[df1['gismu'].notna() & (df1['gismu'] != '.')]
 
 	df2 = Table('defs_rafsi').dff[['rafsi', 'gismu']]
+
+	df_rafsi_freqs = ...
 
 	# Rename & merge
 	df1.columns = ['cmavo_rafsi', 'gismu', 'class']
