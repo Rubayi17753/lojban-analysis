@@ -1,5 +1,5 @@
 import pandas as pd
-from tools.class_table import Table
+from src.tools.class_table import Table
 
 def process_freqs_cmavo2():
 	from src.lojban_specific.parser import compound_cmavo_parser
@@ -23,7 +23,7 @@ def process_freqs_cmavo2():
 
 def create_grand_table():
 
-	from df_grand2 import df_rafsi_freqs
+	from src.df_grand2 import get_df_rafsi_freqs
 
 	df1 = (Table('defs_cmavo')
 			.dff[['cmavo', 'gismu', 'class']])
@@ -31,35 +31,43 @@ def create_grand_table():
 
 	df2 = Table('defs_rafsi').dff[['rafsi', 'gismu']]
 
-	df_rafsi_freqs = ...
-
 	# Rename & merge
 	df1.columns = ['cmavo_rafsi', 'gismu', 'class']
 	df2.columns = ['cmavo_rafsi', 'gismu']
+	df_rafsi_freqs = get_df_rafsi_freqs()
+	df_rafsi_freqs = df_rafsi_freqs[['rafsi', 'ini', 'med', 'fin', 'conversion']]
+	df_rafsi_freqs.columns = ['rafsi', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 'as_rafsi_conv']
 
 	df3 = (pd.concat([df1[['cmavo_rafsi', 'gismu']], df2], ignore_index=True)
 			.drop_duplicates()
+
 			.merge(df1[['cmavo_rafsi', 'gismu', 'class']], 
 			left_on=['cmavo_rafsi', 'gismu'], 
 			right_on=['cmavo_rafsi', 'gismu'], 
-			how='outer'))
+			how='outer')
+
+			.merge(df_rafsi_freqs, 
+			left_on='cmavo_rafsi', 
+			right_on='rafsi', 
+			how='outer')			
+			)
 
 	def merge_freqs(df3):
 		df_cmavo1 = Table('freqs_cmavo1').dff[['cmavo', 'freq']]
 		df_cmavo2 = process_freqs_cmavo2()
 		df_gismu = Table('freqs_gismu').dff[['gismu', 'freq']]
 
-		df_cmavo1 = df_cmavo1.rename(columns={'freq': 'freq_as_cmavo'})
-		df_cmavo2 = df_cmavo2.rename(columns={'freq': 'freq_as_cmavo_compound'})
-		df_gismu = df_gismu.rename(columns={'freq': 'freq_as_gismu'})
+		df_cmavo1 = df_cmavo1.rename(columns={'freq': 'as_cmavo'})
+		df_cmavo2 = df_cmavo2.rename(columns={'freq': 'as_cmavo_compound'})
+		df_gismu = df_gismu.rename(columns={'freq': 'as_gismu'})
 
 		# Merge with template
 		df3 = (df3[df3['class'].notna()]
-				.merge(df_cmavo1[['cmavo', 'freq_as_cmavo']], 
+				.merge(df_cmavo1[['cmavo', 'as_cmavo']], 
 					left_on='cmavo_rafsi', 
 					right_on='cmavo', 
 					how='left')
-				.merge(df_cmavo2[['cmavo', 'freq_as_cmavo_compound']], 
+				.merge(df_cmavo2[['cmavo', 'as_cmavo_compound']], 
 					left_on='cmavo_rafsi', 
 					right_on='cmavo', 
 					how='left')
@@ -69,7 +77,9 @@ def create_grand_table():
 		return df3
 	
 	def clean(df3):
-		freq_cols = ['freq_as_gismu', 'freq_as_cmavo', 'freq_as_cmavo_compound',]
+		freq_cols = ['as_gismu', 
+					'as_rafsi_conv', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 
+					'as_cmavo', 'as_cmavo_compound',]
 
 		df3 = (df3
 				.drop_duplicates()
@@ -80,7 +90,9 @@ def create_grand_table():
 				)
 		df3[freq_cols] = df3[freq_cols].astype('Int64')
 		df3 = df3[['gismu', 'cmavo_rafsi', 'class',
-					'freq_as_gismu', 'freq_as_cmavo', 'freq_as_cmavo_compound',]]
+					'as_gismu', 
+					'as_rafsi_conv', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 
+					'as_cmavo', 'as_cmavo_compound',]]
 		
 		return df3
 	
