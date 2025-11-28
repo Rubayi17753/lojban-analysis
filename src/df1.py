@@ -94,7 +94,8 @@ def create_grand_table():
 				.sort_values(['gismu', 'cmavo_rafsi'], ascending=[True, True])
 				)
 		df3[freq_cols] = df3[freq_cols].astype('Int64')
-		df3 = df3[['gismu', 'cmavo_rafsi', 'class',
+		df3 = df3[['gismu', 'cmavo_rafsi', 
+					'class',
 					'as_gismu', 
 					'as_rafsi_conv', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 
 					'as_cmavo', 'as_cmavo_compound',]]

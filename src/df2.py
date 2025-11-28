@@ -38,14 +38,19 @@ def obtain_lujvofreqs(df):
 	# lambda x: myfunc(x, param1, param2)
 
 	df['actual_parsed'] = df['actual'].apply(lujvo_parser)
-	df['breakdown'] = df['actual_parsed'].apply(lujvo_breakdown).str.join('-')
 	df['freq'] = df['freq_raw'].apply(rawfreq_to_freq)
 	# df = df.sort_values('shape_count', ascending=False)
 
+	# More columns for concordance
+	df['breakdown'] = df['actual_parsed'].apply(lujvo_breakdown).str.join('-')
+	df = df.rename(columns={'canon_meaning': 'meaning',})
+	df['meaning'] = df['meaning'].fillna('').str.strip()
+	
 	# Explode and rename actual_parsed > rafsi
 	df = df.explode('actual_parsed')
 	df = df.rename(columns={'actual_parsed': 'rafsi', 
 				'actual': 'lujvo'})
+	
 	return df
 
 def post_explode(df):
@@ -66,7 +71,7 @@ def post_explode(df):
 
 def obtain_concordance(df):
 
-	df['lujvo_and_breakdown'] = df['lujvo'] + ':' + df['breakdown']
+	df['lujvo_and_breakdown'] = df['lujvo'] + ' : ' + df['breakdown'] + ' : ' + df['meaning']
 	df = df.sort_values('freq', ascending=False)
 
 	# data regrouped by rafsi
@@ -79,6 +84,9 @@ def obtain_concordance(df):
 	# pivot on rafsi_pos
 	df = df.pivot(index='rafsi', columns='rafsi_pos', values='lujvo_and_breakdown').reset_index()
 
+	df = merge_with_gismu(df)
+	df = df.sort_values('gismu', ascending=True)
+	df = df[['rafsi', 'gismu', 'conversion', 'ini', 'med', 'fin',]]
 	return df
 
 def obtain_rafsifreqs(df):
