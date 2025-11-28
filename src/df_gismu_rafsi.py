@@ -1,13 +1,13 @@
-# Deals with freqs_lujvo1999
+# Deals with defs_rafsi
 
 import pandas as pd
-from tqdm import tqdm
 from src.tools.class_table import Table
 
 def get_df_gismu_rafsi():
-	df = Table('defs_rafsi').dff
+	df = Table('defs_rafsi', keep_default_na=False).dff		# Prevents pandas for reading string 'nan' as NaN
+	dfg = Table('defs_gismu').dff
 
-	df5 = (df[['gismu', 'gismu']])
+	df5 = (dfg[['gismu', 'gismu']])
 	df5.columns = ['rafsi', 'gismu']
 	
 	df4 = df5.copy()
@@ -19,7 +19,4 @@ def get_df_gismu_rafsi():
 	return df
 
 def main():
-	print(df_rafsi_complete().sample(20))
-
-if __name__ == '__main__':
-	main()
+	get_df_gismu_rafsi()

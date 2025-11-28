@@ -18,7 +18,6 @@ def process_freqs_cmavo2():
 		composites=('cmavo_composite', ' '.join)
 		).reset_index()
 
-	print('freqs_cmavo2 processed')
 	return df2
 
 def create_grand_table():
@@ -29,30 +28,31 @@ def create_grand_table():
 
 	df2 = Table('defs_rafsi').dff[['rafsi', 'gismu']]
 
-	from src.df_grand2 import get_df_rafsi_freqs
-	df_rafsi_freqs = get_df_rafsi_freqs()
+	from src.df2 import get_df_rafsi_freqs
+	df_rafsi_freqs, *_ = get_df_rafsi_freqs()
 
 	# Rename & merge
 	df1.columns = ['cmavo_rafsi', 'gismu', 'class']
 	df2.columns = ['cmavo_rafsi', 'gismu']
 	
-	df_rafsi_freqs = df_rafsi_freqs[['rafsi', 'ini', 'med', 'fin', 'conversion']]
-	df_rafsi_freqs.columns = ['cmavo_rafsi', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 'as_rafsi_conv']
+	df_rafsi_freqs = df_rafsi_freqs[['rafsi', 'gismu', 'ini', 'med', 'fin', 'conversion']]
+	df_rafsi_freqs.columns = ['cmavo_rafsi', 'gismu', 'as_rafsi_i', 'as_rafsi_m', 'as_rafsi_f', 'as_rafsi_conv']
 
-	df3 = (pd.concat([df1[['cmavo_rafsi', 'gismu']], df2, df_rafsi_freqs], ignore_index=True)
+	df3 = (pd.concat([df1[['cmavo_rafsi', 'gismu']], df2, df_rafsi_freqs[['cmavo_rafsi', 'gismu']]], ignore_index=True)
 			.drop_duplicates()
 
 			.merge(df1[['cmavo_rafsi', 'gismu', 'class']], 
 			left_on=['cmavo_rafsi', 'gismu'], 
 			right_on=['cmavo_rafsi', 'gismu'], 
 			how='outer')
-		
+
 			)
 
 	def merge_freqs(df3):
 		df_cmavo1 = Table('freqs_cmavo1').dff[['cmavo', 'freq']]
 		df_cmavo2 = process_freqs_cmavo2()
 		df_gismu = Table('freqs_gismu').dff[['gismu', 'freq']]
+		df_gismu['cmavo_rafsi'] = df_gismu['gismu']
 
 		df_cmavo1 = df_cmavo1.rename(columns={'freq': 'as_cmavo'})
 		df_cmavo2 = df_cmavo2.rename(columns={'freq': 'as_cmavo_compound'})
@@ -68,8 +68,16 @@ def create_grand_table():
 					left_on='cmavo_rafsi', 
 					right_on='cmavo', 
 					how='left')
+				.merge(df_rafsi_freqs, 
+					left_on=['cmavo_rafsi', 'gismu'], 
+					right_on=['cmavo_rafsi', 'gismu'], 
+					how='outer')
+				.merge(df_gismu, 
+					left_on=['cmavo_rafsi', 'gismu'], 
+					right_on=['cmavo_rafsi', 'gismu'], 
+					how='outer')
 				)
-		df3 = pd.concat([df3, df_gismu], axis=0)
+		# df3 = pd.concat([df3, df_gismu], axis=0)
 
 		return df3
 	
@@ -99,4 +107,4 @@ def create_grand_table():
 	return df3
 
 def main():
-	create_grand_table().to_csv('results/q1.tsv', sep="\t", index=False)
+	create_grand_table().to_csv('results/df1.csv', sep=',', index=False)
