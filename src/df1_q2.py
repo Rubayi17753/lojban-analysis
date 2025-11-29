@@ -25,7 +25,7 @@ def insert_meanings(df):
     
     from src.lojban_specific.rafsi_meanings import get_df_rafsi_meaning
     df = df.merge(get_df_rafsi_meaning(),
-                left_on='cmavo_rafsi', right_on='rafsi', how='left')
+                left_on='gismu', right_on='rafsi', how='left')
     return df
 
 def exclude_classes(df):
@@ -33,7 +33,12 @@ def exclude_classes(df):
                 '7.5.4', # chemical elements
                 '12.2', '12.3', '12.4', '12.5.1', # ethnocultural & religious
                 ]
-    return df[~df['theme_code'].isin(excludeds)]
+    df = df[~df['theme_code'].isin(excludeds)]
+
+    brods = ['broda', 'brode', 'brodi', 'brodo', 'brodu']
+    df = df[~df['gismu'].isin(brods)]
+
+    return df
 
 def main():
 
