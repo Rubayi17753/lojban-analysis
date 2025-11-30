@@ -1,6 +1,7 @@
 # Rafsi data
 
 from src.df1 import create_grand_table 
+from src.tools.class_table import Table
 
 def insert_shapes(df):
 
@@ -12,7 +13,6 @@ def insert_shapes(df):
 
 def insert_thematic(df):
 
-    from src.tools.class_table import Table
     df1 = Table('defs_gismu').dff[['gismu', 'theme_code']]
     df2 = Table('themes_gismu').dff[['theme_code', 'theme']]
 
@@ -40,6 +40,20 @@ def exclude_classes(df):
 
     return df
 
+def insert_rafsi_pos(df):
+
+    from src.substring_positions import substring_positions
+    df['rafsi_pos'] = df.apply(lambda x: substring_positions(x['gismu'], x['cmavo_rafsi'], mode='string'), 
+                                axis = 1)
+    df['rafsi_pos'] =  df['rafsi_pos'].str.replace('  ', ' ')        
+
+    df = df.merge(Table('pos_substitutions').dff,
+                                left_on='rafsi_pos', right_on='old_pos', how='left'
+                                )
+    df = df.rename(columns={'new_pos': 'rafsi_pos_new'})
+    df['rafsi_pos_new'] =  df['rafsi_pos_new'].str.replace(' ', '')                 
+    return df
+
 def main():
 
     df = create_grand_table()
@@ -47,6 +61,7 @@ def main():
     df = exclude_classes(df)
     df = insert_shapes(df)
     df = insert_meanings(df)
+    df = insert_rafsi_pos(df)
 
     df = df.drop_duplicates()
 

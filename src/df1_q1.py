@@ -1,5 +1,6 @@
 # Checks how much gismu (and variant forms) are inclined towards being lujvo-initial or final
 
+import numpy as np 
 from src.df1 import create_grand_table 
 from src.lojban_specific.word_shape import word_shape
 
@@ -20,7 +21,7 @@ def main():
     df['as_rafsi'] = df['as_rafsi_i'] + df['as_rafsi_m'] + df['as_rafsi_f']
     df['percentage_im'] = round( (df['as_rafsi_i'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
     df['percentage_fm'] = round( (df['as_rafsi_f'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
-    df['fin/ini'] = round( df['percentage_fm'] / df['percentage_im'] , 2)
+    df['log(fin/ini)'] = round( np.log10(df['percentage_fm'] / df['percentage_im']) , 2)
     df['as_cmavo'] = df['as_cmavo'] + df['as_cmavo_compound']
     df['gismu_sum'] = df['as_gismu'] + df['as_rafsi'] + df['as_cmavo']
             

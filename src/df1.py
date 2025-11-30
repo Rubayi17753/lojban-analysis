@@ -26,7 +26,7 @@ def create_grand_table():
 			.dff[['cmavo', 'gismu', 'class']])
 	df1 = df1[df1['gismu'].notna() & (df1['gismu'] != '.')]
 
-	df2 = Table('defs_rafsi').dff[['rafsi', 'gismu']]
+	df2 = Table('defs_rafsi', keep_default_na=False).dff[['rafsi', 'gismu']]
 
 	from src.df2 import get_df_rafsi_freqs
 	df_rafsi_freqs, *_ = get_df_rafsi_freqs()
