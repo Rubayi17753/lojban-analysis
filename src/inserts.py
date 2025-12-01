@@ -20,13 +20,14 @@ def insert_meanings(df):
 def insert_rafsi_pos(df):
 
     from src.substring_positions import substring_positions
-    df['rafsi_pos'] = df.apply(lambda x: substring_positions(x['gismu'], x['cmavo_rafsi'], mode='string'), 
-                                axis = 1)
-    df['rafsi_pos'] =  df['rafsi_pos'].str.replace('  ', ' ')        
+    df['cmavo_rafsi2'] = df['cmavo_rafsi'].str.replace("'", '')
+    df['rafsi_pos'] = df.apply(lambda x: substring_positions(x['gismu'], x['cmavo_rafsi2'], 
+                                                            out='string', delim=''), 
+                                                            axis=1)
+    df['rafsi_pos'] =  df['rafsi_pos'].str.replace('  ', ' ')
+    df = df.drop(columns=['cmavo_rafsi2'])
 
-    df = df.merge(Table('pos_substitutions').dff,
-                                left_on='rafsi_pos', right_on='old_pos', how='left'
-                                )
-    df = df.rename(columns={'new_pos': 'rafsi_pos_new'})
-    df['rafsi_pos_new'] =  df['rafsi_pos_new'].str.replace(' ', '')                 
+    # df = df.merge(Table('pos_substitutions').dff,left_on='rafsi_pos', right_on='old_pos', how='left')
+    # df = df.rename(columns={'new_pos': 'rafsi_pos_new'})
+    # df['rafsi_pos_new'] =  df['rafsi_pos_new'].str.replace(' ', '')                 
     return df

@@ -8,6 +8,7 @@ def filter_and_aggregate(df):
 
     mask = (
         df['coef1'] > 2   # Coefficient here: q2's df['form_freq'] / df['max_form_freq'] * 100
+        & df['rafsi_pos'].str.contains('_')
     )
 
     df = df.assign(
