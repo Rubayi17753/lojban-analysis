@@ -34,7 +34,7 @@ def main(filter=1):
 
     df['gismu_freq'] = df.groupby('gismu')['form_freq'].transform('sum')
     df['max_form_freq'] = df.groupby('gismu')['form_freq'].transform('max')
-    df['coefficient'] = round(df['form_freq'] / df['max_form_freq'] * 100 , 1)
+    df['coef1'] = round(df['form_freq'] / df['max_form_freq'] * 100 , 1)
 
     df['word_length'] = df['gismu'].str.len()
     df = df[df['word_length'] == 5]

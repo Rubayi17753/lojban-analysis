@@ -1,5 +1,6 @@
 # Checks how much gismu (and variant forms) are inclined towards being lujvo-initial or final
 
+import math
 import numpy as np 
 from src.df1 import create_grand_table 
 from src.lojban_specific.word_shape import word_shape
@@ -21,16 +22,19 @@ def main(filter=1):
     df['as_rafsi'] = df['as_rafsi_i'] + df['as_rafsi_m'] + df['as_rafsi_f']
     df['percentage_im'] = round( (df['as_rafsi_i'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
     df['percentage_fm'] = round( (df['as_rafsi_f'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
-    df['log(fin/ini)'] = round( np.log10(df['percentage_fm'] / df['percentage_im']) , 2)
+
+    df['coef2'] = round( np.log10(df['percentage_fm'] / df['percentage_im']) , 2)
+    df['coef2'] = df['coef2'] * (1 - df['as_rafsi'] ** -0.5) # penalty for low rafsi attestation
+
     df['as_cmavo'] = df['as_cmavo'] + df['as_cmavo_compound']
     df['gismu_sum'] = df['as_gismu'] + df['as_rafsi'] + df['as_cmavo']
             
-    df = df[['gismu', 'gismu_shape', 'log(fin/ini)', 
+    df = df[['gismu', 'gismu_shape', 'coef2', 
                 'percentage_im', 'percentage_fm', 
                 'gismu_sum',
                 'as_rafsi', 'as_gismu', 'as_cmavo']]
 
-    df = df.sort_values('log(fin/ini)')
+    df = df.sort_values('coef2')
 
     if filter:
         from src.custom_excludes import exclude_classes

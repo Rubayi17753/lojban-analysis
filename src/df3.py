@@ -7,7 +7,7 @@ from src.df1_q2 import main as dfq2
 def filter_and_aggregate(df):
 
     mask = (
-        df['coefficient'] > 2   # Coefficient here: q2's df['form_freq'] / df['max_form_freq'] * 100
+        df['coef1'] > 2   # Coefficient here: q2's df['form_freq'] / df['max_form_freq'] * 100
     )
 
     df = df.assign(
@@ -22,14 +22,11 @@ def filter_and_aggregate(df):
 
 def determine_pos_tendency(df):
     # Determine rafsi positioning tendency.
-    # Requires dfq1() --> log(fin/ini)
-    # The 'raw' coefficients get 'penalised' for low rafsi attestations
+    # Requires dfq1() --> coef2
 
     # Sanitisation
 
-    df = df.copy()
-
-    for col in ('as_rafsi', 'percentage_im', 'percentage_fm', 'log(fin/ini)'):
+    for col in ('as_rafsi', 'percentage_im', 'percentage_fm', 'coef2'):
         df[col] = (pd.to_numeric(df[col], errors='coerce')
         .replace(np.inf, 999)
         .replace(-np.inf, -999)
@@ -41,8 +38,8 @@ def determine_pos_tendency(df):
         (df['as_rafsi'] == 0).astype(bool),
         (df['percentage_im'] == 0).astype(bool),
         (df['percentage_fm'] == 0).astype(bool),
-        (df['log(fin/ini)'] > 0.25).astype(bool),
-        (df['log(fin/ini)'] < -0.25).astype(bool),
+        (df['coef2'] > 0.2).astype(bool),
+        (df['coef2'] < -0.2).astype(bool),
             ]
     choices = ['??', 'fin', 'ini', 'fin', 'ini']
     df['pos_tendency'] = np.select(conditions, choices, default='neut')
