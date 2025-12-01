@@ -1,67 +1,20 @@
 # Rafsi data
 
+import src.inserts as inserts
 from src.df1 import create_grand_table 
 from src.tools.class_table import Table
 
-def insert_shapes(df):
-
-    from src.lojban_specific.word_shape import word_shape
-    df['gismu_shape'] = df['gismu'].apply(word_shape)
-    df['form_shape'] = df['cmavo_rafsi'].apply(word_shape)
-
-    return df
-
-def insert_thematic(df):
-
-    df1 = Table('defs_gismu').dff[['gismu', 'theme_code']]
-    df2 = Table('themes_gismu').dff[['theme_code', 'theme']]
-
-    df1 = df1.merge(df2, on='theme_code', how='left')
-    df = df.merge(df1, on='gismu', how='left')
-
-    return df
-
-def insert_meanings(df):
-    
-    from src.lojban_specific.rafsi_meanings import get_df_rafsi_meaning
-    df = df.merge(get_df_rafsi_meaning(),
-                left_on='gismu', right_on='rafsi', how='left')
-    return df
-
-def exclude_classes(df):
-    excludeds = ['7.4.3', # SI prefixes
-                '7.5.4', # chemical elements
-                '12.2', '12.3', '12.4', '12.5.1', # ethnocultural & religious
-                ]
-    df = df[~df['theme_code'].isin(excludeds)]
-
-    brods = ['broda', 'brode', 'brodi', 'brodo', 'brodu']
-    df = df[~df['gismu'].isin(brods)]
-
-    return df
-
-def insert_rafsi_pos(df):
-
-    from src.substring_positions import substring_positions
-    df['rafsi_pos'] = df.apply(lambda x: substring_positions(x['gismu'], x['cmavo_rafsi'], mode='string'), 
-                                axis = 1)
-    df['rafsi_pos'] =  df['rafsi_pos'].str.replace('  ', ' ')        
-
-    df = df.merge(Table('pos_substitutions').dff,
-                                left_on='rafsi_pos', right_on='old_pos', how='left'
-                                )
-    df = df.rename(columns={'new_pos': 'rafsi_pos_new'})
-    df['rafsi_pos_new'] =  df['rafsi_pos_new'].str.replace(' ', '')                 
-    return df
-
-def main():
+def main(filter=1):
 
     df = create_grand_table()
-    df = insert_thematic(df)
-    df = exclude_classes(df)
-    df = insert_shapes(df)
-    df = insert_meanings(df)
-    df = insert_rafsi_pos(df)
+
+    if filter:
+        from src.custom_excludes import exclude_classes
+        df = exclude_classes(df)
+
+    df = inserts.insert_shapes(df)
+    df = inserts.insert_meanings(df)
+    df = inserts.insert_rafsi_pos(df)
 
     df = df.drop_duplicates()
 

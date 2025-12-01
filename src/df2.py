@@ -115,12 +115,12 @@ def merge_with_gismu(df):
 			how='left')
 	return df
 
-def get_df_rafsi_freqs():
+def get_df_rafsi_freqs(filter=1):
 	df = Table('freqs_lujvo1999').dff
 
-	df1 = filter1(df)
+	if filter:	df1 = filter1(df)
 	df1 = obtain_lujvofreqs(df1)
-	df1 = filter2(df1)
+	if filter:	df1 = filter2(df1)
 	df1 = post_explode(df1)
 	
 	df2 = obtain_rafsifreqs(df1)
@@ -129,9 +129,9 @@ def get_df_rafsi_freqs():
 
 	return df_fin, df1
 
-def main():
+def main(filter=1):
 
-	df_fin, df1 = get_df_rafsi_freqs()
+	df_fin, df1 = get_df_rafsi_freqs(filter)
 	df_concordance = obtain_concordance(df1)
 
 	df_fin.to_csv('results/df2a.csv', sep=',', index=False)

@@ -4,7 +4,7 @@ import numpy as np
 from src.df1 import create_grand_table 
 from src.lojban_specific.word_shape import word_shape
 
-def main():
+def main(filter=1):
 
     df = create_grand_table()
 
@@ -25,12 +25,16 @@ def main():
     df['as_cmavo'] = df['as_cmavo'] + df['as_cmavo_compound']
     df['gismu_sum'] = df['as_gismu'] + df['as_rafsi'] + df['as_cmavo']
             
-    df = df[['gismu', 'gismu_shape', 'fin/ini', 
+    df = df[['gismu', 'gismu_shape', 'log(fin/ini)', 
                 'percentage_im', 'percentage_fm', 
                 'gismu_sum',
                 'as_rafsi', 'as_gismu', 'as_cmavo']]
 
-    df = df.sort_values('fin/ini')
+    df = df.sort_values('log(fin/ini)')
+
+    if filter:
+        from src.custom_excludes import exclude_classes
+        df = exclude_classes(df)
 
     df.to_csv('results/df1_q1.csv', sep=',', index=False)
     return df
