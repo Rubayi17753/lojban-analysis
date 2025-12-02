@@ -5,7 +5,7 @@ from src.df1_q1 import main as dfq1
 from src.df1_q2 import main as dfq2
 from src.tools.class_table import Table
 
-def filters():
+def filters(df):
 
     mask = (
         (df['coef1'] > 2)   # Coefficient here: q2's df['cmavo_rafsi_freq'] / df['max_form_freq'] * 100
@@ -15,8 +15,7 @@ def filters():
 
 def filter_and_aggregate(df):
 
-    mask = filters()
-
+    mask = filters(df)
     df = df.assign(
                 form=df['cmavo_rafsi'].where(mask, ' '),
                 form_x=df['cmavo_rafsi'].where(~mask, ' '),
@@ -36,6 +35,7 @@ def filter_and_aggregate(df):
 
 def produce_pivot(df):
 
+    df = df[filters(df)]
     df2 = Table('defs_rafsi', keep_default_na=False).dff
 
     # Check if df.gismu/cmavo_rafsi is present in df2.gismu/rafsi. If not, designate as CAA2
@@ -44,10 +44,10 @@ def produce_pivot(df):
     mask2 = df['form_shape'].isin(['CACC', 'CCAC', 'CACCA', 'CCACA'])
     df.loc[~mask & ~mask2, 'form_shape'] = 'CAA2'
 
-    print(df[df.duplicated(subset=['gismu', 'form_shape'], keep=False)][['gismu', 'form_shape', 'cmavo_rafsi']])
-    exit()
+    # print(df[df.duplicated(subset=['gismu', 'form_shape'], keep=False)][['gismu', 'form_shape', 'cmavo_rafsi']])
 
-    df = df.pivot(index='gismu', columns='form_shape', values='cmavo_rafsi')
+    # df = df.pivot(index='gismu', columns='form_shape', values='cmavo_rafsi')
+    df = df.pivot_table(values='cmavo_rafsi', index='gismu', columns='form_shape', aggfunc=(lambda x: ' '.join(x)))
 
     return df
 
