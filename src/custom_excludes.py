@@ -15,7 +15,7 @@ def exclude_classes(df):
     df = insert_thematic(df)
     excludeds = ['7.4.3', # SI prefixes
                 '7.5.4', # chemical elements
-                '12.2', '12.3', '12.4', '12.5.1', # ethnocultural & religious
+                '12.3', '12.4', '12.5.1', # ethnocultural & religious
                 ]
     df = df[~df['theme_code'].isin(excludeds)]
 

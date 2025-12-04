@@ -1,3 +1,5 @@
+import math
+
 diphthong_conversion = {
     "a'a" : "a",
     "a'e" : "ai",
@@ -9,9 +11,9 @@ diphthong_conversion = {
     "e'e" : "e",
     "e'i" : "e",
     "ei" : "e",
-    "i'e" : "e",
     "e'o" : "eu",
     "e'u" : "eu",
+    "i'e" : "i",
     "i'i" : "i",
     "e'a" : "ia",
     "i'a" : "ia",
@@ -19,10 +21,10 @@ diphthong_conversion = {
     "i'u" : "iu",
     "o'o" : "o",
     "o'u" : "o",
-    "u'o" : "o",
     "o'e" : "oi",
     "o'i" : "oi",
     "oi" : "oi",
+    "u'o" : "u",
     "u'u" : "u",
     "o'a" : "ua",
     "u'a" : "ua",
@@ -32,13 +34,22 @@ diphthong_conversion = {
 
 coda_conversion = dict(zip('bpfvdtgkxcjszlmnr', 'bbbbddgggsssslmnr'))
 
-def process_candidate_form(protoform, shape, gismu, gismu_shape, pos):
+def process_candidate_form(row):
 
-    form = protoform
+    form = row['cmavo_rafsi_1']
+    shape = row['form_shape_1']
+    pos = row['rafsi_pos_1']
+    gismu = row['gismu']
+    gismu_shape = row['gismu_shape']
+    pos_tendency = row['pos_tendency']  
 
     # Process forms
-    if shape == 'CAC':
-        a = form[:1]
+
+    if not form: 
+        form = gismu[:4]
+
+    elif shape == 'CAC':
+        a = form[:2]
         b = form[2]
         b2 = coda_conversion.get(b, b)
         form = f'{a}{b2}'
@@ -47,15 +58,32 @@ def process_candidate_form(protoform, shape, gismu, gismu_shape, pos):
         # CA(')A CCA(')A CCA(')AC
         n = 2 if shape[1] == 'C' else 1     # 2 if CC-, 1 if C-
         p = -1 if shape[-1] == 'C' else 0   # -1 if -C (ends in consonant), else 0
-        a = form[:n]
-        b = form[n+1:p]
+
+        if shape[1] == 'C':
+            a, b, c = form[:2], form[2:-1], form[-1]
+        else:
+            a, b, c = form[:1], form[1:], ''
+
         b2 = diphthong_conversion.get(b, b)
-        c = form[p]
 
         if len(b2) == 2:
-            form = f'{a}{b2}{c}'
+            if gismu_shape == 'CCACA' and pos_tendency != 'fin':
+                form = f'{gismu[:2]}{b2}{c}'
+            else:
+                form = f'{a}{b2}{c}'
+        
         elif len(b2) == 1:
-            form = f'{a}{b2}{gismu[3]}'
+
+            forms_secondary = {row['cmavo_rafsi_2'], row['cmavo_rafsi_3']}
+            excluded_forms = row['excluded']
+            if excluded_forms:
+                forms_secondary.update(excluded_forms.split(' '))
+
+            if gismu[:3] in excluded_forms:
+                print(f'{gismu[:3]} {excluded_forms}')
+                form = gismu[:3]    # 123
+            else:
+                form = f'{a}{b2}{gismu[3]}'    # 124
             shape = 'CAC'
 
     if shape.startswith('CC'):

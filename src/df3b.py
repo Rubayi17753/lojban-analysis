@@ -106,17 +106,30 @@ def main():
     # Process candidate forms
     from src.process_candidate_form import process_candidate_form
 
-    cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
-    data = df[cols].fillna('').values.tolist()     # values 'turn' df into np
-    data_processed = [process_candidate_form(*row) for row in tqdm(data, desc='Processing candidates')]
-    df['processed'] = pd.Series(data_processed)
+    # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
+
+    df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
+    df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
+
+    data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
+    data_gismu_new = [process_candidate_form(row) for row in tqdm(data, desc='Processing candidates')]
+    df['gismu_new'] = pd.Series(data_gismu_new)
+    df['gismu_new_shape'] = pd.Series(data_gismu_new).apply(word_shape)
     
     df = df.sort_values(by=['gismu_shape', 'gismu_sum'], ascending=[True, False])
-    df = df[['gismu', 'processed',
+    df = df[['gismu', 'gismu_shape',
+            'pos_tendency', 'gismu_new', 'gismu_new_shape',
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',
             'coef1_1', 'coef1_2', 'coef1_3',
             'form_shape_1', 'form_shape_2', 'form_shape_3',
             'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3',
-            'rafsi_pos', 'gismu_sum', 'pos_tendency', 'meaning']]
+            'rafsi_pos', 'gismu_sum', 'meaning']]
     df.to_csv('results/df3b.csv', sep=',', index=False)
+
+    df2 = df
+    df2['override'] = ''
+    df2['gismu_new_count'] = df2.groupby('gismu_new')['gismu'].transform('count')
+    df2 = df2[['gismu', 'pos_tendency', 'gismu_new', 'override', 'gismu_new_count']]
+    df2.to_csv('interactive/new_gismu.csv', sep=',', index=False)
+
     return df
