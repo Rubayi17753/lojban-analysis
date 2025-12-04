@@ -23,8 +23,8 @@ def main(filter=1):
     df['percentage_im'] = round( (df['as_rafsi_i'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
     df['percentage_fm'] = round( (df['as_rafsi_f'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
 
-    df['coef2'] = round( np.log10(df['percentage_fm'] / df['percentage_im']) , 2)
-    df['coef2'] = df['coef2'] * (1 - df['as_rafsi'] ** -0.5) # penalty for low rafsi attestation
+    df['coef2'] = np.log10(df['percentage_fm'] / df['percentage_im'])
+    df['coef2'] = round( df['coef2'] * (1 - df['as_rafsi'] ** -0.5) , 2) # penalty for low rafsi attestation
 
     df['as_cmavo'] = df['as_cmavo'] + df['as_cmavo_compound']
     df['gismu_sum'] = df['as_gismu'] + df['as_rafsi'] + df['as_cmavo']

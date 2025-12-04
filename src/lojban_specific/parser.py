@@ -119,3 +119,6 @@ def compound_cmavo_parser(s, delim=None):
 def fuivla_parser(s):
     # In English: loanwords
     ...
+
+def syllable_parser(s):
+    ...

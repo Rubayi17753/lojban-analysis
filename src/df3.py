@@ -4,6 +4,7 @@ import src.inserts as inserts
 from src.df1_q1 import main as dfq1
 from src.df1_q2 import main as dfq2
 from src.tools.class_table import Table
+from src.df3_shared import determine_pos_tendency
 
 def filters(df):
 
@@ -13,14 +14,14 @@ def filters(df):
     )
     return mask
 
-def filter_and_aggregate(df):
+def aggregate(df):
 
     mask = filters(df)
     df = df.assign(
-                form=df['cmavo_rafsi'].where(mask, ' '),
-                form_x=df['cmavo_rafsi'].where(~mask, ' '),
-                rafsi_pos=df['rafsi_pos'].where(mask, ' '),
-                form_shape=df['form_shape'].where(mask, ' '),
+                form=df['cmavo_rafsi'].where(mask, ''),
+                form_x=df['cmavo_rafsi'].where(~mask, ''),
+                rafsi_pos=df['rafsi_pos'].where(mask, ''),
+                form_shape=df['form_shape'].where(mask, ''),
             ).groupby('gismu', as_index=False).agg(
                 form=('form', ' '.join),
                 form_x=('form_x', ' '.join),
@@ -47,34 +48,14 @@ def produce_pivot(df):
     # print(df[df.duplicated(subset=['gismu', 'form_shape'], keep=False)][['gismu', 'form_shape', 'cmavo_rafsi']])
 
     # df = df.pivot(index='gismu', columns='form_shape', values='cmavo_rafsi')
-    df = df.pivot_table(values='cmavo_rafsi', index='gismu', columns='form_shape', aggfunc=(lambda x: ' '.join(x)))
+    df = df.pivot_table(values='cmavo_rafsi', index='gismu', columns='form_shape', 
+                        aggfunc=(lambda x: ' '.join(x)))
+    
+    df = df.fillna('')
+    df['long4'] = df['CACC'] + df['CCAC']
+    df['long5'] = df['CACCA'] + df['CCACA']
 
-    return df
-
-def determine_pos_tendency(df):
-    # Determine rafsi positioning tendency
-    # Requires dfq1() --> coef2
-
-    # Sanitisation
-
-    for col in ('as_rafsi', 'percentage_im', 'percentage_fm', 'coef2'):
-        df[col] = (pd.to_numeric(df[col], errors='coerce')
-        .replace(np.inf, 999)
-        .replace(-np.inf, -999)
-        )
-
-    df = df.fillna(0)
-
-    conditions = [
-        (df['as_rafsi'] == 0).astype(bool),
-        (df['percentage_im'] == 0).astype(bool),
-        (df['percentage_fm'] == 0).astype(bool),
-        (df['coef2'] > 0.2).astype(bool),
-        (df['coef2'] < -0.2).astype(bool),
-            ]
-    choices = ['??', 'fin', 'ini', 'fin', 'ini']
-    df['pos_tendency'] = np.select(conditions, choices, default='neut')
-
+    df = df[['CAA2', 'CAA', 'CCA', 'CAC', 'long4', 'long5']]
     return df
 
 def main():
@@ -84,7 +65,7 @@ def main():
     df = df.sort_values(by=['form_freq', 'gismu_freq'], ascending=[False, False])
 
     # Aggregation
-    df = filter_and_aggregate(df)
+    df = aggregate(df)
 
     # Merge dfq1 and pivot(dfq2)
     df = df.merge(dfq1(),
