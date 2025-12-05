@@ -25,8 +25,10 @@ def rawfreq_to_freq(s):
 					x, y = sub.rstrip(']').split('[')
 
 					if x != y:
-						print(s)
+						# print(s)
+						pass
 			except:
-				print(s)
+				# print(s)
+				pass
 
 	return freq

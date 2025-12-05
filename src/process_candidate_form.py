@@ -65,6 +65,7 @@ def stage1(row):
         b2 = diphthong_conversion.get(b, b)
 
         if len(b2) == 2:
+            # i.e. where the original diphthongs are retained
             if gismu_shape == 'CCACA' and pos_tendency != 'fin':
                 form = f'{gismu[:2]}{b2}{c}'
                 shape = 'CCAA'
@@ -72,7 +73,7 @@ def stage1(row):
                 form = f'{a}{b2}{c}'
         
         elif len(b2) == 1:
-
+            # i.e. where the original diphthongs have been compressed to one vowel
             forms_secondary = {row['cmavo_rafsi_2'], row['cmavo_rafsi_3']}
             excluded_forms = row['excluded']
             if excluded_forms:
@@ -120,8 +121,17 @@ def stage2(row):
 
     if row['final_count'] > 1:
 
-        if shape == 'CAC' and gismu_shape == 'CCACA' and pos_tendency == 'ini':
-            form, shape = gismu[:4], 'CCAC'
+        if shape == 'CAC':
+            
+            if pos_tendency == 'ini':
+                if gismu_shape == 'CCACA': 
+                    form, shape = gismu[:4], 'CCAC'
+                elif gismu_shape == 'CACCA':
+                    pass
+
+            elif pos_tendency == 'fin':
+                if gismu_shape == 'CACCA': 
+                    form, shape = gismu[:4], 'CACC'
 
     return form
     

@@ -156,7 +156,6 @@ def main(override_file='update'):
     data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
     df['current_form'] = pd.Series(data_current_form)
     df['current_form_shape'] = df['current_form'].apply(word_shape)
-
     if override_file == 'update':
         df = override_generated_forms(df)
     
@@ -164,8 +163,10 @@ def main(override_file='update'):
     data_current_form = [stage2(row) for row in tqdm(data, desc='Processing candidates')]
     df['current_form'] = pd.Series(data_current_form)
     df['current_form_shape'] = df['current_form'].apply(word_shape)
+    if override_file == 'update':
+        df = override_generated_forms(df)
 
-    df = df.sort_values(by=['gismu_sum', 'form_overridden'], ascending=[False, True])
+    df = df.sort_values(by=['form_overridden', 'gismu_sum'], ascending=[True, False])
     df = df[['gismu', 'gismu_shape', 
             'current_form', 'override', 'final_shape', 'final_count',
             'pos_tendency',
