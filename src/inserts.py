@@ -11,7 +11,7 @@ def insert_shapes(df):
 
 def insert_meanings(df):
     
-    from src.lojban_specific.rafsi_meanings import get_df_rafsi_meaning
+    from src.lojban_specific.meanings_rafsi import get_df_rafsi_meaning
     df = df.merge(get_df_rafsi_meaning(),
                 left_on='gismu', right_on='rafsi', how='left')
     df = df.drop(columns='rafsi')

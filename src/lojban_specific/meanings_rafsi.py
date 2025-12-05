@@ -3,14 +3,12 @@ import pandas as pd
 def get_df_rafsi_meaning():
 	
 	from src.tools.class_table import Table
+	from src.lojban_specific.meanings_gismu import get_df_gismu_meaning
 
 	df = Table('defs_rafsi', keep_default_na=False).dff		# Prevents pandas for reading string 'nan' as NaN
 	dfg = Table('defs_gismu').dff
 
-	# Handles meanings of the format wood ‘lumber’
-	dfg['meaning'] = dfg['meaning'].str[1:-1]
-	dfg[['meaning', 'mnemonic']] = dfg['meaning'].str.split(' ‘', n=1, expand=True)
-	dfg['mnemonic'] = dfg['meaning'].str[:-1]
+	dfg = get_df_gismu_meaning(dfg)
 
 	df5 = (dfg[['gismu', 'gismu']])
 	df5.columns = ['rafsi', 'gismu']
@@ -30,4 +28,4 @@ def get_df_rafsi_meaning():
 
 	return df
 
-rafsi_meanings = get_df_rafsi_meaning().set_index('rafsi')['meaning'].to_dict()
+meanings_rafsi = get_df_rafsi_meaning().set_index('rafsi')['meaning'].to_dict()

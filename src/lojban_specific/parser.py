@@ -1,7 +1,7 @@
 import pandas as pd
 import src.lojban_specific.phonological_inventory as inv 
 import src.lojban_specific.word_shape as shape
-from src.lojban_specific.rafsi_meanings import rafsi_meanings
+from src.lojban_specific.meanings_rafsi import meanings_rafsi
 
 def determine_wordclass(s):
 
@@ -97,7 +97,7 @@ def lujvo_breakdown(s, parsed=True):
     try:
         if not parsed:
             s = lujvo_parser(s)
-        return tuple(rafsi_meanings.get(rafsi, s) for rafsi in s)
+        return tuple(meanings_rafsi.get(rafsi, s) for rafsi in s)
     except:
         return ''
 

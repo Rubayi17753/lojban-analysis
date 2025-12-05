@@ -8,6 +8,9 @@ from src.tools.class_table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 
+def get_df_override():
+    return pd.read_csv('interactive/new_gismu.tsv', sep='\t', index_col='gismu')
+
 def get_frequency_order(df):
     df['frequency_order'] = df.groupby('gismu')['gismu'].cumcount() + 1
     return df
@@ -75,7 +78,45 @@ def determine_pos_tendency(df):
 
     return df
 
-def main():
+def create_new_override(df):
+
+    from src.lojban_specific.meanings_gismu import get_df_gismu_meaning
+
+    df['override'] = ''
+    df['final_count'] = df.groupby('current_form')['gismu'].transform('count')
+    df = df.merge(Table('defs_gismu').dff[['gismu', 'theme_code']], on='gismu', how='left')
+
+    df = df.sort_values('theme_code')
+    df = df[['gismu', 'current_form', 'override', 'notes', 'current_form_count', 'pos_tendency', 'theme_code', 'meaning']]
+    df.to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
+
+def override_generated_forms(df):
+    df = df.set_index('gismu')
+    df['override'] = get_df_override()['override']
+    # override if not NaN, else current_form
+    df['form_overridden'] = df['current_form'].copy()
+    df.loc[~df['override'].isna(), 'form_overridden'] = df['override']
+    df = df.reset_index()
+    df['final_count'] = df.groupby('form_overridden')['gismu'].transform('count')
+    df['final_shape'] = df['form_overridden'].apply(word_shape)
+    return df
+
+def update_override_file(df):
+    # Reads new_gismu, then feeds pandas-generated columns onto it
+    df = df.set_index('gismu')
+    df_override = get_df_override()
+
+    cols = list(col for col in list(df_override.columns) if col not in ('gismu', 'override', 'theme_code'))
+    cols.append('final_count')
+
+    a = df_override[['override', 'theme_code', 'meaning', 'notes']]
+    b = df[['current_form', 'final_count', 'pos_tendency']]
+    df_override = (pd.concat([a, b], axis=1))
+    df_override = df_override[['current_form', 'override', 'notes', 'final_count',
+                     'pos_tendency', 'theme_code', 'meaning']]
+    df_override.reset_index().to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
+
+def main(override_file='update'):
 
     df = dfq2()
     df_agg2 = aggregate(df.copy())
@@ -104,7 +145,7 @@ def main():
     df = inserts.insert_meanings(df)
   
     # Process candidate forms
-    from src.process_candidate_form import process_candidate_form
+    from src.process_candidate_form import stage1, stage2
 
     # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
 
@@ -112,13 +153,22 @@ def main():
     df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
-    data_gismu_new = [process_candidate_form(row) for row in tqdm(data, desc='Processing candidates')]
-    df['gismu_new'] = pd.Series(data_gismu_new)
-    df['gismu_new_shape'] = pd.Series(data_gismu_new).apply(word_shape)
+    data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
+    df['current_form'] = pd.Series(data_current_form)
+    df['current_form_shape'] = df['current_form'].apply(word_shape)
+
+    if override_file == 'update':
+        df = override_generated_forms(df)
     
-    df = df.sort_values(by=['gismu_shape', 'gismu_sum'], ascending=[True, False])
-    df = df[['gismu', 'gismu_shape',
-            'pos_tendency', 'gismu_new', 'gismu_new_shape',
+    data = df.to_dict('records')
+    data_current_form = [stage2(row) for row in tqdm(data, desc='Processing candidates')]
+    df['current_form'] = pd.Series(data_current_form)
+    df['current_form_shape'] = df['current_form'].apply(word_shape)
+
+    df = df.sort_values(by=['gismu_sum', 'form_overridden'], ascending=[False, True])
+    df = df[['gismu', 'gismu_shape', 
+            'current_form', 'override', 'final_shape', 'final_count',
+            'pos_tendency',
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',
             'coef1_1', 'coef1_2', 'coef1_3',
             'form_shape_1', 'form_shape_2', 'form_shape_3',
@@ -126,10 +176,9 @@ def main():
             'rafsi_pos', 'gismu_sum', 'meaning']]
     df.to_csv('results/df3b.csv', sep=',', index=False)
 
-    df2 = df
-    df2['override'] = ''
-    df2['gismu_new_count'] = df2.groupby('gismu_new')['gismu'].transform('count')
-    df2 = df2[['gismu', 'pos_tendency', 'gismu_new', 'override', 'gismu_new_count']]
-    df2.to_csv('interactive/new_gismu.csv', sep=',', index=False)
+    if override_file == 'new':
+        create_new_override(df)
+    elif override_file == 'update':
+        update_override_file(df)
 
     return df
