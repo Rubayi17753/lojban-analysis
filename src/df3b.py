@@ -84,7 +84,7 @@ def create_new_override(df):
 
     df['override'] = ''
     df['final_count'] = df.groupby('current_form')['gismu'].transform('count')
-    df = df.merge(Table('defs_gismu').dff[['gismu', 'theme_code']], on='gismu', how='left')
+    df = Table('defs_gismu').dff[['gismu', 'theme_code']].merge(df, on='gismu', how='right')
 
     df = df.sort_values('theme_code')
     df = df[['gismu', 'current_form', 'override', 'notes', 'current_form_count', 'pos_tendency', 'theme_code', 'meaning']]
@@ -99,6 +99,7 @@ def override_generated_forms(df):
     df = df.reset_index()
     df['final_count'] = df.groupby('form_overridden')['gismu'].transform('count')
     df['final_shape'] = df['form_overridden'].apply(word_shape)
+
     return df
 
 def update_override_file(df):
@@ -158,7 +159,9 @@ def main(override_file='update'):
     df['current_form_shape'] = df['current_form'].apply(word_shape)
     if override_file == 'update':
         df = override_generated_forms(df)
-    
+    df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
+    df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
+
     data = df.to_dict('records')
     data_current_form = [stage2(row) for row in tqdm(data, desc='Processing candidates')]
     df['current_form'] = pd.Series(data_current_form)
@@ -171,7 +174,7 @@ def main(override_file='update'):
             'current_form', 'override', 'final_shape', 'final_count',
             'pos_tendency',
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',
-            'coef1_1', 'coef1_2', 'coef1_3',
+            'coef3', 'coef1_1', 'coef1_2', 'coef1_3',
             'form_shape_1', 'form_shape_2', 'form_shape_3',
             'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3',
             'rafsi_pos', 'gismu_sum', 'meaning']]

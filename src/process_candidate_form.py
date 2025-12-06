@@ -1,5 +1,6 @@
 import math
 from src.substring_positions import substring_positions
+from src.newlang_specific.phonology import valid_cons_pairs
 
 diphthong_conversion = {
     "a'a" : "a",
@@ -33,7 +34,13 @@ diphthong_conversion = {
     "u'i" : "ue",
 }
 
-coda_conversion = dict(zip('bpfvdtgkxcjszlmnr', 'bbbbddgggsssslmnr'))
+coda_conversion = dict(zip('bpfvdtgkxcjszlmnr', 'bbffddgggsssslfnr'))
+
+def metathesis():
+    # check if C1 and C2 allows metathesis
+    aa = f'{gismu[0]}{gismu[2]}'
+    if aa in valid_cons_pairs:
+        form, shape = f'{aa}{b2}{c}', 'CCAA'
 
 def stage1(row):
 
@@ -47,7 +54,7 @@ def stage1(row):
     # Process forms
 
     if not form: 
-        form, shape = gismu[:4], 'CACC'
+        form, shape = gismu[:4], gismu_shape[:4]
 
     elif shape == 'CAC':
         pass
@@ -58,6 +65,7 @@ def stage1(row):
         p = -1 if shape[-1] == 'C' else 0   # -1 if -C (ends in consonant), else 0
 
         if shape[1] == 'C':
+            # not present in lojban but retained for contigency
             a, b, c = form[:2], form[2:-1], form[-1]
         else:
             a, b, c = form[:1], form[1:], ''
@@ -66,9 +74,14 @@ def stage1(row):
 
         if len(b2) == 2:
             # i.e. where the original diphthongs are retained
-            if gismu_shape == 'CCACA' and pos_tendency != 'fin':
-                form = f'{gismu[:2]}{b2}{c}'
-                shape = 'CCAA'
+            if pos_tendency != 'fin':
+                if gismu_shape == 'CCACA':
+                    form, shape = f'{gismu[:2]}{b2}{c}', 'CCAA'
+                elif gismu_shape == 'CACCA':
+                    # check if C1 and C2 allows metathesis
+                    aa = f'{gismu[0]}{gismu[2]}'
+                    if aa in valid_cons_pairs:
+                        form, shape = f'{aa}{b2}{c}', 'CCAA'
             else:
                 form = f'{a}{b2}{c}'
         
@@ -121,17 +134,14 @@ def stage2(row):
 
     if row['final_count'] > 1:
 
-        if shape == 'CAC':
-            
-            if pos_tendency == 'ini':
-                if gismu_shape == 'CCACA': 
-                    form, shape = gismu[:4], 'CCAC'
-                elif gismu_shape == 'CACCA':
-                    pass
+        a, b, c = gismu_shape, shape, pos_tendency
 
-            elif pos_tendency == 'fin':
-                if gismu_shape == 'CACCA': 
-                    form, shape = gismu[:4], 'CACC'
+        if (a, b, c) == ('CCACA', 'CAC', 'ini'):
+            form, shape = gismu[:4], 'CCAC'
+        elif (a, b, c) == ('CACCA', 'CAC', 'ini'):
+            pass
+        elif (a, b, c) == ('CACCA', 'CAC', 'fin'):
+            form, shape = gismu[:4], 'CACC'
 
     return form
     
