@@ -4,7 +4,7 @@ from tqdm import tqdm
 import src.inserts as inserts
 from src.df1_q1 import main as dfq1
 from src.df1_q2 import main as dfq2
-from src.tools.class_table import Table
+from src.tools.object_table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 
@@ -162,22 +162,25 @@ def main(override_file='update'):
     df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
     df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
 
-    data = df.to_dict('records')
-    data_current_form = [stage2(row) for row in tqdm(data, desc='Processing candidates')]
-    df['current_form'] = pd.Series(data_current_form)
-    df['current_form_shape'] = df['current_form'].apply(word_shape)
-    if override_file == 'update':
-        df = override_generated_forms(df)
+    def run_stage2():
+        data = df.to_dict('records')
+        data_current_form = [stage2(row) for row in tqdm(data, desc='Processing candidates')]
+        df['current_form'] = pd.Series(data_current_form)
+        df['current_form_shape'] = df['current_form'].apply(word_shape)
+        if override_file == 'update':
+            df = override_generated_forms(df)
 
-    df = df.sort_values(by=['form_overridden', 'gismu_sum'], ascending=[True, False])
-    df = df[['gismu', 'gismu_shape', 
-            'current_form', 'override', 'final_shape', 'final_count',
-            'pos_tendency',
-            'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',
-            'coef3', 'coef1_1', 'coef1_2', 'coef1_3',
-            'form_shape_1', 'form_shape_2', 'form_shape_3',
-            'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3',
-            'rafsi_pos', 'gismu_sum', 'meaning']]
+    def arrange():
+        df = df.sort_values(by=['form_overridden', 'gismu_sum'], ascending=[True, False])
+        df = df[['gismu', 'gismu_shape', 
+                'current_form', 'override', 'final_shape', 'final_count',
+                'pos_tendency',
+                'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',
+                'coef3', 'coef1_1', 'coef1_2', 'coef1_3',
+                'form_shape_1', 'form_shape_2', 'form_shape_3',
+                'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3',
+                'rafsi_pos', 'gismu_sum', 'meaning']]
+
     df.to_csv('results/df3b.csv', sep=',', index=False)
 
     if override_file == 'new':

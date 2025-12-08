@@ -3,7 +3,7 @@ import pandas as pd
 import src.inserts as inserts
 from src.df1_q1 import main as dfq1
 from src.df1_q2 import main as dfq2
-from src.tools.class_table import Table
+from src.tools.object_table import Table
 from src.df3_shared import determine_pos_tendency
 
 def filters(df):

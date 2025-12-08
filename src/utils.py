@@ -1,3 +1,12 @@
+def rearrange(st, ii, reckon=1, *args, **kwargs):
+    lenst = len(st)
+    jj = tuple(int(i) - reckon for i in ii)
+    st = ''.join(tuple(st[j] 
+                    if (j < lenst and j >= 0)
+                    else ' ' 
+                    for j in jj))
+    return st
+
 def substring_positions(st, subst, mode=0, out='list', delim=' '):
 
     positions = list()
