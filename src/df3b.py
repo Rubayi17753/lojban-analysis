@@ -146,7 +146,7 @@ def main(override_file='update'):
     df = inserts.insert_meanings(df)
   
     # Process candidate forms
-    from src.process_candidate_form import stage1, stage2
+    from src.process_candidate_form import stage1
 
     # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
 
@@ -155,12 +155,18 @@ def main(override_file='update'):
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
-    df['current_form'] = pd.Series(data_current_form)
-    df['current_form_shape'] = df['current_form'].apply(word_shape)
+    df2 = pd.DataFrame(data_current_form)
+    for col in list(df2.columns):
+        mask = df2[col].isna()
+        df2[f'{col}_n'] = 0
+        df2[f'{col}_n'][~mask] = (df2.groupby(col)[col].transform('count'))[~mask]
+    df = pd.concat([df, df2], axis=1)    
+
+    # df['current_form_shape'] = df['current_form'].apply(word_shape)
     if override_file == 'update':
         df = override_generated_forms(df)
-    df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
-    df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
+    # df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
+    # df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
 
     def run_stage2():
         data = df.to_dict('records')
@@ -181,7 +187,7 @@ def main(override_file='update'):
                 'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3',
                 'rafsi_pos', 'gismu_sum', 'meaning']]
 
-    df.to_csv('results/df3b.csv', sep=',', index=False)
+    df.to_csv('results/df3bb.csv', sep=',', index=False)
 
     if override_file == 'new':
         create_new_override(df)

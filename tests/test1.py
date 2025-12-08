@@ -1,4 +1,4 @@
-from src.substring_positions import substring_positions
+from src.utils import substring_positions
 
 def main():    
     print(substring_positions('berda', 'bre', out='string'))

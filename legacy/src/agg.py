@@ -13,7 +13,7 @@ def register_functions():
 
     from src.lojban_specific.word_shape import word_shape
     from src.query_aux.parser_aux import lujvo_parse_as_string, lujvo_length
-    from src.substring_positions import substring_positions
+    from src.utils import substring_positions
     from sql.query_aux.q5 import integer_to_series
 
     conn.create_function('word_shape', narg=1, func=word_shape)

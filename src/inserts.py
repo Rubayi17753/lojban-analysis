@@ -19,7 +19,7 @@ def insert_meanings(df):
 
 def insert_rafsi_pos(df):
 
-    from src.substring_positions import substring_positions
+    from src.utils import substring_positions
     df['cmavo_rafsi2'] = df['cmavo_rafsi'].str.replace("'", '')
     df['rafsi_pos'] = df.apply(lambda x: substring_positions(x['gismu'], x['cmavo_rafsi2'], 
                                                             out='string', delim=''), 
