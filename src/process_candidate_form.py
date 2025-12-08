@@ -55,15 +55,16 @@ def stage1(d):
     elif row.params1 == (('CC', '134'), ('CC', '132')):
         out['cac'], out['caac'] = row.form, utils.rearrange(row.gismu, '125')
 
-    # form_shape = CCA
-    elif row.params1 == ('CA', '132'):
-        out['cca'] = row.form
-    elif row.params1 == ('CA', '345'):
-        out['cca'] = row.form
-    elif row.params1 == ('CC', '123'):
+    elif form_shape = CCA:
+
         a, b = row.form, row.gismu
-        out['cca'], out['ccaa'], out['ccac'] = a, f'{a}{b[4]}' , a[:4]
-    elif row.params1 == ('CC', '345'):
+
+        if row.params1 == ('CA', '132'):
+            out['cca'], out['ccaa'], out['ccac'] = a, f'{a}{b[4]}', f'{a}{b[3]}'
+        elif row.params1 == (tuple('CC', ii) for ii in ('345', '342', '145', '142')):
+            out['cca'], out['ccaa'] = a, f'{a}{b[4]}'
+        elif row.params1 == ('CC', '123'):
+            out['cca'], out['ccaa'] = a, f'{a}{b[4]}'
 
     return out
 
