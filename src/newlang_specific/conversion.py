@@ -1,4 +1,6 @@
-diphthong_conversion = {
+import src.lojban_specific.phonological_inventory as inv
+
+diphthongs = {
     "a'a" : "a",
     "a'e" : "ai",
     "a'i" : "ai",
@@ -30,4 +32,19 @@ diphthong_conversion = {
     "u'i" : "ue",
 }
 
-coda_conversion = dict(zip('bpfvdtgkxcjszlmnr', 'bbffddgggsssslfnr'))
+diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
+
+cons_coda = dict(zip('bpfvdtgkxcjszlmnr', 'ppffttkkksssslfnr'))
+
+clusters_l = (
+    ('bdgv', 'ptkf', 'bpfvdtgkxcjszmn'),
+    ('zj', 'cs', 'bpfvdtgkxcjsz'),
+    ('x', 'k', 'bpfvdtgkxcjszmn'),
+    ('x', 'k', 'lr'),
+    )
+clusters_r = (
+    ('bpfvdtgkxcjszmn', 'x', 'k'),
+    ('lr', 'x', 'k'),
+    )
+clusters = {f'{x}{z}' : f'{y}{z}' for xx, yy, zz in clusters_l for z in zz for x, y in zip(xx, yy)}
+clusters.update({f'{x}{y}' : f'{x}{z}' for xx, yy, zz in clusters_r for x in xx for y, z in zip(yy, zz)})

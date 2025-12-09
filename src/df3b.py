@@ -117,6 +117,35 @@ def update_override_file(df):
                      'pos_tendency', 'theme_code', 'meaning']]
     df_override.reset_index().to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
 
+def process_candidates(df, override_file):
+    from src.process_candidate_form import stage1, apply_conversions
+
+    # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
+
+    df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
+    df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
+
+    data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
+    data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
+    df2 = pd.DataFrame(data_current_form)
+    df2 = apply_conversions(df2)
+        
+    for col in list(df2.columns):
+        mask1 = df2[col].isna()
+        mask2 = df2[col] == ''
+        mask = ~mask1 & ~mask2
+        df2[f'{col}_n'] = 0
+        df2[f'{col}_n'][mask] = (df2.groupby(col)[col].transform('count'))[mask]
+    df = pd.concat([df, df2], axis=1)  
+
+    # df['current_form_shape'] = df['current_form'].apply(word_shape)
+    if override_file == 'update':
+        df = override_generated_forms(df)
+    # df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
+    # df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
+
+    return df
+
 def main(override_file='update'):
 
     df = dfq2()
@@ -146,27 +175,7 @@ def main(override_file='update'):
     df = inserts.insert_meanings(df)
   
     # Process candidate forms
-    from src.process_candidate_form import stage1
-
-    # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
-
-    df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
-    df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
-
-    data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
-    data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
-    df2 = pd.DataFrame(data_current_form)
-    for col in list(df2.columns):
-        mask = df2[col].isna()
-        df2[f'{col}_n'] = 0
-        df2[f'{col}_n'][~mask] = (df2.groupby(col)[col].transform('count'))[~mask]
-    df = pd.concat([df, df2], axis=1)    
-
-    # df['current_form_shape'] = df['current_form'].apply(word_shape)
-    if override_file == 'update':
-        df = override_generated_forms(df)
-    # df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
-    # df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
+    df = process_candidates(df, override_file=override_file)
 
     def run_stage2():
         data = df.to_dict('records')
@@ -187,7 +196,7 @@ def main(override_file='update'):
                 'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3',
                 'rafsi_pos', 'gismu_sum', 'meaning']]
 
-    df.to_csv('results/df3bb.csv', sep=',', index=False)
+    df.to_csv('results/df3b1.csv', sep=',', index=False)
 
     if override_file == 'new':
         create_new_override(df)

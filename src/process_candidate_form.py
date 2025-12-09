@@ -1,10 +1,15 @@
 import math
+import pandas as pd
 import src.utils as utils
-from src.newlang_specific.phonology import valid_cons_pairs
+import src.newlang_specific.conversion as conv
+import src.newlang_specific.phonology as phon
+
+cols = ('ca', 'caa', 'cca', 'cac', 'caac', 'cacc', 'ccaa', 'ccac')
 
 class Row:
 
     def __init__(self, d: dict):
+        self.rowdata = d
         self.form = d['cmavo_rafsi_1'].replace("'", "")
         self.form_shape = d['form_shape_1']
         self.pos = d['rafsi_pos_1']
@@ -25,24 +30,27 @@ class Row:
         elif self.gismu_type == 'CA':    cc = f'{g[0]}{g[2]}'
         return cc
 
-class Out:
+    def diphthong_reduced(self):
+        aa = ''
+        g = self.gismu
+        if self.gismu_type == 'CC':    aa =  f'{g[2]}{g[4]}'
+        elif self.gismu_type == 'CA':    aa = f'{g[1]}{g[4]}'
+        return (1 if aa in phon.reduced_diphthongs else 0)
 
-    def __init__(self, caa, cca, cac, caac, cacc, ccaa, ccac):
-        ...
-
+    def other_rafsi(self):
+        d = self.rowdata
+        return (d['cmavo_rafsi_2'], d['cmavo_rafsi_3'], *d['excluded'].split(' ') )
 
 def metathesis():
     # check if C1 and C2 allows metathesis
     aa = f'{gismu[0]}{gismu[2]}'
-    if aa in valid_cons_pairs:
+    if aa in phon.valid_cons_pairs:
         form, shape = f'{aa}{b2}{c}', 'CCAA'
 
 def stage1(d):
 
     row = Row(d)
-    out = {col: None for col in 
-            ('caa', 'cca', 'cac', 'cacc', 'ccaa', 'ccac', 'ccac')
-        }
+    out = {col: None for col in cols}
     f, g = row.form, row.gismu
 
     if row.gismu_type == 'CC':
@@ -50,40 +58,92 @@ def stage1(d):
     elif row.gismu_type == 'CA':
         out['cacc'] = g[:4]
 
-    # form_shape = CAA
-    if row.params1 == ('CA', '125'):
-        out['caa'], out['caac'] = f, utils.rearrange(g, '1254')
-    elif row.params1 == ('CC', '135'):
-        out['caa'], out['caac'], out['ccaa'] = f, utils.rearrange(g, '1354'), utils.rearrange(g, '1235')
-    elif row.params1 == ('CC', '235'):
-        out['caa'], out['caac'], out['ccaa'] = f, utils.rearrange(g, '2354'), utils.rearrange(g, '1235')
+    if row.form_shape == 'CA':
+        out['ca'] = f
 
-    # form_shape = CAC
-    elif row.params1 in (('CA', '123'), ('CA', '124')):
-        out['cac'], out['caac'] = f, utils.rearrange(g, '1354')
-    elif row.params1 == (('CC', '134'), ('CC', '132')):
-        out['cac'], out['caac'] = f, utils.rearrange(g, '1354')
-    elif row.params1 == (('CC', '234'), ('CC', '231'),):
-        out['cac'], out['caac'] = f, utils.rearrange(g, '2354')
+    if row.form_shape == 'CAA':
+        if not row.diphthong_reduced():
+            out['caa'] = f
 
-    # form_shape = CCA:
-    elif row.params1 == ('CA', '132'):
-        out['cca'], out['ccaa'], out['ccac'] = f, f'{f}{g[4]}', f'{f}{g[3]}'
-    elif row.params1 == (tuple('CC', ii) for ii in ('345', '342', '145', '142')):
-        out['cca'], out['ccaa'] = f, f'{f}{g[4]}'
-    elif row.params1 == ('CC', '123'):
-        out['cca'], out['ccaa'] = f, f'{f}{g[4]}'
+        if row.params1 == ('CA', '125'):
+            if not row.diphthong_reduced():
+                out['caac'] = utils.rearrange(g, '1254')
+                out['ccaa'] = utils.rearrange(g, '1325') 
+                out['ccac'] = utils.rearrange(g, '1324')  
+            else:
+                # Investigate other rafsi
+                cac = None
+                for iii in ('123', '124'): 
+                    threeletter = utils.rearrange(g, iii)
+                    if threeletter in row.other_rafsi():
+                        cac = threeletter
+                if not cac:
+                    cac = f'{g[:2]}_'
+                out['cac'] = cac
 
-    c1c2 = row.c1c2()
-    if c1c2:
-        if row.params1 in ('CA', '125'):
-            out['ccaa'], out['ccac'] = utils.rearrange(g, '1325'), utils.rearrange(g, '1324')
-        elif row.params1 in ('CA', '124'):
-            out['ccac'] = f'{c1c2}{f[-2:]}'
+        elif row.params1 in (('CC', '135'), ('CC', '235')):
+            ic = row.pos[0]
+            if not row.diphthong_reduced():
+                out['caac'], out['ccaa'] = utils.rearrange(g, f'{ic}354'), utils.rearrange(g, '1235') 
+            else: 
+                out['cac'], out['cca'] = utils.rearrange(g, f'{ic}34'), utils.rearrange(g, '123')     
+
+    if row.form_shape == 'CAC':
+        out['cac'] = f
+        if row.params1 in (('CA', '123'), ('CA', '124')):
+            if not row.diphthong_reduced():
+                out['caac'] = utils.rearrange(g, '1254')
+            else:
+                out['cac'] = utils.rearrange(g, '124')
+            out['ccac'] = utils.rearrange(g, '1324')
+        elif row.params1 in (('CC', '134'), ('CC', '132'), ('CC', '234'), ('CC', '231'),):
+            ic = row.pos[0]
+            if not row.diphthong_reduced():
+                out['caac'] = utils.rearrange(g, f'{ic}354') 
+    
+    if row.form_shape == 'CCA':
+        out['cca'] = f
+        if row.params1 == ('CA', '132'):
+            out['ccac'] = f'{f}{g[3]}'
+        elif row.params1 == ('CC', '123'):
+            pass
+        if not row.diphthong_reduced():
+            if row.params1 in tuple(('CA', iii) for iii in ('345', '342', '145', '142')):
+                # out['ccaa'] = utils.rearrange(g, '3425')
+                pass
+            else:
+                out['ccaa'] = f'{f}{g[4]}'
 
     return out
 
+def apply_conversions(df):
+    # 'ca', 'caa', 'cca', 'cac', 'caac', 'cacc', 'ccaa', 'ccac'
+    for col in cols:
+
+        col2 = f'{col}_temp'
+
+        if col.startswith('cc'):
+            mask = ~(df[col].str.slice(0, 2).isin(phon.valid_cons_pairs))
+            df[col][mask] = ''
+            df[col2] = df[col].str.slice(0, 2).map(conv.clusters) + df[col].str.slice(2)
+        if col.endswith('aac'):
+            df[col2] = (df[col].str.slice(0, -3) 
+                        + df[col].str.slice(-3, -1).map(conv.diphthongs)
+                        + df[col].str[-1])
+        if col.endswith('aa'):
+            df[col2] = df[col].str.slice(0, -2) + df[col].str.slice(-2).map(conv.diphthongs)
+        if col.endswith('ac'):
+            df[col2] = df[col].str.slice(0, -1) + df[col].str[-1].map(conv.cons_coda)
+        if col.endswith('cc'):
+            df[col2] = df[col].str.slice(0, -2) + df[col].str.slice(-2).map(conv.clusters)
+
+        if col2 in df.columns:
+            mask = ~(df[col2].isna())
+            df[col][mask] = df[col2][mask]
         
+        df = df.fillna('')
+
+    return df[list(cols)]
 
 
 
