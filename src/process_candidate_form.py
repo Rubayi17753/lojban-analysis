@@ -152,12 +152,15 @@ def stage1c(out, row):
             if len(v) != len_col:
 
                 if col == 'caa':
-                    out['cac'], out['caac'] = caa_to_cac(out, row), None
+                    if row.gismu_type == 'CA':
+                        out['cac'] = caa_to_cac(out, row)
+                    elif row.gismu_type == 'CC':
+                        out['cca'] = out.get('cca', v)
                 elif col == 'caac':
-                    out['cac'], out['caac'] = out.get('cac', v), None
+                    out['cac'] = out.get('cac', v)
                 elif col == 'ccaa':
-                    out['cca'], out['ccaa'] = out.get('cca', v), None
-    
+                    out['cca'] = out.get('cca', v)
+            out[col] = None
     return out
 
 def apply_sound_changes_to_df(df):
