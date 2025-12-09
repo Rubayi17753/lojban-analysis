@@ -91,10 +91,11 @@ def stage1(d):
     if row.form_shape == 'CAC':
         out['cac'] = f
         if row.params1 in (('CA', '123'), ('CA', '124')):
+            fc = row.pos[-1]
             if not row.diphthong_reduced():
-                out['caac'] = utils.rearrange(g, '1254')
+                out['caac'] = utils.rearrange(g, f'125{fc}')
             else:
-                out['cac'] = utils.rearrange(g, '124')
+                pass
             out['ccac'] = utils.rearrange(g, '1324')
         elif row.params1 in (('CC', '134'), ('CC', '132'), ('CC', '234'), ('CC', '231'),):
             ic = row.pos[0]
