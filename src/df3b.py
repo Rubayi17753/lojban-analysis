@@ -7,6 +7,8 @@ from src.df1_q2 import main as dfq2
 from src.tools.object_table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
+from src.lojban_specific.pos_to_lpos import pos_to_lpos
+
 
 def get_df_override():
     return pd.read_csv('interactive/new_gismu.tsv', sep='\t', index_col='gismu')
@@ -118,7 +120,7 @@ def update_override_file(df):
     df_override.reset_index().to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
 
 def process_candidates(df, override_file):
-    from src.process_candidate_form import stage1, apply_conversions
+    from src.process_candidate_form import stage1
 
     # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
 
@@ -128,8 +130,7 @@ def process_candidates(df, override_file):
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
     df2 = pd.DataFrame(data_current_form)
-    df2 = apply_conversions(df2)
-        
+
     for col in list(df2.columns):
         mask1 = df2[col].isna()
         mask2 = df2[col] == ''
@@ -155,6 +156,8 @@ def main(override_file='update'):
     df = df[mask2(df)]
 
     # Pre-aggregation
+
+    # df['lpos'] = df.apply(lambda x: pos_to_lpos(x['rafsi_pos'], x['gismu_shape']), axis=1)
     df = df.sort_values(by=['gismu_freq', 'gismu'], ascending=[False, True])
     df = get_frequency_order(df)
 
