@@ -329,7 +329,7 @@ critu	crid			1	??	4.2	autumn
 junla	jul			1	ini	4.3	clock
 tcika	tcig			1	neut	4.3	time of day
 cacra	cacr			1	neut	4.3	hour
-mentu	meu			1	fin	4.3	minute
+mentu	meu	mint		1	fin	4.3	minute
 snidu	nid			1	ini	4.3	second
 pruce	pue			2	fin	5	process
 fasnu	nu			1	fin	5	event

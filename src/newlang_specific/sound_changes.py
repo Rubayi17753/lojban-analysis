@@ -36,15 +36,12 @@ diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
 cons_coda = dict(zip('bpfvdtgkxcjszlmnr', 'ppffttkkksssslfnr'))
 
-# Different regimes for initial and final clusters
-## Initial: preserve voicing of either consonant
-## Final: 
-
 clusters_ini = (
     (('x', inv.C) , ('k', inv.C)),
-    (('cs', 'bdvg') , ('jz', 'bdvg')),
-    (('jz', 'pftk') , ('jz', 'bdvg')),
-    (('d', 'csjz') , ('t', 'jzjz')),
+    (('cs', 'bdgv') , ('cs', 'ptkf')),
+    (('jz', 'ptkf') , ('jz', 'bdgv')),
+    (('d', 'cs') , ('d', 'jz')),
+    (('t', 'jz') , ('t', 'cs')),
 )
 
 clusters_fin = (

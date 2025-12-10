@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import src.inserts as inserts
+import config.threshholds as th
 from src.df1_q1 import main as dfq1
 from src.df1_q2 import main as dfq2
 from src.tools.object_table import Table
@@ -9,7 +10,7 @@ from src.df3_shared import determine_pos_tendency
 def filters(df):
 
     mask = (
-        (df['coef1'] > 2)   # Coefficient here: q2's df['cmavo_rafsi_freq'] / df['max_form_freq'] * 100
+        (df['coef1'] > th.coef1_threshhold)   # Coefficient here: q2's df['cmavo_rafsi_freq'] / df['max_form_freq'] * 100
         & (~df['rafsi_pos'].str.contains('_'))
     )
     return mask
