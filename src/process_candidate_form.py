@@ -2,16 +2,18 @@ import math
 import pandas as pd
 import config.threshholds as th
 import src.utils as utils
+import src.lojban_specific.phonological_inventory as inv
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
 
-cols = ('ca', 'caa', 'cca', 'cac', 'caac', 'cacc', 'ccaa', 'ccac')
+cols = ('override', 'ca', 'caa', 'cca', 'cac', 'caac', 'cacc', 'ccaa', 'ccac')
 len_cols = tuple(len(col) for col in cols)
 
 class Row:
 
     def __init__(self, d: dict):
         self.rowdata = d
+        self.override = d['override']
         self.gismu = d['gismu']
         self.gismu_shape = d['gismu_shape']
         self.poss_tendency = d['pos_tendency']
@@ -62,7 +64,16 @@ class Row:
         d = self.rowdata
         return ( d['cmavo_rafsi_1'], d['cmavo_rafsi_2'], d['cmavo_rafsi_3'], *d['excluded'].split(' ') )
 
-    
+    def get_other_coda(self):
+        rafsis = tuple((form for form in self.get_other_rafsi() if form))
+        codas = tuple((char 
+                        for char in (form[-1] for form in rafsis)
+                        if char in inv.C
+                        ))
+
+        if len(codas) > 1:  print(rafsis)
+        coda = codas[0] if codas else None
+        return coda
 
     def find_in_shape(s):
         if s in gismu_shape:
@@ -81,6 +92,9 @@ def stage1(d, ordered=0):
     row = Row(d)
     out = {col: Form() for col in cols}
 
+    out['override'].form = row.override
+    out['override'].priority = -999
+
     for form_args in zip(row.forms, row.shapes, row.poss, row.params):
         out = process_form(out, row, *form_args)
     out = apply_sound_changes_to_row(out)
@@ -92,18 +106,6 @@ def stage1(d, ordered=0):
         out = {a : b.form for a, b in out.items()}
 
     return out
-
-def caa_to_cac(out, row):
-    # Investigate other rafsi
-    cac = None
-    g = row.gismu
-    for iii in ('123', '124'): 
-        threeletter = utils.rearrange(g, iii)
-        if threeletter in row.get_other_rafsi():
-            cac = threeletter
-    if not cac:
-        cac = f'{g[:2]}_'
-    return cac
 
 def process_form(out, row, *form_args):
 
@@ -138,8 +140,9 @@ def process_form(out, row, *form_args):
     if fs == 'CAA':
         out['caa'].form = f
         if params == ('CA', '125'):
-            fc = ...
-            out['caac'].form = utils.rearrange(g, f'125{fc}')
+            fc = row.get_other_coda()
+            fc = fc if fc else g[3]     # supply last consonant if list of codas empty
+            out['caac'].form = f'{f}{fc}'
             out['ccaa'].form = utils.rearrange(g, '1325') 
         elif params in (('CC', '135'), ('CC', '235')):
             ic = pos[0]
@@ -209,8 +212,9 @@ def stage1c(out, row):
             if len(v) != len_col:
                 if col == 'caa':
                     if row.gismu_type == 'CA':
-                        fc = ...
-                        out['cac'].form = f'{v}{fc}'    # CA + C
+                        fc = row.get_other_coda()
+                        fc = fc if fc else '_'     # supply '_' if list of codas empty
+                        out['cac'].form = f'{v}{fc}'    # CA +
                     elif row.gismu_type == 'CC':
                         out['cac'].form = f'{v}{g[3]}'    # CA + A
                         out['cca'].form = f'{g[:2]}{v[-1]}'     # CC + A

@@ -133,6 +133,9 @@ def process_candidates(df, override_file):
     data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
     df2 = pd.DataFrame(data_current_form)
 
+    print(df2)
+    exit()
+
     for col in list(df2.columns):
         mask1 = df2[col].isna()
         mask2 = df2[col] == ''
@@ -175,6 +178,11 @@ def main(override_file='update'):
     df = pd.concat([df, dfquery1, df_agg2], axis=1)
     df = df.reset_index()
 
+    # Fetch override
+    df2 = get_df_override().reset_index()[['gismu', 'override']]
+    df = df.merge(df2, on='gismu', how='left')
+
+    # Other ops
     df['gismu_shape'] = df['gismu'].apply(word_shape)
     df = determine_pos_tendency(df)
     df = inserts.insert_meanings(df)
