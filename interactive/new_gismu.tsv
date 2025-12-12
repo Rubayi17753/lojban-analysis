@@ -564,7 +564,7 @@ marji	mai			3	fin	7.5	material
 fagri	fag			2	ini	7.5	fire
 lindi	lid			3	ini	7.5	lightning
 sligu	lig			2	neut	7.5.1	solid
-panje	panj			1	??	7.5.1	sponge
+panje	panj	ponj		1	??	7.5.1	sponge
 pulce	plue			1	ini	7.5.1	dust
 purmo	pu_			2	fin	7.5.1	powder
 pesxu	peg			1	neut	7.5.1	paste
@@ -720,7 +720,7 @@ kumte	kumt			1	fin	9.2.2	camel
 xirma	xir			1	neut	9.2.2	horse
 xasli	xasl			1	ini	9.2.2	donkey
 cribe	crib			1	neut	9.2.2	bear
-mlatu	mlad			1	ini	9.2.2	cat
+mlatu	mlad	meu		1	ini	9.2.2	cat
 cinfo	cinf			1	fin	9.2.2	lion
 tirxu	tirk			1	fin	9.2.2	tiger
 gerku	ger			1	ini	9.2.2	dog
@@ -1136,7 +1136,7 @@ kruji	krus			1	fin	13.2.3	cream
 matne	matn			1	fin	13.2.3	butter
 cirla	cirl			1	fin	13.2.3	cheese
 sakta	sad			2	neut	13.2.3	sugar
-cakla	cakl			1	fin	13.2.3	chocolate
+cakla	cakl	cokl		1	fin	13.2.3	chocolate
 nanba	nab			1	fin	13.2.3	bread
 salta	salt			1	??	13.2.3	salad
 sanso	sans			1	??	13.2.3	sauce

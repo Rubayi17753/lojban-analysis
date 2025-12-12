@@ -1,7 +1,7 @@
 # differences from lojban: + zn jn = xl xr
 
 valid_cons_pairs = (
-    ('pbfvkgm', 'lr'),
+    ('pbfvkgxm', 'lr'),
     ('csjz', 'pftkbdvgmnlr'),
     ('td', 'csjzr'),
 )

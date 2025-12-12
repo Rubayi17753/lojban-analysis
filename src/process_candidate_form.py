@@ -8,6 +8,7 @@ import src.newlang_specific.phonology as phon
 
 cols = ('override', 'ca', 'caa', 'cca', 'cac', 'caac', 'cacc', 'ccaa', 'ccac')
 len_cols = tuple(len(col) for col in cols)
+amount_cols = len(cols)
 
 class Row:
 
@@ -19,18 +20,24 @@ class Row:
         self.poss_tendency = d['pos_tendency']
 
         if self.gismu:
+
             # Admit second forms if certain criteria met
             # Second before first, so that first forms overwrite second
             n1, n2 = d['coef1_1'], d['coef1_2']
+
             coef_second_form = round(n2 / n1 , 1) if n1 else 999
+            
             if coef_second_form > th.coef_second_form_threshhold:
                 self.forms = [d['cmavo_rafsi_2'] , d['cmavo_rafsi_1']]
                 self.shapes = [d['form_shape_2'] , d['form_shape_1']]
                 self.poss = [d['rafsi_pos_2'] , d['rafsi_pos_1']]
+                self.priority_factors = [1, 1] if coef_second_form > 0.5 else [0.5, 1]
             else:
                 self.forms = [d['cmavo_rafsi_1']]
                 self.shapes = [d['form_shape_1']]
                 self.poss = [d['rafsi_pos_1']]
+                self.priority_factors = [1,]
+            
             if not self.forms[0]:
                 # i.e. self.forms, .shapes, .poss are lists of empty strings
                 self.forms = [d['gismu'][:-1]]
@@ -87,21 +94,24 @@ class Form:
         self.form = form
         self.priority = priority
 
-def stage1(d, ordered=0):
+def stage1(d, ordered=1):
 
     row = Row(d)
     out = {col: Form() for col in cols}
 
     out['override'].form = row.override
-    out['override'].priority = -999
+    out['override'].priority = -1000
+    out['ca'].priority = -500
 
-    for form_args in zip(row.forms, row.shapes, row.poss, row.params):
+    for form_args in zip(row.forms, row.shapes, row.poss, row.params, row.priority_factors):
         out = process_form(out, row, *form_args)
     out = apply_sound_changes_to_row(out)
     out = stage1c(out, row)
 
     if ordered:
-        ...
+        out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority)]
+        out = tuple(m for m in out if m) # removes blanks and nones
+        out = dict(zip( range(amount_cols) , out ))
     else:
         out = {a : b.form for a, b in out.items()}
 
@@ -109,7 +119,7 @@ def stage1(d, ordered=0):
 
 def process_form(out, row, *form_args):
 
-    f, fs, pos, params = form_args
+    f, fs, pos, params, priority_factor = form_args
     g, gt = row.gismu, row.gismu_type
 
     if not f:
@@ -117,15 +127,15 @@ def process_form(out, row, *form_args):
         return out
 
     # Boost priority of 'original' form and those that match positional preferences:
-    out[fs.lower()].priority += -20
+    out[fs.lower()].priority += round(-20 * priority_factor)
     
     if pos == 'ini':
-        out['ccac'].priority += 20  # cca exempt
-
-    if pos == 'fin':
         out['cacc'].priority += 20
         for col_coda_c in ('caac', 'ccac'): # cac exempt
             out[col_coda_c].priority += 10
+
+    if pos == 'fin':
+        out['ccac'].priority += 20  # cca exempt
 
     # By gismu shape
     if gt == 'CC':
@@ -208,7 +218,7 @@ def stage1c(out, row):
         v = vv.form
         g = row.gismu
 
-        if v:
+        if v and col != 'override':
             if len(v) != len_col:
                 if col == 'caa':
                     if row.gismu_type == 'CA':

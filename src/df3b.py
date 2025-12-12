@@ -132,10 +132,11 @@ def process_candidates(df, override_file):
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     data_current_form = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
     df2 = pd.DataFrame(data_current_form)
-
-    print(df2)
-    exit()
-
+    
+    # Applies only if ordered == 1 (see process_candidate_form.stage1)
+    if df2.columns[0] == 0:
+        df2 = df2.rename(columns=lambda n: f'form_{n}')
+  
     for col in list(df2.columns):
         mask1 = df2[col].isna()
         mask2 = df2[col] == ''
