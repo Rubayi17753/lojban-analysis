@@ -1047,12 +1047,12 @@ jarbu	jarb			1	fin	12.2	suburb
 tcadu	tca			1	neut	12.2	city
 nurma	nuf			1	ini	12.2	rural
 panka	pank			1	fin	12.2	park
-bemro	bef			2	ini	12.2	North American
+bemro	bef	mre		2	ini	12.2	North American
 dzipo	dzib			1	??	12.2	Antarctican
-friko	frio			1	ini	12.2	African
-ketco	tco			1	ini	12.2	South American
-xazdo	zdo			1	fin	12.2	Asiatic
-ropno	ron			1	fin	12.2	European
+friko	frio	fri		1	ini	12.2	African
+ketco	tco	mre		1	ini	12.2	South American
+xazdo	zdo	sia		1	fin	12.2	Asiatic
+ropno	ron	vro		1	fin	12.2	European
 lijda	jda			1	ini	12.5	religion
 cevni	cef			1	ini	12.5	god
 censa	ces			1	ini	12.5	holy

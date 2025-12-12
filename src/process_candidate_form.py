@@ -167,6 +167,8 @@ def process_form(out, row, *form_args):
         elif params in (('CC', '134'), ('CC', '132'), ('CC', '234'), ('CC', '231'),):
             ic = pos[0]
             out['caac'].form = utils.rearrange(g, f'{ic}354') 
+        if params == ('CA', '124'):
+            out['ccac'].form = utils.rearrange(g, f'1324')
     
     if fs == 'CCA':
         out['cca'].form = f
@@ -185,7 +187,7 @@ def apply_sound_changes_to_row(out):
         p, q, r = v, '', ''
 
         if v:
-            if col in ('cca', 'ccaa'):
+            if col in ('cca', 'ccaa', 'ccac'):
                 if v[:2] in phon.valid_cons_pairs:
                     p, q, r = v[:2], v[2:], ''
                 else:
