@@ -1,5 +1,5 @@
 import pandas as pd
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def process_freqs_cmavo2():
 	from src.lojban_specific.parser import compound_cmavo_parser

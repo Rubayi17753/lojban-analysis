@@ -2,7 +2,7 @@ import pandas as pd
 
 def get_df_rafsi_meaning():
 	
-	from src.tools.object_table import Table
+	from src.classes.table import Table
 	from src.lojban_specific.meanings_gismu import get_df_gismu_meaning
 
 	df = Table('defs_rafsi', keep_default_na=False).dff		# Prevents pandas for reading string 'nan' as NaN

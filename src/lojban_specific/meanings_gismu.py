@@ -1,4 +1,4 @@
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def get_df_gismu_meaning(dfg=Table('defs_gismu').dff):
     # Handles meanings of the format wood ‘lumber’

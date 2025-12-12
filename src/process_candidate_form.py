@@ -111,6 +111,7 @@ def stage1(d, ordered=1):
     if ordered:
         out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority)]
         out = tuple(m for m in out if m) # removes blanks and nones
+        out = list(dict.fromkeys(out))  # removes duplicates
         out = dict(zip( range(amount_cols) , out ))
     else:
         out = {a : b.form for a, b in out.items()}

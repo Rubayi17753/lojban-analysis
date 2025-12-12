@@ -1,4 +1,4 @@
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def insert_thematic(df):
 

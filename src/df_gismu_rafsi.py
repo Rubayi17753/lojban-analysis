@@ -1,7 +1,7 @@
 # Deals with defs_rafsi
 
 import pandas as pd
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def get_df_gismu_rafsi():
 	df = Table('defs_rafsi', keep_default_na=False).dff		# Prevents pandas for reading string 'nan' as NaN

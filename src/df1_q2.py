@@ -2,7 +2,7 @@
 
 import src.inserts as inserts
 from src.df1 import create_grand_table 
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def main(filter=1):
 

@@ -3,7 +3,7 @@
 # import pandas as pd
 # from tqdm import tqdm
 import numpy as np
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def filter1(df):
 	df = df[(df['section_id'] == 11)]	

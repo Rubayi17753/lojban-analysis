@@ -6,7 +6,7 @@ import src.inserts as inserts
 import config.threshholds as th
 from src.df1_q1 import main as dfq1
 from src.df1_q2 import main as dfq2
-from src.tools.object_table import Table
+from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.pos_to_lpos import pos_to_lpos

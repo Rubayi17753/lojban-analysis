@@ -1,5 +1,5 @@
 # Insert columns from base and apply functions to columns
-from src.tools.object_table import Table
+from src.classes.table import Table
 
 def insert_shapes(df):
 
