@@ -94,7 +94,7 @@ class Form:
         self.form = form
         self.priority = priority
 
-def stage1(d, ordered=1):
+def stage1(d, index_by='priority'):
 
     row = Row(d)
     out = {col: Form() for col in cols}
@@ -108,12 +108,18 @@ def stage1(d, ordered=1):
     out = apply_sound_changes_to_row(out)
     out = stage1c(out, row)
 
-    if ordered:
+    if index_by == 'priority':
         out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority)]
         out = tuple(m for m in out if m) # removes blanks and nones
         out = list(dict.fromkeys(out))  # removes duplicates
         out = dict(zip( range(amount_cols) , out ))
-    else:
+
+    if index_by == 'priority_stack':
+        out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority, reverse=1)]
+        out = tuple(m for m in out if m) # removes blanks and nones
+        out = list(dict.fromkeys(out))  # removes duplicates
+
+    elif index_by == 'form_type':
         out = {a : b.form for a, b in out.items()}
 
     return out
@@ -188,13 +194,10 @@ def apply_sound_changes_to_row(out):
         p, q, r = v, '', ''
 
         if v:
-            if col in ('cca', 'ccaa', 'ccac'):
-                if v[:2] in phon.valid_cons_pairs:
-                    p, q, r = v[:2], v[2:], ''
-                else:
-                    p = ''
+            if col in ('cca', 'ccaa'):
+                (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')
             elif col == 'ccac':
-                p, q, r = v[:2], v[2], v[3]
+                (p, q, r) = (v[:2], v[2], v[3]) if v[:2] in phon.valid_cons_pairs else ('', '', '')                 
             elif col == 'cac':
                 p, q, r = v[0], v[1], v[2]
             elif col == 'caa':
