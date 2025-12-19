@@ -9,3 +9,7 @@ coef3 :
 - df['max_coef'] = df.groupby('gismu')['form_overridden'].transform('max')
 - df['coef3'] = df['coef1_1'] / df['max_coef']
 - coef1's derivation algorithm reapplied to coef1
+coef_gismu_sum :
+- df['max_gismu_sum'] = df.groupby('current_form')['gismu_sum'].transform('max')
+- df['coef_gismu_sum'] = df['gismu_sum'] / df['max_gismu_sum']
+- df3b.handle_duplicate_forms

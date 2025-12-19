@@ -45,8 +45,8 @@ clusters_ini = (
 )
 
 clusters_fin = (
-    (('bdgv', 'pftkcsx') , ('ptkf', 'pftkcsx')),
-    (('ptkf', 'bvdgjzmn') , ('bdgv', 'bvdgjzmn')),
+    (('bdgv', 'pftkcsxmn') , ('ptkf', 'pftkcsxmn')),
+    (('ptkf', 'bvdgjz') , ('bdgv', 'bvdgjz')),
     (('zj', 'bpfvdtgkxcjsz') , ('sc', 'bpfvdtgkxcjsz')),
     (('x', 'bpfvdtgkxcjszmnlr') , ('k', 'bpfvdtgkxcjszmnlr')),
     (('bpfvdtgkxcjszmnlr', 'x') , ('bpfvdtgkxcjszmnlr', 'k')),

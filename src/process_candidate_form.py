@@ -1,12 +1,13 @@
 import math
 import pandas as pd
 import config.threshholds as th
+import config.misc as config_misc
 import src.utils as utils
 import src.lojban_specific.phonological_inventory as inv
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
 
-cols = ('override', 'ca', 'caa', 'cca', 'cac', 'caac', 'cacc', 'ccaa', 'ccac')
+cols = ('override', 'ca', 'caa', 'cca', 'cac', 'cak', 'caac', 'caak', 'cacc', 'ccaa', 'ccac')
 len_cols = tuple(len(col) for col in cols)
 amount_cols = len(cols)
 
@@ -82,9 +83,9 @@ class Row:
         coda = codas[0] if codas else None
         return coda
 
-    def find_in_shape(s):
-        if s in gismu_shape:
-            return gismu_shape.index(s)
+    def find_in_shape(self, s):
+        if s in self.gismu_shape:
+            return self.gismu_shape.index(s)
         else:
             return -1
 
@@ -103,21 +104,38 @@ def stage1(d, index_by='priority'):
     out['override'].priority = -1000
     out['ca'].priority = -500
 
+    if row.poss_tendency == 'ini':
+        out['cacc'].priority += 20
+        out['caac'].priority += 10  # cac, ccac exempt
+        out['caak'].priority += 8  # cac, ccac exempt
+
+    if row.poss_tendency == 'fin':
+        out['ccac'].priority += 20  # cca exempt
+        out['ccaa'].priority += 15
+
     for form_args in zip(row.forms, row.shapes, row.poss, row.params, row.priority_factors):
         out = process_form(out, row, *form_args)
     out = apply_sound_changes_to_row(out)
     out = stage1c(out, row)
+    out = apply_sound_changes_to_row(out)
 
-    if index_by == 'priority':
-        out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority)]
+    if index_by in ('priority', 'priority_stack'):
+
+        # If override or ca forms exists, discard all other forms
+        # This effectively forces later algorithms to retain them
+        sole_form = ' '.join(x for x in (out['override'].form, out['ca'].form) if x)
+        if sole_form:
+            out = [sole_form,]
+        else:
+            n = 0
+            out = [v.form  for k, v in sorted(out.items(), key = lambda item : item[1].priority, reverse=n)]
         out = tuple(m for m in out if m) # removes blanks and nones
         out = list(dict.fromkeys(out))  # removes duplicates
-        out = dict(zip( range(amount_cols) , out ))
+        stack = out.copy()[::-1]
 
-    if index_by == 'priority_stack':
-        out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority, reverse=1)]
-        out = tuple(m for m in out if m) # removes blanks and nones
-        out = list(dict.fromkeys(out))  # removes duplicates
+        if index_by == 'priority':
+            out = dict(zip( range(amount_cols) , out ))
+            out['stack'] = stack
 
     elif index_by == 'form_type':
         out = {a : b.form for a, b in out.items()}
@@ -135,14 +153,6 @@ def process_form(out, row, *form_args):
 
     # Boost priority of 'original' form and those that match positional preferences:
     out[fs.lower()].priority += round(-20 * priority_factor)
-    
-    if pos == 'ini':
-        out['cacc'].priority += 20
-        for col_coda_c in ('caac', 'ccac'): # cac exempt
-            out[col_coda_c].priority += 10
-
-    if pos == 'fin':
-        out['ccac'].priority += 20  # cca exempt
 
     # By gismu shape
     if gt == 'CC':
@@ -155,11 +165,16 @@ def process_form(out, row, *form_args):
         out['ca'].form = f
 
     if fs == 'CAA':
+
+        out['ccaa'].priority += -20
+
         out['caa'].form = f
         if params == ('CA', '125'):
             fc = row.get_other_coda()
-            fc = fc if fc else g[3]     # supply last consonant if list of codas empty
-            out['caac'].form = f'{f}{fc}'
+            if fc:
+                out['caac'].form = f'{f}{fc}'
+            else:
+                out['caac'].form, out['caak'].form = f'{f}{g[2]}', f'{f}{g[3]}'
             out['ccaa'].form = utils.rearrange(g, '1325') 
         elif params in (('CC', '135'), ('CC', '235')):
             ic = pos[0]
@@ -198,11 +213,11 @@ def apply_sound_changes_to_row(out):
                 (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')
             elif col == 'ccac':
                 (p, q, r) = (v[:2], v[2], v[3]) if v[:2] in phon.valid_cons_pairs else ('', '', '')                 
-            elif col == 'cac':
+            elif col in ('cac', 'cak'):
                 p, q, r = v[0], v[1], v[2]
             elif col == 'caa':
                 p, q, r = v[0], v[1:], ''
-            elif col == 'caac':
+            elif col in ('caac', 'caak'):
                 p, q, r = v[0], v[1:3], v[3]
             elif col == 'cacc':
                 p, q, r = v[0], v[1], v[2:]
@@ -229,8 +244,11 @@ def stage1c(out, row):
                 if col == 'caa':
                     if row.gismu_type == 'CA':
                         fc = row.get_other_coda()
-                        fc = fc if fc else '_'     # supply '_' if list of codas empty
-                        out['cac'].form = f'{v}{fc}'    # CA +
+                        if fc:
+                            out['cac'].form = f'{v}{fc}'    # CA + C
+                        else:
+                            out['cac'].form = f'{v}_'
+                            # out['cac'].form, out['cak'].form = f'{v}{g[2]}', f'{v}{g[3]}'
                     elif row.gismu_type == 'CC':
                         out['cac'].form = f'{v}{g[3]}'    # CA + A
                         out['cca'].form = f'{g[:2]}{v[-1]}'     # CC + A

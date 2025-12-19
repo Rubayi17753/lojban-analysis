@@ -1,6 +1,6 @@
 gismu	current_form	override	notes	final_count	pos_tendency	theme_code	meaning
 girzu	gri			1	fin	1.1	group
-gunma	gunm	gum	combining form projected to see considerable use despite statistics	1	neut	1.1	jointly
+gunma	gunm	gun	combining form projected to see considerable use despite statistics	1	neut	1.1	jointly
 cmima	cmi			1	ini	1.1	member
 pagbu	pau			2	fin	1.1	part
 klesi	le_			1	fin	1.1	class
@@ -160,8 +160,8 @@ djuno	jun			1	fin	2.5	know
 facki	fai			2	fin	2.5	discover
 fatci	fas			1	ini	2.5	fact
 jdice	jdi			1	neut	2.5	decide
-jetnu	je'u			1	ini	2.5	true
-jitfa	jif			3	ini	2.5	false
+jetnu	je'u			1	ini	2.5	TRUE
+jitfa	jif			3	ini	2.5	FALSE
 jijnu	jijn			1	neut	2.5	intuit
 jimpe	jmi			1	fin	2.5	understand
 jinvi	jif			3	neut	2.5	opine
@@ -258,7 +258,7 @@ sefta	sfe			1	fin	3.5.3	surface
 jganu	jga			1	ini	3.5.3	angle
 plita	plit			1	ini	3.5.3	plane
 kurfa	kur			1	ini	3.5.3	square
-karda	kard			1	fin	3.5.3	card
+karda	kard	kart		1	fin	3.5.3	card
 cukla	cug			1	ini	3.5.3	round
 djine	jin			1	ini	3.5.3	ring
 punli	pul			1	ini	3.5.3	swelling
@@ -684,7 +684,7 @@ xruba	xub			1	fin	9.1.5	buckwheat
 zumri	zmu			1	ini	9.1.5	maize
 rismi	ris			1	ini	9.1.5	rice
 cindu	cind			1	fin	9.1.6	oak
-tanko	tank	tabg		1	ini	9.1.6	tobacco
+tanko	tank	tapk		1	ini	9.1.6	tobacco
 marna	marn			1	ini	9.1.6	hemp
 danlu	dal			1	ini	9.2	animal
 cilce	cis			2	ini	9.2	wild
@@ -987,7 +987,7 @@ nobli	nol			1	ini	11.2	noble
 mikce	mis			2	neut	11.2	doctor
 zajba	zas			2	ini	11.2	gymnast
 vitke	vi_			1	neut	11.2	guest
-xotli	xoi	hodl		1	fin	11.2	hotel
+xotli	xoi	xotl		1	fin	11.2	hotel
 turni	tru			1	fin	11.2.1	govern
 kamni	kamn			1	fin	11.2.1	committee
 catni	cai			1	fin	11.2.1	authority
@@ -1126,7 +1126,7 @@ vanju	van			1	ini	13.2.2	wine
 birje	birj			1	ini	13.2.2	beer
 jisra	jisr			1	??	13.2.2	juice
 sodva	sodv			1	??	13.2.2	soda
-ckafi	kaf	kaft		1	ini	13.2.2	coffee
+ckafi	kaf			1	ini	13.2.2	coffee
 tcati	tcad	tcai		1	fin	13.2.2	tea
 sanmi	sai			2	fin	13.2.3	meal
 rectu	re'u			1	neut	13.2.3	meat
@@ -1185,7 +1185,7 @@ livla	lil			1	fin	13.3.3	fuel
 pambe	pamb			1	neut	13.3.3	pump
 toknu	tog			1	ini	13.3.3	oven
 xarci	xas			2	neut	13.3.3	weapon
-jbama	baf	bom		1	ini	13.3.3	bomb
+jbama	baf	bomb		1	ini	13.3.3	bomb
 danti	dan			1	ini	13.3.3	projectile
 greku	greg			1	fin	13.4	frame
 tsina	sin			1	ini	13.4	stage
