@@ -174,23 +174,38 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
     df['max_gismu_sum'] = df.groupby('current_form')['gismu_sum'].transform('max')
     df['coef_gismu_sum'] = df['gismu_sum'] / df['max_gismu_sum']
 
+    gismus = list(df['gismu'])
     current_forms = list(df['current_form'])
     form_stacks = list(df['form_stack'])
     coefs = list(df['coef_gismu_sum'])
+    tendencies = list(df['pos_tendency'])
     # set_current_forms = set(current_forms)
 
-    def conditions(stack, dupl, coef):
+    def conditions(stack, dupl, coef, tendency):
         if sift == 1:
             return stack and dupl and coef < 0.8
+        elif sift == 10:
+            return stack and dupl and coef < 0.99
         elif sift == 2:
             return stack and dupl
+        elif sift == 3:
+            return (stack and dupl and  
+                    (
+                        (tendency == 'ini' and word_shape(stack[-1])[:2] == 'CC')
+                        or (tendency == 'fin' and word_shape(stack[-1])[-2:] == 'CC')
+                    ))
 
     cur_forms, stacks = list(), list()
-    for cur_form, stack, dupl, coef in zip( current_forms, form_stacks, mask_dupl, coefs ):
-        if conditions(stack, dupl, coef):
+    n_changes = 0
+    for g, cur_form, stack, dupl, coef, tendency in zip( gismus, current_forms, form_stacks, mask_dupl, coefs, tendencies ):
+        if conditions(stack, dupl, coef, tendency):
             cur_form = stack.pop()
+            n_changes += 1
         cur_forms.append(cur_form)
         stacks.append(stack)
+
+    if display_stats:
+        print(f'{n_changes} forms changed')
 
     df['current_form'] = pd.Series(cur_forms)
     df['form_stack'] = pd.Series(stacks)
@@ -198,7 +213,22 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
 
     return df
 
+def handle_duplicate_df(df):
+
+    df['current_form'] = df['form_0']
+    df = handle_duplicate_forms(df)
+    df = handle_duplicate_forms(df, sift=3)
+    df = handle_duplicate_forms(df)
+    for i in range(4):
+        df = handle_duplicate_forms(df, sift=10)
+    for i in range(4):
+        df = handle_duplicate_forms(df, sift=2)
+    
+    return df
+
 def main(override_file='update'):
+    
+    import src.process_candidate_form as process_candidate_form
 
     df = dfq2()
     df_agg2 = aggregate(df.copy())
@@ -235,13 +265,7 @@ def main(override_file='update'):
   
     # Process candidate forms
     df = process_candidates(df, override_file=override_file)
-
-    # Handle duplicates
-    df['current_form'] = df['form_0']
-    for i in range(config_misc.handle_duplicate_forms_iteration_count):
-        df = handle_duplicate_forms(df)
-    for i in range(config_misc.handle_duplicate_forms_iteration_count):
-        df = handle_duplicate_forms(df, sift=2)
+    df = handle_duplicate_df(df)
 
     # Post-processing
     df['current_shape'] = df['current_form'].apply(word_shape)
@@ -252,10 +276,11 @@ def main(override_file='update'):
 
     df[['gismu', 'current_form', 'meaning']].to_csv('results/df3b2.csv', sep=',', index=False)
 
-    col_shapes = ['ca', 'caa', 'cca', 'cac', 'cak', 'caac', 'caak', 'cacc', 'ccaa', 'ccac',]
-    col_forms = ['form_0', 'form_1', 'form_2', 'form_3', 'form_4', 'form_5', 'form_6',]
-    df[['gismu', 'pos_tendency', 'current_form', 'current_shape', 'current_form_count', 'meaning', 
-    *col_forms, *col_shapes]].to_csv('results/df3b3.csv', sep=',', index=False)
+    col_shapes = process_candidate_form.cols
+    col_forms = ['form_0', 'form_1', 'form_2', 'form_3', 'form_4', 'form_5',]
+    initial_forms = ['cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',]
+    df[['gismu', 'pos_tendency', 'gismu_sum', 'current_form', 'current_shape', 'current_form_count', 'meaning', 
+    *col_forms, *col_shapes, *initial_forms, ]].to_csv('results/df3b3.csv', sep=',', index=False)
 
     if override_file == 'new':
         create_new_override(df)

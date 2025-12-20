@@ -16,7 +16,7 @@ steci	tes			1	fin	1.1	specific
 manfo	manf			1	fin	1.1	uniform
 vrici	vris			1	neut	1.1	miscellaneous
 cnano	cnau			1	neut	1.1	norm
-bende	bed			1	fin	1.1	crew
+bende	bed	dip	duei/dal/tim/ekip	1	fin	1.1	crew
 stura	tur			1	neut	1.2	structure
 ciste	ci_			2	fin	1.2	system
 morna	mrua			2	neut	1.2	pattern
@@ -54,7 +54,7 @@ stodi	sto			1	fin	1.5	constant
 cenba	cne			1	neut	1.5	vary
 banro	bau			3	fin	1.5	grow
 ctaru	ctar			1	??	1.5	tide
-jmina	jmia			1	ini	1.5	add
+jmina	jmia	plus		1	ini	1.5	add
 banzu	banz			1	fin	1.5	suffice
 dukse	du'e			1	neut	1.5	excess
 claxu	cau			3	fin	1.5	without
@@ -65,14 +65,14 @@ mintu	mi'u			1	neut	1.5	same
 frica	fis			1	neut	1.5	differ
 dukti	dud			1	neut	1.5	opposite
 cmaci	cmas			1	ini	1.6	mathematics
-mekso	meg			1	neut	1.6	MEX
+mekso	meg	meks		1	neut	1.6	MEX
 namcu	nas			2	ini	1.6	number
 kancu	kas			2	ini	1.6	count
 kanji	kanj			1	neut	1.6	calculate
 saclu	sacl			1	??	1.6	decimal
 sumji	sumj			1	fin	1.6	sum
 vimcu	vio			1	fin	1.6	remove
-pilji	pi_			1	fin	1.6	multiply
+pilji	pi_	plik		1	fin	1.6	multiply
 frinu	frin			1	neut	1.6	fraction
 tenfa	tenf			1	??	1.6	exponential
 dugri	dug			2	ini	1.6	logarithm
@@ -458,7 +458,7 @@ sisku	sis			2	ini	6.2	seek
 jmaji	jas			2	neut	6.2	gather
 sabji	sab			1	neut	6.2	provide
 fatri	fai			2	neut	6.2	distribute
-fendi	fed			2	neut	6.2	divide
+fendi	fed	dift		2	neut	6.2	divide
 simxu	sif			2	ini	6.2.1	mutual
 muvdu	muf			1	fin	6.2.1	move
 ralte	rai			2	fin	6.2.1	retain
@@ -547,8 +547,8 @@ klani	ni			1	fin	7.4	quantity
 parbi	pab			2	neut	7.4	ratio
 satci	satc			1	fin	7.4	exact
 mitre	tre	mid		2	neut	7.4.1	meter
-radno	rau	rad		3	fin	7.4.1	radian
-stero	teu	srad		1	fin	7.4.1	steradian
+radno	rau	radn		3	fin	7.4.1	radian
+stero	teu	sradn		1	fin	7.4.1	steradian
 litce	litc	lid		3	fin	7.4.1	liter
 grake	gra	gram		1	fin	7.4.1	gram
 molro	molr			1	??	7.4.1	mole
@@ -1063,7 +1063,7 @@ ranmi	raf			3	neut	12.5	myth
 larcu	lar			1	ini	12.6	art
 muzga	mus			1	neut	12.6	museum
 cfika	fia			2	fin	12.6	fiction
-pemci	pef			1	neut	12.6	poem
+pemci	pef	cpue		1	neut	12.6	poem
 prosa	rua			2	fin	12.6	prose
 pixra	xra			1	neut	12.6	picture
 draci	dras			1	fin	12.6	drama
@@ -1075,7 +1075,7 @@ dansu	dans			1	fin	12.6	dance
 damri	damr			1	fin	12.6	drum
 flani	flan			1	fin	12.6	flute
 jgita	gid			1	neut	12.6	guitar
-pipno	pi'o	pian		1	neut	12.6	piano
+pipno	pi'o	pifn		1	neut	12.6	piano
 tabra	tabr			1	fin	12.6	trumpet
 xagri	xagr			1	neut	12.6	reed
 fenso	fe'o			1	ini	13.1	sew

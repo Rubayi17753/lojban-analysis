@@ -7,7 +7,7 @@ import src.lojban_specific.phonological_inventory as inv
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
 
-cols = ('override', 'ca', 'caa', 'cca', 'cac', 'cak', 'caac', 'caak', 'cacc', 'ccaa', 'ccac')
+cols = ('override', 'ca', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
 len_cols = tuple(len(col) for col in cols)
 amount_cols = len(cols)
 
@@ -106,12 +106,17 @@ def stage1(d, index_by='priority'):
 
     if row.poss_tendency == 'ini':
         out['cacc'].priority += 20
-        out['caac'].priority += 10  # cac, ccac exempt
-        out['caak'].priority += 8  # cac, ccac exempt
+
+    if row.poss_tendency != 'fin':
+        out['ccac'].priority += -10
 
     if row.poss_tendency == 'fin':
-        out['ccac'].priority += 20  # cca exempt
-        out['ccaa'].priority += 15
+        ...
+        # out['ccac'].priority += 20  # cca exempt
+        # out['ccaa'].priority += 10
+
+    out['coc'].priority += 15
+    out['cacc'].priority += 20
 
     for form_args in zip(row.forms, row.shapes, row.poss, row.params, row.priority_factors):
         out = process_form(out, row, *form_args)
@@ -128,7 +133,7 @@ def stage1(d, index_by='priority'):
             out = [sole_form,]
         else:
             n = 0
-            out = [v.form  for k, v in sorted(out.items(), key = lambda item : item[1].priority, reverse=n)]
+            out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority, reverse=n)]
         out = tuple(m for m in out if m) # removes blanks and nones
         out = list(dict.fromkeys(out))  # removes duplicates
         stack = out.copy()[::-1]
@@ -166,29 +171,36 @@ def process_form(out, row, *form_args):
 
     if fs == 'CAA':
 
-        out['ccaa'].priority += -20
-
+        out['ccaa'].priority += -15
         out['caa'].form = f
         if params == ('CA', '125'):
+            a = sound_changes.diphthongs.get(f'{g[1]}{g[4]}', '')
             fc = row.get_other_coda()
-            if fc:
-                out['caac'].form = f'{f}{fc}'
+            if len(a) == 1:
+                out['ccac'].form = f'{g[0]}{g[2]}{a}{g[3]}'
             else:
-                out['caac'].form, out['caak'].form = f'{f}{g[2]}', f'{f}{g[3]}'
+                out['ccac'].form = f'{g[0]}{g[2]}{g[1]}{g[3]}'
+                out['ccoc'].form = f'{g[0]}{g[2]}{g[4]}{g[3]}'
+            if fc:
+                out['coc'].form = f'{g[0]}{g[4]}{fc}'
+            else:
+                out['coc'].form, out['cok'].form = f'{g[0]}{g[4]}{g[2]}', f'{g[0]}{g[4]}{g[3]}'
             out['ccaa'].form = utils.rearrange(g, '1325') 
         elif params in (('CC', '135'), ('CC', '235')):
             ic = pos[0]
-            out['caac'].form = utils.rearrange(g, f'{ic}354')
+            # out['coc'].form = utils.rearrange(g, f'{ic}354')
             out['ccaa'].form = utils.rearrange(g, '1235')     
 
     if fs == 'CAC':
+
+        out['ccac'].priority = out['cacc'].priority - 10
         out['cac'].form = f
         if params in (('CA', '123'), ('CA', '124')):
             fc = pos[-1]
-            out['caac'].form = utils.rearrange(g, f'125{fc}')
+            out['coc'].form = utils.rearrange(g, f'15{fc}')
         elif params in (('CC', '134'), ('CC', '132'), ('CC', '234'), ('CC', '231'),):
             ic = pos[0]
-            out['caac'].form = utils.rearrange(g, f'{ic}354') 
+            out['coc'].form = utils.rearrange(g, f'{ic}54') 
         if params == ('CA', '124'):
             out['ccac'].form = utils.rearrange(g, f'1324')
     
@@ -211,14 +223,13 @@ def apply_sound_changes_to_row(out):
         if v:
             if col in ('cca', 'ccaa'):
                 (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')
-            elif col == 'ccac':
+            elif col in ('ccac', 'ccoc'):
                 (p, q, r) = (v[:2], v[2], v[3]) if v[:2] in phon.valid_cons_pairs else ('', '', '')                 
-            elif col in ('cac', 'cak'):
+            elif col in ('cac', 'cak', 'coc', 'cok'):
                 p, q, r = v[0], v[1], v[2]
             elif col == 'caa':
                 p, q, r = v[0], v[1:], ''
-            elif col in ('caac', 'caak'):
-                p, q, r = v[0], v[1:3], v[3]
+            # elif col in ('caac', 'caak'): p, q, r = v[0], v[1:3], v[3]
             elif col == 'cacc':
                 p, q, r = v[0], v[1], v[2:]
 
@@ -247,13 +258,13 @@ def stage1c(out, row):
                         if fc:
                             out['cac'].form = f'{v}{fc}'    # CA + C
                         else:
-                            out['cac'].form = f'{v}_'
-                            # out['cac'].form, out['cak'].form = f'{v}{g[2]}', f'{v}{g[3]}'
+                            out['cac'].form, out['cak'].form = f'{v}{g[2]}', f'{v}{g[3]}'
+                        out['cca'].form = f'{g[0]}{g[2]}{v[1]}'     # CC + A
+                        out['ccac'].form = f'{g[0]}{g[2]}{v[1]}{g[3]}'     # CC + A + C
+                        out['cca'].priority = out['cac'].priority + 5
                     elif row.gismu_type == 'CC':
                         out['cac'].form = f'{v}{g[3]}'    # CA + A
                         out['cca'].form = f'{g[:2]}{v[-1]}'     # CC + A
-                elif col == 'caac':
-                    out['cac'].form = out.get('cac', vv).form
                 elif col == 'ccaa':
                     out['cca'].form = out.get('cca', vv).form
                 out[col].form = None
