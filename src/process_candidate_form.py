@@ -4,11 +4,13 @@ import config.threshholds as th
 import config.misc as config_misc
 import src.utils as utils
 import src.lojban_specific.phonological_inventory as inv
+import src.lojban_specific.lpos as lpos
+import src.lojban_specific.word_shape as word_shape
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
 
-cols = ('override', 'ca', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
-len_cols = tuple(len(col) for col in cols)
+# cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
+cols = ('form1', 'form2', 'CCAA', 'form4a', 'form4b')
 amount_cols = len(cols)
 
 class Row:
@@ -18,41 +20,33 @@ class Row:
         self.override = d['override']
         self.gismu = d['gismu']
         self.gismu_shape = d['gismu_shape']
-        self.poss_tendency = d['pos_tendency']
+        self.pos_tendency = d['pos_tendency']
 
         if self.gismu:
 
             # Admit second forms if certain criteria met
-            # Second before first, so that first forms overwrite second
             n1, n2 = d['coef1_1'], d['coef1_2']
-
             coef_second_form = round(n2 / n1 , 1) if n1 else 999
             
+            self.form1, self.shape1, self.pos1 = d['cmavo_rafsi_1'], d['form_shape_1'], d['rafsi_pos_1']
+            self.form2, self.shape2, self.pos2 = '', '', ''
             if coef_second_form > th.coef_second_form_threshhold:
-                self.forms = [d['cmavo_rafsi_2'] , d['cmavo_rafsi_1']]
-                self.shapes = [d['form_shape_2'] , d['form_shape_1']]
-                self.poss = [d['rafsi_pos_2'] , d['rafsi_pos_1']]
-                self.priority_factors = [1, 1] if coef_second_form > 0.5 else [0.5, 1]
-            else:
-                self.forms = [d['cmavo_rafsi_1']]
-                self.shapes = [d['form_shape_1']]
-                self.poss = [d['rafsi_pos_1']]
-                self.priority_factors = [1,]
+                self.form2, self.shape2, self.pos2 = d['cmavo_rafsi_2'], d['form_shape_2'], d['rafsi_pos_2']
+       
+            if not self.form1:
+                self.pos1 = 'neut'
             
-            if not self.forms[0]:
-                # i.e. self.forms, .shapes, .poss are lists of empty strings
-                self.forms = [d['gismu'][:-1]]
-                self.shapes = [d['gismu_shape'][:-1]]
-                self.poss = ['neut']
-                
-            self.forms = [x.replace("'", "") for x in self.forms] 
-
             self.gismu_type = self.gismu_shape[:2]
-            self.params = [(self.gismu_type, x) for x in self.poss]         
 
     @property
     def params1(self):
         return (self.gismu_type, self.poss)
+
+    @property
+    def diphthong_reduced(self):
+        g = self.gismu
+        aa = lpos.rearrange_by_lpos(g, 'AA 12')
+        return sound_changes.diphthongs.get(aa, aa)
 
     def c1c2(self):
         cc = ''
@@ -60,13 +54,6 @@ class Row:
         if self.gismu_type == 'CC':    cc =  g[:2]
         elif self.gismu_type == 'CA':    cc = f'{g[0]}{g[2]}'
         return cc
-
-    def diphthong_reduced(self):
-        aa = ''
-        g = self.gismu
-        if self.gismu_type == 'CC':    aa =  f'{g[2]}{g[4]}'
-        elif self.gismu_type == 'CA':    aa = f'{g[1]}{g[4]}'
-        return (1 if aa in phon.reduced_diphthongs else 0)
 
     def get_other_rafsi(self):
         d = self.rowdata
@@ -89,186 +76,76 @@ class Row:
         else:
             return -1
 
-class Form:
-
-    def __init__(self, form=None, priority=0):
-        self.form = form
-        self.priority = priority
-
-def stage1(d, index_by='priority'):
+def stage1(d):
 
     row = Row(d)
-    out = {col: Form() for col in cols}
+    out = {col: '' for col in cols}
+    sh1 = row.shape1
+    g = row.gismu
+    tend = row.pos_tendency
+    aa = row.diphthong_reduced
 
-    out['override'].form = row.override
-    out['override'].priority = -1000
-    out['ca'].priority = -500
-
-    if row.poss_tendency == 'ini':
-        out['cacc'].priority += 20
-
-    if row.poss_tendency != 'fin':
-        out['ccac'].priority += -10
-
-    if row.poss_tendency == 'fin':
-        ...
-        # out['ccac'].priority += 20  # cca exempt
-        # out['ccaa'].priority += 10
-
-    out['coc'].priority += 15
-    out['cacc'].priority += 20
-
-    for form_args in zip(row.forms, row.shapes, row.poss, row.params, row.priority_factors):
-        out = process_form(out, row, *form_args)
-    out = apply_sound_changes_to_row(out)
-    out = stage1c(out, row)
-    out = apply_sound_changes_to_row(out)
-
-    if index_by in ('priority', 'priority_stack'):
-
-        # If override or ca forms exists, discard all other forms
-        # This effectively forces later algorithms to retain them
-        sole_form = ' '.join(x for x in (out['override'].form, out['ca'].form) if x)
-        if sole_form:
-            out = [sole_form,]
-        else:
-            n = 0
-            out = [v.form for k, v in sorted(out.items(), key = lambda item : item[1].priority, reverse=n)]
-        out = tuple(m for m in out if m) # removes blanks and nones
-        out = list(dict.fromkeys(out))  # removes duplicates
-        stack = out.copy()[::-1]
-
-        if index_by == 'priority':
-            out = dict(zip( range(amount_cols) , out ))
-            out['stack'] = stack
-
-    elif index_by == 'form_type':
-        out = {a : b.form for a, b in out.items()}
-
-    return out
-
-def process_form(out, row, *form_args):
-
-    f, fs, pos, params, priority_factor = form_args
-    g, gt = row.gismu, row.gismu_type
-
-    if not f:
-        print(g)
+    if row.override:
+        out['form1'] = row.override
         return out
 
-    # Boost priority of 'original' form and those that match positional preferences:
-    out[fs.lower()].priority += round(-20 * priority_factor)
+    if sh1 == 'CA':
+        out['form1'] = row.shape1
+        return out
 
-    # By gismu shape
-    if gt == 'CC':
-        out['ccac'].form = g[:4]
-    elif gt == 'CA':
-        out['cacc'].form = g[:4]
-
-    # By form shape and pos
-    if fs == 'CA':
-        out['ca'].form = f
-
-    if fs == 'CAA':
-
-        out['ccaa'].priority += -15
-        out['caa'].form = f
-        if params == ('CA', '125'):
-            a = sound_changes.diphthongs.get(f'{g[1]}{g[4]}', '')
-            fc = row.get_other_coda()
-            if len(a) == 1:
-                out['ccac'].form = f'{g[0]}{g[2]}{a}{g[3]}'
+    if sh1 in ('CAC', 'CCA'):
+        out['form1'] = row.form1
+    if sh1 == 'CAA':
+        if len(aa) <= 1:
+            if tend in ('ini', 'neut'):
+                out['form1'] = f'{g[0]}{aa}_'
             else:
-                out['ccac'].form = f'{g[0]}{g[2]}{g[1]}{g[3]}'
-                out['ccoc'].form = f'{g[0]}{g[2]}{g[4]}{g[3]}'
-            if fc:
-                out['coc'].form = f'{g[0]}{g[4]}{fc}'
-            else:
-                out['coc'].form, out['cok'].form = f'{g[0]}{g[4]}{g[2]}', f'{g[0]}{g[4]}{g[3]}'
-            out['ccaa'].form = utils.rearrange(g, '1325') 
-        elif params in (('CC', '135'), ('CC', '235')):
-            ic = pos[0]
-            # out['coc'].form = utils.rearrange(g, f'{ic}354')
-            out['ccaa'].form = utils.rearrange(g, '1235')     
+                out['form1'] = f'{lpos.rearrange_by_lpos(g, "CC 12")}{aa}'
+        else:
+            out['form1'] = row.form1
 
-    if fs == 'CAC':
+    if sh1 == 'CAA' or (sh1 == 'CCA'):    # and row.form1 != g[:-3]
+        if len(aa) > 1:
+            out['CCAA'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
 
-        out['ccac'].priority = out['cacc'].priority - 10
-        out['cac'].form = f
-        if params in (('CA', '123'), ('CA', '124')):
-            fc = pos[-1]
-            out['coc'].form = utils.rearrange(g, f'15{fc}')
-        elif params in (('CC', '134'), ('CC', '132'), ('CC', '234'), ('CC', '231'),):
-            ic = pos[0]
-            out['coc'].form = utils.rearrange(g, f'{ic}54') 
-        if params == ('CA', '124'):
-            out['ccac'].form = utils.rearrange(g, f'1324')
+    out['form4a'] = lpos.rearrange_by_lpos(g, 'CCAC 1213')
+    out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
+
+    if row.gismu_type == 'CC':
+         out['form4a'], out['form4b'] = out['form4a'], ''
+    elif tend not in ('ini', 'neut') :
+        out['form4a'], out['form4b'] = out['form4b'], ''
+
+    out = {k : apply_sound_changes(v) for k, v in out.items()}
+    stack = [v for v in out.values() if v][::-1]
+
+    print(stack)
+    return stack
+
+def apply_sound_changes(v):
     
-    if fs == 'CCA':
-        out['cca'].form = f
-        if params == ('CA', '132'):
-            out['ccac'].form = f'{f}{g[3]}'
-        if params in (('CA', '132'), ('CC', '123')):
-            out['ccaa'].form = f'{f}{g[4]}'
-
-    return out
-
-def apply_sound_changes_to_row(out):
+    p, q, r = v, '', ''
     
-    for col in cols:
-        
-        v = out[col].form
-        p, q, r = v, '', ''
+    if v:
 
-        if v:
-            if col in ('cca', 'ccaa'):
-                (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')
-            elif col in ('ccac', 'ccoc'):
-                (p, q, r) = (v[:2], v[2], v[3]) if v[:2] in phon.valid_cons_pairs else ('', '', '')                 
-            elif col in ('cac', 'cak', 'coc', 'cok'):
-                p, q, r = v[0], v[1], v[2]
-            elif col == 'caa':
-                p, q, r = v[0], v[1:], ''
-            # elif col in ('caac', 'caak'): p, q, r = v[0], v[1:3], v[3]
-            elif col == 'cacc':
-                p, q, r = v[0], v[1], v[2:]
+        shape = word_shape.word_shape(v)
+        if shape == 'CCAC':
+            (p, q, r) = (v[:2], v[2], v[3]) if v[:2] in phon.valid_cons_pairs else ('', '', '')
+        elif shape in ('CCA', 'CCAA'):
+            (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')                
+        elif shape == 'CAC':
+            p, q, r = v[0], v[1], v[2]
+        elif shape == 'CAA':
+            p, q, r = v[0], v[1:], ''
+        elif shape == 'CACC':
+            p, q, r = v[0], v[1], v[2:]
 
-            p = sound_changes.clusters_ini.get(p, p) 
-            q = sound_changes.diphthongs.get(q, q)
-            r = sound_changes.clusters_fin.get(r, r)            
-            out[col].form = f'{p}{q}{r}'
+        p = sound_changes.clusters_ini.get(p, p) 
+        q = sound_changes.diphthongs.get(q, q)
+        r = sound_changes.clusters_fin.get(r, r)            
+        v = f'{p}{q}{r}'
 
-    return out
+    return v
 
-def stage1c(out, row):
-
-    for col, len_col in zip(cols, len_cols):
-
-        # print(list(x.form for x in out.values()))
-
-        vv = out[col]
-        v = vv.form
-        g = row.gismu
-
-        if v and col != 'override':
-            if len(v) != len_col:
-                if col == 'caa':
-                    if row.gismu_type == 'CA':
-                        fc = row.get_other_coda()
-                        if fc:
-                            out['cac'].form = f'{v}{fc}'    # CA + C
-                        else:
-                            out['cac'].form, out['cak'].form = f'{v}{g[2]}', f'{v}{g[3]}'
-                        out['cca'].form = f'{g[0]}{g[2]}{v[1]}'     # CC + A
-                        out['ccac'].form = f'{g[0]}{g[2]}{v[1]}{g[3]}'     # CC + A + C
-                        out['cca'].priority = out['cac'].priority + 5
-                    elif row.gismu_type == 'CC':
-                        out['cac'].form = f'{v}{g[3]}'    # CA + A
-                        out['cca'].form = f'{g[:2]}{v[-1]}'     # CC + A
-                elif col == 'ccaa':
-                    out['cca'].form = out.get('cca', vv).form
-                out[col].form = None
-
-    return out
 
 
