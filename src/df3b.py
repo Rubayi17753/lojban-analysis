@@ -130,20 +130,9 @@ def process_candidates(df):
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     data_forms = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
-  
-    df2 = pd.DataFrame(data_forms)   
-    
-    print(df2)
-    exit()
+    df2 = pd.DataFrame(data_forms)
 
-    new_cols = [x for x in df2.columns if x != 'stack'] + ['stack']
-    df2 = df2[new_cols]
-
-    # Applies only if ordered == 1 (see process_candidate_form.stage1)
-    if df2.columns[0] == 0:
-        df2 = df2.rename(columns=lambda n: f'form_{n}')
-  
-    for col in list((x for x in df2.columns if x != 'form_stack')):
+    for col in list((x for x in df2.columns if not x.endswith('stack'))):
         mask1 = df2[col].isna()
         mask2 = df2[col] == ''
         mask = ~mask1 & ~mask2
@@ -151,17 +140,10 @@ def process_candidates(df):
         df2[f'{col}_n'][mask] = (df2.groupby(col)[col].transform('count'))[mask]
     df = pd.concat([df, df2], axis=1) 
 
-    data_forms2 = [stage1(row, index_by='form_type') for row in tqdm(data, desc='Processing candidates')]
-    df2b = pd.DataFrame(data_forms2)
-    df = pd.concat((df, df2b), axis=1)
-
-    # df['current_form_shape'] = df['current_form'].apply(word_shape)
-    # df['max_coef'] = df.groupby('form_overridden')['coef1_1'].transform('max')
-    # df['coef3'] = round( df['coef1_1'] / df['max_coef'] , 2)
-
     return df
 
 def handle_duplicate_forms(df, display_stats=1, sift=1):
+
     df['current_form_count'] = df.groupby('current_form')['gismu'].transform('count')
     mask_dupl = df['current_form_count'] > 1
 
@@ -178,7 +160,7 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
 
     gismus = list(df['gismu'])
     current_forms = list(df['current_form'])
-    form_stacks = list(df['form_stack'])
+    form_stacks = list(df['stack'])
     coefs = list(df['coef_gismu_sum'])
     tendencies = list(df['pos_tendency'])
     # set_current_forms = set(current_forms)
@@ -201,8 +183,11 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
     n_changes = 0
     for g, cur_form, stack, dupl, coef, tendency in zip( gismus, current_forms, form_stacks, mask_dupl, coefs, tendencies ):
         if conditions(stack, dupl, coef, tendency):
-            cur_form = stack.pop()
-            n_changes += 1
+            if stack[-1]:
+                cur_form = stack.pop()
+                n_changes += 1
+            else:
+                stack.pop()
         cur_forms.append(cur_form)
         stacks.append(stack)
 
@@ -210,17 +195,19 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
         print(f'{n_changes} forms changed')
 
     df['current_form'] = pd.Series(cur_forms)
-    df['form_stack'] = pd.Series(stacks)
+    df['stack'] = pd.Series(stacks)
     df['current_form_count'] = df.groupby('current_form')['gismu'].transform('count')
 
     return df
 
 def handle_duplicate_df(df):
+    df['current_form'] = df['stack'].str[-1]
+    df['stack'] = df['stack'].str.slice(stop=-1)
 
-    df['current_form'] = df['form_0']
     df = handle_duplicate_forms(df)
     df = handle_duplicate_forms(df, sift=3)
     df = handle_duplicate_forms(df)
+    
     for i in range(4):
         df = handle_duplicate_forms(df, sift=10)
     for i in range(4):
@@ -269,19 +256,11 @@ def main(override_file='update'):
     df = handle_duplicate_df(df)
 
     # Post-processing
-    df['current_shape'] = df['current_form'].apply(word_shape)
+    # df['current_shape'] = df['current_form'].apply(word_shape)
 
     # Write to files
     print(df.columns)
     df.to_csv('results/df3b1.csv', sep=',', index=False)
-
-    df[['gismu', 'current_form', 'meaning']].to_csv('results/df3b2.csv', sep=',', index=False)
-
-    col_shapes = process_candidate_form.cols
-    col_forms = ['form_0', 'form_1', 'form_2', 'form_3', 'form_4', 'form_5',]
-    initial_forms = ['cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'excluded',]
-    df[['gismu', 'pos_tendency', 'gismu_sum', 'current_form', 'current_shape', 'current_form_count', 'meaning', 
-    *col_forms, *col_shapes, *initial_forms, ]].to_csv('results/df3b3.csv', sep=',', index=False)
 
     if override_file == 'new':
         create_new_override(df)
