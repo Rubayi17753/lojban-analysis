@@ -18,31 +18,28 @@ def get_frequency_order(df):
     df['frequency_order'] = df.groupby('gismu')['gismu'].cumcount() + 1
     return df
 
+def mask1a(df):
+    return df['coef1'] > th.coef1_threshhold
+def mask1b(df):
+    return ~df['rafsi_pos'].str.contains('_')
 def mask1(df):
-
-    excludeds = ("a'a", "e'e", "i'i", "o'o", "u'u",
-                "ei", "e'i", "o'u")
-    mask = (
-        (df['coef1'] > th.coef1_threshhold) &   # Coefficient here: q2's df['cmavo_rafsi_freq'] / df['max_form_freq'] * 100
-        (~df['rafsi_pos'].str.contains('_'))
-        # (~df['cmavo_rafsi'].str.slice(start=1).isin(excludeds))
-    )
-    return mask
-
+    return mask1a(df) & mask1b(df)
 def mask2(df):
     return (df['cmavo_rafsi'].str.len() != 5)
 
 def aggregate(df):
-
+    mask_a, mask_b = mask1a(df), mask1b(df)
     mask = mask1(df)
     df2 = df.copy()
     df2['form_len'] = df2['rafsi_pos'].str.len()
     df2 = df2.sort_values(by=['form_len', 'rafsi_pos'])
 
     df = df.assign(
-                excluded=df['cmavo_rafsi'].where(~mask, ''),
+                excluded_a=df['cmavo_rafsi'].where(~mask_a, ''),
+                excluded_b=df['cmavo_rafsi'].where(~mask_b, ''),
             ).groupby('gismu', as_index=False).agg(
-                excluded=('excluded', ' '.join),
+                excluded_a=('excluded_a', ' '.join),
+                excluded_b=('excluded_b', ' '.join),
     )
 
     df2 = df2.assign(
@@ -225,8 +222,7 @@ def main(override_file='update'):
     df = df[mask1(df)]    
     df = df[mask2(df)]
 
-    # Pre-aggregation
-
+    # Pre-pivot
     df = df.sort_values(by=['gismu_freq', 'gismu'], ascending=[False, True])
     df = get_frequency_order(df)
 
@@ -235,6 +231,11 @@ def main(override_file='update'):
     dfs = (df.pivot(values=col, index='gismu', columns='frequency_order')
             .add_prefix(f'{col}_') for col in cols)
     df = pd.concat(dfs, axis=1)
+
+    # Fetch defs_gismu index
+    # dfg = Table('defs_gismu').dff
+    # dfg = dfg.reset_index(names='gismu_index').set_index('gismu')
+    # df = df.merge(dfg, on='gismu', how='left')
 
     # Merge dfq1 and meaning
     dfquery1 = dfq1().set_index('gismu') 
@@ -261,6 +262,9 @@ def main(override_file='update'):
     # Write to files
     print(df.columns)
     df.to_csv('results/df3b1.csv', sep=',', index=False)
+
+    cols2 = ['gismu', 'current_form', 'meaning', 'override']
+    df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)
 
     if override_file == 'new':
         create_new_override(df)

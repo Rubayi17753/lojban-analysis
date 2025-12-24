@@ -57,7 +57,9 @@ class Row:
 
     def get_other_rafsi(self):
         d = self.rowdata
-        return ( d['cmavo_rafsi_1'], d['cmavo_rafsi_2'], d['cmavo_rafsi_3'], *d['excluded'].split(' ') )
+        return ( d['cmavo_rafsi_1'], d['cmavo_rafsi_2'], d['cmavo_rafsi_3'], 
+        *d['excluded_a'].split(' '), 
+        *d['excluded_b'].split(' ') )
 
     def get_other_coda(self):
         rafsis = tuple((form for form in self.get_other_rafsi() if form))
