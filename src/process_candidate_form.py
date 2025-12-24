@@ -80,12 +80,10 @@ class Row:
 
 def stage1(d):
 
-    def derive_forms(sh, i):
-
-        default = row.form1 if i == 1 else row.form2
+    def derive_forms(sh, form, i):
         
         if sh in ('CAC', 'CCA'):
-            out[f'form{i}a'] = default
+            out[f'form{i}a'] = form
 
         if sh == 'CAA':
             if len(aa) <= 1:
@@ -103,7 +101,7 @@ def stage1(d):
                     else:
                         out[f'form{i}a'] = lpos.rearrange_by_lpos(g, "CAC 112")
             else:
-                out[f'form{i}a'] = default
+                out[f'form{i}a'] = form
             out[f'form{i}c'] = lpos.rearrange_by_lpos(g, "CAC 123")
 
         if sh == 'CAA' or (sh == 'CCA'):    # and row.form1 != g[:-3]
@@ -112,6 +110,7 @@ def stage1(d):
 
     row = Row(d)
     out = {col: '' for col in cols}
+    form1, form2 = row.form1, row.form2
     sh1, sh2 = row.shape1, row.shape2
     g = row.gismu
     tend = row.pos_tendency
@@ -120,16 +119,18 @@ def stage1(d):
     if row.override:
         out['form1'] = row.override
 
-    elif sh1 == 'CA':
-        out['form1'] = row.form1
+    elif row.shape1 == 'CA':
+        out['form1'] = form1
 
     else:
-        derive_forms(sh1, 1)
+        derive_forms(sh1, form1, 1)
         if sh2:
-            derive_forms(sh2, 2)
+            derive_forms(sh2, form2, 2)
 
         out['form4a'] = lpos.rearrange_by_lpos(g, 'CCAC 1213')
-        out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
+        if len(form1.replace("'", '')) != 3:
+            out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
+
         if row.gismu_type == 'CC':
             out['form4a'], out['form4b'] = out['form4a'], ''
         elif tend not in ('ini', 'neut') :
