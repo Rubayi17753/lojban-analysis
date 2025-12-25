@@ -10,7 +10,7 @@ import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
 
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
-cols = ('form1a', 'form2a', 'form1b', 'form2b', 'CCAA', 'form4a', 'form1c', 'form2c', 'form4b')
+cols = ('form1a', 'form2a', 'form1b', 'form2b', 'CCAA', 'CCAA2', 'form4a', 'form1c', 'form2c', 'form4b')
 amount_cols = len(cols)
 
 class Row:
@@ -90,14 +90,14 @@ def stage1(d):
                 if tend in ('ini', 'neut'):
                     coda = row.get_other_coda()
                     if coda:
-                        out[f'form{i}a'] = f'{g[0]}{aa}{coda}'
+                        out[f'form{i}a'] = f'{form[0]}{aa}{coda}'
                     else:
-                        out[f'form{i}a'] = f'{g[0]}{aa}{lpos.rearrange_by_lpos(g, "C 2")}'
-                        out[f'form{i}b'] = f'{g[0]}{aa}{lpos.rearrange_by_lpos(g, "C 3")}'
+                        out[f'form{i}a'] = f'{form[0]}{aa}{lpos.rearrange_by_lpos(g, "C 2")}'
+                        out[f'form{i}b'] = f'{form[0]}{aa}{lpos.rearrange_by_lpos(g, "C 3")}'
                 else:
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
-                        out[f'form{i}a'] = lpos.rearrange_by_lpos(g, "CCA 121")
+                        out[f'form{i}a'] = f'{cc}{aa}'
                     else:
                         out[f'form{i}a'] = lpos.rearrange_by_lpos(g, "CAC 112")
             else:
@@ -107,6 +107,7 @@ def stage1(d):
         if sh == 'CAA' or (sh == 'CCA'):    # and row.form1 != g[:-3]
             if len(aa) > 1:
                 out['CCAA'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
+                out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1312')
 
     row = Row(d)
     out = {col: '' for col in cols}
@@ -117,10 +118,10 @@ def stage1(d):
     aa = row.diphthong_reduced
 
     if row.override:
-        out['form1'] = row.override
+        out['form1a'] = row.override
 
     elif row.shape1 == 'CA':
-        out['form1'] = form1
+        out['form1a'] = form1
 
     else:
         derive_forms(sh1, form1, 1)
@@ -128,8 +129,8 @@ def stage1(d):
             derive_forms(sh2, form2, 2)
 
         out['form4a'] = lpos.rearrange_by_lpos(g, 'CCAC 1213')
-        if len(form1.replace("'", '')) != 3:
-            out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
+        # if len(form1.replace("'", '')) != 3:
+        out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
 
         if row.gismu_type == 'CC':
             out['form4a'], out['form4b'] = out['form4a'], ''

@@ -1,4 +1,4 @@
-from tests.test8 import main
+from tests.test9 import main
 
 if __name__ == '__main__':
     main()

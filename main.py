@@ -3,7 +3,7 @@ from src.df3b import main as df3b
 
 def main():
     pd.options.mode.chained_assignment = None
-    df3b(override_file=False)
+    df3b(override_file='copy')
 
 if __name__ == '__main__':
     main()

@@ -10,9 +10,10 @@ from src.df1_q2 import main as dfq2
 from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
-
-def get_df_override():
-    return pd.read_csv('interactive/new_gismu.tsv', sep='\t', index_col='gismu')
+from src.lojban_specific.parser import syllable_parser
+from src.df3b_dependencies.process_candidate_form import stage1
+from src.df3b_dependencies.handle_duplicates import handle_duplicate_df
+import src.df3b_dependencies.override as override
 
 def get_frequency_order(df):
     df['frequency_order'] = df.groupby('gismu')['gismu'].cumcount() + 1
@@ -78,47 +79,7 @@ def determine_pos_tendency(df):
 
     return df
 
-def create_new_override(df):
-
-    from src.lojban_specific.meanings_gismu import get_df_gismu_meaning
-
-    df['override'] = ''
-    df['final_count'] = df.groupby('current_form')['gismu'].transform('count')
-    df = Table('defs_gismu').dff[['gismu', 'theme_code']].merge(df, on='gismu', how='right')
-
-    df = df.sort_values('theme_code')
-    df = df[['gismu', 'current_form', 'override', 'notes', 'current_form_count', 'pos_tendency', 'theme_code', 'meaning']]
-    df.to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
-
-def override_generated_forms(df):
-    df = df.set_index('gismu')
-    df['override'] = get_df_override()['override']
-    # override if not NaN, else current_form
-    df['form_overridden'] = df['current_form'].copy()
-    df.loc[~df['override'].isna(), 'form_overridden'] = df['override']
-    df = df.reset_index()
-    df['final_count'] = df.groupby('form_overridden')['gismu'].transform('count')
-    df['final_shape'] = df['form_overridden'].apply(word_shape)
-
-    return df
-
-def update_override_file(df):
-    # Reads new_gismu, then feeds pandas-generated columns onto it
-    df = df.set_index('gismu')
-    df_override = get_df_override()
-
-    cols = list(col for col in list(df_override.columns) if col not in ('gismu', 'override', 'theme_code'))
-    cols.append('final_count')
-
-    a = df_override[['override', 'theme_code', 'meaning', 'notes']]
-    b = df[['current_form', 'final_count', 'pos_tendency']]
-    df_override = (pd.concat([a, b], axis=1))
-    df_override = df_override[['current_form', 'override', 'notes', 'final_count',
-                     'pos_tendency', 'theme_code', 'meaning']]
-    df_override.reset_index().to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
-
 def process_candidates(df):
-    from src.process_candidate_form import stage1
 
     # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
 
@@ -139,83 +100,8 @@ def process_candidates(df):
 
     return df
 
-def handle_duplicate_forms(df, display_stats=1, sift=1):
-
-    df['current_form_count'] = df.groupby('current_form')['gismu'].transform('count')
-    mask_dupl = df['current_form_count'] > 1
-
-    if display_stats:
-        dupl_count = mask_dupl.sum()
-        print(f'Duplicates remaining: {dupl_count}\n')
-
-        df['current_form_shape'] = df['current_form'].apply(word_shape)
-        print('Form shape rundown: ')
-        print(df['current_form_shape'].value_counts())
-
-    df['max_gismu_sum'] = df.groupby('current_form')['gismu_sum'].transform('max')
-    df['coef_gismu_sum'] = df['gismu_sum'] / df['max_gismu_sum']
-
-    gismus = list(df['gismu'])
-    current_forms = list(df['current_form'])
-    form_stacks = list(df['stack'])
-    coefs = list(df['coef_gismu_sum'])
-    tendencies = list(df['pos_tendency'])
-    # set_current_forms = set(current_forms)
-
-    def conditions(stack, dupl, coef, tendency):
-        if sift == 1:
-            return stack and dupl and coef < 0.8
-        elif sift == 10:
-            return stack and dupl and coef < 0.99
-        elif sift == 2:
-            return stack and dupl
-        elif sift == 3:
-            return (stack and dupl and  
-                    (
-                        (tendency == 'ini' and word_shape(stack[-1])[:2] == 'CC')
-                        or (tendency == 'fin' and word_shape(stack[-1])[-2:] == 'CC')
-                    ))
-
-    cur_forms, stacks = list(), list()
-    n_changes = 0
-    for g, cur_form, stack, dupl, coef, tendency in zip( gismus, current_forms, form_stacks, mask_dupl, coefs, tendencies ):
-        if conditions(stack, dupl, coef, tendency):
-            if stack[-1]:
-                cur_form = stack.pop()
-                n_changes += 1
-            else:
-                stack.pop()
-        cur_forms.append(cur_form)
-        stacks.append(stack)
-
-    if display_stats:
-        print(f'{n_changes} forms changed')
-
-    df['current_form'] = pd.Series(cur_forms)
-    df['stack'] = pd.Series(stacks)
-    df['current_form_count'] = df.groupby('current_form')['gismu'].transform('count')
-
-    return df
-
-def handle_duplicate_df(df):
-    df['current_form'] = df['stack'].str[-1]
-    df['stack'] = df['stack'].str.slice(stop=-1)
-
-    df = handle_duplicate_forms(df)
-    df = handle_duplicate_forms(df, sift=3)
-    df = handle_duplicate_forms(df)
-    
-    for i in range(4):
-        df = handle_duplicate_forms(df, sift=10)
-    for i in range(4):
-        df = handle_duplicate_forms(df, sift=2)
-    
-    return df
-
 def main(override_file='update'):
     
-    import src.process_candidate_form as process_candidate_form
-
     df = dfq2()
     df_agg2 = aggregate(df.copy())
 
@@ -244,7 +130,7 @@ def main(override_file='update'):
     df = df.reset_index()
 
     # Fetch override
-    df2 = get_df_override().reset_index()[['gismu', 'override']]
+    df2 = override.get_df_override().reset_index()[['gismu', 'override', 'override_notes']]
     df = df.merge(df2, on='gismu', how='left')
 
     # Other ops
@@ -258,17 +144,20 @@ def main(override_file='update'):
 
     # Post-processing
     # df['current_shape'] = df['current_form'].apply(word_shape)
+    df['current_form_syllablfied'] = df['current_form'].apply(lambda x : syllable_parser(x, delim='-'))
 
     # Write to files
     print(df.columns)
     df.to_csv('results/df3b1.csv', sep=',', index=False)
 
-    cols2 = ['gismu', 'current_form', 'meaning', 'override']
+    cols2 = ['theme_code', 'gismu', 'current_form', 'meaning', 'gismu', 'override', 'override_notes']
     df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)
 
     if override_file == 'new':
-        create_new_override(df)
+        override.create_new_override(df)
     elif override_file == 'update':
-        update_override_file(df)
+        override.update_override_file(df)
+    elif override_file == 'copy':
+        df[cols2].to_csv(override.override_fp, sep='\t', index=False)
 
     return df

@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import src.lojban_specific.phonological_inventory as inv 
 import src.lojban_specific.word_shape as shape
@@ -120,5 +121,20 @@ def fuivla_parser(s):
     # In English: loanwords
     ...
 
-def syllable_parser(s):
-    ...
+def syllable_parser(s, delim=None):
+    
+    out = list()
+    len_str = len(s)
+
+    for char1, char2 in zip(s[0 : len_str-1], s[1 : len_str]):
+        if char1 in inv.A and char2 in inv.C:
+            s = s.replace(f'{char1}{char2}', f'{char1}_{char2}')
+        elif char1 in inv.C and char2 in inv.A:
+            s = s.replace(f'{char1}{char2}', f'{char1}_{char2}')
+
+    if '__' in s:
+        s = re.sub(r'_+', '_', s)
+    if delim == None:   
+        return s.split('_')
+    elif delim != '_':
+        return s.replace('_', delim)
