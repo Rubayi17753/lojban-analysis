@@ -98,7 +98,8 @@ def stage1(d):
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
                         out[f'form{i}a'] = f'{cc}{aa}'
-                        out[f'form{i}b'] = f'{cc}{oo}'
+                        if oo:
+                            out[f'form{i}b'] = f'{cc}{oo}'
                     else:
                         out[f'form{i}a'] = lpos.rearrange_by_lpos(g, "CAC 112")
             else:
