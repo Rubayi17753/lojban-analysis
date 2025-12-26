@@ -17,6 +17,7 @@ def translate_lujvo(lujvo, delim=''):
     x1 = 'f'
     x2 = '’'
     x3 = 'n'
+    x4 = 'ṇ'
     
     def rafsi_to_gismu(s):
         if len(s) == 2:
@@ -29,17 +30,24 @@ def translate_lujvo(lujvo, delim=''):
             s = f'<{s}>'
         else:
             s = dict_gismu_to_new.get(s, f'[{s}]')
-        if word_shape(s[-2:]) == 'CC':
-            s = f'{s}{x2}'
-
         return s
 
     rafsis = lujvo_parser(lujvo, noisy=1)
-    gismus = [rafsi_to_gismu(raf) for raf in rafsis]
+    gismus = (rafsi_to_gismu(raf) for raf in rafsis)
+    new_forms = [gismu_to_new(gis) for gis in gismus]
+    shh = [word_shape(form) for form in new_forms]
 
-    new_lujvo = delim.join(gismu_to_new(gis) for gis in gismus).strip(x2)
+    # insert hyphens/liaisons
+    for i in range(len(new_forms) - 1):
+        sh_a, sh_b = shh[i], shh[i + 1]
+        if sh_a == 'CCA' and sh_b.startswith('CC'):
+            new_forms[i] = f'{new_forms[i]}{x4}'
+        elif sh_a.endswith('CC'):
+            new_forms[i] = f'{new_forms[i]}{x2}'
+
+    new_lujvo = delim.join(new_forms)
     suffix = f'{x3}a' if new_lujvo[-1] in inv.A else 'a'
-    new_lujvo = f'{new_lujvo}{suffix}'
+    new_lujvo = f'{delim.join(new_lujvo)}{suffix}'
     return new_lujvo
 
 def main(noisy=1): 
