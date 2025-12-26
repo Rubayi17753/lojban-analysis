@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 import src.lojban_specific.phonological_inventory as inv 
-import src.lojban_specific.word_shape as shape
+from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.meanings_rafsi import meanings_rafsi
 
 def determine_wordclass(s):
@@ -12,28 +12,37 @@ def determine_wordclass(s):
         wordclass = 'cmene'
     elif s[-1] in inv.A:
 
-        if 'CC' in shape(s[5]):
+        z = s.replace("'", '')
+        x5_ini = word_shape(z[:5])
+        if 'CC' in x5_ini or 'y' in (s[3], s[4]):
 
-            if 'CC' in shape(s[-5:]):
-                if len(s) == 5:
-                    wordclass = 'gismu'
-                elif len(s) > 5:
-                    wordclass = 'lujvo'
+            if len(s) == 5 and s[0] in inv.C:
+                wordclass = 'gismu'
             else:
-                wordclass = 'fu_ivla'
+                x3_fin1 = word_shape(z[-3:])
+                x3_fin2 = word_shape(z[-6:-3])
+                x5_fin = word_shape(z[-5:])
+                test1a = x3_fin1 in ('AAC', 'CAC', 'CCA')
+                test1b = x3_fin2 in ('CAA', 'CAC', 'CCA')
+                test2 = 'CC' in word_shape(x5_fin)
+                if (test1a and test1b) or test2 and s[0] in inv.C:
+                    wordclass = 'lujvo'
+                else:
+                    wordclass = 'fu_ivla'
 
         else:
-            if len(s) < 3 or (len(s) == 4 and "'" in s):
+            if len(z) <= 3:
                 wordclass = 'cmavo'
             else:
                 wordclass = 'cmavo_sequence'                          
 
     return wordclass
 
-def lujvo_parser(s):
+def lujvo_parser(s, noisy=1):
 
     # In English: compound nouns
 
+    lujvo = f'{s}'
     out = list()
     while s != '':
 
@@ -67,9 +76,9 @@ def lujvo_parser(s):
                     s = s[4:]
 
                 else:
-                    print(s)
-                    out.append(s)
-                    out.append('CHECK IF LUJVO!')
+                    print(f'Check if lujvo: {lujvo}; {s} unparseable')
+                    # out.append(s)
+                    # out.append('CHECK IF LUJVO!')
                     s = ''                   
 
             # CAA(l/n/r)-C
@@ -82,14 +91,23 @@ def lujvo_parser(s):
                 out.append(s[:3])
                 s = s[3:]
 
+            elif len(s) <= 2:
+                s = ''
+                if noisy:
+                    print(f'Check if lujvo: {lujvo}; {s} unparseable')
+                break               
+
             else:
-                print(s)
+                if noisy:
+                    print(f'Check if lujvo: {lujvo}; {s} unparseable')
                 out.append(s)
-                out.append('CHECK IF LUJVO!')
+                # out.append('CHECK IF LUJVO!')
                 s = ''
         
         except:
-            print(f'Check if lujvo: {s}')
+            if noisy:
+                print(f'Check if lujvo: {lujvo}')
+            break
 
     return out
 

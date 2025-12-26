@@ -87,7 +87,7 @@ def stage1(d):
 
         if sh == 'CAA':
             if len(aa) <= 1:
-                if tend in ('ini', 'neut'):
+                if tend in ('neut', 'fin'):
                     coda = row.get_other_coda()
                     if coda:
                         out[f'form{i}a'] = f'{form[0]}{aa}{coda}'
@@ -98,6 +98,7 @@ def stage1(d):
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
                         out[f'form{i}a'] = f'{cc}{aa}'
+                        out[f'form{i}b'] = f'{cc}{oo}'
                     else:
                         out[f'form{i}a'] = lpos.rearrange_by_lpos(g, "CAC 112")
             else:
@@ -116,6 +117,9 @@ def stage1(d):
     g = row.gismu
     tend = row.pos_tendency
     aa = row.diphthong_reduced
+
+    if len(aa) <= 1:
+        oo = lpos.rearrange_by_lpos(g, 'AA 12').replace(aa, '')
 
     if row.override:
         out['form1a'] = row.override

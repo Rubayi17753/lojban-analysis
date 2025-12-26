@@ -5,19 +5,19 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.2.2	bakni	bak	bovine	bakni		
 8.2.3	bakri	bakr	chalk	bakri		
 13.3.2	baktu	bakt	bucket	baktu		
-13.3.1	balre	balr	blade	balre		
+13.3.1	balre	bel	blade	balre		
 4	balvi	ba	future	balvi		
 1.4	bancu	banc	beyond	bancu		
 10.3	bandu	band	defend	bandu		
 2.1	bangu	bau	language	bangu		
 10.3	banli	bal	great	banli		
-1.5	banro	ban	grow	banro		
+1.5	banro	bon	grow	banro		
 11.3.2	banxa	bank	bank	banxa	bank	
 5	bapli	bai	force	bapli		
 1.5	barda	bra	big	barda		
 3.5.5	bargu	brak	arch	bargu		
 11.3.4	barja	barj	bar	barja		
-6.2.2	barna	bran	mark	barna		
+6.2.2	barna	br	mark	barna		
 3.1	bartu	bar	out	bartu		
 1.1	basti	bast	replace	basti		
 6.2.2	batci	bat	bite	batci		
@@ -52,7 +52,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 3.5.5	bolci	boi	ball	bolci		
 9.2.5	bongu	bok	bone	bongu		
 3.5.5	boxfo	bof	sheet	boxfo		
-7.2	boxna	bon	wave	boxna		
+7.2	boxna	bokn	wave	boxna		
 5.3.2	bradi	brat	enemy	bradi		
 5.2	bredi	bre	ready	bredi		
 2.5	bridi	bri	predicate	bridi		
@@ -64,7 +64,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.3.1	burcu	bru	brush	burcu		
 10.1	burna	brun	embarrassed	burna		
 4	cabna	ca	now	cabna		
-13.3.3	cabra	cabr	apparatus	cabra		
+13.3.3	cabra	cap	apparatus	cabra		
 4.3	cacra	cacr	hour	cacra		
 6.1.2	cadzu	dzu	walk	cadzu		
 5	cafne	cfan	often	cafne		
@@ -74,7 +74,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 6.1.3	cando	cat	idle	cando		
 13.1	cange	cnak	farm	cange		
 11.3.3	canja	cnas	exchange	canja		
-13.6	canko	cno	window	canko		
+13.6	canko	con	window	canko		
 3	canlu	cal	space	canlu		
 13.3.1	canpa	cna	shovel	canpa		
 8.2.3	canre	can	sand	canre		
@@ -89,15 +89,15 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 11.2.1	catni	ctai	authority	catni		
 9	catra	catr	kill	catra		
 3.4	caxno	cakn	shallow	caxno		
-6.2.1	cecla	ces	launcher	cecla		
+6.2.1	cecla	cel	launcher	cecla		
 9	cecmu	ceu	community	cecmu		
 4.2	cedra	cedr	era	cedra		
 1.5	cenba	cne	vary	cenba		
-12.5	censa	cnes	holy	censa		
+12.5	censa	ces	holy	censa		
 11.3.1	cerda	cret	heir	cerda		
 4.1	cerni	cer	morning	cerni		
 10.3	certu	cre	expert	certu		
-12.5	cevni	cef	god	cevni		
+12.5	cevni	cfe	god	cevni		
 5	cfari	cfa	initiate	cfari		
 12.6	cfika	fia	fiction	cfika		
 10.3	cfila	cfi	flaw	cfila		
@@ -116,10 +116,10 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.1.6	cindu	cind	oak	cindu		
 3.4	cinla	cinl	thin	cinla		
 10.1	cinmo	cni	emotion	cinmo		
-10.1	cinri	cinr	interesting	cinri		
-9.3.2	cinse	cin	sexual	cinse		
+10.1	cinri	cin	interesting	cinri		
+9.3.2	cinse	cnis	sexual	cinse		
 13.2.1	cinta	cnit	paint	cinta		
-9.2.3	cinza	cnis	tongs	cinza		
+9.2.3	cinza	cinz	tongs	cinza		
 9.2.1	cipni	cpi	bird	cipni		
 2.5	cipra	cip	test	cipra		
 11.3.1	cirko	cri	lose	cirko		
@@ -135,7 +135,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.2.2	ckafi	kaf	coffee	ckafi		
 7.1	ckaji	ka	quality	ckaji		
 13.6	ckana	cka	bed	ckana		
-10.3	ckape	cap	peril	ckape		
+10.3	ckape	ckap	peril	ckape		
 10.2	ckasu	ckas	ridicule	ckasu		
 10.1	ckeji	cke	ashamed	ckeji		
 13.6	ckiku	ckik	key	ckiku		
@@ -154,11 +154,11 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 1.6	cmaci	cmas	mathematics	cmaci		
 1.5	cmalu	cma	small	cmalu		
 8.2	cmana	cman	mountain	cmana		
-2.1	cmavo	mof	structure word	cmavo		
+2.1	cmavo	cmo	structure word	cmavo		
 2.1	cmene	cme	name	cmene		
 10.2	cmila	mia	laugh	cmila		
 1.1	cmima	cmi	member	cmima		
-2.3	cmoni	cmo	moan	cmoni		
+2.3	cmoni	cmoi	moan	cmoni		
 1.1	cnano	non	norm	cnano		
 9.2.3	cnebo	nep	neck	cnebo		
 11.3.3	cnemu	neu	reward	cnemu		
@@ -169,7 +169,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 3.4	condi	coi	deep	condi		
 9.4.5	cortu	cro	pain	cortu		
 11.3.1	cpacu	cpa	get	cpacu		
-6.1.2	cpare	par	climb	cpare		
+6.1.2	cpare	cpar	climb	cpare		
 2.4	cpedu	cpe	request	cpedu		
 9.4	cpina	cpin	pungent	cpina		
 2.2	cradi	crat	radio	cradi		
@@ -179,18 +179,18 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.4.2	crino	rio	green	crino		
 13.5	cripu	rip	bridge	cripu		
 4.2	crisa	cris	summer	crisa		
-9.2.3	ctebi	ctep	lip	ctebi		
+9.2.3	ctebi	tep	lip	ctebi		
 11.3.4	cteki	tek	tax	cteki		
 8.2.3	ctile	ctil	petroleum	ctile		
-9.4.2	ctino	tio	shadow	ctino		
+9.4.2	ctino	ctio	shadow	ctino		
 2.5	ctuca	ctu	teach	ctuca		
 3.5.3	cukla	cuk	round	cukla		
 2.2	cukta	cku	book	cukta		
 3.5.5	culno	clu	full	culno		
 5	cumki	cue	possible	cumki		
 10.1	cumla	cul	humble	cumla		
-1.2	cunso	cun	random	cunso		
-5.3	cuntu	cnut	affair	cuntu		
+1.2	cunso	cnu	random	cunso		
+5.3	cuntu	cun	affair	cuntu		
 13.1	cupra	pra	produce	cupra		
 5.3.1	curmi	cru	let	curmi		
 9.2.1	curnu	cur	worm	curnu		
@@ -216,7 +216,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 6.2.2	darxi	dai	hit	darxi		
 13.7	daski	dzak	pocket	daski		
 13.7	dasni	das	wear	dasni		
-6.2.1	daspo	spo	destroy	daspo		
+6.2.1	daspo	dasp	destroy	daspo		
 3.5.5	dasri	sri	ribbon	dasri		
 9.2.2	datka	datk	duck	datka		
 2.5	datni	datn	data	datni		
@@ -227,7 +227,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 5.2	denpa	dep	wait	denpa		
 8.2.3	dertu	der	dirt	dertu		
 3.5.5	derxi	dre	heap	derxi		
-6.2.1	desku	des	shake	desku		
+6.2.1	desku	desk	shake	desku		
 4.2	detri	det	date	detri		
 5.2	dicra	dir	interrupt	dicra		
 7.2	dikca	dis	electric	dikca		
@@ -241,10 +241,10 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 3.5.5	dirgo	drik	drop	dirgo		
 3.1	dizlo	dzi	low	dizlo		
 8.2.1	djacu	jau	water	djacu		
-4.1	djedi	dje	full day	djedi		
+4.1	djedi	des	full day	djedi		
 10.2	djica	dji	desire	djica		
 3.5.3	djine	jin	ring	djine		
-2.5	djuno	dju	know	djuno		
+2.5	djuno	jun	know	djuno		
 4.1	donri	doi	daytime	donri		
 10.3	drani	dra	correct	drani		
 1.5	drata	dat	other	drata		
@@ -266,12 +266,12 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 10.1	fanza	fanz	annoy	fanza		
 5.3.2	fapro	pro	oppose	fapro		
 6.1.4	farlu	fal	fall	farlu		
-6	farna	far	direction	farna		
+6	farna	fra	direction	farna		
 5	farvi	fraf	develop	farvi		
 5	fasnu	nu	event	fasnu		
 2.5	fatci	fas	fact	fatci		
 1.3	fatne	fat	reverse	fatne		
-6.2	fatri	frai	distribute	fatri		
+6.2	fatri	fatr	distribute	fatri		
 7.5.2	febvi	febv	boil	febvi		
 6.2	fendi	dift	divide	fendi	dift	
 10.1	fengu	feu	angry	fengu		
@@ -282,7 +282,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9	ferti	fre	fertile	ferti		
 5	festi	fes	waste	festi		
 9.3.2	fetsi	fet	female	fetsi		
-9.2.1	finpe	finp	fish	finpe		
+9.2.1	finpe	fip	fish	finpe		
 13.1	finti	fin	invent	finti		
 11.2.2	flalu	fla	law	flalu		
 12.6	flani	flan	flute	flani		
@@ -293,7 +293,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 7.5.1	fonmo	fof	foam	fonmo		
 2.2	fonxa	fon	telephone	fonxa		
 13.3.1	forca	fro	fork	forca		
-9.3.4	frati	fra	react	frati		
+9.3.4	frati	frai	react	frati		
 2.4	fraxu	frak	forgive	fraxu		
 1.5	frica	fis	differ	frica		
 12.2	friko	fri	African	friko	fri	
@@ -309,7 +309,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 6.2	galfi	gai	modify	galfi		
 3.1	galtu	gal	high	galtu		
 9.2.3	galxe	glak	throat	galxe		
-3.1	ganlo	gon	closed	ganlo		
+3.1	ganlo	gol	closed	ganlo		
 3.4	ganra	gan	broad	ganra		
 9.4	ganse	ges	sense	ganse		
 9.2.3	ganxo	gak	anus	ganxo		
@@ -326,8 +326,8 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 1.1	girzu	gri	group	girzu		
 2.1	gismu	gif	root word	gismu		
 7.3	glare	gla	hot	glare		
-10.1	gleki	gle	happy	gleki		
-9.3.2	gletu	gleu	copulate	gletu		
+10.1	gleki	gek	happy	gleki		
+9.3.2	gletu	gle	copulate	gletu		
 13.7	gluta	glu	glove	gluta		
 7.4	gradu	grau	unit	gradu		
 7.4.1	grake	graf	gram	grake	gram	
@@ -345,7 +345,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.4.2	gusni	gus	illumine	gusni		
 9.2.5	gutra	gutr	womb	gutra		
 9.1.3	guzme	zme	melon	guzme		
-13.1	jadni	jat	adorn	jadni		
+13.1	jadni	jdai	adorn	jadni		
 5.1	jalge	jek	result	jalge		
 9.2.3	jamfu	jma	foot	jamfu		
 11.2.3	jamna	jaf	war	jamna		
@@ -353,14 +353,14 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.2.3	janco	jan	shoulder	janco		
 6.2.1	janli	jal	collide	janli		
 11.2.1	jansu	jnas	diplomat	jansu		
-2.3	jarco	jro	show	jarco		
+2.3	jarco	jor	show	jarco		
 3.4	jarki	jak	narrow	jarki		
-5.3.1	jatna	jatn	captain	jatna		
+5.3.1	jatna	jat	captain	jatna		
 1.2	javni	jva	rule	javni		
 13.3.3	jbama	bomb	bomb	jbama	bomb	
 9.1.1	jbari	jba	berry	jbari		
 9.3.2	jbena	jbe	born	jbena		
-11.3.1	jbera	jer	borrow	jbera		
+11.3.1	jbera	jber	borrow	jbera		
 1.1	jbini	bin	between	jbini		
 7.3	jdari	jar	firm	jdari		
 2.5	jdice	jdi	decide	jdice		
@@ -372,9 +372,9 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 4.2	jeftu	jef	week	jeftu		
 7.5.2	jelca	jel	burn	jelca		
 8.2.3	jemna	jme	gem	jemna		
-11.2.3	jenmi	jne	army	jenmi		
+11.2.3	jenmi	jenm	army	jenmi		
 11.3.4	jerna	jren	earn	jerna		
-6.1.2	jersi	jre	chase	jersi		
+6.1.2	jersi	jer	chase	jersi		
 3.5.5	jesni	jesn	needle	jesni		
 6.1.4	jetce	jet	jet	jetce		
 2.5	jetnu	jeu	true	jetnu		
@@ -424,7 +424,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.3.2	kabri	kabr	cup	kabri		
 2.2	kacma	kacm	camera	kacma		
 2.4	kajde	jde	warn	kajde		
-5.2	kakne	kak	able	kakne		
+5.2	kakne	kek	able	kakne		
 6.2.3	kakpa	kakp	dig	kakpa		
 9.3.1	kalci	kalc	feces	kalci		
 3.1	kalri	kar	open	kalri		
@@ -456,10 +456,10 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.6	kicne	kis	cushion	kicne		
 7.3	kinli	kil	sharp	kinli		
 13.5	klaji	klas	street	klaji		
-10.1	klaku	klak	weep	klaku		
+10.1	klaku	kak	weep	klaku		
 6.1.1	klama	kla	come	klama		
 7.4	klani	ni	quantity	klani		
-1.1	klesi	kle	class	klesi		
+1.1	klesi	lel	class	klesi		
 7.3	klina	klia	clear	klina		
 8.2.3	kliti	kit	clay	kliti		
 13.3.1	klupe	klue	screw	klupe		
@@ -498,8 +498,8 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 5.3	lacri	lacr	rely	lacri		
 13.2.3	ladru	lat	milk	ladru		
 6.2.1	lafti	laft	lift	lafti		
-5	lakne	lek	probable	lakne		
-7.5.1	lakse	lak	wax	lakse		
+5	lakne	lak	probable	lakne		
+7.5.1	lakse	laks	wax	lakse		
 8.2.1	lalxu	luk	lake	lalxu		
 3.1	lamji	laf	adjacent	lamji		
 2.5	lanli	lal	analyze	lanli		
@@ -509,7 +509,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.1	lasna	lasn	fasten	lasna		
 11.3.1	lebna	lep	take	lebna		
 3.5.4	lenjo	len	lens	lenjo		
-7.3	lenku	lenk	cold	lenku		
+7.3	lenku	lek	cold	lenku		
 4	lerci	lerc	late	lerci		
 2.1	lerfu	leu	letteral	lerfu		
 1.3	lidne	lit	precede	lidne		
@@ -517,8 +517,8 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 12.5	lijda	jda	religion	lijda		
 6.1.2	limna	limn	swim	limna		
 7.5	lindi	lind	lightning	lindi		
-3.5.2	linji	lin	line	linji		
-13.4	linsi	lins	chain	linsi		
+3.5.2	linji	linj	line	linji		
+13.4	linsi	lin	chain	linsi		
 2.3	lisri	lis	story	lisri		
 1.3	liste	ste	list	liste		
 7.5.1	litki	lik	liquid	litki		
@@ -545,7 +545,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.7	mapku	map	cap	mapku		
 1.5	mapti	mat	fit	mapti		
 10.3	marbi	mra	shelter	marbi		
-13.5	marce	marc	vehicle	marce		
+13.5	marce	mer	vehicle	marce		
 10.3	marde	mrat	morals	marde		
 7.5	marji	mai	material	marji		
 9.1.6	marna	mran	hemp	marna		
@@ -591,7 +591,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 2.5	mucti	muct	immaterial	mucti		
 13.2.1	mudri	mut	wood	mudri		
 5.1	mukti	mue	motive	mukti		
-10.3	mulno	mul	complete	mulno		
+10.3	mulno	mlu	complete	mulno		
 8.1	munje	munj	universe	munje		
 4.1	murse	murs	glimmering	murse		
 13.3.1	murta	mua	curtain	murta		
@@ -610,11 +610,11 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.4.2	narju	narj	orange	narju		
 2.5	natfe	nef	deny	natfe		
 12.1	natmi	nai	nation	natmi		
-13.5	naxle	nakl	canal	naxle		
+13.5	naxle	kle	canal	naxle		
 9.2.3	nazbi	zbi	nose	nazbi		
-7.2	nejni	nen	energy	nejni		
+7.2	nejni	nejn	energy	nejni		
 10.2	nelci	nel	fond	nelci		
-3.1	nenri	ner	in	nenri		
+3.1	nenri	nen	in	nenri		
 5.1	nibli	nip	necessitate	nibli		
 4.1	nicte	cte	night	nicte		
 13.6	nilce	nil	furniture	nilce		
@@ -636,11 +636,11 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.7	palku	pak	pants	palku		
 13.3.2	palta	plat	plate	palta		
 13.3.3	pambe	pamb	pump	pambe		
-9.4.3	panci	panc	odor	panci		
+9.4.3	panci	pan	odor	panci		
 12.2	panka	pank	park	panka		
-3.5.5	panlo	pol	slice	panlo		
+3.5.5	panlo	pon	slice	panlo		
 5.3.2	panpi	pap	peace	panpi		
-7.1	panra	pan	parallel	panra		
+7.1	panra	par	parallel	panra		
 2.4	pante	pat	protest	pante		
 9	panzi	pas	offspring	panzi		
 3.5.5	papri	papr	page	papri		
@@ -686,11 +686,11 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 10.3	prane	per	perfect	prane		
 6.1.2	preja	pres	spread	preja		
 2.5	prenu	pre	person	prenu		
-2.4	preti	ret	question	preti		
+2.4	preti	pret	question	preti		
 10.3	prije	pis	wise	prije		
 6.2.2	prina	pri	print	prina		
 3.1	pritu	prio	right	pritu		
-12.6	prosa	pros	prose	prosa		
+12.6	prosa	ros	prose	prosa		
 5	pruce	pue	process	pruce		
 7.3	pruni	pun	elastic	pruni		
 2.5	pruxi	ruk	spirit	pruxi		
@@ -700,14 +700,14 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 3.5.3	punli	pul	swelling	punli		
 4	purci	pu	past	purci		
 13.1	purdi	put	garden	purdi		
-7.5.1	purmo	pru	powder	purmo		
+7.5.1	purmo	pur	powder	purmo		
 7.4.1	radno	ratn	radian	radno	radn	
 2.1	rafsi	raf	affix	rafsi		
 3.1	ragve	ragv	across	ragve		
 10.1	raktu	rakt	trouble	raktu		
 7.3	ralci	ralc	delicate	ralci		
 1.1	ralju	rau	principal	ralju		
-6.2.1	ralte	ral	retain	ralte		
+6.2.1	ralte	rel	retain	ralte		
 5.2	randa	rand	yield	randa		
 9.2.3	rango	rang	organ	rango		
 5	ranji	ranj	continue	ranji		
@@ -715,7 +715,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 7.3	ranti	ran	soft	ranti		
 10.2	ranxi	rak	irony	ranxi		
 5	rapli	rap	repeat	rapli		
-5	rarna	rar	natural	rarna		
+5	rarna	rarn	natural	rarna		
 7.2	ratni	rat	atom	ratni		
 13.2.3	rectu	rect	meat	rectu		
 9.2.2	remna	ref	human	remna		
@@ -755,7 +755,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 3.2	salpo	sop	slope	salpo		
 1.2	sampu	smau	simple	sampu		
 9.4.1	sance	sna	sound	sance		
-12.6	sanga	sang	sing	sanga		
+12.6	sanga	sak	sing	sanga		
 2.5	sanji	sas	conscious	sanji		
 6.1.3	sanli	sai	stand	sanli		
 13.2.3	sanmi	snai	meal	sanmi		
@@ -763,13 +763,13 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 5.1	sarcu	sau	necessary	sarcu		
 6.1.3	sarji	sra	support	sarji		
 3.5.2	sarlu	sral	spiral	sarlu		
-1.2	sarxe	sak	harmonious	sarxe		
+1.2	sarxe	sark	harmonious	sarxe		
 2.5	saske	ske	science	saske		
 7.4	satci	satc	exact	satci		
 6.2.3	satre	satr	stroke	satre		
 9.4	savru	vru	noise	savru		
 13.1	sazri	sazr	operate	sazri		
-3.5.3	sefta	sfe	surface	sefta		
+3.5.3	sefta	seft	surface	sefta		
 7.2	selci	sle	cell	selci		
 5.3	selfu	seu	serve	selfu		
 2.5	senpi	sen	doubt	senpi		
@@ -777,18 +777,18 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 10.2	senva	sne	dream	senva		
 3.1	sepli	sep	apart	sepli		
 13.6	serti	ser	stairs	serti		
-6.2.1	setca	setc	insert	setca		
-2.5	sevzi	ses	self	sevzi		
+6.2.1	setca	ses	insert	setca		
+2.5	sevzi	sfe	self	sevzi		
 5.3.1	sfasa	sfa	punish	sfasa		
-6.1.2	sfubu	suf	dive	sfubu		
+6.1.2	sfubu	sfu	dive	sfubu		
 9.4.1	siclu	sil	whistle	siclu		
 11.3.2	sicni	sicn	coin	sicni		
 2.5	sidbo	sio	idea	sidbo		
-5.3	sidju	stio	help	sidju		
+5.3	sidju	dju	help	sidju		
 13.2.3	sigja	sik	cigar	sigja		
 13.2.1	silka	silk	silk	silka		
 8.2.3	silna	slin	salt	silna		
-2.5	simlu	mlu	seem	simlu		
+2.5	simlu	smio	seem	simlu		
 1.5	simsa	smi	similar	simsa		
 6.2.1	simxu	sif	mutual	simxu		
 10.3	sinma	snia	esteem	sinma		
@@ -796,7 +796,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.3.4	sipna	sip	sleep	sipna		
 3.5.2	sirji	sir	straight	sirji		
 6.2	sisku	sis	seek	sisku		
-5.2	sisti	sti	cease	sisti		
+5.2	sisti	sist	cease	sisti		
 2.5	sitna	sit	cite	sitna		
 11	sivni	sfin	private	sivni		
 2.2	skami	saf	computer	skami		
@@ -821,28 +821,28 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 5.2	snada	sat	succeed	snada		
 3.1	snanu	snan	south	snanu		
 4.3	snidu	nit	second	snidu		
-8.2.2	snime	sin	snow	snime		
+8.2.2	snime	snif	snow	snime		
 7.3	snipa	snip	sticky	snipa		
 3.5.5	snuji	snus	sandwich	snuji		
 10.3	snura	nur	secure	snura		
 5.2	snuti	nut	accidental	snuti		
 9.1.5	sobde	spoi	soya	sobde		
 8.1	solri	sol	solar	solri		
-13.1	sombo	sof	sow	sombo		
+13.1	sombo	smo	sow	sombo		
 11.2.3	sonci	soi	soldier	sonci		
 13.1	sorcu	sro	store	sorcu		
-9.3.2	sovda	sfo	egg	sovda		
+9.3.2	sovda	sof	egg	sovda		
 10.1	spaji	spas	surprise	spaji		
 9.1	spati	spa	plant	spati		
 11.1	speni	spe	married	speni		
 7.1	spisa	spi	piece	spisa		
 13.1	spofu	pof	broken	spofu		
-6.1.2	spoja	pos	explode	spoja		
+6.1.2	spoja	spo	explode	spoja		
 2.4	spuda	spu	reply	spuda		
-6.2.4	sputu	sput	spit	sputu		
+6.2.4	sputu	pup	spit	sputu		
 3.2	sraji	ras	vertical	sraji		
 6.2.2	sraku	srak	scratch	sraku		
-2.5	srana	sran	pertain	srana		
+2.5	srana	rar	pertain	srana		
 9.1	srasu	sras	grass	srasu		
 5.2	srera	sre	err	srera		
 2.5	sruma	rua	assume	sruma		
@@ -852,12 +852,12 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 13.2.1	staku	stak	ceramic	staku		
 6.1.1	stali	sta	remain	stali		
 9.1.1	stani	stan	stalk	stani		
-1.1	steci	stes	specific	steci		
+1.1	steci	tes	specific	steci		
 9.2.3	stedu	set	head	stedu		
 13.6	stela	tel	lock	stela		
 7.4.1	stero	sradn	steradian	stero	sradn	
 3.1	stici	stis	west	stici		
-2.3	stidi	tit	suggest	stidi		
+2.3	stidi	sti	suggest	stidi		
 5	stika	stik	adjust	stika		
 1.5	stodi	sto	constant	stodi		
 3.1	stuna	sun	east	stuna		
@@ -874,7 +874,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 2.5	tadni	tat	study	tadni		
 3.5.5	tagji	tak	snug	tagji		
 10.2	talsa	tal	challenge	talsa		
-9.1.4	tamca	tomt	tomato	tamca	tomt	
+9.1.4	tamca	tomta	tomato	tamca	tomta	
 9.2.3	tamji	tamj	thumb	tamji		
 11.1	tamne	tamn	cousin	tamne		
 3.5.4	tanbo	top	board	tanbo		
@@ -901,32 +901,32 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 4	temci	tef	time	temci		
 7.3	tengu	teng	texture	tengu		
 8.1	terdi	tet	earth	terdi		
-10.1	terpa	tep	fear	terpa		
-12.6	tigni	tik	perform	tigni		
+10.1	terpa	tre	fear	terpa		
+12.6	tigni	tikn	perform	tigni		
 6.2.2	tikpa	tip	kick	tikpa		
 5.3.1	tinbe	tinb	obey	tinbe		
 7.3	tinsa	tins	stiff	tinsa		
 9.4.1	tirna	tin	hear	tirna		
-6.2.3	tisna	tisn	fill	tisna		
-9.4.4	titla	titl	sweet	titla		
+6.2.3	tisna	tsin	fill	tisna		
+9.4.4	titla	tit	sweet	titla		
 2.2	tivni	tif	television	tivni		
-11.1	tixnu	tikn	daughter	tixnu		
+11.1	tixnu	tio	daughter	tixnu		
 13.3.3	toknu	tok	oven	toknu		
-9.4.1	tonga	tong	tone	tonga		
+9.4.1	tonga	ton	tone	tonga		
 3.4	tordu	tor	short	tordu		
-6.1.4	torni	ton	twist	torni		
+6.1.4	torni	tron	twist	torni		
 1.4	traji	rai	superlative	traji		
 3.5.5	trati	trat	taut	trati		
-13.5	trene	tre	train	trene		
+13.5	trene	tren	train	trene		
 9.1	tricu	ris	tree	tricu		
-10.2	trina	tria	attract	trina		
-3.1	trixe	tri	behind	trixe		
+10.2	trina	tri	attract	trina		
+3.1	trixe	tik	behind	trixe		
 5.2	troci	toi	try	troci		
 7.3	tsali	tsa	strong	tsali		
 8.2.2	tsani	tsan	sky	tsani		
 13.2.3	tsapi	tsap	seasoning	tsapi		
 9.1.1	tsiju	tsi	seed	tsiju		
-13.4	tsina	tsin	stage	tsina		
+13.4	tsina	sin	stage	tsina		
 3.5.4	tubnu	tup	tube	tubnu		
 2.5	tugni	tukn	agree	tugni		
 8.2	tumla	tua	land	tumla		
@@ -1020,7 +1020,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 6.2.3	zalvi	zal	grind	zalvi		
 10.2	zanru	zau	approve	zanru		
 11.3.4	zarci	zrai	market	zarci		
-9.2.3	zargu	zak	buttock	zargu		
+9.2.3	zargu	zrau	buttock	zargu		
 1.5	zasni	zas	temporary	zasni		
 2.5	zasti	zai	exist	zasti		
 13.2	zbabu	spon	soap	zbabu	spon	
@@ -1029,8 +1029,8 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.3.4	zdani	zda	nest	zdani		
 10.1	zdile	zdi	amusing	zdile		
 11.2.2	zekri	zer	crime	zekri		
-1.5	zenba	zne	increase	zenba		
-9.4	zgana	zga	observe	zgana		
+1.5	zenba	zen	increase	zenba		
+9.4	zgana	zak	observe	zgana		
 12.6	zgike	zgi	music	zgike		
 10.3	zifre	zif	free	zifre		
 9.4.2	zirpu	zir	purple	zirpu		
@@ -1240,7 +1240,7 @@ theme_code	gismu	current_form	meaning	gismu	override	override_notes
 9.3.3	jinku	jink	vaccine	jinku		
 13.2.2	jisra	jisr	juice	jisra		
 13.7	skaci	skas	skirt	skaci		
-8.2.1	jmifa	jmif	shoal	jmifa		
+8.2.1	jmifa		shoal	jmifa		
 9.1.5	cunmi	cunm	millet	cunmi		
 13.3.1	jinci	jinc	shears	jinci		
 13.3.1	penbi	penb	pen	penbi		
