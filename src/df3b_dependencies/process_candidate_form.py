@@ -10,7 +10,7 @@ import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
 
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
-cols = ('form1a', 'form2a', 'form1b', 'form2b', 'CCAA', 'CCAA2', 'form4a', 'form1c', 'form2c', 'form4b')
+cols = ('form1a', 'form2a', 'form1b', 'form2b', 'CCAA', 'form4a', 'form1c', 'form2c', 'CAAC', 'form4b')
 amount_cols = len(cols)
 
 class Row:
@@ -92,8 +92,11 @@ def stage1(d):
                     if coda:
                         out[f'form{i}a'] = f'{form[0]}{aa}{coda}'
                     else:
-                        out[f'form{i}a'] = f'{form[0]}{aa}{lpos.rearrange_by_lpos(g, "C 2")}'
-                        out[f'form{i}b'] = f'{form[0]}{aa}{lpos.rearrange_by_lpos(g, "C 3")}'
+                        cc = lpos.rearrange_by_lpos(g, "CC 23") 
+                        c2, c3 = cc
+                        p = f'{form[0]}{aa}'
+                        codas = (c3, c2) if cc in phon.valid_cons_pairs else (c2, c3)
+                        out[f'form{i}a'], out[f'form{i}b'] = (f'{p}{c}' for c in codas)
                 else:
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
@@ -106,10 +109,14 @@ def stage1(d):
                 out[f'form{i}a'] = form
             out[f'form{i}c'] = lpos.rearrange_by_lpos(g, "CAC 123")
 
-        if sh == 'CAA' or (sh == 'CCA'):    # and row.form1 != g[:-3]
-            if len(aa) > 1:
+        if len(aa) > 1:
+            if sh == 'CAA' or (sh == 'CCA'):    # and row.form1 != g[:-3]
                 out['CCAA'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
-                out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1312')
+                # out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1312')
+            if sh == 'CAA' and tend in ('ini', 'neut'):
+                out['CAAC'] = lpos.rearrange_by_lpos(g, 'CAAC 1123')
+            if sh == 'CAC' and tend in ('ini', 'neut'):
+                out['CAAC'] = f'{lpos.rearrange_by_lpos(g, "CAAC 112")}{form[-1]}'
 
     row = Row(d)
     out = {col: '' for col in cols}
@@ -158,7 +165,9 @@ def apply_sound_changes(v):
         if shape == 'CCAC':
             (p, q, r) = (v[:2], v[2], v[3]) if v[:2] in phon.valid_cons_pairs else ('', '', '')
         elif shape in ('CCA', 'CCAA'):
-            (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')                
+            (p, q, r) = (v[:2], v[2:], '') if v[:2] in phon.valid_cons_pairs else ('', '', '')        
+        elif shape == 'CAAC':
+            p, q, r = v[0], v[1:3], v[3]        
         elif shape == 'CAC':
             p, q, r = v[0], v[1], v[2]
         elif shape == 'CAA':

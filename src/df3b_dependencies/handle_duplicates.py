@@ -3,26 +3,26 @@ from src.lojban_specific.word_shape import word_shape
 
 def handle_duplicate_forms(df, display_stats=1, sift=1):
 
-    df['current_form_count'] = df.groupby('current_form')['gismu'].transform('count')
-    mask_dupl = df['current_form_count'] > 1
+    df['current_stem_count'] = df.groupby('current_stem')['gismu'].transform('count')
+    mask_dupl = df['current_stem_count'] > 1
 
     if display_stats:
         dupl_count = mask_dupl.sum()
         print(f'Duplicates remaining: {dupl_count}\n')
 
-        df['current_form_shape'] = df['current_form'].apply(word_shape)
+        df['current_stem_shape'] = df['current_stem'].apply(word_shape)
         print('Form shape rundown: ')
-        print(df['current_form_shape'].value_counts())
+        print(df['current_stem_shape'].value_counts())
 
-    df['max_gismu_sum'] = df.groupby('current_form')['gismu_sum'].transform('max')
+    df['max_gismu_sum'] = df.groupby('current_stem')['gismu_sum'].transform('max')
     df['coef_gismu_sum'] = df['gismu_sum'] / df['max_gismu_sum']
 
     gismus = list(df['gismu'])
-    current_forms = list(df['current_form'])
+    current_stems = list(df['current_stem'])
     form_stacks = list(df['stack'])
     coefs = list(df['coef_gismu_sum'])
     tendencies = list(df['pos_tendency'])
-    # set_current_forms = set(current_forms)
+    # set_current_stems = set(current_stems)
 
     def conditions(stack, dupl, coef, tendency):
         if sift == 1:
@@ -40,10 +40,10 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
 
     cur_forms, stacks = list(), list()
     n_changes = 0
-    for g, cur_form, stack, dupl, coef, tendency in zip( gismus, current_forms, form_stacks, mask_dupl, coefs, tendencies ):
+    for g, cur_form, stack, dupl, coef, tendency in zip( gismus, current_stems, form_stacks, mask_dupl, coefs, tendencies ):
         if conditions(stack, dupl, coef, tendency):
             a = stack[-1]
-            if a and a not in current_forms:
+            if a and a not in current_stems:
                 cur_form = stack.pop()
                 n_changes += 1
             else:
@@ -54,14 +54,14 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
     if display_stats:
         print(f'{n_changes} forms changed')
 
-    df['current_form'] = pd.Series(cur_forms)
+    df['current_stem'] = pd.Series(cur_forms)
     df['stack'] = pd.Series(stacks)
-    df['current_form_count'] = df.groupby('current_form')['gismu'].transform('count')
+    df['current_stem_count'] = df.groupby('current_stem')['gismu'].transform('count')
 
     return df
 
 def handle_duplicate_df(df):
-    df['current_form'] = df['stack'].str[-1]
+    df['current_stem'] = df['stack'].str[-1]
     df['stack'] = df['stack'].str.slice(stop=-1)
 
     df = handle_duplicate_forms(df)

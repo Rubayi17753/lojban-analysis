@@ -1,0 +1,5 @@
+digram = 'dv'
+cmavo = 'ḟ'
+cc = '’'
+aa = 'n'
+ca = 'l'

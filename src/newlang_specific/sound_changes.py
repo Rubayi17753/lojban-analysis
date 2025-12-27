@@ -1,4 +1,10 @@
 import src.lojban_specific.phonological_inventory as inv
+import src.lojban_specific.word_shape as word_shape
+import src.newlang_specific.hyphens as hyphens
+
+hyphens_cc = hyphens.cc
+hyphens_ca = hyphens.ca
+hyphens_aa = hyphens.aa
 
 diphthongs = {
     "a'a" : "a",
@@ -34,7 +40,7 @@ diphthongs = {
 
 diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
-cons_coda = dict(zip('bpfvdtgkxcjszlmnr', 'ppffttkkksssslfnr'))
+cons_coda = dict(zip('bpfvdtgkxcjszlmnr', 'mpffttnkkttsrlmnr'))
 
 clusters_ini = (
     (('x', inv.C) , ('k', inv.C)),
@@ -57,3 +63,44 @@ clusters_ini = {f'{p}{q}' : f'{x}{y}' for (pp, qq), (xx, yy) in clusters_ini
 clusters_fin = {f'{p}{q}' : f'{x}{y}' for (pp, qq), (xx, yy) in clusters_fin
                 for p, x in zip(pp, xx) for q, y in zip(qq, yy)}
 clusters_fin.update(cons_coda)
+
+coda_stem_to_lemma = {
+    'p': 'pr', 't': 'tc', 'k': 'kr',
+    'f': 'ft', 's': 'st',
+    'l': 'ld', 'm': 'mb', 'n': 'ng', 'r': 'rz',
+}
+
+def stem_to_combining(x, sh=None):
+    if x:
+        if not sh:
+            sh = word_shape.word_shape(x)
+        if sh.endswith('CC'):
+            x = f'{x}{hyphens_cc}'
+    return x
+
+def stem_to_lemma(x, sh=None):
+
+    if x:
+        if not sh:
+            sh = word_shape.word_shape(x)
+        coda = x[-1]
+        
+        x = stem_to_combining(x, sh)
+
+        infix = ''
+        if sh == 'CA':
+            infix = 'dv'
+        elif sh.endswith('CA'):
+            infix = hyphens_ca
+        elif sh.endswith('AA'):
+            infix = hyphens_aa
+        if not sh.startswith('CC'):
+            infix = coda_stem_to_lemma.get(infix, '')
+        if not sh.startswith('CC') and sh.endswith('AC'):
+            x = x[:-1]
+            infix = coda_stem_to_lemma.get(coda, coda)
+
+        x = f'{x}{infix}'    
+        x = f'{stem_to_combining(x).strip(hyphens_cc)}a'
+
+    return x

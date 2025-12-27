@@ -1,2 +1,2 @@
-# Excluding first iteration, which 'loads' the forms from the stack into current_form
+# Excluding first iteration, which 'loads' the forms from the stack into current_stem
 # handle_duplicate_forms_iteration_count = 4

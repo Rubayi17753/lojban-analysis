@@ -13,6 +13,7 @@ from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import syllable_parser
 from src.df3b_dependencies.process_candidate_form import stage1
 from src.df3b_dependencies.handle_duplicates import handle_duplicate_df
+import src.newlang_specific.sound_changes as sound_changes
 import src.df3b_dependencies.override as override
 
 def get_frequency_order(df):
@@ -143,14 +144,17 @@ def main(override_file='update'):
     df = handle_duplicate_df(df)
 
     # Post-processing
-    # df['current_shape'] = df['current_form'].apply(word_shape)
-    df['current_form_syllablfied'] = df['current_form'].apply(lambda x : syllable_parser(x, delim='-'))
+    # df['current_shape'] = df['current_stem'].apply(word_shape)
+    df['current_stem_syllablfied'] = df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
+    df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
+    df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
+    df['current_lemma_count'] = df.groupby('current_lemma')['gismu'].transform('count')
 
     # Write to files
     print(df.columns)
     df.to_csv('results/df3b1.csv', sep=',', index=False)
 
-    cols2 = ['theme_code', 'gismu', 'current_form', 'meaning', 'gismu', 'override', 'override_notes']
+    cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
     df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)
 
     if override_file == 'new':
