@@ -32,7 +32,10 @@ class Row:
             self.form2, self.shape2, self.pos2 = '', '', ''
             if coef_second_form > th.coef_second_form_threshhold:
                 self.form2, self.shape2, self.pos2 = d['cmavo_rafsi_2'], d['form_shape_2'], d['rafsi_pos_2']
-       
+            
+            self.form1 = self.form1.replace("'", '')
+            self.form2 = self.form2.replace("'", '')
+
             if not self.form1:
                 self.pos1 = 'neut'
             
@@ -86,17 +89,19 @@ def stage1(d):
             out[f'form{i}a'] = form
 
         if sh == 'CAA':
+
+            coda = row.get_other_coda()
+            if coda:
+                coda1, coda2 = coda, ''
+            else:
+                cc = lpos.rearrange_by_lpos(g, "CC 23") 
+                coda1, coda2 = cc if cc in phon.valid_cons_pairs else cc[::-1]
+
             if len(aa) <= 1:
                 if tend in ('neut', 'fin'):
-                    coda = row.get_other_coda()
-                    if coda:
-                        out[f'form{i}a'] = f'{form[0]}{aa}{coda}'
-                    else:
-                        cc = lpos.rearrange_by_lpos(g, "CC 23") 
-                        c2, c3 = cc
-                        p = f'{form[0]}{aa}'
-                        codas = (c3, c2) if cc in phon.valid_cons_pairs else (c2, c3)
-                        out[f'form{i}a'], out[f'form{i}b'] = (f'{p}{c}' for c in codas)
+                    p = f'{form[0]}{aa}'
+                    out[f'form{i}a'] = f'{p}{coda1}'
+                    if coda2:   out[f'form{i}b'] = f'{p}{coda2}'
                 else:
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
@@ -105,8 +110,10 @@ def stage1(d):
                             out[f'form{i}b'] = f'{cc}{oo}'
                     else:
                         out[f'form{i}a'] = lpos.rearrange_by_lpos(g, "CAC 112")
+                        
             else:
                 out[f'form{i}a'] = form
+
             out[f'form{i}c'] = lpos.rearrange_by_lpos(g, "CAC 123")
 
         if len(aa) > 1:
