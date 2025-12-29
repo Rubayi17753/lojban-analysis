@@ -8,6 +8,7 @@ import src.lojban_specific.lpos as lpos
 import src.lojban_specific.word_shape as word_shape
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
+import src.newlang_specific.hyphens as hyphen
 
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
 cols = ('form1a', 'form2a', 'CAAC1', 'form1b', 'form1bb', 'form2b', 'form2bb', 'CCAA', 'form4a', 'form1c', 'form2c', 'CAAC', 'form4b')
@@ -122,7 +123,7 @@ def stage1(d):
              
             else:
                 if tend in ('ini', 'neut'):
-                    out[f'form{i}a'] = f'{form}n'     # CAA-n
+                    out[f'form{i}a'] = f'{form}{hyphen.aa}'     # CAA-n
 
             out[f'form{i}c'] = f'{lpos.rearrange_by_lpos(g, "CA 12")}{caac_coda}'
 
