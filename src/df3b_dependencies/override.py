@@ -5,7 +5,9 @@ from src.lojban_specific.word_shape import word_shape
 override_fp = 'interactive/new_gismu.tsv'
 
 def get_df_override():
-    return pd.read_csv(override_fp, sep='\t', index_col='gismu')
+    df = pd.read_csv(override_fp, sep='\t', index_col='gismu')
+    df[df['override'] == '_']['override'] = None
+    return df
 
 def create_new_override(df):
 
@@ -45,3 +47,17 @@ def update_override_file(df):
     df_override = df_override[['current_stem', 'override', 'notes', 'final_count',
                      'pos_tendency', 'theme_code', 'meaning']]
     df_override.reset_index().to_csv('interactive/new_gismu.tsv', sep='\t', index=False)
+
+def copy_override_into_file(df):
+
+    df[df['override'].isna()]['override'] = '_'
+    df[df['override_notes'].isna()]['override_notes'] = '_'
+    df[df['override'] == '']['override'] = '_'
+    df[df['override_notes'] == '']['override_notes'] = '_'
+
+    # Sort based on defs_gismu (thematic)
+    df_defs_gismu = Table('defs_gismu', keep_default_na=False, sep=',').dff
+    df = df_defs_gismu[['gismu']].merge(df, on='gismu', how='left')
+
+    cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
+    df[cols2].to_csv(override_fp, sep='\t', index=False)

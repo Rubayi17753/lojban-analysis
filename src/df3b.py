@@ -154,14 +154,14 @@ def main(override_file='update'):
     print(df.columns)
     df.to_csv('results/df3b1.csv', sep=',', index=False)
 
-    cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
-    df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)
+    # cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
+    # df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)
 
     if override_file == 'new':
         override.create_new_override(df)
     elif override_file == 'update':
         override.update_override_file(df)
     elif override_file == 'copy':
-        df[cols2].to_csv(override.override_fp, sep='\t', index=False)
-
+        override.copy_override_into_file(df)
+        
     return df

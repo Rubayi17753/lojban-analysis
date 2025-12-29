@@ -40,7 +40,8 @@ diphthongs = {
 
 diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
-cons_coda = dict(zip('bpfvdtgkxcjszlmnr', 'mpffttnkkttsrlmnr'))
+cons_coda_cac = dict(zip('bpfvdtgkxcjszlmnr', 'mpffttnkkttsrlmnr'))
+cons_coda_ccac = dict(zip('bpfvdtgkxcjszlmnr', 'ppffttkkkttsrlmnr'))
 
 clusters_ini = (
     (('x', inv.C) , ('k', inv.C)),
@@ -62,7 +63,6 @@ clusters_ini = {f'{p}{q}' : f'{x}{y}' for (pp, qq), (xx, yy) in clusters_ini
                 for p, x in zip(pp, xx) for q, y in zip(qq, yy)}
 clusters_fin = {f'{p}{q}' : f'{x}{y}' for (pp, qq), (xx, yy) in clusters_fin
                 for p, x in zip(pp, xx) for q, y in zip(qq, yy)}
-clusters_fin.update(cons_coda)
 
 coda_stem_to_lemma = {
     'p': 'pr', 't': 'tc', 'k': 'kr',
