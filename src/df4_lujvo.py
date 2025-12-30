@@ -4,7 +4,7 @@ import src.lojban_specific.phonological_inventory as inv
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import lujvo_parser, determine_wordclass
 from src.df_gismu_rafsi import get_df_gismu_rafsi
-import src.newlang_specific.hyphens as hyphens
+import config.hyphens as hyphens
 
 df_new_gismu = Table('new_gismu', 'interactive', keep_default_na=False, sep='\t').dff
 dict_stem = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_stem']))

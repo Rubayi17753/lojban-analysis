@@ -8,7 +8,7 @@ import src.lojban_specific.lpos as lpos
 import src.lojban_specific.word_shape as word_shape
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
-import src.newlang_specific.hyphens as hyphen
+import config.hyphens as hyphen
 
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
 cols = ('form1a', 'form2a', 'CAAC1', 'form1b', 'form1bb', 'form2b', 'form2bb', 'CCAA', 'form4a', 'form1c', 'form2c', 'CAAC', 'form4b')
@@ -84,11 +84,13 @@ class Row:
 
 def stage1(d):
 
-    def derive_forms(sh, form, i):
+    def derive_forms(sh, form, pos, i):
             
         if sh == 'CCA':
-            if tend != 'fin':
+            if tend != 'fin' or pos in ('345', '145'):
                 out[f'form{i}a'] = form
+                if tend == 'fin' and pos in ('345', '145'):
+                    out[f'form{i}a'] = f'{form}_'
 
         if sh == 'CAC':
             out[f'form{i}a'] = form
@@ -146,6 +148,7 @@ def stage1(d):
     out = {col: '' for col in cols}
     form1, form2 = row.form1, row.form2
     sh1, sh2 = row.shape1, row.shape2
+    pos1, pos2 = row.pos1, row.pos2
     g = row.gismu
     tend = row.pos_tendency
     aa = row.diphthong_reduced
@@ -163,9 +166,9 @@ def stage1(d):
 
     else:
         if sh1:
-            derive_forms(sh1, form1, 1)
+            derive_forms(sh1, form1, pos1, 1)
         if sh2:
-            derive_forms(sh2, form2, 2)
+            derive_forms(sh2, form2, pos2, 2)
 
         out['form4a'] = f"{lpos.rearrange_by_lpos(g, 'CCA 121')}{g[3]}"
         out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')

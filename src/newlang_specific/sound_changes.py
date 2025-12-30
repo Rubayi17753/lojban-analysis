@@ -1,6 +1,6 @@
 import src.lojban_specific.phonological_inventory as inv
 import src.lojban_specific.word_shape as word_shape
-import src.newlang_specific.hyphens as hyphens
+import config.hyphens as hyphens
 
 hyphens_cc = hyphens.cc
 hyphens_ca = hyphens.ca
