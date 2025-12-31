@@ -11,7 +11,11 @@ import src.newlang_specific.phonology as phon
 import config.hyphens as hyphen
 
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
-cols = ('form1a', 'form2a', 'CAAC1', 'form1b', 'form1bb', 'form2b', 'form2bb', 'CCAA', 'form4a', 'form1c', 'form2c', 'CAAC', 'form4b')
+cols = (
+    'form1a', 'form2a', 'CAAC1a', 'CAAC1b', 
+    'form1b', 'form1bb', 'form2b', 'form2bb', 'CCAA', 
+    'form4a', 'form1c', 'form2c', 'CAACa', 'CAACb', 'form4b'
+    )
 amount_cols = len(cols)
 
 class Row:
@@ -85,6 +89,16 @@ class Row:
 def stage1(d):
 
     def derive_forms(sh, form, pos, i):
+
+        cc = lpos.rearrange_by_lpos(g, "CC 23") 
+        coda = row.get_other_coda()
+
+        if coda:
+            coda1, coda2 = coda, cc.replace(coda, '')
+        else:
+            coda1, coda2 = cc if cc in phon.valid_cons_pairs else cc[::-1]
+        if coda1 in phon.caac_coda_restriction: coda1 = ''
+        if coda2 in phon.caac_coda_restriction: coda2 = ''
             
         if sh == 'CCA':
             if tend != 'fin' or pos in ('345', '145'):
@@ -94,40 +108,36 @@ def stage1(d):
 
         if sh == 'CAC':
             out[f'form{i}a'] = form
-            
             p, coda = form[:-1], form[-1]
             alt_coda = sound_changes.cons_coda_ccac.get(coda, '')
             if alt_coda:   out[f'form{i}bb'] = f'{p}{alt_coda}'
 
         if sh == 'CAA':
-            coda = row.get_other_coda()
-            if coda:
-                coda1, coda2 = coda, ''
-            else:
-                cc = lpos.rearrange_by_lpos(g, "CC 23") 
-                coda1, coda2 = cc if cc in phon.valid_cons_pairs else cc[::-1]
 
             if len(aa) <= 1:
 
                 cc = lpos.rearrange_by_lpos(g, "CC 12")
                 if tend == 'ini' and cc in phon.valid_cons_pairs:
+                    # CCA
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
                         out[f'form{i}a'] = f'{cc}{aa}'
                         if oo:
                             out[f'form{i}b'] = f'{cc}{oo}'
                 else:
+                    # CAC
                     p = f'{form[0]}{aa}'
-                    out[f'form{i}a'] = f'{p}{coda1}'
+                    if coda1:   out[f'form{i}a'] = f'{p}{coda1}'
                     if coda2:   out[f'form{i}b'] = f'{p}{coda2}'
                     alt_coda = sound_changes.cons_coda_ccac.get(coda1, '')
                     if alt_coda:  out[f'form{i}bb'] = f'{p}{alt_coda}'
              
             else:
+                # CAA-n
                 if tend in ('ini', 'neut'):
-                    out[f'form{i}a'] = f'{form}{hyphen.aa}'     # CAA-n
+                    out[f'form{i}a'] = f'{form}{hyphen.aa}'
 
-            out[f'form{i}c'] = f'{lpos.rearrange_by_lpos(g, "CA 12")}{caac_coda}'
+            if coda1:   out[f'form{i}c'] = f'{lpos.rearrange_by_lpos(g, "CA 12")}{coda1}'
 
         if len(aa) > 1:
 
@@ -136,13 +146,18 @@ def stage1(d):
             if (sh == 'CAA' or sh == 'CCA') and tend != 'fin':    # and row.form1 != g[:-3]
                 out['CCAA'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
                 # out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1312')
+            
             if sh == 'CAA':
+                x, y = '', ''
+                if coda1:  x = f"{caa}{coda1}"  
+                if coda2:  y = f"{caa}{coda2}"
+
                 if tend in ('fin',):
-                    out['CAAC1'] = f"{caa}{caac_coda}"   # priority
+                    out['CAAC1a'], out['CAAC1b'] = x, y 
                 else:
-                    out['CAAC'] = f"{caa}{caac_coda}"
+                    out['CAACa'], out['CAACb'] = x, y
             if sh == 'CAC':
-                out['CAAC'] = f'{caa}{form[-1]}'
+                out['CAACa'] = f'{caa}{form[-1]}'
 
     row = Row(d)
     out = {col: '' for col in cols}
@@ -152,8 +167,6 @@ def stage1(d):
     g = row.gismu
     tend = row.pos_tendency
     aa = row.diphthong_reduced
-    
-    caac_coda = row.get_other_coda() or g[3]
 
     if len(aa) <= 1:
         oo = lpos.rearrange_by_lpos(g, 'AA 12').replace(aa, '')
@@ -170,7 +183,8 @@ def stage1(d):
         if sh2:
             derive_forms(sh2, form2, pos2, 2)
 
-        out['form4a'] = f"{lpos.rearrange_by_lpos(g, 'CCA 121')}{g[3]}"
+        if row.gismu_type == 'CC' or sh1 == 'CCA' or tend in ('ini', 'neut'):
+            out['form4a'] = f"{lpos.rearrange_by_lpos(g, 'CCA 121')}{g[3]}"
         out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
 
         if row.gismu_type == 'CC':

@@ -24,7 +24,7 @@ diphthongs = {
     "e'a" : "e",
     "i'a" : "ia",
     "i'o" : "io",
-    "i'u" : "io",
+    "i'u" : "eu",
     "o'o" : "o",
     "o'u" : "o",
     "o'e" : "oi",
@@ -35,13 +35,13 @@ diphthongs = {
     "o'a" : "o",
     "u'a" : "ua",
     "u'e" : "ue",
-    "u'i" : "ue",
+    "u'i" : "oi",
 }
 
 diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
-cons_coda_cac = dict(zip('bpfvdtgkxcjszlmnr', 'mpffttnkkttsrlmnr'))
-cons_coda_ccac = dict(zip('bpfvdtgkxcjszlmnr', 'ppffttkkkttsrlmnr'))
+cons_coda_cac = dict(zip('bpvfdtgkxcjszlmnr', 'mpffttnkkttsslmnr'))
+cons_coda_ccac = dict(zip('bpvfdtgkxcjszlmnr', 'ppffttkkksssslmnr'))
 
 clusters_ini = (
     (('x', inv.C) , ('k', inv.C)),
