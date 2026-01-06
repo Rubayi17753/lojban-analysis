@@ -15,15 +15,19 @@ dict_lemma = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_lemma']))
 df_rafsi_to_gismu = get_df_gismu_rafsi()
 dict_rafsi_to_gismu = dict(zip(df_rafsi_to_gismu['rafsi'], df_rafsi_to_gismu['gismu']))
 
-def translate_lujvo(lujvo, delim=''):
+def _translate_lujvo(lujvo, undetected_rafsi, dict_cmavo, delim=''):
 
     def rafsi_to_gismu(s):
-        s = dict_rafsi_to_gismu.get(s, f'[{s}]')
+        s2 = dict_rafsi_to_gismu.get(s, '')
 
-        if len(s) < 5:
-            s = f'{s}{hyphens.cmavo}'
+        if not s2:
+            undetected_rafsi[s] = undetected_rafsi.get(s, 0) + 1
 
-        return s
+        elif len(s2) < 5:
+            dict_cmavo[s] = dict_cmavo.get(s, 0) + 1
+            s2 = f'{s2}{hyphens.cmavo}'
+
+        return s2
 
     rafsis = lujvo_parser(lujvo, noisy=1)
     gismus = [rafsi_to_gismu(raf) for raf in rafsis]
@@ -35,12 +39,41 @@ def translate_lujvo(lujvo, delim=''):
 
 def main(noisy=1): 
 
+    undetected_rafsi = dict()
+    dict_cmavo = dict()
+
     df_lensisku = Table('dictionary-en', 'data/lensisku', keep_default_na=False, sep='\t').dff
     df_lensisku = df_lensisku[df_lensisku['type'] == 'lujvo']
+
+    def translate_lujvo(lujvo):
+        return _translate_lujvo(lujvo, undetected_rafsi, dict_cmavo)
 
     if noisy:   print('Translating lujvo')
     df_lensisku['word_new'] = df_lensisku['word'].apply(translate_lujvo)
 
+    def print_undetected_rafsi(undetected_rafsi):
+        undetected_rafsi = [{'rafsi': k, 'form_len': len(k), 'form_count': v} 
+                            for k, v in undetected_rafsi.items()]
+        df_undetected_rafsi = pd.DataFrame(undetected_rafsi)
+        df_undetected_rafsi = df_undetected_rafsi.sort_values(
+                by=['form_len', 'form_count'],
+                ascending=[True, False]
+            )
+        df_undetected_rafsi.to_csv('results/lensisku_undetected_forms.tsv', sep='\t', index=False)
+
+    def print_data_cmavo(dict_cmavo):
+        dict_cmavo = [{'rafsi': k, 'cmavo': dict_rafsi_to_gismu.get(k, ''), 'form_count': v} 
+                            for k, v in dict_cmavo.items()]
+        df_dict_cmavo = pd.DataFrame(dict_cmavo)
+        df_dict_cmavo = df_dict_cmavo.sort_values(
+                by=['form_count', ],
+                ascending=[False, ]
+            )
+        df_dict_cmavo.to_csv('results/lensisku_dict_cmavo.tsv', sep='\t', index=False)
+
+    print_undetected_rafsi(undetected_rafsi)
+    print_data_cmavo(dict_cmavo)
+
     df_lensisku = df_lensisku[['word', 'word_new', 'glossword_1', 'definition']]
-    df_lensisku.to_csv('results/lujvo_new.tsv', sep='\t', index=False)
+    df_lensisku.to_csv('results/lensisku_new.tsv', sep='\t', index=False)
     return df_lensisku

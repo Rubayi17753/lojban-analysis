@@ -13,8 +13,10 @@ import config.hyphens as hyphen
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
 cols = (
     'form1a', 'form2a', 'CAAC1a', 'CAAC1b', 
-    'form1b', 'form1bb', 'form2b', 'form2bb', 'CCAA', 
-    'form4a', 'form1c', 'form2c', 'CAACa', 'CAACb', 'form4b'
+    'form1b', 'form1bb', 'form2b', 'form2bb', 'CCAA1', 
+    'form4a', 'form1c', 'form2c', 'CAACa', 'CAACb',
+    'CCAA2' 
+    'form4b'
     )
 amount_cols = len(cols)
 
@@ -42,9 +44,17 @@ class Row:
             self.form2 = self.form2.replace("'", '')
 
             if not self.form1:
-                self.pos1 = 'neut'
+                self.pos_tendency = 'neut'
             
             self.gismu_type = self.gismu_shape[:2]
+
+            # Normalise pos
+            pos_dict = {'132': '134',
+                    '231': '234',
+                    '342': '345', '145': '345', '142': '345',
+                    }
+            self.pos1 = pos_dict.get(self.pos1, self.pos1)
+            self.pos2 = pos_dict.get(self.pos2, self.pos2)
 
     @property
     def params1(self):
@@ -86,6 +96,11 @@ class Row:
         else:
             return -1
 
+def get_alt_coda(coda):
+    alt_coda = sound_changes.cons_coda_ccac.get(coda, '')
+    alt_coda = '' if alt_coda == coda else alt_coda   
+    return alt_coda
+
 def stage1(d):
 
     def derive_forms(sh, form, pos, i):
@@ -101,16 +116,16 @@ def stage1(d):
         if coda2 in phon.caac_coda_restriction: coda2 = ''
             
         if sh == 'CCA':
-            if tend != 'fin' or pos in ('345', '145'):
-                out[f'form{i}a'] = form
-                if tend == 'fin' and pos in ('345', '145'):
-                    out[f'form{i}a'] = f'{form}_'
+            if tend != 'fin' or pos == '345':
+                out[f'form{i}a'] = f'{form}{hyphen.ca}'
+            if row.gismu_type == 'CC' and g[3] == hyphen.ca: 
+                out[f'form{i}a'] = f'{form}{hyphen.ca}'
 
         if sh == 'CAC':
             out[f'form{i}a'] = form
             p, coda = form[:-1], form[-1]
-            alt_coda = sound_changes.cons_coda_ccac.get(coda, '')
-            if alt_coda:   out[f'form{i}bb'] = f'{p}{alt_coda}'
+            alt_coda = get_alt_coda(coda)
+            if alt_coda:   out[f'form{i}bb'] = f'{p}{coda}'
 
         if sh == 'CAA':
 
@@ -121,15 +136,18 @@ def stage1(d):
                     # CCA
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
                     if cc in phon.valid_cons_pairs:
-                        out[f'form{i}a'] = f'{cc}{aa}'
+                        out[f'form{i}a'] = f'{cc}{aa}{hyphen.ca}'
                         if oo:
-                            out[f'form{i}b'] = f'{cc}{oo}'
+                            out[f'form{i}b'] = f'{cc}{oo}{hyphen.ca}'
                 else:
                     # CAC
                     p = f'{form[0]}{aa}'
-                    if coda1:   out[f'form{i}a'] = f'{p}{coda1}'
+                    q = f'{form[0]}{g[-1]}' # C + final vowel
+                    if coda1:   
+                        out[f'form{i}a'] = f'{p}{coda1}'
+                        out[f'form{i}c'] = f'{q}{coda1}'
                     if coda2:   out[f'form{i}b'] = f'{p}{coda2}'
-                    alt_coda = sound_changes.cons_coda_ccac.get(coda1, '')
+                    alt_coda = get_alt_coda(coda1)
                     if alt_coda:  out[f'form{i}bb'] = f'{p}{alt_coda}'
              
             else:
@@ -143,9 +161,13 @@ def stage1(d):
 
             caa = f"{form[0]}{lpos.rearrange_by_lpos(g, 'AA 12')}"
 
-            if (sh == 'CAA' or sh == 'CCA') and tend != 'fin':    # and row.form1 != g[:-3]
-                out['CCAA'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
-                # out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1312')
+            if tend != 'fin' and (sh == 'CAA' or sh == 'CCA'):    
+                # and (sh == 'CAA' or sh == 'CCA')
+                # and row.form1 != g[:-3]
+                out['CCAA1'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
+            
+            if sh in ('CAA', 'CCA', 'CAC'):
+                out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
             
             if sh == 'CAA':
                 x, y = '', ''
@@ -157,7 +179,10 @@ def stage1(d):
                 else:
                     out['CAACa'], out['CAACb'] = x, y
             if sh == 'CAC':
-                out['CAACa'] = f'{caa}{form[-1]}'
+                coda = form[-1]
+                alt_coda = get_alt_coda(coda)
+                out['CAACa'] = f'{caa}{coda}'
+                if alt_coda:  out[f'CAACb'] = f'{p}{alt_coda}'
 
     row = Row(d)
     out = {col: '' for col in cols}
@@ -171,10 +196,18 @@ def stage1(d):
     if len(aa) <= 1:
         oo = lpos.rearrange_by_lpos(g, 'AA 12').replace(aa, '')
 
-    if row.override:
-        out['form1a'] = row.override
+    override = row.override
+    if override:
+        override_suffix = ''
+        sh_override = word_shape.word_shape(override)
+        if sh_override.endswith('A'):
+            override_suffix = hyphen.ca
+        out['form1a'] = f'{override}{override_suffix}'
 
     elif row.shape1 == 'CA':
+        out['form1a'] = form1
+
+    elif row.shape1 == 'CCAC':
         out['form1a'] = form1
 
     else:
@@ -184,8 +217,8 @@ def stage1(d):
             derive_forms(sh2, form2, pos2, 2)
 
         if row.gismu_type == 'CC' or sh1 == 'CCA' or tend in ('ini', 'neut'):
-            out['form4a'] = f"{lpos.rearrange_by_lpos(g, 'CCA 121')}{g[3]}"
-        out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')
+            out['form4a'] = f"{lpos.rearrange_by_lpos(g, 'CCA 121')}{g[3]}" # CCAC
+        out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')  # CACC
 
         if row.gismu_type == 'CC':
             out['form4a'], out['form4b'] = out['form4a'], ''
@@ -220,14 +253,19 @@ def apply_sound_changes(v):
 
         if shape == 'CCAC':
             dict_r = sound_changes.cons_coda_ccac
-        elif shape in ('CAC', 'CAAC'):
+        elif shape == 'CAC':
             dict_r = sound_changes.cons_coda_cac
+        elif shape == 'CAAC':
+            dict_r = sound_changes.cons_coda_caac
         else:
             dict_r = sound_changes.clusters_fin
 
         p = sound_changes.clusters_ini.get(p, p) 
         q = sound_changes.diphthongs.get(q, q)
         r = dict_r.get(r, r) 
+
+        if r == '_':
+            p, q, r = '', '', ''
 
         v = f'{p}{q}{r}'
 

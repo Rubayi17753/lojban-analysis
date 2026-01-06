@@ -14,21 +14,26 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
         print('Form shape rundown: ')
         print(df['current_stem_shape'].value_counts())
 
-    df['max_gismu_sum'] = df.groupby('current_stem')['gismu_sum'].transform('max')
+    df['next_stem'] = df['stack'].str[-1]
+    next_stem_mask = df['next_stem'].astype(bool)
+    df['current_stem_count'] = df.groupby(['current_stem', next_stem_mask])['current_stem'].transform('count')
+    df['max_gismu_sum'] = df.groupby(['current_stem', next_stem_mask])['gismu_sum'].transform('max')
     df['coef_gismu_sum'] = df['gismu_sum'] / df['max_gismu_sum']
 
     gismus = list(df['gismu'])
     current_stems = list(df['current_stem'])
+    form_counts = list(df['current_stem_count'])
+    next_stems = list(df['next_stem'])
     form_stacks = list(df['stack'])
     coefs = list(df['coef_gismu_sum'])
     tendencies = list(df['pos_tendency'])
     # set_current_stems = set(current_stems)
 
-    def conditions(stack, dupl, coef, tendency):
+    def conditions(stack, dupl, coef, tendency, form_count):
         if sift == 1:
             return stack and dupl and coef < 0.8
         elif sift == 10:
-            return stack and dupl and coef < 0.99
+            return stack and dupl and (coef < 0.99 or form_count)
         elif sift == 2:
             return stack and dupl
         elif sift == 3:
@@ -40,9 +45,9 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
 
     cur_forms, stacks = list(), list()
     n_changes = 0
-    for g, cur_form, stack, dupl, coef, tendency in zip( gismus, current_stems, form_stacks, mask_dupl, coefs, tendencies ):
-        if conditions(stack, dupl, coef, tendency):
-            a = stack[-1]
+    for g, cur_form, next_form, form_count, stack, dupl, coef, tendency in zip( gismus, current_stems, next_stems, form_counts, form_stacks, mask_dupl, coefs, tendencies ):
+        if conditions(stack, dupl, coef, tendency, form_count):
+            a = next_form   # stack[-1]
             if a and a not in current_stems:
                 cur_form = stack.pop()
                 n_changes += 1
@@ -68,9 +73,9 @@ def handle_duplicate_df(df):
     df = handle_duplicate_forms(df, sift=3)
     df = handle_duplicate_forms(df)
     
-    for i in range(8):
+    for i in range(15):
         df = handle_duplicate_forms(df, sift=10)
-    for i in range(8):
+    for i in range(1):
         df = handle_duplicate_forms(df, sift=2)
     
     return df

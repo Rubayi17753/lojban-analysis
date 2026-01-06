@@ -145,6 +145,7 @@ def main(override_file='update'):
 
     # Post-processing
     # df['current_shape'] = df['current_stem'].apply(word_shape)
+    df['current_stem_shape'] = df['current_stem'].apply(word_shape)
     df['current_stem_syllablfied'] = df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
     df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
     df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
