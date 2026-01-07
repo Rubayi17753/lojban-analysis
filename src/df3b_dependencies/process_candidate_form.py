@@ -130,25 +130,28 @@ def stage1(d):
         if sh == 'CAA':
 
             if len(aa) <= 1:
-
-                cc = lpos.rearrange_by_lpos(g, "CC 12")
-                if tend == 'ini' and cc in phon.valid_cons_pairs:
-                    # CCA
+                
+                    '''
                     cc = lpos.rearrange_by_lpos(g, "CC 12")
-                    if cc in phon.valid_cons_pairs:
-                        out[f'form{i}a'] = f'{cc}{aa}{hyphen.ca}'
-                        if oo:
-                            out[f'form{i}b'] = f'{cc}{oo}{hyphen.ca}'
-                else:
-                    # CAC
-                    p = f'{form[0]}{aa}'
-                    q = f'{form[0]}{g[-1]}' # C + final vowel
-                    if coda1:   
-                        out[f'form{i}a'] = f'{p}{coda1}'
-                        out[f'form{i}c'] = f'{q}{coda1}'
-                    if coda2:   out[f'form{i}b'] = f'{p}{coda2}'
-                    alt_coda = get_alt_coda(coda1)
-                    if alt_coda:  out[f'form{i}bb'] = f'{p}{alt_coda}'
+                    if tend == 'ini' and cc in phon.valid_cons_pairs:
+                        # CCA
+                        cc = lpos.rearrange_by_lpos(g, "CC 12")
+                        if cc in phon.valid_cons_pairs:
+                            out[f'form{i}a'] = f'{cc}{aa}{hyphen.ca}'
+                            if oo:
+                                out[f'form{i}b'] = f'{cc}{oo}{hyphen.ca}'
+                    else:
+                    '''
+                
+                # CAC
+                p = f'{form[0]}{aa}'
+                q = f'{form[0]}{g[-1]}' # C + final vowel
+                if coda1:   
+                    out[f'form{i}a'] = f'{p}{coda1}'
+                    out[f'form{i}c'] = f'{q}{coda1}'
+                if coda2:   out[f'form{i}b'] = f'{p}{coda2}'
+                alt_coda = get_alt_coda(coda1)
+                if alt_coda:  out[f'form{i}bb'] = f'{p}{alt_coda}'
              
             else:
                 # CAA-n
