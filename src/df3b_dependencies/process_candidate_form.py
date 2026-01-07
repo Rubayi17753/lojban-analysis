@@ -98,8 +98,16 @@ class Row:
 
 def get_alt_coda(coda):
     alt_coda = sound_changes.cons_coda_ccac.get(coda, '')
-    alt_coda = '' if alt_coda == coda else alt_coda   
+    coda2 = sound_changes.cons_coda_cac.get(coda)
+    if alt_coda == coda2:
+        alt_coda = ''
     return alt_coda
+
+def unique(lst, default=''):
+    # Turns second and subsequent occurrences of items in a list into blank strings 
+    holder = set()
+    for a in lst:
+        ...
 
 def stage1(d):
 
@@ -124,25 +132,13 @@ def stage1(d):
         if sh == 'CAC':
             out[f'form{i}a'] = form
             p, coda = form[:-1], form[-1]
-            alt_coda = get_alt_coda(coda)
-            if alt_coda:   out[f'form{i}bb'] = f'{p}{coda}'
+            alt_coda = get_alt_coda(coda)            
+            if alt_coda:   out[f'form{i}bb'] = f'{p}{alt_coda}'
 
         if sh == 'CAA':
 
             if len(aa) <= 1:
-                
-                    '''
-                    cc = lpos.rearrange_by_lpos(g, "CC 12")
-                    if tend == 'ini' and cc in phon.valid_cons_pairs:
-                        # CCA
-                        cc = lpos.rearrange_by_lpos(g, "CC 12")
-                        if cc in phon.valid_cons_pairs:
-                            out[f'form{i}a'] = f'{cc}{aa}{hyphen.ca}'
-                            if oo:
-                                out[f'form{i}b'] = f'{cc}{oo}{hyphen.ca}'
-                    else:
-                    '''
-                
+               
                 # CAC
                 p = f'{form[0]}{aa}'
                 q = f'{form[0]}{g[-1]}' # C + final vowel

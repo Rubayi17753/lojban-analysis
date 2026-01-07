@@ -61,8 +61,8 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 1.5	dunli	du	dua	du	equal	dunli		
 1.5	simsa	sias	siasta	sias	similar	simsa		
 1.5	drata	dat	datca	dat	other	drata		
-1.5	mintu	meun	meunga	meun	same	mintu		
-1.5	frica	fit	fitca	fit	differ	frica		
+1.5	mintu	meut	meutca	meut	same	mintu		
+1.5	frica	fis	fista	fis	differ	frica		
 1.5	dukti	dut	dutca	dut	opposite	dukti		
 1.6	cmaci	cmas	cmasa	cmas	mathematics	cmaci		
 1.6	mekso	meks	meksa	meks’	MEX	mekso	meks	
@@ -81,12 +81,12 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 1.6	sumti	soin	soinga	soin	argument	sumti		
 1.6	sinso	sins	sinsa	sins’	sine	sinso		
 1.6	tanjo	tot	totca	tot	tangent	tanjo		
-1.6	xadba	xadb	xadba	xadb’	half	xadba		
+1.6	xadba	xap	xapra	xap	half	xadba		
 1.6	judri	jdur	jdura	jdur	address	judri		
 2.1	bangu	baun	baunga	baun	language	bangu		
 2.1	sinxa	snin	snina	snin	sign	sinxa		
 2.1	fanva	fanv	fanva	fanv’	translate	fanva		
-2.1	cmavo	cmon	cmona	cmon	structure word	cmavo		
+2.1	cmavo	mof	mofta	mof	structure word	cmavo		
 2.1	gadri	gadr	gadra	gadr’	article	gadri		
 2.1	gerna	gen	genga	gen	grammar	gerna		
 2.1	jufra	juan	juanga	juan	sentence	jufra		
@@ -128,20 +128,20 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 2.3	cusku	skun	skuna	skun	express	cusku		
 2.3	tavla	taf	tafta	taf	talk	tavla		
 2.3	skicu	skeu	skeuna	skeu	describe	skicu		
-2.3	stidi	stit	stita	stit	suggest	stidi		
+2.3	stidi	til	tilda	til	suggest	stidi		
 2.3	jarco	jot	jotca	jot	show	jarco		
-2.3	cmoni	cmoi	cmoina	cmoi	moan	cmoni		
+2.3	cmoni	cmon	cmona	cmon	moan	cmoni		
 2.3	frumu	frun	fruna	frun	frown	frumu		
 2.3	cisma	cism	cisma	cism’	smile	cisma		
 2.3	pinka	pink	pinka	pink’	comment	pinka		
 2.4	casnu	snun	snuna	snun	discuss	casnu		
 2.4	spuda	spun	spuna	spun	reply	spuda		
-2.4	preti	pret	preta	pret	question	preti		
+2.4	preti	ret	retca	ret	question	preti		
 2.4	danfu	daf	dafta	daf	answer	danfu		
 2.4	cpedu	peup	peupra	peup	request	cpedu		
 2.4	darlu	dul	dulda	dul	argue	darlu		
 2.4	fraxu	fak	fakra	fak	forgive	fraxu		
-2.4	friti	frit	frita	frit	offer	friti		
+2.4	friti	fit	fitca	fit	offer	friti		
 2.4	kajde	jden	jdena	jden	warn	kajde		
 2.4	nupre	nuen	nuenga	nuen	promise	nupre		
 2.4	pante	pant	panta	pant’	protest	pante		
@@ -153,9 +153,9 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 2.5	xanri	xar	xarza	xar	imaginary	xanri		
 2.5	pruxi	ruk	rukra	ruk	spirit	pruxi		
 2.5	sanji	sat	satca	sat	conscious	sanji		
-2.5	pensi	pis	pista	pis	think	pensi		
+2.5	pensi	pes	pesta	pes	think	pensi		
 2.5	prenu	pren	prena	pren	person	prenu		
-2.5	sevzi	sfen	sfena	sfen	self	sevzi		
+2.5	sevzi	ses	sesta	ses	self	sevzi		
 2.5	sidbo	sion	sionga	sion	idea	sidbo		
 2.5	nabmi	nam	namba	nam	problem	nabmi		
 2.5	cilre	clin	clina	clin	learn	cilre		
@@ -170,7 +170,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 2.5	jitfa	jdif	jdifa	jdif	false	jitfa		
 2.5	jijnu	jijn	jijna	jijn’	intuit	jijnu		
 2.5	jimpe	jmip	jmipa	jmip	understand	jimpe		
-2.5	jinvi	jif	jifta	jif	opine	jinvi		
+2.5	jinvi	jnif	jnifa	jnif	opine	jinvi		
 2.5	kanxe	kak	kakra	kak	conjunction	kanxe		
 2.5	krici	kris	krisa	kris	believe	krici		
 2.5	logji	lot	lotca	lot	logic	logji		
@@ -231,7 +231,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 3.1	ganlo	gol	golda	gol	closed	ganlo		
 3.1	jorne	join	joinga	join	joined	jorne		
 3.1	kruca	kuat	kuatca	kuat	intersect	kruca		
-3.1	midju	meut	meutca	meut	middle	midju		
+3.1	midju	mis	mista	mis	middle	midju		
 3.1	sepli	sep	sepra	sep	apart	sepli		
 3.2	sraji	sras	srasa	sras	vertical	sraji		
 3.2	pinta	pin	pinga	pin	level	pinta		
@@ -262,7 +262,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 3.5.2	jimca	jmis	jmisa	jmis	branch	jimca		
 3.5.3	sefta	sfet	sfeta	sfet	surface	sefta		
 3.5.3	jganu	jgan	jgana	jgan	angle	jganu		
-3.5.3	plita	plit	plita	plit	plane	plita		
+3.5.3	plita	pit	pitca	pit	plane	plita		
 3.5.3	kurfa	kur	kurza	kur	square	kurfa		
 3.5.3	karda	kart	karta	kart’	card	karda	kart	
 3.5.3	cukla	cuk	cukra	cuk	round	cukla		
@@ -308,24 +308,24 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 3.5.5	kluza	lus	lusta	lus	loose	kluza		
 3.5.5	trati	trat	trata	trat	taut	trati		
 3.5.5	korcu	kron	krona	kron	bent	korcu		
-3.5.5	bargu	ban	banga	ban	arch	bargu		
+3.5.5	bargu	brak	braka	brak	arch	bargu		
 4	cabna	ca	caa	ca	now	cabna		
 4	balvi	ba	baa	ba	future	balvi		
 4	purci	pu	pua	pu	past	purci		
 4	temci	tem	temba	tem	time	temci		
 4	citno	cion	cionga	cion	young	citno		
 4	clira	lir	lirza	lir	early	clira		
-4	lerci	let	letca	let	late	lerci		
+4	lerci	lerc	lerca	lerc’	late	lerci		
 4.1	djedi	del	delda	del	full day	djedi		
 4.1	cerni	cer	cerza	cer	morning	cerni		
 4.1	donri	doin	doinga	doin	daytime	donri		
 4.1	nicte	cten	ctena	cten	night	nicte		
-4.1	vanci	vat	vatca	vat	evening	vanci		
+4.1	vanci	vas	vasta	vas	evening	vanci		
 4.1	murse	murs	mursa	murs’	glimmering	murse		
 4.2	detri	det	detca	det	date	detri		
 4.2	jeftu	jef	jefta	jef	week	jeftu		
 4.2	masti	mais	maista	mais	month	masti		
-4.2	nanca	nas	nasta	nas	year	nanca		
+4.2	nanca	nat	natca	nat	year	nanca		
 4.2	cedra	cedr	cedra	cedr’	era	cedra		
 4.2	citsi	cits	citsa	cits’	season	citsi		
 4.2	dunra	dur	durza	dur	winter	dunra		
@@ -356,7 +356,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 5	farvi	faf	fafta	faf	develop	farvi		
 5	cafne	caf	cafta	caf	often	cafne		
 5	dikni	dik	dikra	dik	regular	dikni		
-5	vitci	vitc	vitca	vitc’	irregular	vitci		
+5	vitci	vit	vitca	vit	irregular	vitci		
 5	dimna	dim	dimba	dim	fate	dimna		
 5	xaksu	xak	xakra	xak	use up	xaksu		
 5	festi	fes	festa	fes	waste	festi		
@@ -402,7 +402,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 5.3	cuntu	cnut	cnuta	cnut	affair	cuntu		
 5.3	lacri	lat	latca	lat	rely	lacri		
 5.3	selfu	seup	seupra	seup	serve	selfu		
-5.3	pleji	plen	plena	plen	pay	pleji		
+5.3	pleji	let	letca	let	pay	pleji		
 5.3	sidju	djun	djuna	djun	help	sidju		
 5.3.1	jatna	jan	janga	jan	captain	jatna		
 5.3.1	minde	mil	milda	mil	command	minde		
@@ -418,7 +418,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 5.3.2	jivna	jvin	jvina	jvin	compete	jivna		
 5.3.2	bradi	brat	brata	brat	enemy	bradi		
 5.3.2	venfu	vef	vefta	vef	revenge	venfu		
-6	farna	fran	frana	fran	direction	farna		
+6	farna	far	farza	far	direction	farna		
 6	penmi	pem	pemba	pem	meet	penmi		
 6.1.1	klama	klam	klama	klam	come	klama		
 6.1.1	litru	leut	leutca	leut	travel	litru		
@@ -433,7 +433,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 6.1.2	plipe	pip	pipra	pip	leap	plipe		
 6.1.2	vofli	voin	voinga	voin	flight	vofli		
 6.1.2	limna	lim	limba	lim	swim	limna		
-6.1.2	sfubu	sfun	sfuna	sfun	dive	sfubu		
+6.1.2	sfubu	sum	sumba	sum	dive	sfubu		
 6.1.2	carna	car	carza	car	turn	carna		
 6.1.2	jersi	jes	jesta	jes	chase	jersi		
 6.1.2	rivbi	rif	rifta	rif	avoid	rivbi		
@@ -465,13 +465,13 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 6.2	sabji	saip	saipra	saip	provide	sabji		
 6.2	fatri	fain	fainga	fain	distribute	fatri		
 6.2	fendi	dift	difta	dift’	divide	fendi	dift	
-6.2.1	simxu	sim	simba	sim	mutual	simxu		
+6.2.1	simxu	seun	seunga	seun	mutual	simxu		
 6.2.1	muvdu	muf	mufta	muf	move	muvdu		
-6.2.1	ralte	ret	retca	ret	retain	ralte		
+6.2.1	ralte	rel	relda	rel	retain	ralte		
 6.2.1	jgari	jgar	jgara	jgar	grasp	jgari		
 6.2.1	bevri	bef	befta	bef	carry	bevri		
 6.2.1	renro	rer	rerza	rer	throw	renro		
-6.2.1	cecla	cet	cetca	cet	launcher	cecla		
+6.2.1	cecla	cel	celda	cel	launcher	cecla		
 6.2.1	punji	poit	poitca	poit	put	punji		
 6.2.1	lafti	laf	lafta	laf	lift	lafti		
 6.2.1	setca	set	setca	set	insert	setca		
@@ -492,7 +492,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 6.2.2	guska	guk	gukra	guk	scrape	guska		
 6.2.2	polje	plon	plona	plon	fold	polje		
 6.2.2	prina	prin	prina	prin	print	prina		
-6.2.2	barna	barn	barna	barn’	mark	barna		
+6.2.2	barna	ban	banga	ban	mark	barna		
 6.2.2	spali	spal	spala	spal	polish	spali		
 6.2.2	mosra	mos	mosta	mos	friction	mosra		
 6.2.2	tikpa	tip	tipra	tip	kick	tikpa		
@@ -511,7 +511,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 7.1	dacti	dait	daitca	dait	object	dacti		
 7.1	spisa	spis	spisa	spis	piece	spisa		
 7.1	ckini	kin	kinga	kin	related	ckini		
-7.1	tcila	til	tilda	til	detail	tcila		
+7.1	tcila	tcil	tcila	tcil	detail	tcila		
 7.1	ckaji	ka	kaa	ka	quality	ckaji		
 7.1	jinzi	jinz	jinza	jinz’	innate	jinzi		
 7.1	panra	par	parza	par	parallel	panra		
@@ -655,7 +655,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 8.2.2	dilnu	dil	dilda	dil	cloud	dilnu		
 8.2.2	bumru	bumr	bumra	bumr’	fog	bumru		
 8.2.2	carvi	craf	crafa	craf	rain	carvi		
-8.2.2	snime	snim	snima	snim	snow	snime		
+8.2.2	snime	sim	simba	sim	snow	snime		
 8.2.2	bisli	bis	bista	bis	ice	bisli		
 8.2.2	bratu				hail	bratu		
 8.2.3	kunra	kun	kunga	kun	mineral	kunra		
@@ -671,7 +671,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 8.2.3	tarla	tral	trala	tral	tar	tarla		
 8.2.3	dertu	deun	deunga	deun	dirt	dertu		
 9	jutsi	jut	jutca	jut	species	jutsi		
-9	jmive	jmin	jmina	jmin	live	jmive		
+9	jmive	jif	jifta	jif	live	jmive		
 9	morsi	mron	mrona	mron	dead	morsi		
 9	catra	catr	catra	catr’	kill	catra		
 9	makcu	maun	maunga	maun	mature	makcu		
@@ -693,7 +693,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 9.1.1	genja	get	getca	get	root	genja		
 9.1.1	balji	balj	balja	balj’	bulb	balji		
 9.1.1	stani	stan	stana	stan	stalk	stani		
-9.1.1	pezli	pes	pesta	pes	leaf	pezli		
+9.1.1	pezli	pezl	pezla	pezl’	leaf	pezli		
 9.1.1	xrula	rul	rulda	rul	flower	xrula		
 9.1.1	grute	rut	rutca	rut	fruit	grute		
 9.1.1	tsiju	tsis	tsisa	tsis	seed	tsiju		
@@ -783,7 +783,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 9.2.3	ctebi	ctep	ctepa	ctep	lip	ctebi		
 9.2.3	tance	tat	tatca	tat	tongue	tance		
 9.2.3	xedja	xet	xetca	xet	jaw	xedja		
-9.2.3	denci	denc	denca	denc’	tooth	denci		
+9.2.3	denci	den	denga	den	tooth	denci		
 9.2.3	galxe	glak	glaka	glak	throat	galxe		
 9.2.3	cnebo	nem	nemba	nem	neck	cnebo		
 9.2.3	janco	jnas	jnasa	jnas	shoulder	janco		
@@ -792,7 +792,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 9.2.3	xance	xan	xanga	xan	hand	xance		
 9.2.3	jamfu	jman	jmana	jman	foot	jamfu		
 9.2.3	cidni	cil	cilda	cil	knee	cidni		
-9.2.3	degji	den	denga	den	finger	degji		
+9.2.3	degji	dek	dekra	dek	finger	degji		
 9.2.3	tamji	tas	tasta	tas	thumb	tamji		
 9.2.3	cinza	cinz	cinza	cinz’	tongs	cinza		
 9.2.3	nalci	nait	naitca	nait	wing	nalci		
@@ -802,7 +802,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 9.2.3	plibu	plip	plipa	plip	pubic	plibu		
 9.2.3	pinji	pinj	pinja	pinj’	penis	pinji		
 9.2.3	vlagi	vlak	vlaka	vlak	vulva	vlagi		
-9.2.3	zargu	zrau	zrauna	zrau	buttock	zargu		
+9.2.3	zargu	zak	zakra	zak	buttock	zargu		
 9.2.3	ganxo	gak	gakra	gak	anus	ganxo		
 9.2.3	rebla	rebl	rebla	rebl’	tail	rebla		
 9.2.4	kerfa	kref	krefa	kref	hair	kerfa		
@@ -835,7 +835,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 9.3.1	vikmi	vim	vimba	vim	excrete	vikmi		
 9.3.1	kalci	kalc	kalca	kalc’	feces	kalci		
 9.3.1	pinca	pinc	pinca	pinc’	urine	pinca		
-9.3.1	vamtu	vaut	vautca	vaut	vomit	vamtu		
+9.3.1	vamtu	vat	vatca	vat	vomit	vamtu		
 9.3.2	cinse	cin	cinga	cin	sexual	cinse		
 9.3.2	fetsi	fets	fetsa	fets’	female	fetsi		
 9.3.2	nakni	nak	nakra	nak	male	nakni		
@@ -892,7 +892,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 9.4.2	blanu	blau	blauna	blau	blue	blanu		
 9.4.2	bunre	bur	burza	bur	brown	bunre		
 9.4.2	cicna	cicn	cicna	cicn’	cyan	cicna		
-9.4.2	narju	nat	natca	nat	orange	narju		
+9.4.2	narju	nas	nasta	nas	orange	narju		
 9.4.2	nukni	nukn	nukna	nukn’	magenta	nukni		
 9.4.2	zirpu	zir	zirza	zir	purple	zirpu		
 9.4.3	panci	pan	panga	pan	odor	panci		
@@ -914,7 +914,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 10.1	manci	manc	manca	manc’	wonder	manci		
 10.1	prami	pain	painga	pain	love	prami		
 10.1	steba	step	stepa	step	frustration	steba		
-10.1	zungi	znuk	znuka	znuk	guilt	zungi		
+10.1	zungi	zuk	zukra	zuk	guilt	zungi		
 10.1	cinri	cir	cirza	cir	interesting	cinri		
 10.1	burna	burn	burna	burn’	embarrassed	burna		
 10.1	cumla	cul	culda	cul	humble	cumla		
@@ -973,7 +973,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 10.3	snura	nur	nurza	nur	secure	snura		
 10.3	sinma	snia	sniana	snia	esteem	sinma		
 10.3	prane	pen	penga	pen	perfect	prane		
-10.3	mulno	mlon	mlona	mlon	complete	mulno		
+10.3	mulno	mun	munga	mun	complete	mulno		
 10.3	misno	mion	mionga	mion	famous	misno		
 10.3	melbi	mlen	mlena	mlen	beautiful	melbi		
 10.3	mabla	mal	malda	mal	derogative	mabla		
@@ -997,7 +997,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 10.3	banli	banl	banla	banl’	great	banli		
 10.3	basna	basn	basna	basn’	emphasize	basna		
 10.3	racli	racl	racla	racl’	sane	racli		
-10.3	prije	pit	pitca	pit	wise	prije		
+10.3	prije	pis	pista	pis	wise	prije		
 10.3	bebna	bem	bemba	bem	foolish	bebna		
 10.3	bilga	blia	bliana	blia	obliged	bilga		
 10.3	zifre	zif	zifta	zif	free	zifre		
@@ -1060,7 +1060,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 11.3.1	pindi	pil	pilda	pil	poor	pindi		
 11.3.1	ricfu	cfun	cfuna	cfun	rich	ricfu		
 11.3.1	dejni	djen	djena	djen	owe	dejni		
-11.3.1	cerda	cel	celda	cel	heir	cerda		
+11.3.1	cerda	cet	cetca	cet	heir	cerda		
 11.3.2	jdini	din	dinga	din	money	jdini		
 11.3.2	sicni	sicn	sicna	sicn’	coin	sicni		
 11.3.2	rupnu	rup	rupra	rup	dollar	rupnu		
@@ -1143,7 +1143,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 	xindo					xindo		
 	xurdo					xurdo		
 12.5	lijda	jdan	jdana	jdan	religion	lijda		
-12.5	cevni	cfen	cfena	cfen	god	cevni		
+12.5	cevni	cef	cefta	cef	god	cevni		
 12.5	censa	ces	cesta	ces	holy	censa		
 12.5	makfa	maf	mafta	maf	magic	makfa		
 12.5	malsi	mas	masta	mas	temple	malsi		
@@ -1202,7 +1202,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 13.2	jalna	jlan	jlana	jlan	starch	jalna		
 13.2.1	blaci	blas	blasa	blas	glass	blaci		
 13.2.1	staku	tak	takra	tak	ceramic	staku		
-13.2.1	gasta	gast	gasta	gast’	steel	gasta		
+13.2.1	gasta	gat	gatca	gat	steel	gasta		
 13.2.1	lastu	last	lasta	last’	brass	lastu		
 13.2.1	ransu	rans	ransa	rans’	bronze	ransu		
 13.2.1	ckabu	ckap	ckapa	ckap	rubber	ckabu		
@@ -1232,7 +1232,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 13.2.3	cirla	cril	crila	cril	cheese	cirla		
 13.2.3	sakta	skat	skata	skat	sugar	sakta		
 13.2.3	cakla	cokl	cokla	cokl’	chocolate	cakla	cokl	
-13.2.3	nanba	nanb	nanba	nanb’	bread	nanba		
+13.2.3	nanba	nap	napra	nap	bread	nanba		
 13.2.3	salta	slat	slata	slat	salad	salta		
 13.2.3	sanso	snas	snasa	snas	sauce	sanso		
 13.2.3	stasu	stas	stasa	stas	soup	stasu		
@@ -1257,7 +1257,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 13.3.1	smuci	moit	moitca	moit	spoon	smuci		
 13.3.1	forca	fros	frosa	fros	fork	forca		
 13.3.1	sacki	sack	sacka	sack’	match	sacki		
-13.3.1	janbe	jnap	jnapa	jnap	bell	janbe		
+13.3.1	janbe	jap	japra	jap	bell	janbe		
 13.3.1	lanci	lanc	lanca	lanc’	flag	lanci		
 13.3.1	matci	matc	matca	matc’	mat	matci		
 13.3.1	julne	juen	juenga	juen	net	julne		
@@ -1300,7 +1300,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 13.5	dargu	drak	draka	drak	road	dargu		
 13.5	klaji	klas	klasa	klas	street	klaji		
 13.5	naxle	klen	klena	klen	canal	naxle		
-13.5	vinji	vit	vitca	vit	airplane	vinji		
+13.5	vinji	vis	vista	vis	airplane	vinji		
 13.5	skiji	skis	skisa	skis	ski	skiji		
 13.5	falnu	faun	faunga	faun	sail	falnu		
 13.5	carce	cras	crasa	cras	cart	carce		
@@ -1337,7 +1337,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 13.7	palku	pak	pakra	pak	pants	palku		
 13.7	daski	dzak	dzaka	dzak	pocket	daski		
 13.7	gluta	glut	gluta	glut	glove	gluta		
-13.7	cutci	cut	cutca	cut	shoe	cutci		
+13.7	cutci	cus	custa	cus	shoe	cutci		
 13.7	smoka	smok	smoka	smok	sock	smoka		
 13.7	mapku	map	mapra	map	cap	mapku		
 13.7	santa	snat	snata	snat	umbrella	santa		
