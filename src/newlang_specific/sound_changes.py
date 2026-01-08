@@ -5,6 +5,7 @@ import config.hyphens as hyphens
 hyphens_cc = hyphens.cc
 hyphens_ca = hyphens.ca
 hyphens_aa = hyphens.aa
+hyphens_aac = hyphens.aac
 
 diphthongs = {
     "a'a" : "a",
@@ -78,6 +79,9 @@ def stem_to_combining(x, sh=None):
             sh = word_shape.word_shape(x)
         if sh.endswith('CC'):
             x = f'{x}{hyphens_cc}'
+        if sh.endswith('AAC'):
+            if x[-1] != 'n':
+                x = f'{x}{hyphens_aac}'
     return x
 
 def stem_to_lemma(x, sh=None):
@@ -95,12 +99,12 @@ def stem_to_lemma(x, sh=None):
         elif sh.endswith('CA'):
             infix = hyphens_ca
         elif sh.endswith('AA'):
-            infix = hyphens_aa
+            infix = ''  # hyphens_aa
         if not sh.startswith('CC'):
             infix = coda_stem_to_lemma.get(infix, '')
-        if not sh.startswith('CC') and sh.endswith('AC'):
-            x = x[:-1]
-            infix = coda_stem_to_lemma.get(coda, coda)
+            if sh.endswith('AC'):
+                x = x[:-1]
+                infix = coda_stem_to_lemma.get(coda, coda)
 
         x = f'{x}{infix}'    
         x = f'{stem_to_combining(x).strip(hyphens_cc)}a'

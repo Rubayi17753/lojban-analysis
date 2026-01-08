@@ -33,7 +33,7 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
         if sift == 1:
             return stack and dupl and coef < 0.8
         elif sift == 10:
-            return stack and dupl and (coef < 0.99 or form_count)
+            return stack and dupl and (coef < 0.99 and form_count)
         elif sift == 2:
             return stack and dupl
         elif sift == 3:
@@ -45,7 +45,7 @@ def handle_duplicate_forms(df, display_stats=1, sift=1):
 
     cur_forms, stacks = list(), list()
     n_changes = 0
-    for g, cur_form, next_form, form_count, stack, dupl, coef, tendency in zip( gismus, current_stems, next_stems, form_counts, form_stacks, mask_dupl, coefs, tendencies ):
+    for g, cur_form, next_form, form_count, stack, dupl, coef, tendency in zip( gismus, current_stems, next_stems, form_counts, form_stacks, mask_dupl, coefs, tendencies ):        
         if conditions(stack, dupl, coef, tendency, form_count):
             a = next_form   # stack[-1]
             if a and a not in current_stems:

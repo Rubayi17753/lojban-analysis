@@ -151,7 +151,7 @@ def stage1(d):
              
             else:
                 # CAA-n
-                if tend in ('ini', 'neut'):
+                if True:    # tend in ('ini', 'neut')
                     out[f'form{i}a'] = f'{form}{hyphen.aa}'
 
             if coda1:   out[f'form{i}c'] = f'{lpos.rearrange_by_lpos(g, "CA 12")}{coda1}'
@@ -162,6 +162,7 @@ def stage1(d):
 
             if tend != 'fin' and (sh == 'CAA' or sh == 'CCA'):    
                 # and (sh == 'CAA' or sh == 'CCA')
+                # and tend !=
                 # and row.form1 != g[:-3]
                 out['CCAA1'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
             
