@@ -94,7 +94,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 2.1	rimni	rim	rimba	rim	rhyme	rimni		
 2.1	slaka	slak	slaka	slak	syllable	slaka		
 2.1	tanru	taun	taunga	taun	phrase compound	tanru		
-2.1	valsi	vlas	vlasa	vlas	word	valsi		
+2.1	valsi	vain	vainga	vain	word	valsi		
 	broda					broda		
 	brode					brode		
 	brodi					brodi		
@@ -214,7 +214,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 3.1	crane	cran	crana	cran	front	crane		
 3.1	trixe	tik	tikra	tik	behind	trixe		
 3.1	cpana	cpan	cpana	cpan	upon	cpana		
-3.1	gapru	gup	gupra	gup	above	gapru		
+3.1	gapru	gap	gapra	gap	above	gapru		
 3.1	cnita	nian	nianga	nian	beneath	cnita		
 3.1	dizlo	dzin	dzina	dzin	low	dizlo		
 3.1	galtu	gal	galda	gal	high	galtu		
@@ -249,7 +249,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 3.4	plana	plan	plana	plan	plump	plana		
 3.4	condi	cnon	cnona	cnon	deep	condi		
 3.4	caxno	cakn	cakna	cakn’	shallow	caxno		
-3.5	tarmi	taim	taimmba	taim′	shape	tarmi		
+3.5	tarmi	tam	tamba	tam	shape	tarmi		
 3.5.1	mokca	mot	motca	mot	point	mokca		
 3.5.1	jipno	jion	jionga	jion	tip	jipno		
 3.5.1	kojna	kot	kotca	kot	corner	kojna		
@@ -275,7 +275,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 3.5.4	konju	kon	konga	kon	cone	konju		
 3.5.4	slanu	slan	slana	slan	cylinder	slanu		
 3.5.4	tubnu	tun	tunga	tun	tube	tubnu		
-3.5.4	lenjo	lenj	lenja	lenj’	lens	lenjo		
+3.5.4	lenjo	lon	longa	lon	lens	lenjo		
 3.5.4	cfine	cfin	cfina	cfin	wedge	cfine		
 3.5.5	gacri	gait	gaittca	gait′	cover	gacri		
 3.5.5	lunbe	lum	lumba	lum	bare	lunbe		
@@ -420,7 +420,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 5.3.2	venfu	vep	vepra	vep	revenge	venfu		
 6	farna	far	farva	far	direction	farna		
 6	penmi	pen	penga	pen	meet	penmi		
-6.1.1	klama	klam	klama	klam	come	klama		
+6.1.1	klama	kam	kamba	kam	come	klama		
 6.1.1	litru	leun	leunga	leun	travel	litru		
 6.1.1	cliva	lian	lianga	lian	leave	cliva		
 6.1.1	xruti	krun	kruna	krun	return	xruti		
@@ -440,7 +440,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 6.1.2	pagre	gren	grena	gren	pass through	pagre		
 6.1.2	sakli	skal	skala	skal	slide	sakli		
 6.1.2	spoja	pot	potca	pot	explode	spoja		
-6.1.2	porpi	prop	propa	prop	break	porpi		
+6.1.2	porpi	pop	popra	pop	break	porpi		
 6.1.2	preja	pet	petca	pet	spread	preja		
 6.1.2	bikla	bik	bikra	bik	whip	bikla		
 6.1.2	gunro	gur	gurva	gur	roll	gunro		
@@ -520,7 +520,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 7.2	selci	sles	slesa	sles	cell	selci		
 7.2	nejni	nen	nenga	nen	energy	nejni		
 7.2	dirce	dis	dista	dis	radiate	dirce		
-7.2	boxna	bokn	bokna	bokn’	wave	boxna		
+7.2	boxna	bon	bonga	bon	wave	boxna		
 7.2	maksi	mak	makra	mak	magnet	maksi		
 7.2	dikca	dit	ditca	dit	electric	dikca		
 7.3	jdari	jar	jarva	jar	firm	jdari		
@@ -942,7 +942,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 10.1	fanza	fas	fasta	fas	annoy	fanza		
 10.2	zanru	zaun	zaunga	zaun	approve	zanru		
 10.2	xalbo	klap	klapa	klap	levity	xalbo		
-10.2	vajni	vain	vainga	vain	important	vajni		
+10.2	vajni	vas	vasta	vas	important	vajni		
 10.2	trina	trin	trina	trin	attract	trina		
 10.2	talsa	tals	talsa	tals’	challenge	talsa		
 10.2	surla	sur	surva	sur	relax	surla		
@@ -961,7 +961,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 10.2	cizra	cias	ciassta	cias′	strange	cizra		
 10.2	cmila	mian	mianga	mian	laugh	cmila		
 10.3	xrani	xain	xainga	xain	injure	xrani		
-10.3	zabna	zapn	zapna	zapn’	favorable	zabna		
+10.3	zabna	zam	zamba	zam	favorable	zabna		
 10.3	xarnu	xarn	xarna	xarn’	stubborn	xarnu		
 10.3	xendo	xeun	xeunga	xeun	kind	xendo		
 10.3	xamgu	xaun	xaunga	xaun	good	xamgu		
@@ -1049,7 +1049,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 11.2.3	jamna	jam	jamba	jam	war	jamna		
 11.2.3	bilni	bil	bilda	bil	military	bilni		
 11.2.3	jenmi	jem	jemba	jem	army	jenmi		
-11.2.3	sonci	snoi	snoia	snoi	soldier	sonci		
+11.2.3	sonci	son	songa	son	soldier	sonci		
 11.3.1	gubni	gum	gumba	gum	public	gubni		
 11.3.1	ponse	poin	poinga	poin	possess	ponse		
 11.3.1	cpacu	cpas	cpasa	cpas	get	cpacu		
@@ -1068,7 +1068,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 11.3.2	banxa	bank	banka	bank’	bank	banxa	bank	
 11.3.2	zivle	vlen	vlena	vlen	invest	zivle		
 11.3.3	canja	cnas	cnasa	cnas	exchange	canja		
-11.3.3	vamji	vaim	vaimmba	vaim′	value	vamji		
+11.3.3	vamji	vam	vamba	vam	value	vamji		
 11.3.3	jdima	dian	dianga	dian	price	jdima		
 11.3.3	vecnu	veun	veunga	veun	sell	vecnu		
 11.3.3	kargu	karg	karga	karg’	costly	kargu		
@@ -1182,7 +1182,7 @@ theme_code	gismu	current_stem	current_lemma	current_combining	meaning	gismu	over
 13.1	purdi	pul	pulda	pul	garden	purdi		
 13.1	crepu	rep	repra	rep	harvest	crepu		
 13.1	sombo	som	somba	som	sow	sombo		
-13.1	spofu	pop	popra	pop	broken	spofu		
+13.1	spofu	spop	spopa	spop	broken	spofu		
 13.1	cikre	ckir	ckira	ckir	repair	cikre		
 13.1	gunka	guan	guanga	guan	work	gunka		
 13.1	cupra	pran	prana	pran	produce	cupra		
