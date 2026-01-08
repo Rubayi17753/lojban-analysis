@@ -226,6 +226,7 @@ def stage1(d):
 
     out = {k : apply_sound_changes(v) for k, v in out.items()}
     forms = [v for v in out.values()]   # if v
+    forms = [x for x in forms if x] # removes blanks
     out['stack'] = forms[::-1]
 
     return out
