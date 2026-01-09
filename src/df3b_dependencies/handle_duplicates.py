@@ -69,9 +69,9 @@ def handle_duplicate_df(df):
     df['current_stem'] = df['stack'].str[-1]
     df['stack'] = df['stack'].str.slice(stop=-1)
 
-    df = handle_duplicate_forms(df)
-    df = handle_duplicate_forms(df, sift=3)
-    df = handle_duplicate_forms(df)
+    # df = handle_duplicate_forms(df)
+    # df = handle_duplicate_forms(df, sift=3)
+    # df = handle_duplicate_forms(df)
     
     for i in range(15):
         df = handle_duplicate_forms(df, sift=10)

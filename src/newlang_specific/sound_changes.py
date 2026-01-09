@@ -41,10 +41,10 @@ diphthongs = {
 
 diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
-cons_coda_cac = dict(zip('bpvfdtgkxcjszlmnr', 'mprpltnkkttsslmnr'))
-cons_coda_caac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttnkkttsslmnr'))
+cons_coda_cac = dict(zip('bpvfdtgkxcjszlmnr', 'mprrltnkkttsslmnr'))
+cons_coda_caac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppddnkkddsslmnr'))
 cons_coda_ccac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
-cons_coda_alt = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
+# cons_coda_alt = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
 
 clusters_ini = (
     (('x', inv.C) , ('k', inv.C)),

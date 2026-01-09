@@ -35,11 +35,17 @@ class Row:
             n1, n2 = d['coef1_1'], d['coef1_2']
             coef_second_form = round(n2 / n1 , 1) if n1 else 999
             
-            self.form1, self.shape1, self.pos1 = d['cmavo_rafsi_1'], d['form_shape_1'], d['rafsi_pos_1']
-            self.form2, self.shape2, self.pos2 = '', '', ''
-            if coef_second_form > th.coef_second_form_threshhold:
-                self.form2, self.shape2, self.pos2 = d['cmavo_rafsi_2'], d['form_shape_2'], d['rafsi_pos_2']
-            
+            x = d['cmavo_rafsi_1'], d['form_shape_1'], d['rafsi_pos_1']
+            y = d['cmavo_rafsi_2'], d['form_shape_2'], d['rafsi_pos_2']
+
+            if (coef_second_form > th.coef_flip_threshhold
+                and d['form_shape_1'] == 'CAA' and d['form_shape_2'] != 'CAA'):
+                self.form1, self.shape1, self.pos1 = y
+                self.form2, self.shape2, self.pos2 = x
+            else:
+                self.form1, self.shape1, self.pos1 = x
+                self.form2, self.shape2, self.pos2 = y
+
             self.form1 = self.form1.replace("'", '')
             self.form2 = self.form2.replace("'", '')
 
