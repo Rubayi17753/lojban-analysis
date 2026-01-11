@@ -73,6 +73,8 @@ coda_stem_to_lemma = {
     'l': 'ld', 'm': 'mb', 'n': 'ng', 'r': 'rv',
 }
 
+hyphens_aa2 = coda_stem_to_lemma[hyphens_aa]
+
 def stem_to_combining(x, sh=None):
     if x:
         if not sh:
@@ -96,15 +98,19 @@ def stem_to_lemma(x, sh=None):
         infix = ''
         if sh == 'CA':
             infix = 'dv'
-        elif sh.endswith('CA'):
+        elif sh == 'CCA':
             infix = hyphens_ca
-        elif sh.endswith('AA'):
-            infix = ''  # hyphens_aa
-        if not sh.startswith('CC'):
-            infix = coda_stem_to_lemma.get(infix, '')
-            if sh.endswith('AC'):
-                x = x[:-1]
-                infix = coda_stem_to_lemma.get(coda, coda)
+        elif sh == 'CAA':
+            infix = hyphens_aa2
+        elif sh == 'CCAA':
+            infix = hyphens_aa
+        elif sh == 'CAC':
+            x = x[:-1]
+            infix = coda_stem_to_lemma.get(coda, coda)
+        elif sh == 'CAAC':
+            x = x.strip(hyphens_aac)
+            x = x[:-1]
+            infix = coda_stem_to_lemma.get(coda, coda)                
 
         x = f'{x}{infix}'    
         x = f'{stem_to_combining(x).strip(hyphens_cc)}a'
