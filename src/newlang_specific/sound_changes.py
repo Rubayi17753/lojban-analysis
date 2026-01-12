@@ -41,8 +41,8 @@ diphthongs = {
 
 diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
-cons_coda_cac = dict(zip('bpvfdtgkxcjszlmnr', 'mprrltnkkttsslmnr'))
-cons_coda_caac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppddnkkddsslmnr'))
+cons_coda_cac = dict(zip('bpvfdtgkxcjszlmnr', 'mpppltnkkttsslmnr'))
+cons_coda_caac = dict(zip('bpvfdtgkxcjszlmnr', 'bbbbddnkkddsslmnr'))
 cons_coda_ccac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
 # cons_coda_alt = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
 
@@ -73,15 +73,23 @@ coda_stem_to_lemma = {
     'l': 'ld', 'm': 'mb', 'n': 'ng', 'r': 'rv',
 }
 
+hyphens_aa2 = coda_stem_to_lemma[hyphens_aa]
+
 def stem_to_combining(x, sh=None):
     if x:
+
         if not sh:
             sh = word_shape.word_shape(x)
-        if sh.endswith('CC'):
-            x = f'{x}{hyphens_cc}'
-        if sh.endswith('AAC'):
+        
+        infix = ''
+        if sh == 'CAAC':
             if x[-1] != 'n':
-                x = f'{x}{hyphens_aac}'
+                infix = hyphens_aac
+        elif sh == 'CAA':
+            infix = 'n'
+
+        x = f'{x}{infix}'
+
     return x
 
 def stem_to_lemma(x, sh=None):
@@ -91,22 +99,25 @@ def stem_to_lemma(x, sh=None):
             sh = word_shape.word_shape(x)
         coda = x[-1]
         
-        x = stem_to_combining(x, sh)
+        xc = stem_to_combining(x, sh)
 
         infix = ''
         if sh == 'CA':
             infix = 'dv'
-        elif sh.endswith('CA'):
+        elif sh == 'CCA':
             infix = hyphens_ca
-        elif sh.endswith('AA'):
-            infix = ''  # hyphens_aa
-        if not sh.startswith('CC'):
-            infix = coda_stem_to_lemma.get(infix, '')
-            if sh.endswith('AC'):
-                x = x[:-1]
-                infix = coda_stem_to_lemma.get(coda, coda)
+        elif sh == 'CAA':
+            x, infix = xc[:-1], hyphens_aa2
+        elif sh == 'CCAA':
+            infix = hyphens_aa
+        elif sh == 'CAC':
+            x, infix = xc[:-1], coda_stem_to_lemma.get(coda, coda)
+        elif sh == 'CAAC':
+            x, infix = x.strip(hyphens_aac), ''
+            print(x)
 
-        x = f'{x}{infix}'    
-        x = f'{stem_to_combining(x).strip(hyphens_cc)}a'
+        x = f'{x}{infix}'  
+        x = stem_to_combining(x).strip(hyphens_cc).strip(hyphens_aac)
+        x = f'{x}a'
 
     return x

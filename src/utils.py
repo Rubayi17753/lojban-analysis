@@ -37,3 +37,18 @@ def substring_positions(st, subst, mode=0, out='list', delim=' '):
         return list(positions)
     elif out == 'string':
         return delim.join(positions)    
+
+def duplicates_to_blank(lst, default_val=''):
+
+    temp_set = set()
+
+    for i, x in enumerate(lst):
+
+        if x != default_val:
+            if x in temp_set:
+                lst[i] = default_val
+            else:
+                temp_set.add(x)
+
+    return lst
+            

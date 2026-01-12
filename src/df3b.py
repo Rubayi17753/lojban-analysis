@@ -138,7 +138,7 @@ def main(override_file='update'):
     df['gismu_shape'] = df['gismu'].apply(word_shape)
     df = determine_pos_tendency(df)
     df = inserts.insert_meanings(df)
-  
+
     # Process candidate forms
     df = process_candidates(df)
     df = handle_duplicate_df(df)

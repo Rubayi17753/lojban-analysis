@@ -15,6 +15,7 @@ def insert_meanings(df):
     df = df.merge(get_df_rafsi_meaning(),
                 left_on='gismu', right_on='rafsi', how='left')
     df = df.drop(columns='rafsi')
+
     return df
 
 def insert_rafsi_pos(df):
