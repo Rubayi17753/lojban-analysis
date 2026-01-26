@@ -6,4 +6,4 @@ coef1_threshhold = 0.02
 coef2_threshhold = 0.2
 
 # Called by process_candidate_form.Row
-coef_flip_threshhold = 0.3
+coef_flip_threshhold = 0.5

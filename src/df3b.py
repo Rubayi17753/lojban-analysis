@@ -11,7 +11,8 @@ from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import syllable_parser
-from src.df3b_dependencies.process_candidate_form import stage1
+# process_candidate_form(2)
+from src.df3b_dependencies.process_candidate_form2 import stage1
 from src.df3b_dependencies.handle_duplicates import handle_duplicate_df
 import src.newlang_specific.sound_changes as sound_changes
 import src.df3b_dependencies.override as override
@@ -139,8 +140,20 @@ def main(override_file='update'):
     df = determine_pos_tendency(df)
     df = inserts.insert_meanings(df)
 
+    # current df columns
+    all_cols = ['gismu', 'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'coef1_1',
+       'coef1_2', 'coef1_3', 'form_shape_1', 'form_shape_2', 'form_shape_3',
+       'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3', 'gismu_shape', 'coef2',
+       'percentage_im', 'percentage_fm', 'gismu_sum', 'as_rafsi', 'as_gismu',
+       'as_cmavo', 'theme_code', 'theme', 'excluded_a', 'excluded_b',
+       'rafsi_pos', 'override', 'override_notes', 'pos_tendency', 'meaning']
+
     # Process candidate forms
     df = process_candidates(df)
+
+    print(df)
+    exit()
+    
     df = handle_duplicate_df(df)
 
     # Post-processing
