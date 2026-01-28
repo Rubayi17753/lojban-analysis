@@ -1,3 +1,4 @@
+# Computes percentages
 # Checks how much gismu (and variant forms) are inclined towards being lujvo-initial or final
 
 import math
@@ -20,19 +21,25 @@ def main(filter=1):
 
     df['gismu_shape'] = df['gismu'].apply(word_shape)
     df['as_rafsi'] = df['as_rafsi_i'] + df['as_rafsi_m'] + df['as_rafsi_f']
-    df['percentage_im'] = round( (df['as_rafsi_i'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
-    df['percentage_fm'] = round( (df['as_rafsi_f'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
+    df['%_im'] = round( (df['as_rafsi_i'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
+    df['%_fm'] = round( (df['as_rafsi_f'] + df['as_rafsi_m']) / df['as_rafsi'] * 100 , 1)
 
-    df['coef2'] = np.log10(df['percentage_fm'] / df['percentage_im'])
+    df['coef2'] = np.log10(df['%_fm'] / df['%_im'])
     df['coef2'] = round( df['coef2'] * (1 - df['as_rafsi'] ** -0.5) , 2) # penalty for low rafsi attestation
 
     df['as_cmavo'] = df['as_cmavo'] + df['as_cmavo_compound']
     df['gismu_sum'] = df['as_gismu'] + df['as_rafsi'] + df['as_cmavo']
+
+    df['%_rafsi'] = round( df['as_rafsi'] / df['gismu_sum'] * 100 , 1)
+    df['%_cmavo'] = round( df['as_cmavo'] / df['gismu_sum'] * 100 , 1)
+    df['%_gismu'] = round( df['as_gismu'] / df['gismu_sum'] * 100 , 1)
             
     df = df[['gismu', 'gismu_shape', 'coef2', 
-                'percentage_im', 'percentage_fm', 
+                '%_im', '%_fm', 
                 'gismu_sum',
-                'as_rafsi', 'as_gismu', 'as_cmavo']]
+                'as_rafsi', 'as_gismu', 'as_cmavo',
+                '%_rafsi', '%_gismu', '%_cmavo',
+                ]]
 
     df = df.sort_values('coef2')
 

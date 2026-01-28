@@ -59,5 +59,6 @@ def copy_override_into_file(df):
     df_defs_gismu = Table('defs_gismu', keep_default_na=False, sep=',').dff
     df = df_defs_gismu[['gismu']].merge(df, on='gismu', how='left')
 
-    cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
+    cols2 = ['theme_code', 'gismu', 'meaning', 'gismu', 'override', 'override_notes']
+    # 'current_stem', 'current_lemma', 'current_combining', 
     df[cols2].to_csv(override_fp, sep='\t', index=False)

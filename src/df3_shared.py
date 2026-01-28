@@ -6,7 +6,7 @@ def determine_pos_tendency(df):
 
     # Sanitisation
 
-    for col in ('as_rafsi', 'percentage_im', 'percentage_fm', 'coef2'):
+    for col in ('as_rafsi', '%_im', '%_fm', 'coef2'):
         df[col] = (pd.to_numeric(df[col], errors='coerce')
         .replace(np.inf, 999)
         .replace(-np.inf, -999)
@@ -16,8 +16,8 @@ def determine_pos_tendency(df):
 
     conditions = [
         (df['as_rafsi'] == 0).astype(bool),
-        (df['percentage_im'] == 0).astype(bool),
-        (df['percentage_fm'] == 0).astype(bool),
+        (df['%_im'] == 0).astype(bool),
+        (df['%_fm'] == 0).astype(bool),
         (df['coef2'] > th.coef2_threshhold).astype(bool),
         (df['coef2'] < -th.coef2_threshhold).astype(bool),
             ]

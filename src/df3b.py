@@ -11,8 +11,7 @@ from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import syllable_parser
-# process_candidate_form(2)
-from src.df3b_dependencies.process_candidate_form2 import stage1
+from src.df3b_dependencies.process_candidate_form import stage1
 from src.df3b_dependencies.handle_duplicates import handle_duplicate_df
 import src.newlang_specific.sound_changes as sound_changes
 import src.df3b_dependencies.override as override
@@ -58,7 +57,7 @@ def aggregate(df):
 def determine_pos_tendency(df):
     # Determine rafsi positioning tendency
     # Requires dfq1() --> coef2
-    cols = ['as_rafsi', 'percentage_im', 'percentage_fm', 'coef2']
+    cols = ['as_rafsi', '%_im', '%_fm', 'coef2']
 
     # Sanitisation
     for col in cols:
@@ -71,8 +70,8 @@ def determine_pos_tendency(df):
 
     conditions = [
         (df['as_rafsi'] == 0).astype(bool),
-        (df['percentage_im'] == 0).astype(bool),
-        (df['percentage_fm'] == 0).astype(bool),
+        (df['%_im'] == 0).astype(bool),
+        (df['%_fm'] == 0).astype(bool),
         (df['coef2'] > 0.2).astype(bool),
         (df['coef2'] < -0.2).astype(bool),
             ]
@@ -83,21 +82,25 @@ def determine_pos_tendency(df):
 
 def process_candidates(df):
 
-    # cols = ['cmavo_rafsi_1', 'form_shape_1', 'gismu', 'gismu_shape', 'rafsi_pos']
+    def generate_counts(df2):
+        for col in list((x for x in df2.columns if not x.endswith('stack'))):
+            mask1 = df2[col].isna()
+            mask2 = df2[col] == ''
+            mask = ~mask1 & ~mask2
+            df2[f'n{col}'] = 0
+            df2[f'n{col}'][mask] = (df2.groupby(col)[col].transform('count'))[mask]    
+        return df2 
 
     df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
     df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
 
+    df2 = pd.DataFrame()
+
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     data_forms = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
-    df2 = pd.DataFrame(data_forms)
-
-    for col in list((x for x in df2.columns if not x.endswith('stack'))):
-        mask1 = df2[col].isna()
-        mask2 = df2[col] == ''
-        mask = ~mask1 & ~mask2
-        df2[f'{col}_n'] = 0
-        df2[f'{col}_n'][mask] = (df2.groupby(col)[col].transform('count'))[mask]
+    df2['c1'] = pd.Series(data_forms)
+    df['current_stem'] = pd.Series(data_forms)
+    df2 = generate_counts(df2)
     df = pd.concat([df, df2], axis=1) 
 
     return df
@@ -144,29 +147,35 @@ def main(override_file='update'):
     all_cols = ['gismu', 'cmavo_rafsi_1', 'cmavo_rafsi_2', 'cmavo_rafsi_3', 'coef1_1',
        'coef1_2', 'coef1_3', 'form_shape_1', 'form_shape_2', 'form_shape_3',
        'rafsi_pos_1', 'rafsi_pos_2', 'rafsi_pos_3', 'gismu_shape', 'coef2',
-       'percentage_im', 'percentage_fm', 'gismu_sum', 'as_rafsi', 'as_gismu',
-       'as_cmavo', 'theme_code', 'theme', 'excluded_a', 'excluded_b',
+       '%_im', '%_fm', 'gismu_sum', 
+       'as_rafsi', 'as_gismu', 'as_cmavo', 
+       '%_rafsi', '%_gismu', '%_cmavo',
+       'theme_code', 'theme', 'excluded_a', 'excluded_b',
        'rafsi_pos', 'override', 'override_notes', 'pos_tendency', 'meaning']
 
     # Process candidate forms
     df = process_candidates(df)
+    # df = handle_duplicate_df(df)
 
-    print(df)
-    exit()
-    
-    df = handle_duplicate_df(df)
-
-    # Post-processing
-    # df['current_shape'] = df['current_stem'].apply(word_shape)
-    df['current_stem_shape'] = df['current_stem'].apply(word_shape)
-    df['current_stem_syllablfied'] = df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
-    df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
-    df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
-    df['current_lemma_count'] = df.groupby('current_lemma')['gismu'].transform('count')
+    def post_processing():
+        df['current_stem_shape'] = df['current_stem'].apply(word_shape)
+        df['current_stem_syllablfied'] = df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
+        # df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
+        # df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
+        # df['current_lemma_count'] = df.groupby('current_lemma')['gismu'].transform('count')
+    post_processing()
 
     # Write to files
-    print(df.columns)
-    df.to_csv('results/df3b1.csv', sep=',', index=False)
+    print_cols = ['gismu', 
+            'current_stem', 'current_stem_shape', 'current_stem_syllablfied',
+            'cmavo_rafsi_1', 'cmavo_rafsi_2', 'form_shape_1', 'form_shape_2',
+            'meaning', 'pos_tendency', 'override', 
+            'c1', 'nc1',
+            '%_im', '%_fm', 
+            'gismu_sum', '%_rafsi', '%_gismu', '%_cmavo',
+        ]
+    df_out = df[print_cols]
+    df_out.to_csv('results/df3b1.csv', sep=',', index=False)
 
     # cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
     # df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)

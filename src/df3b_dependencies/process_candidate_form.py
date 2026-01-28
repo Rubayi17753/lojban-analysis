@@ -154,149 +154,31 @@ def apply_sound_changes(v):
         v = f'{p}{q}{r}'
 
     return v
-    
+
 def stage1(d):
 
-    def derive_forms(sh, form, pos, i):
-
-        cc = lpos.rearrange_by_lpos(g, "CC 23") 
-        coda = row.get_other_coda()
-
-        if coda:
-            coda1, coda2 = coda, cc.replace(coda, '')
-        else:
-            coda1, coda2 = cc if cc in phon.valid_cons_pairs else cc[::-1]
-        if coda1 in phon.caac_coda_restriction: coda1 = ''
-        if coda2 in phon.caac_coda_restriction: coda2 = ''
-            
-        if sh == 'CCA':
-            # if tend != 'fin' or pos == '345':
-                # out[f'form{i}a'] = f'{form}'    # {hyphen.ca}
-            # if row.gismu_type == 'CC' and g[3] == hyphen.ca: 
-                # out[f'form{i}a'] = f'{form}'    # {hyphen.ca}
-            out[f'form{i}a'] = f'{form}'
-
-        if sh == 'CAC':
-            out[f'form{i}a'] = form
-            p, coda = form[:-1], form[-1]
-            alt_coda = get_alt_coda(coda)            
-            if alt_coda:   out[f'form{i}bb'] = f'{p}{alt_coda}'
-
-        if sh == 'CAA':
-
-            if len(aa) <= 1:
-               
-                # CAC
-                p = f'{form[0]}{aa}'
-                q = f'{form[0]}{g[-1]}' # C + final vowel
-                if coda1:   
-                    out[f'form{i}a'] = f'{p}{coda1}'
-                    out[f'form{i}c'] = f'{q}{coda1}'
-                if coda2:   out[f'form{i}b'] = f'{p}{coda2}'
-                alt_coda = get_alt_coda(coda1)
-                if alt_coda:  out[f'form{i}bb'] = f'{p}{alt_coda}'
-             
-            else:
-                # CAA-n
-                if True:    # tend in ('ini', 'neut')
-                    out[f'form{i}a'] = f'{form}'    # {hyphen.aa}
-
-            if coda1:   out[f'form{i}c'] = f'{lpos.rearrange_by_lpos(g, "CA 12")}{coda1}'
-
-        if len(aa) > 1:
-
-            caa = f"{form[0]}{lpos.rearrange_by_lpos(g, 'AA 12')}"
-
-            if tend == 'ini' and sh == 'CAA':    
-                # and (sh == 'CAA' or sh == 'CCA')
-                # and tend !=
-                # and row.form1 != g[:-3]
-                out[f'form{i}a'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
-
-            elif tend != 'fin' and (sh == 'CAA' or sh == 'CCA'):    
-                out[f'CCAA1'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')   
-            
-            elif sh in ('CAA', 'CCA', 'CAC'):
-                out['CCAA2'] = lpos.rearrange_by_lpos(g, 'CCAA 1212')
-            
-            if sh == 'CAA':
-                x, y = '', ''
-                if coda1:  x = f"{caa}{coda1}"  
-                if coda2:  y = f"{caa}{coda2}"
-
-                if tend in ('fin',):
-                    out['CAAC1a'], out['CAAC1b'] = x, y 
-                else:
-                    out['CAACa'], out['CAACb'] = x, y
-
-            if sh == 'CAC':
-                coda = form[-1]
-                alt_coda = get_alt_coda(coda)
-                out['CAACa'] = f'{caa}{coda}'
-                if alt_coda:  out[f'CAACb'] = f'{p}{alt_coda}'
-
+    out = list()
     row = Row(d)
-    out = {col: '' for col in cols}
-    form1, form2 = row.form1, row.form2
-    sh1, sh2 = row.shape1, row.shape2
-    pos1, pos2 = row.pos1, row.pos2
-    g = row.gismu
-    tend = row.pos_tendency
     aa = row.diphthong_reduced
-
-    if len(aa) <= 1:
-        oo = lpos.rearrange_by_lpos(g, 'AA 12').replace(aa, '')
 
     override = row.override
     if override:
-        override_suffix = ''
-        sh_override = word_shape.word_shape(override)
-        if sh_override.endswith('A'):
-            override_suffix = ''    # hyphen.ca
-        out['form1a'] = f'{override}{override_suffix}'
-
-    elif row.shape1 == 'CA':
-        out['form1a'] = form1
-
-    elif row.shape1 == 'CCAC':
-        out['form1a'] = form1
-
+        cand1 = override
+    elif not row.shape1:
+        # i.e. no common rafsi
+        cand1 = apply_sound_changes(row.gismu[:4])
+    elif row.shape1 == 'CAA' and len(aa) == 1:
+        if row.form2:
+            cand1 = apply_sound_changes(row.form2)
+        else:
+            cand1 = apply_sound_changes(row.form1)
+            cand1 = f'{cand1}_'
     else:
-        if sh1:
-            derive_forms(sh1, form1, pos1, 1)
-        if sh2:
-            derive_forms(sh2, form2, pos2, 2)
+        cand1 = apply_sound_changes(row.form1)
 
-        if row.gismu_type == 'CC' or sh1 == 'CCA' or tend in ('ini', 'neut'):
-            out['form4a'] = f"{lpos.rearrange_by_lpos(g, 'CCA 121')}{g[3]}" # CCAC
-        if sh1 == 'CAC' and pos1 == '123':
-            out['form4a'] = lpos.rearrange_by_lpos(g, 'CCAC 1312') # CCAC
-        out['form4b'] = lpos.rearrange_by_lpos(g, 'CACC 1123')  # CACC
+    return cand1
 
-        if row.gismu_type == 'CC':
-            out['form4a'], out['form4b'] = out['form4a'], ''
-        # elif tend not in ('ini', 'neut'):
-            # out['form4a'], out['form4b'] = '', out['form4b']
-
-    out = {k : apply_sound_changes(v) for k, v in out.items()}
-    forms = [v for v in out.values()]   # if v
-
-    def branch1(forms):
-        # retains blank
-        forms = utils.duplicates_to_blank(forms)
-        return forms
-
-    def branch2(forms):
-        forms = [x for x in forms if x] # removes blanks
-        forms = list(dict.fromkeys(forms)) # remove duplicates
-        return forms
-
-    forms = branch2(forms)
-    out['stack'] = forms[::-1]
-
-    return out
-
-
-
+def process_candidates(df):
+    ...
 
 
