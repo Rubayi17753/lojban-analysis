@@ -11,8 +11,9 @@ from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import syllable_parser
-from src.df3b_dependencies.process_candidate_form import stage1
+from src.df3b_dependencies.process_candidate_form import stages
 from src.df3b_dependencies.handle_duplicates import handle_duplicate_df
+from src.df3b_dependencies.classes import Row
 import src.newlang_specific.sound_changes as sound_changes
 import src.df3b_dependencies.override as override
 
@@ -82,25 +83,41 @@ def determine_pos_tendency(df):
 
 def process_candidates(df):
 
-    def generate_counts(df2):
-        for col in list((x for x in df2.columns if not x.endswith('stack'))):
-            mask1 = df2[col].isna()
-            mask2 = df2[col] == ''
-            mask = ~mask1 & ~mask2
-            df2[f'n{col}'] = 0
-            df2[f'n{col}'][mask] = (df2.groupby(col)[col].transform('count'))[mask]    
+    def generate_counts(df2, col):
+        mask1 = df2[col].isna()
+        mask2 = df2[col] == ''
+        mask = ~mask1 & ~mask2
+        df2[f'n{col}'] = 0
+        df2[f'n{col}'][mask] = (df2.groupby(col)[col].transform('count'))[mask]    
         return df2 
 
     df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
     df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
 
     df2 = pd.DataFrame()
+    counts, shapes = list(), list()
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
-    data_forms = [stage1(row) for row in tqdm(data, desc='Processing candidates')]
-    df2['c1'] = pd.Series(data_forms)
-    df['current_stem'] = pd.Series(data_forms)
-    df2 = generate_counts(df2)
+    rows = [Row(d) for d in data]
+
+    for i, stage in enumerate(stages):
+
+        j = i + 1
+        data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
+
+        if i == 0:
+            data_forms = [stage(row) for row in rows]
+        else:
+            data_forms = [stage(row, c, sh) for (row, c, sh) in zip(rows, counts, shapes)]
+
+        df2[f'c{j}'] = pd.Series(data_forms)
+        df2 = generate_counts(df2, f'c{j}')
+        counts = df2[f'nc{j}'].to_list()
+
+        df['current_stem'] = df2[f'c{j}']
+        df['current_stem_shape'] = df['current_stem'].apply(word_shape)
+        shapes = df['current_stem_shape'].to_list()
+    
     df = pd.concat([df, df2], axis=1) 
 
     return df
@@ -150,6 +167,7 @@ def main(override_file='update'):
        '%_im', '%_fm', 'gismu_sum', 
        'as_rafsi', 'as_gismu', 'as_cmavo', 
        '%_rafsi', '%_gismu', '%_cmavo',
+       '%_ri', '%_rf',
        'theme_code', 'theme', 'excluded_a', 'excluded_b',
        'rafsi_pos', 'override', 'override_notes', 'pos_tendency', 'meaning']
 
@@ -158,7 +176,6 @@ def main(override_file='update'):
     # df = handle_duplicate_df(df)
 
     def post_processing():
-        df['current_stem_shape'] = df['current_stem'].apply(word_shape)
         df['current_stem_syllablfied'] = df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
         # df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
         # df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
@@ -167,12 +184,14 @@ def main(override_file='update'):
 
     # Write to files
     print_cols = ['gismu', 
-            'current_stem', 'current_stem_shape', 'current_stem_syllablfied',
+            'current_stem', 'current_stem_shape', 
+            'current_stem_syllablfied',
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'form_shape_1', 'form_shape_2',
             'meaning', 'pos_tendency', 'override', 
             'c1', 'nc1',
-            '%_im', '%_fm', 
-            'gismu_sum', '%_rafsi', '%_gismu', '%_cmavo',
+            'gismu_sum', 
+            '%_ri', '%_rf',
+            '%_rafsi', '%_gismu', '%_cmavo',
         ]
     df_out = df[print_cols]
     df_out.to_csv('results/df3b1.csv', sep=',', index=False)

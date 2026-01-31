@@ -33,9 +33,13 @@ def main(filter=1):
     df['%_rafsi'] = round( df['as_rafsi'] / df['gismu_sum'] * 100 , 1)
     df['%_cmavo'] = round( df['as_cmavo'] / df['gismu_sum'] * 100 , 1)
     df['%_gismu'] = round( df['as_gismu'] / df['gismu_sum'] * 100 , 1)
-            
+
+    df['%_ri'] = round( df['%_im'] / df['%_rafsi'] * 100 , 1)
+    df['%_rf'] = round( df['%_fm'] / df['%_rafsi'] * 100 , 1)
+    
     df = df[['gismu', 'gismu_shape', 'coef2', 
                 '%_im', '%_fm', 
+                '%_ri', '%_rf', 
                 'gismu_sum',
                 'as_rafsi', 'as_gismu', 'as_cmavo',
                 '%_rafsi', '%_gismu', '%_cmavo',
