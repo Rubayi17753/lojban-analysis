@@ -16,6 +16,7 @@ class Row:
         self.freq_suffix = d['as_rafsi_fm']
         self._ri = d['%_ri']
         self._rf = d['%_rf']
+        self._cmavo = d['%_cmavo']
 
         n1, n2 = d['coef1_1'], d['coef1_2']
         self.coef2 = round(n2 / n1 , 1) if n1 else 999

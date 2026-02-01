@@ -74,6 +74,7 @@ def apply_sound_changes(v):
 
 def stage1(row):
     
+    g = row.gismu
     aa = row.diphthong_reduced
 
     override = row.override
@@ -86,14 +87,27 @@ def stage1(row):
         if row.form2:
             cand = apply_sound_changes(row.form2)
         else:
-            cand = apply_sound_changes(row.form1)
+            ca = apply_sound_changes(row.form1)
+            cc = row.c1c2()
+            if cc in phon.valid_cons_pairs:  # not row.pos1.startswith('2') and 
+                cand = apply_sound_changes(f'{cc}{ca[1]}')
+            else:
+                cand = apply_sound_changes(f'{ca}{g[3]}')
             cand = f'{cand}_'
     else:
         cand = apply_sound_changes(row.form1)
 
     return cand
 
-def stage2(row, c, sh):
+def _stage1b(row, c, sh, prev, osf):
+
+    g = row.gismu
+    cand = ''
+    if sh[-1] == '_':
+        cand = apply_sound_changes(f'{row.c1c2}{prev[1]}')
+    return cand 
+
+def stage2(row, c, sh, prev, osf):
 
     cand = ''
     if c > 1 and not row.override and row.coef2 > th.coef_flip_threshhold:
@@ -106,7 +120,7 @@ def stage2(row, c, sh):
                 cand = apply_sound_changes(row.form2)
     return cand
 
-def stage3(row, c, sh):
+def stage3(row, c, sh, prev, osf):
      
     g = row.gismu
     cand = ''
@@ -115,8 +129,7 @@ def stage3(row, c, sh):
     # They may thus be used to gauge the most frequently-occuring 
     # de-facto 'prefixes' and 'suffixes' in the language.
  
-    if (c > 1 and not row.override 
-        and row.freq_prefix < 100 and row.freq_suffix < 100):
+    if c > 1 and not row.override and not osf:
         if sh == 'CAC' and row.gismu_type == 'CC':
             cand = apply_sound_changes(row.gismu[:4])
         elif sh == 'CAA' and row.pos1 != '345':
@@ -127,5 +140,12 @@ def stage3(row, c, sh):
     ...
     return cand
 
-stages = [stage1, stage2, stage3]
+def stage_fin(row, c, sh, prev, osf):
+
+    cand = ''
+    if c > 1 and not row.override and not osf:
+        cand = apply_sound_changes(row.gismu[:4])
+    return cand
+
+stages = [stage1, stage2, stage3, stage_fin]
 

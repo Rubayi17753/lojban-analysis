@@ -92,6 +92,8 @@ def process_candidates(df):
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     rows = [Row(d) for d in data]
+    osfs = [(row._cmavo > 20 or row.freq_prefix > 100 or row.freq_suffix > 100)
+        for row in rows]   # oblige short forms
 
     for i, stage in enumerate(stages):
 
@@ -101,9 +103,12 @@ def process_candidates(df):
         if i == 0:
             data_forms = [stage(row) for row in rows]
         else:
-            previous_forms = set(c for c in data_forms.copy() if c)
-            data_forms = [stage(row, c, sh) for (row, c, sh) in zip(rows, counts, shapes)]          
-            data_forms = [c if c not in previous_forms else '' for c in data_forms]
+            list_previous_forms = list(c if c else '' for c in df['current_stem'].to_list())
+            set_previous_forms = set(c for c in data_forms.copy() if c)
+            data_forms = [stage(row, c, sh, prev, osf) 
+                            for (row, c, sh, prev, osf) 
+                            in zip(rows, counts, shapes, list_previous_forms, osfs)]          
+            data_forms = [c if c not in set_previous_forms else '' for c in data_forms]
 
         df2[f'c{j}'] = pd.Series(data_forms)
 
@@ -183,7 +188,7 @@ def main(override_file='update'):
     # df = handle_duplicate_df(df)
 
     def post_processing():
-        df['current_stem_syllablfied'] = df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
+        df['current_stem_syllablfied'] = '' # df['current_stem'].apply(lambda x : syllable_parser(x, delim='-'))
         # df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
         # df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
         # df['current_lemma_count'] = df.groupby('current_lemma')['gismu'].transform('count')
