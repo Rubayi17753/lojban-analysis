@@ -1,7 +1,9 @@
 import math
 import pandas as pd
 import config.misc as config_misc
+import config.threshholds as th
 import src.utils as utils
+import src.lojban_specific.lpos as lpos
 import src.lojban_specific.word_shape as word_shape
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
@@ -94,9 +96,36 @@ def stage1(row):
 def stage2(row, c, sh):
 
     cand = ''
-    if c > 1 and not row.override:
-        if sh == 'CAC':
-            ...
+    if c > 1 and not row.override and row.coef2 > th.coef_flip_threshhold:
+        if row.shape2:
+            if row.shape2 == 'CAA':
+                aa = row.diphthong_reduced
+                if len(aa) > 1:
+                    cand = apply_sound_changes(row.form2)
+            elif row.shape2 in ('CAC', 'CCA'):
+                cand = apply_sound_changes(row.form2)
+    return cand
 
-stages = [stage1, ]
+def stage3(row, c, sh):
+     
+    g = row.gismu
+    cand = ''
+
+    # freq_prefix and freq_suffix represent raw rafsi word counts. 
+    # They may thus be used to gauge the most frequently-occuring 
+    # de-facto 'prefixes' and 'suffixes' in the language.
+ 
+    if (c > 1 and not row.override 
+        and row.freq_prefix < 100 and row.freq_suffix < 100):
+        if sh == 'CAC' and row.gismu_type == 'CC':
+            cand = apply_sound_changes(row.gismu[:4])
+        elif sh == 'CAA' and row.pos1 != '345':
+            if row._ri < 30:
+                cand = apply_sound_changes(lpos.rearrange_by_lpos(g, 'CCAA 1212'))
+            if not cand:
+                cand = apply_sound_changes(lpos.rearrange_by_lpos(g, 'CAAC 1123'))
+    ...
+    return cand
+
+stages = [stage1, stage2, stage3]
 

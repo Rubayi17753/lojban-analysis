@@ -83,19 +83,12 @@ def determine_pos_tendency(df):
 
 def process_candidates(df):
 
-    def generate_counts(df2, col):
-        mask1 = df2[col].isna()
-        mask2 = df2[col] == ''
-        mask = ~mask1 & ~mask2
-        df2[f'n{col}'] = 0
-        df2[f'n{col}'][mask] = (df2.groupby(col)[col].transform('count'))[mask]    
-        return df2 
-
     df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
     df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
 
     df2 = pd.DataFrame()
     counts, shapes = list(), list()
+    df['current_stem'] = ''
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     rows = [Row(d) for d in data]
@@ -108,19 +101,33 @@ def process_candidates(df):
         if i == 0:
             data_forms = [stage(row) for row in rows]
         else:
-            data_forms = [stage(row, c, sh) for (row, c, sh) in zip(rows, counts, shapes)]
+            previous_forms = set(c for c in data_forms.copy() if c)
+            data_forms = [stage(row, c, sh) for (row, c, sh) in zip(rows, counts, shapes)]          
+            data_forms = [c if c not in previous_forms else '' for c in data_forms]
 
         df2[f'c{j}'] = pd.Series(data_forms)
-        df2 = generate_counts(df2, f'c{j}')
-        counts = df2[f'nc{j}'].to_list()
 
-        df['current_stem'] = df2[f'c{j}']
+        # Replace current_stem with entries from df2 where not empty
+        df['current_stem'] = df2[f'c{j}'].where(df2[f'c{j}'] != '', df['current_stem'])
+
+        def generate_counts():
+            # mask1 = df['current_stem'].isna()
+            # mask2 = df['current_stem'] == ''
+            # mask = ~mask1 & ~mask2
+            serie = (df.groupby('current_stem')['current_stem'].transform('count'))
+            # serie[mask] = 0               
+            return serie  
+
+        serie = generate_counts()
+        df2[f'nc{j}'] = serie
+        counts = serie.to_list()
+
         df['current_stem_shape'] = df['current_stem'].apply(word_shape)
         shapes = df['current_stem_shape'].to_list()
     
     df = pd.concat([df, df2], axis=1) 
 
-    return df
+    return df, df2.columns
 
 def main(override_file='update'):
     
@@ -172,7 +179,7 @@ def main(override_file='update'):
        'rafsi_pos', 'override', 'override_notes', 'pos_tendency', 'meaning']
 
     # Process candidate forms
-    df = process_candidates(df)
+    df, cols_stages = process_candidates(df)
     # df = handle_duplicate_df(df)
 
     def post_processing():
@@ -188,11 +195,13 @@ def main(override_file='update'):
             'current_stem_syllablfied',
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'form_shape_1', 'form_shape_2',
             'meaning', 'pos_tendency', 'override', 
-            'c1', 'nc1',
+            *cols_stages,
             'gismu_sum', 
+            'as_rafsi_im', 'as_rafsi_fm',
             '%_ri', '%_rf',
             '%_rafsi', '%_gismu', '%_cmavo',
         ]
+
     df_out = df[print_cols]
     df_out.to_csv('results/df3b1.csv', sep=',', index=False)
 

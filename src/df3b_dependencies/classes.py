@@ -12,16 +12,21 @@ class Row:
         self.gismu_shape = d['gismu_shape']
         self.pos_tendency = d['pos_tendency']
 
+        self.freq_prefix = d['as_rafsi_im']
+        self.freq_suffix = d['as_rafsi_fm']
+        self._ri = d['%_ri']
+        self._rf = d['%_rf']
+
+        n1, n2 = d['coef1_1'], d['coef1_2']
+        self.coef2 = round(n2 / n1 , 1) if n1 else 999
+
         if self.gismu:
 
             # Admit second forms if certain criteria met
-            n1, n2 = d['coef1_1'], d['coef1_2']
-            coef_second_form = round(n2 / n1 , 1) if n1 else 999
-            
             x = d['cmavo_rafsi_1'], d['form_shape_1'], d['rafsi_pos_1']
             y = d['cmavo_rafsi_2'], d['form_shape_2'], d['rafsi_pos_2']
 
-            if (coef_second_form > th.coef_flip_threshhold
+            if (self.coef2 > th.coef_flip_threshhold
                 and d['form_shape_1'] == 'CAA' and d['form_shape_2'] != 'CAA'):
                 self.form1, self.shape1, self.pos1 = y
                 self.form2, self.shape2, self.pos2 = x
