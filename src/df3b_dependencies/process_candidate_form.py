@@ -82,32 +82,39 @@ def stage1(row):
         cand = override
     elif not row.shape1:
         # i.e. no common rafsi
-        cand = apply_sound_changes(row.gismu[:4])
+        cand = row.gismu[:4]
     elif row.shape1 == 'CAA' and len(aa) == 1:
         if row.form2:
-            cand = apply_sound_changes(row.form2)
+            cand = row.form2
         else:
             ca = apply_sound_changes(row.form1)
             cc = row.c1c2()
-            if cc in phon.valid_cons_pairs:  # not row.pos1.startswith('2') and 
-                cand = apply_sound_changes(f'{cc}{ca[1]}')
+            if cc in phon.valid_cons_pairs and row.pos_tendency != 'fin':  # not row.pos1.startswith('2') and 
+                cand = f'{cc}{ca[1]}'
             else:
-                cand = apply_sound_changes(f'{ca}{g[3]}')
-            cand = f'{cand}_'
+                cand = f'{ca}{g[3]}'
+            # cand = f'{cand}_'
     else:
-        cand = apply_sound_changes(row.form1)
+        cand = row.form1
 
+    cand = apply_sound_changes(cand)
+    
+    if row.shape1 == 'CAC' and g[2:4] in sound_changes.coda_stem_to_lemma.values():
+        cand = f'{row.form1}_'
+    
     return cand
 
-def _stage1b(row, c, sh, prev, osf):
+def _stage1b(row, c, sh, shc, prev, osf):
 
     g = row.gismu
     cand = ''
     if sh[-1] == '_':
-        cand = apply_sound_changes(f'{row.c1c2}{prev[1]}')
+        cand = f'{row.c1c2}{prev[1]}'
+
+    cand = apply_sound_changes(cand)
     return cand 
 
-def stage2(row, c, sh, prev, osf):
+def stage2a(row, c, sh, shc, prev, osf):
 
     cand = ''
     if c > 1 and not row.override and row.coef2 > th.coef_flip_threshhold:
@@ -115,12 +122,26 @@ def stage2(row, c, sh, prev, osf):
             if row.shape2 == 'CAA':
                 aa = row.diphthong_reduced
                 if len(aa) > 1:
-                    cand = apply_sound_changes(row.form2)
+                    cand = row.form2
             elif row.shape2 in ('CAC', 'CCA'):
-                cand = apply_sound_changes(row.form2)
+                cand = row.form2
+
+    cand = apply_sound_changes(cand)
     return cand
 
-def stage3(row, c, sh, prev, osf):
+def stage2b(row, c, sh, shc, prev, osf):
+
+    g = row.gismu
+    cand = ''
+    if not row.override:    # c > 1 and 
+        if row.shape1 == 'CAC':
+            cac = row.form1
+            cand = f'{cac[0:2]}{sound_changes.cons_coda_ccac.get(cac[2], cac[2])}'
+    
+    cand = apply_sound_changes(cand)
+    return cand
+
+def stage_cc(row, c, sh, shc, prev, osf):
      
     g = row.gismu
     cand = ''
@@ -129,23 +150,35 @@ def stage3(row, c, sh, prev, osf):
     # They may thus be used to gauge the most frequently-occuring 
     # de-facto 'prefixes' and 'suffixes' in the language.
  
-    if c > 1 and not row.override and not osf:
-        if sh == 'CAC' and row.gismu_type == 'CC':
-            cand = apply_sound_changes(row.gismu[:4])
+    if c > 1 and not row.override and not osf and row.pos_tendency != 'fin':
+        if sh == 'CAC':
+            if row.pos1 in ('124', '134', '234'):
+                cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
         elif sh == 'CAA' and row.pos1 != '345':
             if row._ri < 30:
-                cand = apply_sound_changes(lpos.rearrange_by_lpos(g, 'CCAA 1212'))
-            if not cand:
-                cand = apply_sound_changes(lpos.rearrange_by_lpos(g, 'CAAC 1123'))
-    ...
+                cand = lpos.rearrange_by_lpos(g, 'CCAA 1212')
+            # if not cand:
+            #    cand = lpos.rearrange_by_lpos(g, 'CAAC 1123')
+        elif sh == 'CCA' and row.pos1 != '345':
+            cand = f'{prev}{g[3]}'
+    
+    cand = apply_sound_changes(cand)
     return cand
 
-def stage_fin(row, c, sh, prev, osf):
+def stage_fin(row, c, sh, shc, prev, osf):
 
     cand = ''
     if c > 1 and not row.override and not osf:
-        cand = apply_sound_changes(row.gismu[:4])
+        cand = row.gismu[:4]
+
+    cand = apply_sound_changes(cand)
     return cand
 
-stages = [stage1, stage2, stage3, stage_fin]
+stage_data = {
+    stage1 : None,
+    stage2a : None,
+    stage2b : None, # {'purge_forms_already_used': 0}
+    stage_cc : None,
+}
 
+stages, stages_param = stage_data.keys(), stage_data.values()

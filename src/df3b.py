@@ -11,7 +11,7 @@ from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import syllable_parser
-from src.df3b_dependencies.process_candidate_form import stages
+from src.df3b_dependencies.process_candidate_form import stages, stages_param
 from src.df3b_dependencies.handle_duplicates import handle_duplicate_df
 from src.df3b_dependencies.classes import Row
 import src.newlang_specific.sound_changes as sound_changes
@@ -92,10 +92,15 @@ def process_candidates(df):
 
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     rows = [Row(d) for d in data]
-    osfs = [(row._cmavo > 20 or row.freq_prefix > 100 or row.freq_suffix > 100)
-        for row in rows]   # oblige short forms
+    osfs = [d['%_cmavo'] > 20 
+        or (d['as_rafsi_im'] > 100 and d['%_ri'] > 10)
+        or (d['as_rafsi_fm'] > 100 and d['%_rf'] > 10)
+        for row, d in zip(rows, data)]   # oblige short forms
 
-    for i, stage in enumerate(stages):
+    for i, (stage, stage_param) in enumerate(zip(stages, stages_param)):
+        
+        if not stage_param:
+            stage_param = dict()
 
         j = i + 1
         data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
@@ -105,15 +110,21 @@ def process_candidates(df):
         else:
             list_previous_forms = list(c if c else '' for c in df['current_stem'].to_list())
             set_previous_forms = set(c for c in data_forms.copy() if c)
-            data_forms = [stage(row, c, sh, prev, osf) 
-                            for (row, c, sh, prev, osf) 
-                            in zip(rows, counts, shapes, list_previous_forms, osfs)]          
-            data_forms = [c if c not in set_previous_forms else '' for c in data_forms]
+            data_forms = [stage(row, c, sh, shc, prev, osf) 
+                            for (row, c, sh, shc, prev, osf) 
+                            in zip(rows, counts, shapes, list_current_shapes, list_previous_forms, osfs)]          
+            
+            if stage_param.get('purge_forms_already_used', 1):
+                data_forms = [c if c not in set_current_stems else '' for c in data_forms]
 
         df2[f'c{j}'] = pd.Series(data_forms)
 
         # Replace current_stem with entries from df2 where not empty
         df['current_stem'] = df2[f'c{j}'].where(df2[f'c{j}'] != '', df['current_stem'])
+        df['current_stem_shape'] = df['current_stem'].apply(word_shape)
+
+        set_current_stems = set(df['current_stem'].to_list())
+        list_current_shapes = df['current_stem_shape'].to_list()
 
         def generate_counts():
             # mask1 = df['current_stem'].isna()
@@ -127,7 +138,6 @@ def process_candidates(df):
         df2[f'nc{j}'] = serie
         counts = serie.to_list()
 
-        df['current_stem_shape'] = df['current_stem'].apply(word_shape)
         shapes = df['current_stem_shape'].to_list()
     
     df = pd.concat([df, df2], axis=1) 

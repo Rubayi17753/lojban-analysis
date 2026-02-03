@@ -6,8 +6,9 @@ from src.lojban_specific.parser import lujvo_parser, determine_wordclass
 from src.df_gismu_rafsi import get_df_gismu_rafsi
 from src.lojban_specific.obtain_specific_cmavo import rafsi_list
 import config.hyphens as hyphens
+import config.misc as misc_config
 
-df_new_gismu = Table('new_gismu', 'interactive', keep_default_na=False, sep='\t').dff
+df_new_gismu = Table('new_gismu', 'interactive', keep_default_na=False, sep=misc_config.new_gismu['sep']).dff
 dict_stem = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_stem']))
 dict_combining = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_combining']))
 dict_lemma = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_lemma']))

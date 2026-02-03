@@ -1,8 +1,10 @@
 import pandas as pd
 from src.classes.table import Table
 from src.lojban_specific.word_shape import word_shape
+import config.misc as misc_config
 
-override_fp = 'interactive/new_gismu.csv'
+override_fp = misc_config.new_gismu['path']
+override_sep = misc_config.new_gismu['sep']
 
 def get_df_override():
     df = pd.read_csv(override_fp, index_col='gismu')
@@ -19,7 +21,7 @@ def create_new_override(df):
 
     df = df.sort_values('theme_code')
     df = df[['gismu', 'current_stem', 'override', 'notes', 'current_stem_count', 'pos_tendency', 'theme_code', 'meaning']]
-    df.to_csv(override_fp, index=False)
+    df.to_csv(override_fp, sep=override_sep, index=False)
 
 def override_generated_forms(df):
     df = df.set_index('gismu')
@@ -46,7 +48,7 @@ def update_override_file(df):
     df_override = (pd.concat([a, b], axis=1))
     df_override = df_override[['current_stem', 'override', 'notes', 'final_count',
                      'pos_tendency', 'theme_code', 'meaning']]
-    df_override.reset_index().to_csv('interactive/new_gismu.tsv', index=False)
+    df_override.reset_index().to_csv(override_fp, sep=override_sep, index=False)
 
 def copy_override_into_file(df):
 
@@ -61,4 +63,4 @@ def copy_override_into_file(df):
 
     cols2 = ['theme_code', 'gismu', 'meaning', 'gismu', 'override', 'override_notes']
     # 'current_stem', 'current_lemma', 'current_combining', 
-    df[cols2].to_csv(override_fp, index=False)
+    df[cols2].to_csv(override_fp, sep=override_sep, index=False)
