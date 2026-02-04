@@ -81,12 +81,24 @@ def determine_pos_tendency(df):
 
     return df
 
+def rank_stats(df):
+
+    df = df[['current_stem', '%_ri', '%_rf']]
+
+    df['max_%_ri'] = df.groupby('current_stem')['%_ri'].transform('max')
+    df['max_%_rf'] = df.groupby('current_stem')['%_rf'].transform('max')
+    df['ri_rank'] = df['%_ri'] / df['max_%_ri']
+    df['rf_rank'] = df['%_rf'] / df['max_%_rf']
+
+    return df
+
 def process_candidates(df):
 
     df[df.select_dtypes(include='object').columns] = df.select_dtypes(include='object').fillna('')
     df[df.select_dtypes(include='number').columns] = df.select_dtypes(include='number').fillna(0)
 
     df2 = pd.DataFrame()
+    df3 = pd.DataFrame()
     counts, shapes = list(), list()
     df['current_stem'] = ''
 
@@ -123,6 +135,11 @@ def process_candidates(df):
         df['current_stem'] = df2[f'c{j}'].where(df2[f'c{j}'] != '', df['current_stem'])
         df['current_stem_shape'] = df['current_stem'].apply(word_shape)
 
+        rank_df = rank_stats(df)[['ri_rank', 'rf_rank']]
+        df[['ri_rank', 'rf_rank']] = rank_df[['ri_rank', 'rf_rank']]
+        rank_df.columns = [f'rank_i{j}', f'rank_f{j}']
+        df3 = pd.concat([df3, rank_df], axis=1) 
+
         set_current_stems = set(df['current_stem'].to_list())
         list_current_shapes = df['current_stem_shape'].to_list()
 
@@ -139,10 +156,9 @@ def process_candidates(df):
         counts = serie.to_list()
 
         shapes = df['current_stem_shape'].to_list()
-    
-    df = pd.concat([df, df2], axis=1) 
 
-    return df, df2.columns
+    df = pd.concat([df, df2, df3], axis=1) 
+    return df, df2.columns, df3.columns
 
 def main(override_file='update'):
     
@@ -194,7 +210,7 @@ def main(override_file='update'):
        'rafsi_pos', 'override', 'override_notes', 'pos_tendency', 'meaning']
 
     # Process candidate forms
-    df, cols_stages = process_candidates(df)
+    df, cols_stages, cols_ranks = process_candidates(df)
     # df = handle_duplicate_df(df)
 
     def post_processing():
@@ -211,6 +227,7 @@ def main(override_file='update'):
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'form_shape_1', 'form_shape_2',
             'meaning', 'pos_tendency', 'override', 
             *cols_stages,
+            *cols_ranks,
             'gismu_sum', 
             'as_rafsi_im', 'as_rafsi_fm',
             '%_ri', '%_rf',

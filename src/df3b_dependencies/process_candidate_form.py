@@ -150,9 +150,11 @@ def stage_cc(row, c, sh, shc, prev, osf):
     # They may thus be used to gauge the most frequently-occuring 
     # de-facto 'prefixes' and 'suffixes' in the language.
  
-    if c > 1 and not row.override and not osf and row.pos_tendency != 'fin':
+    if c > 1 and not row.override and not osf:  #  and row.pos_tendency != 'fin'
         if sh == 'CAC':
-            if row.pos1 in ('124', '134', '234'):
+            if row.pos1 in ('123',):
+                cand = lpos.rearrange_by_lpos(g, 'CCAC 1312')
+            elif row.pos1 in ('124', '134', '234'):
                 cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
         elif sh == 'CAA' and row.pos1 != '345':
             if row._ri < 30:
