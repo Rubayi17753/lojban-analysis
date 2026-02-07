@@ -105,8 +105,8 @@ def process_candidates(df):
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     rows = [Row(d) for d in data]
     osfs = [d['%_cmavo'] > 20 
-        or (d['as_rafsi_im'] > 100 and d['%_ri'] > 10)
-        or (d['as_rafsi_fm'] > 100 and d['%_rf'] > 10)
+        or (d['as_rafsi_im'] > 200 and d['%_ri'] > 10)
+        or (d['as_rafsi_fm'] > 200 and d['%_rf'] > 10)
         for row, d in zip(rows, data)]   # oblige short forms
 
     for i, (stage, stage_param) in enumerate(zip(stages, stages_param)):
@@ -122,10 +122,14 @@ def process_candidates(df):
         else:
             list_previous_forms = list(c if c else '' for c in df['current_stem'].to_list())
             set_previous_forms = set(c for c in data_forms.copy() if c)
-            data_forms = [stage(row, c, sh, shc, prev, osf) 
-                            for (row, c, sh, shc, prev, osf) 
-                            in zip(rows, counts, shapes, list_current_shapes, list_previous_forms, osfs)]          
+            data_forms = [stage(row, c, sh, shc, prev, ri, rf, osf) 
+                            for (row, c, sh, shc, prev, ri, rf, osf) 
+                            in zip(rows, counts, shapes, 
+                            list_current_shapes, list_previous_forms,
+                            list_ri_rank,  list_rf_rank,
+                            osfs)]          
             
+
             if stage_param.get('purge_forms_already_used', 1):
                 data_forms = [c if c not in set_current_stems else '' for c in data_forms]
 
@@ -136,6 +140,9 @@ def process_candidates(df):
         df['current_stem_shape'] = df['current_stem'].apply(word_shape)
 
         rank_df = rank_stats(df)[['ri_rank', 'rf_rank']]
+        list_ri_rank = rank_df['ri_rank'].to_list()
+        list_rf_rank = rank_df['rf_rank'].to_list()
+
         df[['ri_rank', 'rf_rank']] = rank_df[['ri_rank', 'rf_rank']]
         rank_df.columns = [f'rank_i{j}', f'rank_f{j}']
         df3 = pd.concat([df3, rank_df], axis=1) 
@@ -227,9 +234,9 @@ def main(override_file='update'):
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'form_shape_1', 'form_shape_2',
             'meaning', 'pos_tendency', 'override', 
             *cols_stages,
-            *cols_ranks,
             'gismu_sum', 
             'as_rafsi_im', 'as_rafsi_fm',
+            *cols_ranks,
             '%_ri', '%_rf',
             '%_rafsi', '%_gismu', '%_cmavo',
         ]
