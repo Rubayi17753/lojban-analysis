@@ -83,12 +83,15 @@ def determine_pos_tendency(df):
 
 def rank_stats(df):
 
-    df = df[['current_stem', '%_ri', '%_rf']]
+    df = df[['current_stem', '%_ri', '%_rf', 'coef2',]]
 
     df['max_%_ri'] = df.groupby('current_stem')['%_ri'].transform('max')
     df['max_%_rf'] = df.groupby('current_stem')['%_rf'].transform('max')
+    df['max_coef2'] = df.groupby('current_stem')['coef2'].transform('max')
     df['ri_rank'] = df['%_ri'] / df['max_%_ri']
     df['rf_rank'] = df['%_rf'] / df['max_%_rf']
+    df['coef2_rank'] = df['coef2'] / df['max_coef2']
+    # print(df[['current_stem', 'coef2', 'max_coef2', 'coef2_rank']])
 
     return df
 
@@ -105,8 +108,8 @@ def process_candidates(df):
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     rows = [Row(d) for d in data]
     osfs = [d['%_cmavo'] > 20 
-        or (d['as_rafsi_im'] > 200 and d['%_ri'] > 10)
-        or (d['as_rafsi_fm'] > 200 and d['%_rf'] > 10)
+        or (d['as_rafsi_im'] > 100 and d['%_ri'] > 10)
+        or (d['as_rafsi_fm'] > 100 and d['%_rf'] > 10)
         for row, d in zip(rows, data)]   # oblige short forms
 
     for i, (stage, stage_param) in enumerate(zip(stages, stages_param)):
@@ -122,14 +125,13 @@ def process_candidates(df):
         else:
             list_previous_forms = list(c if c else '' for c in df['current_stem'].to_list())
             set_previous_forms = set(c for c in data_forms.copy() if c)
-            data_forms = [stage(row, c, sh, shc, prev, ri, rf, osf) 
-                            for (row, c, sh, shc, prev, ri, rf, osf) 
+            data_forms = [stage(row, c, sh, shc, prev, ri, rf, rcoef2, osf) 
+                            for (row, c, sh, shc, prev, ri, rf, rcoef2, osf) 
                             in zip(rows, counts, shapes, 
                             list_current_shapes, list_previous_forms,
-                            list_ri_rank,  list_rf_rank,
+                            list_ri_rank, list_rf_rank, list_rcoef2_rank,
                             osfs)]          
             
-
             if stage_param.get('purge_forms_already_used', 1):
                 data_forms = [c if c not in set_current_stems else '' for c in data_forms]
 
@@ -139,12 +141,13 @@ def process_candidates(df):
         df['current_stem'] = df2[f'c{j}'].where(df2[f'c{j}'] != '', df['current_stem'])
         df['current_stem_shape'] = df['current_stem'].apply(word_shape)
 
-        rank_df = rank_stats(df)[['ri_rank', 'rf_rank']]
+        rank_df = rank_stats(df)[['ri_rank', 'rf_rank', 'coef2_rank']]
         list_ri_rank = rank_df['ri_rank'].to_list()
         list_rf_rank = rank_df['rf_rank'].to_list()
-
-        df[['ri_rank', 'rf_rank']] = rank_df[['ri_rank', 'rf_rank']]
-        rank_df.columns = [f'rank_i{j}', f'rank_f{j}']
+        list_rcoef2_rank = rank_df['coef2_rank'].to_list()
+        
+        df[['ri_rank', 'rf_rank', 'coef2_rank']] = rank_df[['ri_rank', 'rf_rank', 'coef2_rank']]
+        rank_df.columns = [f'rank_i{j}', f'rank_f{j}', f'rank_coef2{j}']
         df3 = pd.concat([df3, rank_df], axis=1) 
 
         set_current_stems = set(df['current_stem'].to_list())
@@ -232,13 +235,13 @@ def main(override_file='update'):
             'current_stem', 'current_stem_shape', 
             'current_stem_syllablfied',
             'cmavo_rafsi_1', 'cmavo_rafsi_2', 'form_shape_1', 'form_shape_2',
-            'meaning', 'pos_tendency', 'override', 
+            'meaning', 'pos_tendency', 'coef2', 'override', 
             *cols_stages,
             'gismu_sum', 
             'as_rafsi_im', 'as_rafsi_fm',
-            *cols_ranks,
             '%_ri', '%_rf',
             '%_rafsi', '%_gismu', '%_cmavo',
+            *cols_ranks,
         ]
 
     df_out = df[print_cols]

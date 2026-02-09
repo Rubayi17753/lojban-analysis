@@ -219,10 +219,10 @@ theme_code,gismu,meaning,gismu,override,override_notes
 3.1,dizlo,low,dizlo,,
 3.1,galtu,high,galtu,,
 3.1,ragve,across,ragve,,
-3.1,berti,north,berti,,
-3.1,snanu,south,snanu,,
-3.1,stici,west,stici,,
-3.1,stuna,east,stuna,,
+3.1,berti,north,berti,beu,cmavo-based
+3.1,snanu,south,snanu,neu,cmavo-based
+3.1,stici,west,stici,vua,cmavo-based
+3.1,stuna,east,stuna,tua,cmavo-based
 3.1,darno,far,darno,,
 3.1,jibni,near,jibni,,
 3.1,sruri,surround,sruri,,

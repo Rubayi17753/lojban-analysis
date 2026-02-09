@@ -102,7 +102,7 @@ def stage1(row):
     
     return cand
 
-def _stage1b(row, c, sh, shc, prev, ri, rf, osf):
+def _stage1b(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
 
     cand = ''
     if sh[-1] == '_':
@@ -111,7 +111,7 @@ def _stage1b(row, c, sh, shc, prev, ri, rf, osf):
     cand = apply_sound_changes(cand)
     return cand 
 
-def stage2a(row, c, sh, shc, prev, ri, rf, osf):
+def stage2a(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
 
     g = row.gismu
     cand = ''
@@ -124,7 +124,7 @@ def stage2a(row, c, sh, shc, prev, ri, rf, osf):
     cand = apply_sound_changes(cand)
     return cand
 
-def stage2b(row, c, sh, shc, prev, ri, rf, osf):
+def stage2b(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
 
     cand = ''
     if c > 1 and not row.override and row.coef2 > th.coef_flip_threshhold:
@@ -139,7 +139,7 @@ def stage2b(row, c, sh, shc, prev, ri, rf, osf):
     cand = apply_sound_changes(cand)
     return cand
 
-def stage2c(row, c, sh, shc, prev, ri, rf, osf):
+def stage2c(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
 
     g = row.gismu
     cand = ''
@@ -151,7 +151,7 @@ def stage2c(row, c, sh, shc, prev, ri, rf, osf):
     cand = apply_sound_changes(cand)
     return cand
 
-def _stage_cc(row, c, sh, shc, prev, ri, rf, osf, cond):
+def _stage_cc(row, c, sh, shc, prev, ri, rf, rcoef2, osf, cond):
      
     g = row.gismu
     cand = ''
@@ -182,21 +182,44 @@ def _stage_cc(row, c, sh, shc, prev, ri, rf, osf, cond):
     cand = apply_sound_changes(cand)
     return cand
 
-def stage_cc1(row, c, sh, shc, prev, ri, rf, osf):
-    return _stage_cc(row, c, sh, shc, prev, ri, rf, osf, (rf < 0.8))
+def stage_cc1(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
+    return _stage_cc(row, c, sh, shc, prev, ri, rf, rcoef2, osf, (rf < 0.9 or row.freq_suffix < 5))
 
-def stage_cc2(row, c, sh, shc, prev, ri, rf, osf):
-    return _stage_cc(row, c, sh, shc, prev, ri, rf, osf, (ri > 0.8))
+def stage_cc2(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
+    return _stage_cc(row, c, sh, shc, prev, ri, rf, rcoef2, osf, (ri > 0.9 or row.freq_prefix < 5))
 
-def stage_cc3(row, c, sh, shc, prev, ri, rf, osf):
-    return _stage_cc(row, c, sh, shc, prev, ri, rf, osf, 1)
+def stage_cc3(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
+    return _stage_cc(row, c, sh, shc, prev, ri, rf, rcoef2, osf, 1)
 
-def stage_caac(row, c, sh, shc, prev, ri, rf, osf):
+def stage_caac(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
      
     g = row.gismu
     cand = ''
+    if c > 1 and not row.override and not osf and rcoef2 != 1:
+        if sh == 'CAA':
+            coda = row.get_other_coda()
+            if not coda:
+                coda = g[2] if row.gismu_type == 'CA' else g[3]
+            cand = f"{lpos.rearrange_by_lpos(g, 'CAA 112')}{coda}"
+        elif sh == 'CAC':
+            aa = row.diphthong_reduced
+            if len(aa) > 1:
+                cand = f"{prev[0]}{aa}{prev[-1]}"
+    cand = apply_sound_changes(cand)
+    return cand
 
-def stage_fin(row, c, sh, shc, prev, ri, rf, osf):
+def stage_cacn(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
+    g = row.gismu
+    cand = ''   
+    if c > 1 and not row.override and not osf:
+        if sh == 'CAC' and row.pos1 in ('123',):
+            cac = row.form1
+            if cac[-1] not in 'mnlr':
+                cand = f'{cac}ñ'
+    cand = apply_sound_changes(cand)
+    return cand
+
+def stage_fin(row, c, sh, shc, prev, ri, rf, rcoef2, osf):
 
     cand = ''
     if c > 1 and not row.override and not osf:
@@ -213,6 +236,9 @@ stage_data = {
     stage_cc1 : None,
     stage_cc2 : None,
     # stage_cc3 : None,
+    stage_caac: None,
+    stage_cacn: None,
+    stage_fin: None,
 }
 
 stages, stages_param = stage_data.keys(), stage_data.values()
