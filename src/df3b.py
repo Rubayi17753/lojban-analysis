@@ -125,10 +125,10 @@ def process_candidates(df):
         else:
             list_previous_forms = list(c if c else '' for c in df['current_stem'].to_list())
             set_previous_forms = set(c for c in data_forms.copy() if c)
-            data_forms = [stage(row, c, sh, shc, prev, ri, rf, rcoef2, osf) 
-                            for (row, c, sh, shc, prev, ri, rf, rcoef2, osf) 
+            data_forms = [stage(row, c, sh, prev, ri, rf, rcoef2, osf) 
+                            for (row, c, sh, prev, ri, rf, rcoef2, osf) 
                             in zip(rows, counts, shapes, 
-                            list_current_shapes, list_previous_forms,
+                            list_previous_forms,
                             list_ri_rank, list_rf_rank, list_rcoef2_rank,
                             osfs)]          
             
@@ -151,7 +151,6 @@ def process_candidates(df):
         df3 = pd.concat([df3, rank_df], axis=1) 
 
         set_current_stems = set(df['current_stem'].to_list())
-        list_current_shapes = df['current_stem_shape'].to_list()
 
         def generate_counts():
             # mask1 = df['current_stem'].isna()
@@ -241,7 +240,7 @@ def main(override_file='update'):
             'as_rafsi_im', 'as_rafsi_fm',
             '%_ri', '%_rf',
             '%_rafsi', '%_gismu', '%_cmavo',
-            *cols_ranks,
+            # *cols_ranks,
         ]
 
     df_out = df[print_cols]
