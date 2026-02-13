@@ -72,10 +72,10 @@ def apply_sound_changes(v):
 
     return v
 
-def _get_cac(row, g, ca):
+def _get_cac(row, g, ca, n=2):
     coda = row.get_other_coda()
     if not coda:
-        coda = g[3] if row.gismu_type == 'CA' else g[3]
+        coda = g[n] if row.gismu_type == 'CA' else g[3]
     cand = f'{ca}{coda}'
     return cand
 
@@ -142,8 +142,8 @@ def stage2aa(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = ''
 
     if c > 1 and not row.override:
-        if len(ca) == 2 and row.pos_tendency == 'ini':
-            cand = _get_cac(row, g, ca)
+        if len(ca) == 2:    #  and row.pos_tendency == 'ini'
+            cand = _get_cac(row, g, ca, n=3)
 
     cand = apply_sound_changes(cand)
     return cand
@@ -181,22 +181,22 @@ def stage2c(row, c, sh, prev, ri, rf, rcoef2, osf):
 
     g = row.gismu
     cand = ''
-    if not row.override:    # c > 1 and 
+    if c > 1 and not row.override:
         if row.shape1 == 'CAC':
             cac = row.form1
-            cand = f'{cac[0:2]}{sound_changes.cons_coda_ccac.get(cac[2], cac[2])}'
+            cand = f'{cac[0:2]}{sound_changes.cons_coda_cac2.get(cac[2], cac[2])}'
     
     cand = apply_sound_changes(cand)
     return cand
 
-def _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf):
+def _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2):
     g = row.gismu
     cand = ''
     ca = apply_sound_changes(row.form1)
     if len(ca) == 3:    
         # ca of shape CAA
         if row.pos1 != '345':   #  and row._ri < 30
-            cand = lpos.rearrange_by_lpos(g, 'CCAA 1212')
+            cand = lpos.rearrange_by_lpos(g, f'CCAA 1{n}12')
             if cand[:2] not in phon.valid_cons_pairs:
                 cand = lpos.rearrange_by_lpos(g, 'CCAA 1312')
     else:
@@ -208,15 +208,23 @@ def _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf):
 
 def stage_ccaa1(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = ''
-    if c > 1 and not row.override and not osf:  #  and row.pos_tendency != 'fin'
+    if c > 1 and not row.override and not osf and row._rf > 3:  #  and row.pos_tendency != 'fin'
         if row.shape1 in ('CAA', 'CCA'):
-            cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf)
+            cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2)
     cand = apply_sound_changes(cand)
     return cand  
 
 def stage_ccaa2(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = ''
-    if not row.override and not osf:  #  and row.pos_tendency != 'fin'
+    if c > 1 and not row.override and not osf:  #  and row.pos_tendency != 'fin'
+        if row.shape1 in ('CAA', 'CCA'):
+            cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=3)
+    cand = apply_sound_changes(cand)
+    return cand  
+
+def stage_ccaa3(row, c, sh, prev, ri, rf, rcoef2, osf):
+    cand = ''
+    if c > 1 and not row.override and not osf:  #  and row.pos_tendency != 'fin'
         if row.shape1 in ('CAA', ):
             cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf)
     cand = apply_sound_changes(cand)
@@ -234,10 +242,10 @@ def _stage_ccac(row, c, sh, prev, ri, rf, rcoef2, osf, cond):
     if c > 1 and not row.override and not osf and cond:  #  and row.pos_tendency != 'fin'
  
         if sh == 'CAC':
-            if row.pos1 in ('124', '134', '234'):
+            if row.pos1 != '123':   # in ('124', '134', '234')
                 cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
-            # elif row.pos1 in ('123',):
-                # cand = lpos.rearrange_by_lpos(g, 'CCAC 1312')
+            elif row.pos1 in ('123',):
+                cand = lpos.rearrange_by_lpos(g, 'CCAC 1212')   # 1312
         elif sh == 'CCA' and row.pos1 != '345':
             cand = f'{prev}{g[3]}'
     
@@ -253,21 +261,37 @@ def stage_ccac2(row, c, sh, prev, ri, rf, rcoef2, osf):
 def stage_ccac3(row, c, sh, prev, ri, rf, rcoef2, osf):
     return _stage_ccac(row, c, sh, prev, ri, rf, rcoef2, osf, 1)
 
-def stage_caac(row, c, sh, prev, ri, rf, rcoef2, osf):
+def _stage_caac(row, c, sh, prev, ri, rf, rcoef2, osf, cond):
      
     g = row.gismu
     cand = ''
-    if c > 1 and not row.override and not osf and rcoef2 != 1:  # i.e. that leans towards ini the most      
+    if cond:  # i.e. that leans towards ini the most # ri > 0.9      
         if sh == 'CAA':
             coda = row.get_other_coda()
             if not coda:
                 coda = g[2] if row.gismu_type == 'CA' else g[3]
-            cand = f"{lpos.rearrange_by_lpos(g, 'CAA 112')}{coda}"
+            
+            aa_dict = {'ae' : 'ai', 
+                        'ao': 'au'
+                        }
+            aa = lpos.rearrange_by_lpos(g, 'AA 12')
+            aa = aa_dict.get(aa, aa)
+            cand = f"{g[0]}{aa}{coda}"
         elif sh == 'CAC':
             aa = row.diphthong_reduced
             if len(aa) > 1:
-                cand = f"{prev[0]}{aa}{prev[-1]}"
+                cand = f"{prev[0]}{aa}{row.form1[-1]}"
     cand = apply_sound_changes(cand)
+    return cand
+
+def stage_caac1(row, c, sh, prev, ri, rf, rcoef2, osf):
+    cond = c > 1 and not row.override and not osf and rcoef2 != 1
+    cand = _stage_caac(row, c, sh, prev, ri, rf, rcoef2, osf, cond)
+    return cand
+
+def stage_caac2(row, c, sh, prev, ri, rf, rcoef2, osf):
+    cond = c > 1 and not row.override and not osf
+    cand = _stage_caac(row, c, sh, prev, ri, rf, rcoef2, osf, cond)
     return cand
 
 def stage_cacn(row, c, sh, prev, ri, rf, rcoef2, osf):
@@ -281,6 +305,15 @@ def stage_cacn(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = apply_sound_changes(cand)
     return cand
 
+def stage_fin_metathesis(row, c, sh, prev, ri, rf, rcoef2, osf):
+    g = row.gismu
+    cand = ''
+    if c > 1 and not row.override and row.gismu_type == 'CA' and not osf:
+        cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
+
+    cand = apply_sound_changes(cand)
+    return cand
+
 def stage_fin(row, c, sh, prev, ri, rf, rcoef2, osf):
 
     cand = ''
@@ -288,6 +321,35 @@ def stage_fin(row, c, sh, prev, ri, rf, rcoef2, osf):
         cand = row.gismu[:4]
 
     cand = apply_sound_changes(cand)
+    return cand
+
+def stage_fin_metathesis2(row, c, sh, prev, ri, rf, rcoef2, osf):
+    g = row.gismu
+    cand = ''
+    if not row.override and sh == 'CACC' and not osf and row._ri > 5:
+        cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
+
+    cand = apply_sound_changes(cand)
+    return cand
+
+def stage_alter(row, c, sh, prev, ri, rf, rcoef2, osf):
+    g = row.gismu
+    cand = ''
+    if (sh == 'CCA' 
+    and row._ri < 2 and row.pos1 != '345'
+    and not row.override and not osf):
+        cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
+
+    cand = apply_sound_changes(cand)
+    return cand
+
+def identify_unique(row, c, sh, prev, ri, rf, rcoef2, osf):
+
+    cand = ''
+    if row.form1 and row.form2:
+        if row.form1[0] != row.form2[0]:
+            to_print = [row.gismu, row.form1, row.form2, row.shape1, row.shape2]
+            print('\t'.join(to_print))
     return cand
 
 stage_data = {
@@ -298,12 +360,18 @@ stage_data = {
     stage2c : None, # {'purge_forms_already_used': 0}
     stage_ccaa1 : None,
     # stage_ccaa2 : None,
+    stage_ccaa3 : None,
     stage_ccac1 : None,
     stage_ccac2 : None,
     # stage_ccac3 : None,
-    # stage_caac: None,
+    stage_caac1: None,
+    stage_caac2: None,
     # stage_cacn: None,
-    # stage_fin: None,
+    stage_fin_metathesis: None,
+    stage_fin: None,
+    stage_fin_metathesis2: None,
+    stage_alter: None,
+    # identify_unique: None,
 }
 
 stages, stages_param = stage_data.keys(), stage_data.values()

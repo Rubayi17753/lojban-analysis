@@ -42,7 +42,8 @@ diphthongs = {
 diphthongs.update({k.replace("'", "") : v for k, v in diphthongs.items()})
 
 cons_coda_cac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppltkkkttsslmnr'))
-cons_coda_caac = dict(zip('bpvfdtgkxcjszlmnr', 'bbvvddnggddzzlmnr'))
+cons_coda_cac2 = dict(zip('bpvfdtgkxcjszlmnr', 'mpppttkkksssslmnr'))
+cons_coda_caac = dict(zip('bpvfdtgkxcjszlmnr', 'bbvvddgggddzzlmnr'))
 cons_coda_ccac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
 # cons_coda_alt = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
 

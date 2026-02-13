@@ -169,7 +169,7 @@ def process_candidates(df):
     df = pd.concat([df, df2, df3], axis=1) 
     return df, df2.columns, df3.columns
 
-def main(override_file='update'):
+def main(summary_fp, override_file='update'):
     
     df = dfq2()
     df_agg2 = aggregate(df.copy())
@@ -245,6 +245,10 @@ def main(override_file='update'):
 
     df_out = df[print_cols]
     df_out.to_csv('results/df3b1.csv', sep=',', index=False)
+
+    print_cols = ['gismu', 'current_stem']
+    df_out = df[print_cols]
+    df_out.to_csv('results/summary.csv', sep=',', index=False)
 
     # cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
     # df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)

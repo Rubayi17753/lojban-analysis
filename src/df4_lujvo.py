@@ -1,17 +1,26 @@
 import pandas as pd
 from src.classes.table import Table
 import src.lojban_specific.phonological_inventory as inv
+import config.hyphens as hyphens
+import config.misc as misc_config
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import lujvo_parser, determine_wordclass
 from src.df_gismu_rafsi import get_df_gismu_rafsi
 from src.lojban_specific.obtain_specific_cmavo import rafsi_list
-import config.hyphens as hyphens
-import config.misc as misc_config
+import src.newlang_specific.sound_changes as sound_changes
 
-df_new_gismu = Table('new_gismu', 'interactive', keep_default_na=False, sep=misc_config.new_gismu['sep']).dff
-dict_stem = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_stem']))
-dict_combining = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_combining']))
-dict_lemma = dict(zip(df_new_gismu['gismu'], df_new_gismu['current_lemma']))
+
+# df = Table('new_gismu', 'interactive', keep_default_na=False, sep=misc_config.new_gismu['sep']).dff
+# dict_stem = dict(zip(df['gismu'], df['current_stem']))
+
+df = Table('summary', 'results', keep_default_na=False, sep=misc_config.new_gismu['sep']).dff
+dict_stem = dict(zip(df['gismu'], df['current_stem']))
+df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
+df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
+df['current_lemma_count'] = df.groupby('current_lemma')['gismu'].transform('count')
+
+dict_combining = dict(zip(df['gismu'], df['current_combining']))
+dict_lemma = dict(zip(df['gismu'], df['current_lemma']))
 
 # df_rafsi_to_gismu = Table('defs_rafsi', keep_default_na=False, sep=',').dff[['rafsi', 'gismu']]
 df_rafsi_to_gismu = get_df_gismu_rafsi()
