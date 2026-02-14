@@ -323,10 +323,21 @@ def stage_fin(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = apply_sound_changes(cand)
     return cand
 
+def stage_fin_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf):
+    g = row.gismu
+    aa = row.diphthong_reduced
+    cand = ''
+    if not row.override and sh in ('CACC', 'CCAC') and not osf and row._ri > 5:
+        if len(aa) == 2:
+            cand = lpos.rearrange_by_lpos(g, 'CCAA 1212')
+
+    cand = apply_sound_changes(cand)
+    return cand
+
 def stage_fin_metathesis2(row, c, sh, prev, ri, rf, rcoef2, osf):
     g = row.gismu
     cand = ''
-    if not row.override and sh == 'CACC' and not osf and row._ri > 5:
+    if not row.override and (sh == 'CACC' or (sh == 'CCAA' and c > 1)) and not osf and row._ri > 5:
         cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
 
     cand = apply_sound_changes(cand)
@@ -369,7 +380,8 @@ stage_data = {
     # stage_cacn: None,
     stage_fin_metathesis: None,
     stage_fin: None,
-    stage_fin_metathesis2: None,
+    # stage_fin_ccaa: None,
+    # stage_fin_metathesis2: None,
     stage_alter: None,
     # identify_unique: None,
 }

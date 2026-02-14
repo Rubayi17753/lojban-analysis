@@ -6,7 +6,7 @@ import src.inserts as inserts
 import config.threshholds as th
 import config.misc as config_misc
 from src.df1_q1 import main as dfq1
-from src.df1_q2 import main as dfq2
+from src.df1_q2 import main as df1_q2
 from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 from src.lojban_specific.word_shape import word_shape
@@ -169,9 +169,9 @@ def process_candidates(df):
     df = pd.concat([df, df2, df3], axis=1) 
     return df, df2.columns, df3.columns
 
-def main(summary_fp, override_file='update'):
+def main(df1_q2, summary_fp, override_file='update'):
     
-    df = dfq2()
+    df = df1_q2
     df_agg2 = aggregate(df.copy())
 
     df = df[mask1(df)]    
@@ -248,7 +248,7 @@ def main(summary_fp, override_file='update'):
 
     print_cols = ['gismu', 'current_stem']
     df_out = df[print_cols]
-    df_out.to_csv('results/summary.csv', sep=',', index=False)
+    df_out.to_csv(summary_fp, sep=',', index=False)
 
     # cols2 = ['theme_code', 'gismu', 'current_stem', 'current_lemma', 'current_combining', 'meaning', 'gismu', 'override', 'override_notes']
     # df[cols2].to_csv('results/df3b2.csv', sep=',', index=False)

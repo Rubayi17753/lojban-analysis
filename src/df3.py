@@ -3,7 +3,7 @@ import pandas as pd
 import src.inserts as inserts
 import config.threshholds as th
 from src.df1_q1 import main as dfq1
-from src.df1_q2 import main as dfq2
+from src.df1_q2 import main as df1_q2
 from src.classes.table import Table
 from src.df3_shared import determine_pos_tendency
 
@@ -60,7 +60,7 @@ def produce_pivot(df):
     return df
 
 def main():
-    df = dfq2()
+    df = df1_q2()
 
     # Pre-aggregation
     df = df.sort_values(by=['form_freq', 'gismu_freq'], ascending=[False, False])
@@ -68,9 +68,9 @@ def main():
     # Aggregation
     df = aggregate(df)
 
-    # Merge dfq1 and pivot(dfq2)
+    # Merge dfq1 and pivot(df1_q2)
     df = df.merge(dfq1(),
-            on='gismu', how='left').merge(produce_pivot(dfq2()),
+            on='gismu', how='left').merge(produce_pivot(df1_q2()),
             on='gismu', how='left')
 
     df = determine_pos_tendency(df)

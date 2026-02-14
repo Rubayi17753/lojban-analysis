@@ -1,12 +1,9 @@
 # Rafsi data
 
 import src.inserts as inserts
-from src.df1 import create_grand_table 
 from src.classes.table import Table
 
-def main(filter=1):
-
-    df = create_grand_table()
+def main(df, filter=1):
 
     if filter:
         from src.custom_excludes import exclude_classes
