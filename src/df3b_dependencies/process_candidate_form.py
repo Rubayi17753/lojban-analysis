@@ -79,6 +79,21 @@ def _get_cac(row, g, ca, n=2):
     cand = f'{ca}{coda}'
     return cand
 
+def _modify_cac(cand, pos):
+
+    coda = cand[-1]
+
+    dict1 = {'c' : 't', 'b' : 'm'}      # nanca > natca
+    dict2 = {'c' : 's', 'b' : 'p'}      # nacna > nasta
+
+    if pos == '124':
+        ...
+
+    else:
+        ...
+
+    return cand
+
 def stage1(row):
     
     g = row.gismu
@@ -100,6 +115,9 @@ def stage1(row):
             else:
                 # print(f'{row.form1} {row.form2}')
                 cand = row.form2
+            
+            if row.shape2 == 'CAC':
+                cand = _modify_cac(cand, row.pos2)
 
         else:
 
@@ -117,6 +135,8 @@ def stage1(row):
     
     else:
         cand = row.form1
+        if row.shape2 == 'CAC':
+            cand = _modify_cac(cand, row.pos1)
 
     cand = apply_sound_changes(cand)
     
