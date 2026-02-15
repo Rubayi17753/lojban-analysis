@@ -81,8 +81,8 @@ def _translate_lujvo(lujvo, undetected_rafsi, dict_cmavo, delim=''):
 
         return rafsis
 
-    rafsis = switch_se_nu(rafsis)
     rafsis = lujvo_parser(lujvo, noisy=1)
+    rafsis = switch_se_nu(rafsis)
     new_lujvo = gismus_to_word(rafsis)
 
     return new_lujvo

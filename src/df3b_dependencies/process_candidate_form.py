@@ -218,7 +218,8 @@ def _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2):
         if row.pos1 != '345':   #  and row._ri < 30
             cand = lpos.rearrange_by_lpos(g, f'CCAA 1{n}12')
             if cand[:2] not in phon.valid_cons_pairs:
-                cand = lpos.rearrange_by_lpos(g, 'CCAA 1312')
+                if row.shape1 in ('CAA', 'CCA'):
+                    cand = lpos.rearrange_by_lpos(g, 'CCAA 1312')
     else:
         pass
         # print(ca)
@@ -229,7 +230,8 @@ def _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2):
 def stage_ccaa1(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = ''
     if c > 1 and not row.override and not osf and row._rf > 3:  #  and row.pos_tendency != 'fin'
-        if row.shape1 in ('CAA', 'CCA'):
+        if (row.shape1 in ('CAA', 'CCA')
+            or (row.shape1 == 'CAC' and row.pos1 == '123')):
             cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2)
     cand = apply_sound_changes(cand)
     return cand  
@@ -237,7 +239,8 @@ def stage_ccaa1(row, c, sh, prev, ri, rf, rcoef2, osf):
 def stage_ccaa2(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = ''
     if c > 1 and not row.override and not osf:  #  and row.pos_tendency != 'fin'
-        if row.shape1 in ('CAA', 'CCA'):
+        if (row.shape1 in ('CAA', 'CCA')
+            or (row.shape1 == 'CAC' and row.pos1 == '123')):
             cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=3)
     cand = apply_sound_changes(cand)
     return cand  
