@@ -1,11 +1,5 @@
 import src.lojban_specific.phonological_inventory as inv
 import src.lojban_specific.word_shape as word_shape
-import config.hyphens as hyphens
-
-hyphens_cc = hyphens.cc
-hyphens_ca = hyphens.ca
-hyphens_aa = hyphens.aa
-hyphens_aac = hyphens.aac
 
 diphthongs = {
     "a'a" : "a",
@@ -49,10 +43,10 @@ cons_coda_ccac = dict(zip('bpvfdtgkxcjszlmnr', 'ppppttkkksssslmnr'))
 
 clusters_ini = (
     (('x', inv.C) , ('k', inv.C)),
-    (('cs', 'bdgv') , ('cs', 'ptkf')),
-    (('jz', 'ptkf') , ('jz', 'bdgv')),
-    (('d', 'cs') , ('d', 'jz')),
-    (('t', 'jz') , ('t', 'cs')),
+    # (('cs', 'bdgv') , ('cs', 'ptkf')),
+    # (('jz', 'ptkf') , ('jz', 'bdgv')),
+    # (('d', 'cs') , ('d', 'jz')),
+    # (('t', 'jz') , ('t', 'cs')),
 )
 
 clusters_fin = (
@@ -67,58 +61,3 @@ clusters_ini = {f'{p}{q}' : f'{x}{y}' for (pp, qq), (xx, yy) in clusters_ini
                 for p, x in zip(pp, xx) for q, y in zip(qq, yy)}
 clusters_fin = {f'{p}{q}' : f'{x}{y}' for (pp, qq), (xx, yy) in clusters_fin
                 for p, x in zip(pp, xx) for q, y in zip(qq, yy)}
-
-coda_stem_to_lemma = {
-    'p': 'pr', 't': 'tc', 'k': 'kr',
-    'f': 'ft', 's': 'st',
-    'l': 'ld', 'm': 'mb', 'n': 'ng', 'r': 'rv',
-}
-
-hyphens_aa2 = coda_stem_to_lemma[hyphens_aa]
-
-def stem_to_combining(x, sh=None):
-    if x:
-
-        if not sh:
-            sh = word_shape.word_shape(x)
-        
-        infix = ''
-        if sh == 'CAAC':
-            if x[-1] != 'n':
-                infix = hyphens_aac
-        elif sh == 'CAA':
-            infix = 'n'
-
-        x = f'{x}{infix}'
-
-    return x
-
-def stem_to_lemma(x, sh=None):
-
-    if x:
-        if not sh:
-            sh = word_shape.word_shape(x)
-        coda = x[-1]
-        
-        xc = stem_to_combining(x, sh)
-
-        infix = ''
-        if sh == 'CA':
-            infix = 'dv'
-        elif sh == 'CCA':
-            infix = hyphens_ca
-        elif sh == 'CAA':
-            x, infix = xc[:-1], hyphens_aa2
-        elif sh == 'CCAA':
-            infix = hyphens_aa
-        elif sh == 'CAC':
-            x, infix = xc[:-1], coda_stem_to_lemma.get(coda, coda)
-        elif sh == 'CAAC':
-            x, infix = x.strip(hyphens_aac), ''
-            print(x)
-
-        x = f'{x}{infix}'  
-        x = stem_to_combining(x).strip(hyphens_cc).strip(hyphens_aac)
-        x = f'{x}a'
-
-    return x

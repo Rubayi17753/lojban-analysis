@@ -1,22 +1,21 @@
 import pandas as pd
 from src.classes.table import Table
 import src.lojban_specific.phonological_inventory as inv
-import config.hyphens as hyphens
 import config.misc as misc_config
 from src.lojban_specific.word_shape import word_shape
 from src.lojban_specific.parser import lujvo_parser, determine_wordclass
 from src.df_gismu_rafsi import get_df_gismu_rafsi
 from src.lojban_specific.obtain_specific_cmavo import rafsi_list
-import src.newlang_specific.sound_changes as sound_changes
-
+import src.newlang_specific.combining_forms as combining_forms
+from src.newlang_specific.combining_forms import hyphens
 
 # df = Table('new_gismu', 'interactive', keep_default_na=False, sep=misc_config.new_gismu['sep']).dff
 # dict_stem = dict(zip(df['gismu'], df['current_stem']))
 
 df = Table('summary', 'results', keep_default_na=False, sep=misc_config.new_gismu['sep']).dff
 dict_stem = dict(zip(df['gismu'], df['current_stem']))
-df['current_combining'] = df['current_stem'].apply(sound_changes.stem_to_combining)
-df['current_lemma'] = df['current_stem'].apply(sound_changes.stem_to_lemma)
+df['current_combining'] = df['current_stem'].apply(combining_forms.stem_to_combining)
+df['current_lemma'] = df['current_stem'].apply(combining_forms.stem_to_lemma)
 df['current_lemma_count'] = df.groupby('current_lemma')['gismu'].transform('count')
 
 dict_combining = dict(zip(df['gismu'], df['current_combining']))
@@ -50,15 +49,16 @@ def _translate_lujvo(lujvo, undetected_rafsi, dict_cmavo, delim=''):
 
         elif len(s2) < 5:
             dict_cmavo[s] = dict_cmavo.get(s, 0) + 1
-            s2 = f'{s2}{hyphens.cmavo}'
+            s2 = f'{s2}{hyphens["cmavo"]}'
 
         return s2
 
     def gismus_to_word(rafsis):
-        gismus = [rafsi_to_gismu(raf) for raf in rafsis]
         
-        new_forms = [dict_combining.get(gis, gis) for gis in gismus[:-1]]
-        new_forms.append(dict_lemma.get(gismus[-1], f'{gismus[-1]}{hyphens.lemma}'))
+        gismus = [rafsi_to_gismu(raf) for raf in rafsis]
+        new_forms = [dict_combining.get(gis, f'{gis}-') for gis in gismus[:-1]]
+        new_forms.append(dict_lemma.get(gismus[-1], gismus[-1]))
+        new_forms.append(hyphens["lemma"])
 
         for i, (gismu, new_form) in enumerate(zip(gismus, new_forms)):
             if not new_form:

@@ -16,6 +16,8 @@ def get_df_gismu_rafsi():
 	df = pd.concat([df, df4, df5], axis=0)
 	df = df[['rafsi', 'gismu']]
 
+	
+
 	return df
 
 def main():

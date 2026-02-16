@@ -1,7 +1,0 @@
-digram = 'dv'
-cmavo = 'ḟ'
-cc = '’'
-aac = '′'
-aa = 'n'
-ca = 'n'
-lemma = 'a'

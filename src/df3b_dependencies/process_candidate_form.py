@@ -7,7 +7,6 @@ import src.lojban_specific.lpos as lpos
 import src.lojban_specific.word_shape as word_shape
 import src.newlang_specific.sound_changes as sound_changes
 import src.newlang_specific.phonology as phon
-import config.hyphens as hyphen
 
 # cols = ('override', 'CA', 'caa', 'cca', 'cac', 'cak', 'coc', 'cok', 'cacc', 'ccaa', 'ccac', 'ccoc')
 cols = (
@@ -154,6 +153,18 @@ def _stage1b(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = apply_sound_changes(cand)
     return cand 
 
+def stage2a(row, c, sh, prev, ri, rf, rcoef2, osf):
+
+    g = row.gismu
+    cand = ''
+
+    if c > 1 and not row.override and sh == 'CAA':
+        ca = prev[0:2]
+        cand = f'{ca}{g[3]}'
+
+    cand = apply_sound_changes(cand)
+    return cand
+
 def stage2aa(row, c, sh, prev, ri, rf, rcoef2, osf):
 
     g = row.gismu
@@ -164,6 +175,7 @@ def stage2aa(row, c, sh, prev, ri, rf, rcoef2, osf):
     if c > 1 and not row.override:
         if len(ca) == 2:    #  and row.pos_tendency == 'ini'
             cand = _get_cac(row, g, ca, n=3)
+
 
     cand = apply_sound_changes(cand)
     return cand
@@ -388,6 +400,7 @@ def identify_unique(row, c, sh, prev, ri, rf, rcoef2, osf):
 
 stage_data = {
     stage1 : None,
+    stage2a : None, 
     stage2aa : None, 
     stage2ab : None,   
     stage2b : None,
@@ -404,7 +417,7 @@ stage_data = {
     stage_fin_metathesis: None,
     stage_fin: None,
     # stage_fin_ccaa: None,
-    # stage_fin_metathesis2: None,
+    stage_fin_metathesis2: None,
     stage_alter: None,
     # identify_unique: None,
 }
