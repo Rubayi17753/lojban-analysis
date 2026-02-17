@@ -241,7 +241,7 @@ def _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2):
 
 def stage_ccaa1(row, c, sh, prev, ri, rf, rcoef2, osf):
     cand = ''
-    if c > 1 and not row.override and not osf and row._rf > 3:  #  and row.pos_tendency != 'fin'
+    if c > 1 and not row.override and not osf: # and row._rf > 3 #  and row.pos_tendency != 'fin'
         if (row.shape1 in ('CAA', 'CCA')
             or (row.shape1 == 'CAC' and row.pos1 == '123')):
             cand = _get_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf, n=2)

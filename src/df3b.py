@@ -108,8 +108,8 @@ def process_candidates(df):
     data = df.to_dict('records')     # .values.tolist() ; values 'turn' df into np
     rows = [Row(d) for d in data]
     osfs = [d['%_cmavo'] > 20 
-        or (d['as_rafsi_im'] > 100 and d['%_ri'] > 10)
-        or (d['as_rafsi_fm'] > 100 and d['%_rf'] > 10)
+        or (d['as_rafsi_im'] > 150 and d['%_ri'] > 10)
+        or (d['as_rafsi_fm'] > 150 and d['%_rf'] > 10)
         for row, d in zip(rows, data)]   # oblige short forms
 
     for i, (stage, stage_param) in enumerate(zip(stages, stages_param)):
