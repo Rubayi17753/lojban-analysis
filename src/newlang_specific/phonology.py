@@ -5,7 +5,8 @@ valid_cons_pairs = (
     # ('csjz', 'pftkbdvgmnlr'),
     # ('td', 'csjzr'),
     ('cs', 'pftkmnlr'),
-    ('jz', 'bdvgmnlr'),
+    ('z', 'bdvgmn'),
+    ('j', 'bdvgmn'),
     ('t', 'csr'),
     ('d', 'jzr'),    
 )

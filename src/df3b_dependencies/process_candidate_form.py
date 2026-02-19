@@ -158,10 +158,11 @@ def stage2a(row, c, sh, prev, ri, rf, rcoef2, osf):
     g = row.gismu
     cand = ''
 
-    if c > 1 and not row.override and sh == 'CAA':
+    if c > 1 and not row.override:
         ca = prev[0:2]
-        cand = f'{ca}{g[3]}'
-
+        if sh == 'CAA':
+            cand = f'{ca}{g[3]}'
+         
     cand = apply_sound_changes(cand)
     return cand
 
@@ -218,6 +219,23 @@ def stage2c(row, c, sh, prev, ri, rf, rcoef2, osf):
             cac = row.form1
             cand = f'{cac[0:2]}{sound_changes.cons_coda_cac2.get(cac[2], cac[2])}'
     
+    cand = apply_sound_changes(cand)
+    return cand
+
+def stage2d(row, c, sh, prev, ri, rf, rcoef2, osf):
+
+    g = row.gismu
+    cand = ''
+    if c > 1 and not row.override:
+        ca = prev[0:2]
+        if sh == 'CAC' and row.gismu_type == 'CA':
+            c2 = sound_changes.cons_coda_cac.get(g[2], g[2])
+            c3 = sound_changes.cons_coda_cac.get(g[3], g[3])
+            cprev = prev[2]
+            cprev = sound_changes.cons_coda_cac.get(cprev, cprev)
+            coda = c2 if c2 != cprev else c3
+            cand = f'{ca}{coda}'   
+
     cand = apply_sound_changes(cand)
     return cand
 
@@ -305,6 +323,9 @@ def _stage_caac(row, c, sh, prev, ri, rf, rcoef2, osf, cond):
             coda = row.get_other_coda()
             if not coda:
                 coda = g[2] if row.gismu_type == 'CA' else g[3]
+            if coda in 'lmnr':
+                cc = lpos.rearrange_by_lpos(g, 'CC 23')
+                coda = cc.replace(coda, '')
             
             aa_dict = {'ae' : 'ai', 
                         'ao': 'au'
@@ -372,7 +393,7 @@ def stage_fin_ccaa(row, c, sh, prev, ri, rf, rcoef2, osf):
 def stage_fin_metathesis2(row, c, sh, prev, ri, rf, rcoef2, osf):
     g = row.gismu
     cand = ''
-    if not row.override and (sh == 'CACC' or (sh == 'CCAA' and c > 1)) and not osf and row._ri > 5:
+    if not row.override and (sh == 'CACC' or (sh == 'CCAA' and c > 1)) and not osf: #  and row._ri > 5
         cand = lpos.rearrange_by_lpos(g, 'CCAC 1213')
 
     cand = apply_sound_changes(cand)
@@ -405,6 +426,7 @@ stage_data = {
     stage2ab : None,   
     stage2b : None,
     stage2c : None, # {'purge_forms_already_used': 0}
+    stage2d : None,
     stage_ccaa1 : None,
     # stage_ccaa2 : None,
     stage_ccaa3 : None,
